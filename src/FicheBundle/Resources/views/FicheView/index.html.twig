@@ -1,25 +1,29 @@
-{% extends 'base.html.twig' %}
+
+{% extends '::/AdminBase.html.twig' %}
+        {% block title %}
+                Acceder a vos fiches patient
+        {% endblock title %}
+
+        {% block body %}
+                <div class="row">
+            {%for a in fiches %}
+                        <div class="col-lg-3 col-md-6 col-xs-12 col-sm-6">
+                                <div class="blogThumb">
+                                        <div class="thumb-center"><img class="img-responsive" alt="user" src="{{ asset('assets/back/img/blog/blog1.jpg')}}"></div>
+                                        <div class="white-box">
+
+                                                <h3 class="m-t-20 m-b-20">{{ a.idpatient }}</h3>
+                                                <p>{{ a.suivie }}</p>
+                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                        </div>
+                                        </div>
+                                </div>
+
+            {% endfor %}
+                </div>
 
 
-
-        {% block content %}
-
-                <table border="2px">
-                        <h1>La liste des fiches</h1>
-                        <tr>
-                                <td>suivie</td>
-                                <td>suivie html</td>
-                        </tr>
-                    {%for a in fiches %}
-                            <tr>
-                                    <td>{{ a.suivie }}</td>
-                                    <td>{{  a.suiviehtml | raw }} </td>
+        {% endblock body %}
 
 
-
-                            </tr>
-                    {% endfor %}
-                </table>
-
-        {% endblock %}
 
