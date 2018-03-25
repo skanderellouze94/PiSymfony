@@ -1,0 +1,19 @@
+
+
+pidev_esbe:
+    resource: "@PidevEsbeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fiche:
+    resource: "@FicheBundle/Resources/config/routing.yml"
+    prefix:   /fiche
+
+etablissement:
+    resource: "@EtablissementBundle/Resources/config/routing.yml"
+    prefix:   /etablissement
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,21 @@
+etablissement_homepage:
+    path:     /
+    defaults: { _controller: EtablissementBundle:Default:index }
+index:
+    path:     /index
+    defaults: { _controller: EtablissementBundle:Etablissement:index}
+
+insert:
+    path:     /insert
+    defaults: { _controller: EtablissementBundle:Etablissement:insert}
+
+insertCabinet:
+    path:     /insertCabinet
+    defaults: { _controller: EtablissementBundle:CabinetMedical:insert}
+
+loadSubEstab:
+    path:     /loadsubestab
+    defaults: { _controller: EtablissementBundle:Etablissement:loadSubEstablishmentForm}
+rating:
+    path:     /rate
+    defaults: { _controller: EtablissementBundle:Rating:insert}

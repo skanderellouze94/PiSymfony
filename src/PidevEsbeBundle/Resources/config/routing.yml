@@ -1,0 +1,3 @@
+pidev_esbe_homepage:
+    path:     /
+    defaults: { _controller: PidevEsbeBundle:Default:index }

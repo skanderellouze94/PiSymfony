@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+
+        {% block content %}
+
+                <table border="2px">
+                        <h1>La liste des fiches</h1>
+                        <tr>
+                                <td>suivie</td>
+                                <td>suivie html</td>
+                        </tr>
+                    {%for a in fiches %}
+                            <tr>
+                                    <td>{{ a.suivie }}</td>
+                                    <td>{{  a.suiviehtml | raw }} </td>
+
+
+
+                            </tr>
+                    {% endfor %}
+                </table>
+
+        {% endblock %}
+

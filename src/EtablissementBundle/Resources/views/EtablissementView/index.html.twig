@@ -1,0 +1,36 @@
+
+<table border="2px">
+    <h1>La liste des etablissements</h1>
+    <tr>
+        <td>nom</td>
+        <td>adresse</td>
+        <td>jour ouverture</td>
+        <td>jour fermeture</td>
+        <td>email</td>
+        <td>numéro</td>
+        <td>fax</td>
+        <td>page facebook</td>
+        <td>site web</td>
+        <td>heure ouverture</td>
+        <td>heure fermeture</td>
+
+    </tr>
+    {%for a in etablissements %}
+        <tr>
+            <td>{{ a.nom }}</td>
+            <td>{{ a.adresse }}</td>
+            <td>{{ a.dateOuverture }}</td>
+            <td>{{ a.dateFermeture }}</td>
+            <td>{{ a.email }}</td>
+            <td>{{ a.numero }}</td>
+            <td>{{ a.fax }}</td>
+            <td>{{ a.pageFacebook }}</td>
+            <td>{{ a.siteWeb }}</td>
+            <td>{{ a.heureOuverture }}</td>
+            <td>{{ a.heureFermeture }}</td>
+
+        </tr>
+    {% endfor %}
+</table>
+{#
+<a href="{{ path('chercher_modele')}}">effectuer une recherche</a>#}

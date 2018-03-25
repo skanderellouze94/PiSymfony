@@ -1,0 +1,11 @@
+{% block subject %}Welcome {% endblock %}
+{% block body_text %}
+{% autoescape false %}
+Hello {{ user.username }} !
+
+You can confirm  your regestration  by accessing {{ confirmationUrl }}
+
+Greetings,
+the ESBE team
+{% endautoescape %}
+{% endblock %}

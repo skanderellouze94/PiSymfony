@@ -1,0 +1,11 @@
+fiche_homepage:
+    path:     /
+    defaults: { _controller: FicheBundle:Default:index }
+
+insertt:
+    path:     /insert
+    defaults: { _controller: FicheBundle:Fichepatient:insert}
+
+indexx:
+    path:     /index
+    defaults: { _controller: FicheBundle:Fichepatient:index}

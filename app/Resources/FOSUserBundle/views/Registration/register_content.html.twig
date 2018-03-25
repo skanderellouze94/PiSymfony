@@ -1,0 +1,88 @@
+
+{% block content %}
+    <div class="login-box-body">
+    <p class="login-box-msg"></p>
+        <form action="{{ path("fos_user_registration_register") }}" method="post">
+            <div class="form-group has-feedback">
+                <input type="email" id="email" name="fos_user_registration_form[email]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <input type="text" id="username" name="fos_user_registration_form[username]"  required="required" style="height: 30px"autocomplete="username" class="form-control" placeholder="username">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+            <div class="form-group has-feedback"></div>
+            <div class="form-group has-feedback">
+                <input type="password" id="password" name="fos_user_registration_form[plainPassword][first]" style="height: 30px" required="required" autocomplete="username" class="form-control" placeholder="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" id="password2" name="fos_user_registration_form[plainPassword][second]" style="height: 30px" required="required" autocomplete="username" class="form-control" placeholder="Confirmer password">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="nom" name="fos_user_registration_form[nom]" style="height: 30px" required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="nom">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="prenom" name="fos_user_registration_form[prenom]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="prenom">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="adress" name="fos_user_registration_form[adresse]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="adress">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="number" id="CodePostal" name="fos_user_registration_form[codePostal]"  required="required" style="height: 30px" style="height: 30px" autocomplete="username" class="form-control" placeholder="codepostal">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="sexe" name="fos_user_registration_form[sexe]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="sexe">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="number" id="numtel" name="fos_user_registration_form[numTel]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="num tel">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="photoprofil" name="fos_user_registration_form[photoProfil]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="photo de profil">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="status" name="fos_user_registration_form[status]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="status">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" id="pays" name="fos_user_registration_form[pays]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="Pays">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label class="hover">
+                            <div class="icheckbox_square-blue hover" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> I agree to the <a href="#">terms</a>
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div>
+            </div>
+            <input name="fos_user_registration_form[_token]" hidden value="ce8rref-4CWV4DTxvlOrNPLpg3bZTQgX5_htDz5G5OM">
+        </form>
+    </div>
+
+    <script>
+        $(function () {
+            $("#agree").iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+{% endblock %}
+

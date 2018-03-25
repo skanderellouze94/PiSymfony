@@ -1,0 +1,36 @@
+
+{{form_start(form)}}
+
+    {{ form(form)}}
+<div id="subform">
+
+</div>
+
+
+
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            console.log("aaaaaaaa")
+            $("#etablissementbundle_etablissements_type").on("change",function () {
+                console.log("bbbbbbbb")
+                var type=$(this).val()
+                console.log(type)
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('loadSubEstab') }}",
+                    data: {subEstablishment:type},
+                    success: function (html) {
+                        console.log(html)
+                        var x= $(html).find("#subform")
+                        $("#subform").replaceWith(x)
+                    }
+                });
+            })
+        })
+    </script>
+
+
+

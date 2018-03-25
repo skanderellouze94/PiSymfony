@@ -1,0 +1,19 @@
+{% extends 'base2.html.twig' %}
+{% block content %}
+    <div class="login-box-body">
+        <p class="login-box-msg">Forget Password</p>
+        <form action="{{ path("fos_user_resetting_send_email") }}" method="post">
+            <div class="form-group has-feedback">
+                <input type="text" id="email" name="username"  required="required" autocomplete="username" class="form-control" placeholder="Username">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" value="submit">submit</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+    </div>
+{% endblock %}
