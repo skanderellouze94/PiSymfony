@@ -736,64 +736,55 @@
     </header>
 
     <!-- Start main-content -->
-    <div class="main-content">
+     <div class="main-content">
 
-        <!-- Section: inner-header -->
-        <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}">
-            <div class="container pt-60 pb-60">
-                <!-- Section Content -->
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h2 class="title">Appointment Form</h2>
-                            <ol class="breadcrumb text-center text-black mt-10">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Pages</a></li>
-                                <li class="active text-theme-colored">Page Title</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="container">
-                {%for a in etablissements %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="upcoming-events bg-white-f3 mb-20">
-                            <div class="row">
-                                <div class="col-sm-4 pr-0 pr-sm-15">
-                                    <div class="thumb p-15">
-                                        <img class="img-fullwidth" src="" alt=".d..">
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 pl-0 pl-sm-15">
-                                    <div class="event-details p-15 mt-20">
-                                        <h4 class="mt-0 text-uppercase font-weight-500">{{ a.nom }}</h4>
-                                        <p>{{ a.adresse }}</p>
-                                        <p>{{ a.pageFacebook }}</p>
-                                        <p>{{ a.siteWeb }}</p>
-                                        <a href="#" class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10">Reserver <i class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="event-count p-15 mt-15">
-                                        <ul>
-                                            <li class="mb-10"><a href="#"><i class="fa fa-clock-o mr-5"></i>{{ a.heureOuverture }} - {{ a.heureFermeture }}</a></li>
-                                            <li><a href="#"><i class="fa fa-phone mr-5"></i>{{ a.numero }}</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}">
+                <div class="container pt-60 pb-60">
+                    <!-- Section Content -->
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h2 class="title">Appointment Form</h2>
+                                <ol class="breadcrumb text-center text-black mt-10">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li class="active text-theme-colored">Page Title</li>
+                                </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </section>
-    </div>
+            </section>
 
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="border-1px p-25">
+                                <h4 class="text-theme-colored text-uppercase m-0">{% block titreRow %}{% endblock %}</h4>
+
+
+                                {% block content %}
+
+                                {% endblock %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Divider: Appoinment Form -->
+
+
+        <!-- Section: blog -->
+
+    </div>
+    <!-- end main-content -->
+
+    <!-- Footer -->
     <footer id="footer" class="footer pb-0" data-bg-img="images/footer-bg.png" data-bg-color="#25272e">
         <div class="container pt-90 pb-60">
             <div class="row">

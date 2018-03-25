@@ -17,18 +17,18 @@ class EtablissementsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('adresse')
-            ->add('image',FileType::class, array('label' => 'Image','data_class'=>null))
-            ->add('dateOuverture')
-            ->add('dateFermeture')
-            ->add('email')
-            ->add('numero')
-            ->add('fax')
-            ->add('pageFacebook')
-            ->add('siteWeb')
-            ->add('heureOuverture')
-            ->add('heureFermeture')
+            ->add('nom',null, array('label' => false))
+            ->add('adresse',null, array('label' => false))
+            ->add('image',FileType::class, array('label' => 'Image','data_class'=>null ,'label' => false))
+            ->add('dateOuverture',null, array('label' => false))
+            ->add('dateFermeture',null, array('label' => false))
+            ->add('email',null, array('label' => false))
+            ->add('numero',null, array('label' => false))
+            ->add('fax',null, array('label' => false))
+            ->add('pageFacebook',null, array('label' => false))
+            ->add('siteWeb',null, array('label' => false))
+            ->add('heureOuverture',null, array('label' => false))
+            ->add('heureFermeture',null, array('label' => false))
             ->add('type' ,ChoiceType::class,
                 array(
                     'choices' => array(
@@ -42,7 +42,7 @@ class EtablissementsType extends AbstractType
                         'pharmacie' => 'pharmacie',
                         'salle de sport' => 'salle de sport'
 
-                    )));
+                    ),'label' => false));
 
     }/**
      * {@inheritdoc}
