@@ -16,10 +16,10 @@ class ConseilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description')
-            ->add('image',FileType::class, array('data_class' => null
+            ->add('description',null,array('label'=>false))
+            ->add('image',FileType::class, array('data_class' => null,'label'=>false
             ))
-            ->add('categorie')
+            ->add('categorie',null,array('label'=>false))
             ->add('Ajouter',submitType::class)
             ->setMethod('post');
     }/**
