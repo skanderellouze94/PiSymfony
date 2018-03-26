@@ -14,7 +14,7 @@
 
                                                 <h3 class="m-t-20 m-b-20">{{ a.idpatient }}</h3>
                                                 <p>{{ a.suivie }}</p>
-                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20"><a href={{ path('modifier',{'id':a.idFiche}) }}> mettre a jour</a></button>
                                         </div>
                                         </div>
                                 </div>
