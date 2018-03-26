@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new FicheBundle\FicheBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new RdvBundle\RdvBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
