@@ -9,3 +9,6 @@ insertt:
 indexx:
     path:     /index
     defaults: { _controller: FicheBundle:Fichepatient:index}
+modifier:
+    path:     /modif/{id}
+    defaults: { _controller: FicheBundle:Fichepatient:edit}

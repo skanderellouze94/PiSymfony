@@ -1,0 +1,24 @@
+
+<h3>Liste des Catégories</h3>
+
+
+<table border="1" width="50%">
+    <tr>
+        <td>Nom</td><td>Type</td><td>Action</td>
+    </tr>
+
+    {%  for mm in m  %}
+
+    <tr>
+        <td>{{ mm.nom }}</td>
+        <td>{{ mm.type }}</td>
+        <td>
+
+                <a href={{ path('supprimer',{'id':mm.idCategorie}) }}> delete </a><br>
+                <a href={{ path('modifier',{'id':mm.idCategorie}) }}> modifier </a>
+                {% endfor %}
+
+        </td>
+    </tr>
+</table>
+<a href> Rechercher </a><br>

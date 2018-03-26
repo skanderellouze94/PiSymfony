@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
+=======
+actualites:
+    resource: "@ActualitesBundle/Resources/config/routing.yml"
+    prefix:   /Actualites
+
+>>>>>>> 1c12e3dbabf125b33cbbfd97b325d09d1b1cc723
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"
     prefix:   /

@@ -41,4 +41,76 @@ class Action
     private $type ;
 
 
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Action
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \PidevEsbeBundle\Entity\FosUser $idUser
+     *
+     * @return Action
+     */
+    public function setIdUser(\PidevEsbeBundle\Entity\FosUser $idUser)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \PidevEsbeBundle\Entity\FosUser
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * Set idEvent
+     *
+     * @param \PidevEsbeBundle\Entity\Evenements $idEvent
+     *
+     * @return Action
+     */
+    public function setIdEvent(\PidevEsbeBundle\Entity\Evenements $idEvent)
+    {
+        $this->idEvent = $idEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get idEvent
+     *
+     * @return \PidevEsbeBundle\Entity\Evenements
+     */
+    public function getIdEvent()
+    {
+        return $this->idEvent;
+    }
 }

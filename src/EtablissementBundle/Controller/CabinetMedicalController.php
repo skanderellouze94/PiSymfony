@@ -16,6 +16,7 @@ class CabinetMedicalController extends Controller
 {
     public function insertAction(Request $request)
     {
+        //test
         $cabinet = new CabinetMedical();
         $form = $this->createForm('EtablissementBundle\Form\CabinetMedicalType', $cabinet);
         $form->handleRequest($request);
