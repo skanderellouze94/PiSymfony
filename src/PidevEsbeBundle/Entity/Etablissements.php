@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Etablissements
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
@@ -97,22 +106,367 @@ class Etablissements
     private $heureFermeture;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
-    private $id;
+    private $type;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
-    private $user;
+    private $idUser;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Etablissements
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Etablissements
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Etablissements
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set dateOuverture
+     *
+     * @param string $dateOuverture
+     *
+     * @return Etablissements
+     */
+    public function setDateOuverture($dateOuverture)
+    {
+        $this->dateOuverture = $dateOuverture;
+
+        return $this;
+    }
+
+    /**
+     * Get dateOuverture
+     *
+     * @return string
+     */
+    public function getDateOuverture()
+    {
+        return $this->dateOuverture;
+    }
+
+    /**
+     * Set dateFermeture
+     *
+     * @param string $dateFermeture
+     *
+     * @return Etablissements
+     */
+    public function setDateFermeture($dateFermeture)
+    {
+        $this->dateFermeture = $dateFermeture;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFermeture
+     *
+     * @return string
+     */
+    public function getDateFermeture()
+    {
+        return $this->dateFermeture;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Etablissements
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     *
+     * @return Etablissements
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return integer
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param integer $fax
+     *
+     * @return Etablissements
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return integer
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * Set pageFacebook
+     *
+     * @param string $pageFacebook
+     *
+     * @return Etablissements
+     */
+    public function setPageFacebook($pageFacebook)
+    {
+        $this->pageFacebook = $pageFacebook;
+
+        return $this;
+    }
+
+    /**
+     * Get pageFacebook
+     *
+     * @return string
+     */
+    public function getPageFacebook()
+    {
+        return $this->pageFacebook;
+    }
+
+    /**
+     * Set siteWeb
+     *
+     * @param string $siteWeb
+     *
+     * @return Etablissements
+     */
+    public function setSiteWeb($siteWeb)
+    {
+        $this->siteWeb = $siteWeb;
+
+        return $this;
+    }
+
+    /**
+     * Get siteWeb
+     *
+     * @return string
+     */
+    public function getSiteWeb()
+    {
+        return $this->siteWeb;
+    }
+
+    /**
+     * Set heureOuverture
+     *
+     * @param integer $heureOuverture
+     *
+     * @return Etablissements
+     */
+    public function setHeureOuverture($heureOuverture)
+    {
+        $this->heureOuverture = $heureOuverture;
+
+        return $this;
+    }
+
+    /**
+     * Get heureOuverture
+     *
+     * @return integer
+     */
+    public function getHeureOuverture()
+    {
+        return $this->heureOuverture;
+    }
+
+    /**
+     * Set heureFermeture
+     *
+     * @param integer $heureFermeture
+     *
+     * @return Etablissements
+     */
+    public function setHeureFermeture($heureFermeture)
+    {
+        $this->heureFermeture = $heureFermeture;
+
+        return $this;
+    }
+
+    /**
+     * Get heureFermeture
+     *
+     * @return integer
+     */
+    public function getHeureFermeture()
+    {
+        return $this->heureFermeture;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Etablissements
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \PidevEsbeBundle\Entity\FosUser $idUser
+     *
+     * @return Etablissements
+     */
+    public function setIdUser(\PidevEsbeBundle\Entity\FosUser $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \PidevEsbeBundle\Entity\FosUser
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
 }
-

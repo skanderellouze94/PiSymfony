@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Pharmacie
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=500, nullable=false)
@@ -20,22 +29,72 @@ class Pharmacie
     private $type;
 
     /**
-     * @var integer
+     * @var \Etablissements
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Pharmacie
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set idEtab
+     *
+     * @param \PidevEsbeBundle\Entity\Etablissements $idEtab
+     *
+     * @return Pharmacie
+     */
+    public function setIdEtab(\PidevEsbeBundle\Entity\Etablissements $idEtab = null)
+    {
+        $this->idEtab = $idEtab;
+
+        return $this;
+    }
+
+    /**
+     * Get idEtab
+     *
+     * @return \PidevEsbeBundle\Entity\Etablissements
+     */
+    public function getIdEtab()
+    {
+        return $this->idEtab;
+    }
+}
