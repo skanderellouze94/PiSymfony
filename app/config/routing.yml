@@ -1,4 +1,6 @@
-
+actualites:
+    resource: "@ActualitesBundle/Resources/config/routing.yml"
+    prefix:   /Actualites
 
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"

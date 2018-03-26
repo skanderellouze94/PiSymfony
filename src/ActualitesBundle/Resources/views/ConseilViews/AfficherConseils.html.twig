@@ -1,0 +1,24 @@
+
+<h3>Liste des Conseils</h3>
+
+
+<table border="1" width="50%">
+    <tr>
+        <td>Image</td><td>Categorie</td><td>Description</td><td>Action</td>
+    </tr>
+
+    {%  for mm in m  %}
+
+    <tr>
+        <td> <img style="width: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/></td>
+        <td>{{ mm.categorie }}</td>
+        <td>{{ mm.description }}</td>
+        <td>
+
+            <a href={{ path('supprimerConseil',{'id':mm.idConseil})}}> Delete </a><br>
+            <a href={{ path('modifierConseil',{'id':mm.idConseil})}}> Modifier </a>
+            {% endfor %}
+        </td>
+    </tr>
+</table>
+<a href> Rechercher </a><br>

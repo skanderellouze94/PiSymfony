@@ -1,0 +1,53 @@
+actualites_homepage:
+    path:     /
+    defaults: { _controller: ActualitesBundle:Default:index }
+
+ajouter:
+    path:     /AjouterCategorie
+    defaults: { _controller: ActualitesBundle:Categorie:AjouterCategorie }
+
+afficher:
+    path:     /AfficherCategorie
+    defaults: { _controller: ActualitesBundle:Categorie:AfficherCategories }
+
+modifier:
+    path:     /ModifierCategorie/{id}
+    defaults: { _controller: ActualitesBundle:Categorie:ModifierCategorie}
+
+supprimer:
+    path:     /SupprimerCategorie/{id}
+    defaults: { _controller: ActualitesBundle:Categorie:SupprimerCategorie}
+
+
+ajouterConseil:
+    path:     /AjouterConseil
+    defaults: { _controller: ActualitesBundle:Conseil:AjouterConseil }
+
+
+afficherConseils:
+    path:     /AfficherConseils
+    defaults: { _controller: ActualitesBundle:Conseil:AfficherConseils }
+
+supprimerConseil:
+    path:     /SupprimerConseil/{id}
+    defaults: { _controller: ActualitesBundle:Conseil:SupprimerConseil }
+
+modifierConseil:
+    path:     /ModifierConseil/{id}
+    defaults: { _controller: ActualitesBundle:Conseil:ModifierConseil}
+
+ajouterEvenement:
+    path:     /AjouterEvenement
+    defaults: { _controller: ActualitesBundle:Evenement:AjouterEvenement }
+
+afficherEvenements:
+    path:     /AfficherEvenements
+    defaults: { _controller: ActualitesBundle:Evenement:AfficherEvenements }
+
+supprimerEvenement:
+    path:     /SupprimerEvenement/{id}
+    defaults: { _controller: ActualitesBundle:Evenement:SupprimerEvenement }
+
+modifierEvenement:
+    path:     /ModifierEvenement/{id}
+    defaults: { _controller: ActualitesBundle:Evenement:ModifierEvenement}

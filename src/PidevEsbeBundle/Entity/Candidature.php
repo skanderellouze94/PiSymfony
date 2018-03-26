@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Candidature
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_postulation", type="date", nullable=false)
@@ -41,30 +50,178 @@ class Candidature
     private $cv;
 
     /**
-     * @var integer
+     * @var \Annonce
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Annonce
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Annonce")
-     * @ORM\JoinColumn(name="id_annonce", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Annonce")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_annonce", referencedColumnName="id")
+     * })
      */
     private $idAnnonce;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id")
+     * })
      */
     private $idUtilisateur;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set datePostulation
+     *
+     * @param \DateTime $datePostulation
+     *
+     * @return Candidature
+     */
+    public function setDatePostulation($datePostulation)
+    {
+        $this->datePostulation = $datePostulation;
+
+        return $this;
+    }
+
+    /**
+     * Get datePostulation
+     *
+     * @return \DateTime
+     */
+    public function getDatePostulation()
+    {
+        return $this->datePostulation;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Candidature
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set niveauEtude
+     *
+     * @param string $niveauEtude
+     *
+     * @return Candidature
+     */
+    public function setNiveauEtude($niveauEtude)
+    {
+        $this->niveauEtude = $niveauEtude;
+
+        return $this;
+    }
+
+    /**
+     * Get niveauEtude
+     *
+     * @return string
+     */
+    public function getNiveauEtude()
+    {
+        return $this->niveauEtude;
+    }
+
+    /**
+     * Set cv
+     *
+     * @param string $cv
+     *
+     * @return Candidature
+     */
+    public function setCv($cv)
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    /**
+     * Get cv
+     *
+     * @return string
+     */
+    public function getCv()
+    {
+        return $this->cv;
+    }
+
+    /**
+     * Set idAnnonce
+     *
+     * @param \PidevEsbeBundle\Entity\Annonce $idAnnonce
+     *
+     * @return Candidature
+     */
+    public function setIdAnnonce(\PidevEsbeBundle\Entity\Annonce $idAnnonce = null)
+    {
+        $this->idAnnonce = $idAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get idAnnonce
+     *
+     * @return \PidevEsbeBundle\Entity\Annonce
+     */
+    public function getIdAnnonce()
+    {
+        return $this->idAnnonce;
+    }
+
+    /**
+     * Set idUtilisateur
+     *
+     * @param \PidevEsbeBundle\Entity\FosUser $idUtilisateur
+     *
+     * @return Candidature
+     */
+    public function setIdUtilisateur(\PidevEsbeBundle\Entity\FosUser $idUtilisateur = null)
+    {
+        $this->idUtilisateur = $idUtilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get idUtilisateur
+     *
+     * @return \PidevEsbeBundle\Entity\FosUser
+     */
+    public function getIdUtilisateur()
+    {
+        return $this->idUtilisateur;
+    }
+}
