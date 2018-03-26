@@ -97,3 +97,6 @@ fos_user:
         sender_name: "%mailer_user%"
     service:
         mailer: fos_user.mailer.twig_swift
+knp_paginator:
+    template:
+         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
