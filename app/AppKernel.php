@@ -20,9 +20,12 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new EtablissementBundle\EtablissementBundle(),
             new FicheBundle\FicheBundle(),
+            new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new ActualitesBundle\ActualitesBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

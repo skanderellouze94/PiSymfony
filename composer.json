@@ -19,10 +19,7 @@
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "egeloen/ckeditor-bundle": "^4.0",
-<<<<<<< HEAD
         "friendsofsymfony/jsrouting-bundle": "^2.2",
-=======
->>>>>>> 1c12e3dbabf125b33cbbfd97b325d09d1b1cc723
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.7",
