@@ -10,6 +10,7 @@ namespace FicheBundle\Controller;
 
 
 use FicheBundle\Entity\Fichepatient;
+use FicheBundle\Form\FichepatientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -39,6 +40,24 @@ class FichepatientController extends Controller
         $fiches = $EM->getRepository(("FicheBundle:Fichepatient"))->findAll();
         return $this->render('FicheBundle:FicheView:index.html.twig', array(
             'fiches' => $fiches
+        ));
+    }
+
+    public function editAction(Request $request , $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+
+        $fiche = $em->getRepository(("FicheBundle:Fichepatient"))
+            ->find("$id");
+        $form = $this->createForm(FichepatientType::class, $fiche);
+        $form->handleRequest($request);
+        $fiche->setSuivie(strip_tags($fiche->getSuiviehtml()));
+        $em->persist($fiche);
+        $em->flush();
+
+        return $this->render('FicheBundle:FicheView:modif.html.twig', array(
+            'form' => $form->createView(),'v'=>$fiche
+
         ));
     }
 }

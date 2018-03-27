@@ -12,6 +12,7 @@ namespace AnnonceBundle\Controller;
 use AnnonceBundle\Entity\Annonce;
 use AnnonceBundle\Form\RechercheAnnonceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class AnnonceController extends Controller
@@ -85,4 +86,39 @@ class AnnonceController extends Controller
         return $this->render('AnnonceBundle:AnnonceViews:RechercherAnnonce.html.twig', array('Form' => $form->createView(),"a" => $annonce
         ));
     }
+
+    public function RechercherAction (Request $request)
+    {
+        if ($request->isXmlHttpRequest() && $request->isMethod('post')) {
+
+            $domaine = $request->get('domaine');
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->getRepository('AnnonceBundle:Annonce')->createQueryBuilder('a');
+            $annonce = $query->where($query->expr()->like('a.domaine', ':p'))
+                ->setParameter('p', '%' . $domaine . '%')
+                ->getQuery()->getResult();
+
+            $response = $this->render('AnnonceBundle:AnnonceViews:Search.html.twig', array('all' => $annonce));
+            return new JsonResponse($response);
+        }
+            return new JsonResponse(array("status" => true));
+    }
+
+
+
+//    public function EffacerAnnonceDateExpirationAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $annonce = $em->getRepository('AnnonceBundle:Annonce')->findAll();
+//        $date = (new \DateTime('now'));
+//        foreach ( $annonce as $annonce){
+//            if($annonce->getDateExpiration()<$date){
+//                $em->remove($annonce);
+//                $em->flush();
+//            }
+//        }
+//
+//        return $this->redirectToRoute('AnnonceViews_index');
+//    }
 }

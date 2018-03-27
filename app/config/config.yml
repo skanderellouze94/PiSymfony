@@ -5,13 +5,20 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
+
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+
     image_directory: '%Kernel.project_dir%/web/img/CV'
+
+    image_directory: '%Kernel.project_dir%/web/uploads/images'
 
 framework:
     #esi: ~
