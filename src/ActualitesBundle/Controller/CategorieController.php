@@ -18,15 +18,17 @@ class CategorieController extends Controller
     public function AjouterCategorieAction(Request $request)
     {
         $categorie = new Categorie();
+
         $form = $this->createForm('ActualitesBundle\Form\CategorieType', $categorie);
         $form->handleRequest($request);
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             /*          $categorie->setIdUser($user = $this->getUser()->getId());*/
             /*   $categorie->setIdUser(0);*/
             $em->persist($categorie);
             $em->flush();
-            return $this->redirectToRoute('afficher');
+            return $this->redirectToRoute('afficherCategorie');
         }
         return $this->render('ActualitesBundle:CategorieViews:AjouterCategorie.html.twig', array(
             'Form' => $form->createView()
@@ -54,9 +56,10 @@ class CategorieController extends Controller
         ));
     }
 
-
+/*
     public function ModifierCategorieAction(Request $request, $id)
     {
+
         $em = $this->getDoctrine()->getManager();
         $categorie = $em->getRepository("ActualitesBundle:Categorie")->find($id);
         $form = $this->createForm('ActualitesBundle\Form\CategorieType', $categorie);
@@ -67,29 +70,29 @@ class CategorieController extends Controller
         return $this->render('ActualitesBundle:CategorieViews:ModifierCategorie.html.twig', array(
             'Form' => $form->createView()
         ));
-    }
+    }*/
 
 
-/*
+
     public function ModifierCategorieAction(Request $request, $id)
     {
         $categorie = new Categorie();
         $form = $this->createForm('ActualitesBundle\Form\CategorieType', $categorie);
-        if ($form->isValid()) {
+
 
             $em = $this->getDoctrine()->getManager();
             $categorie = $em->getRepository("ActualitesBundle:Categorie")->find($id);
             $form = $this->createForm('ActualitesBundle\Form\CategorieType', $categorie);
             $form->handleRequest($request);
+        if ($form->isValid()) {
             $em->persist($categorie);
             $em->flush();
-            return $this->redirectToRoute('afficher');
+            return $this->redirectToRoute('afficherCategorie');
         }
         return $this->render('ActualitesBundle:CategorieViews:ModifierCategorie.html.twig', array(
             'Form' => $form->createView()
         ));
-    }*/
-
+    }
 }
 
 

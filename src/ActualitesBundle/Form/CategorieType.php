@@ -15,18 +15,19 @@ class CategorieType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')
+        $builder
+            ->add('nom',null,array('label'=>false))
             ->add('type',ChoiceType::class,
                 array(
                     'choices' => array(
                         'Evenement' => 'Evenement',
                         'Conseil' => 'Conseil'
-                    )))
-            ->add('Ajouter',submitType::class)
+                    ),'label'=>false))
+           ->add('Ajouter',submitType::class)
             ->setMethod('post');
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

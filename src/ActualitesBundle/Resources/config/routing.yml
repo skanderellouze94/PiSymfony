@@ -2,19 +2,19 @@ actualites_homepage:
     path:     /
     defaults: { _controller: ActualitesBundle:Default:index }
 
-ajouter:
+ajouterCategorie:
     path:     /AjouterCategorie
     defaults: { _controller: ActualitesBundle:Categorie:AjouterCategorie }
 
-afficher:
+afficherCategorie:
     path:     /AfficherCategorie
     defaults: { _controller: ActualitesBundle:Categorie:AfficherCategories }
 
-modifier:
+modifierCategorie:
     path:     /ModifierCategorie/{id}
     defaults: { _controller: ActualitesBundle:Categorie:ModifierCategorie}
 
-supprimer:
+supprimerCategorie:
     path:     /SupprimerCategorie/{id}
     defaults: { _controller: ActualitesBundle:Categorie:SupprimerCategorie}
 
