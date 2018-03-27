@@ -1,0 +1,23 @@
+<table border="2px">
+    <h1>La liste des Rendez Vous</h1>
+    {%for a in rendezvous %}
+
+        <tr>
+
+
+            <td>{{ a.date | date('d/m/y') }}</td>
+            <td>{{ a.time }}</td>
+            <td>{{ a.idservice }}</td>
+            <td>{{ a.iduser }}</td>
+            <td>{{ a.etat }}</td>
+{#
+            <td><a href="{{ path('supprimer',{'id':a.id}) }}">Supprimer</a></td>
+#}
+            <td><a href="{{ path('modifier',{'id':a.id}) }}">modifier</a></td>
+        </tr>
+
+    {% endfor %}
+
+</table>
+{#
+<td><a href="{{ path('afficherql')}}">mettre a jour</a></td>#}

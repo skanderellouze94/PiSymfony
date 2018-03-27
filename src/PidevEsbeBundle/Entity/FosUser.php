@@ -197,11 +197,6 @@ class FosUser
      */
     private $idEvent;
 
-    public function __toString()
-    {
-        return $this->getNom();
-    }
-
     /**
      * Constructor
      */
@@ -805,5 +800,10 @@ class FosUser
     public function getIdEvent()
     {
         return $this->idEvent;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }

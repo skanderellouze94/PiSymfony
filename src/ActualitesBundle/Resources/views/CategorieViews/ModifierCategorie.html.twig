@@ -1,5 +1,55 @@
-<h1>Modifier catégorie</h1>
+{% extends '::/AdminBase.html.twig' %}
+{% block title %}
+    Modifier catégorie
+{% endblock title %}
 
-{{ form_start(Form) }}
 
-{{ form_end(Form) }}
+
+
+        {% block body %}
+
+            <div class="col-md-6 col-sm-6">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <center><header>Veuillez remplir le formulaire de modification  </header></center>
+                        <button id = "panel-button"
+                                class = "mdl-button mdl-js-button mdl-button--icon pull-right"
+                                data-upgraded = ",MaterialButton">
+                            <i class = "material-icons">more_vert</i>
+                        </button>
+                        <ul class = "mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                            data-mdl-for = "panel-button">
+                            <li class = "mdl-menu__item"><i class="material-icons">assistant_photo</i>Action</li>
+                            <li class = "mdl-menu__item"><i class="material-icons">print</i>Another action</li>
+                            <li class = "mdl-menu__item"><i class="material-icons">favorite</i>Something else here</li>
+                        </ul>
+                    </div>
+                    <div class="card-body " id="bar-parent">
+
+                        {{ form_start(Form) }}
+                        <div class="form-group">
+                            <label for="simpleFormEmail" >Nom</label>
+                            {#<input type="nom" class="form-control" id="simpleFormEmail" placeholder="Veuillez entrer le nom de la catégorie">#}
+                            {{  form_widget(Form.nom, {'attr': {'class': 'form-control', 'placeholder' : 'Veuillez entrer le nom de la catégorie'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="simpleFormPassword">Type</label>
+                            {# <input type="password" class="form-control" id="simpleFormPassword" placeholder="Password">#}
+                            {{  form_widget(Form.type, {'attr': {'class': 'form-control', 'placeholder' : 'Veuillez entrer le type de la catégorie'}}) }}
+
+
+                        </div>
+                        {{  form_row(Form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}
+
+                        {#  <button type="submit" class="btn btn-primary">Ajouter</button>
+#}
+                        {#
+                                                    <a button type="submit" class="btn btn-primary" href={{ path('ajouterCategorie')}}>Ajouter</button> </a><br>
+                        #}            {{ form_end(Form) }}
+
+                    </div>
+                </div>
+            </div>
+
+        {% endblock body %}

@@ -24,7 +24,7 @@ class Rdv
     /**
      * @var string
      *
-     * @ORM\Column(name="date", type="string", length=700, nullable=false)
+     * @ORM\Column(name="date", type="string", length=255, nullable=false)
      */
     private $date;
 
@@ -33,12 +33,12 @@ class Rdv
      *
      * @ORM\Column(name="etat", type="string", length=60, nullable=false)
      */
-    private $etat;
+    private $etat = 'Demandé';
 
     /**
      * @var string
      *
-     * @ORM\Column(name="time", type="string", length=100, nullable=false)
+     * @ORM\Column(name="time", type="string", length=255, nullable=true)
      */
     private $time;
 
