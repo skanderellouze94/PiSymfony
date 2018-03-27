@@ -5,11 +5,9 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
     - { resource: "@RdvBundle/Resources/config/services.yml" }
-=======
+
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
->>>>>>> 1c12e3dbabf125b33cbbfd97b325d09d1b1cc723
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration

@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "db9a6c6f13a7c3c2885cc824f7182d96",
-=======
-    "content-hash": "e2f7d302aaa64318f1d302a42592adaa",
->>>>>>> 1c12e3dbabf125b33cbbfd97b325d09d1b1cc723
+    "content-hash": "b6af34f1e3731e82a0d75a3d8e3b2348",
     "packages": [
-        {
-            "name": "ancarebeca/full-calendar-bundle",
-            "version": "v5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ancarebeca/FullCalendarBundle.git",
-                "reference": "12096b8fe471832b35a91764729ae9c15d97eba6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ancarebeca/FullCalendarBundle/zipball/12096b8fe471832b35a91764729ae9c15d97eba6",
-                "reference": "12096b8fe471832b35a91764729ae9c15d97eba6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "symfony/symfony": "^3.1.0"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "^2.2"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "AncaRebeca\\FullCalendarBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rebeca Mora Anca",
-                    "email": "anca.rebeca@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Symfony2 integration with the library FullCalendar.js",
-            "homepage": "https://github.com/ancarebeca/FullCalendarBundle",
-            "keywords": [
-                "calendar",
-                "fullcalendar",
-                "jquery calendar",
-                "symfony2 bundle",
-                "symfony2 calendar"
-            ],
-            "time": "2017-05-01T14:35:52+00:00"
-        },
         {
             "name": "blackknight467/star-rating-bundle",
             "version": "v2.0.1",
@@ -1104,7 +1051,6 @@
             "time": "2016-10-17T18:31:11+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "friendsofsymfony/jsrouting-bundle",
             "version": "2.2.0",
             "source": {
@@ -1164,8 +1110,6 @@
             "time": "2018-02-07T20:08:48+00:00"
         },
         {
-=======
->>>>>>> 1c12e3dbabf125b33cbbfd97b325d09d1b1cc723
             "name": "friendsofsymfony/user-bundle",
             "version": "v2.1.2",
             "source": {
@@ -2607,7 +2551,6 @@
                 "templating"
             ],
             "time": "2018-03-20T04:25:58+00:00"
-<<<<<<< HEAD
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -2652,12 +2595,6 @@
     ],
     "packages-dev": [
         {
-=======
-        }
-    ],
-    "packages-dev": [
-        {
->>>>>>> 1c12e3dbabf125b33cbbfd97b325d09d1b1cc723
             "name": "sensio/generator-bundle",
             "version": "v3.1.7",
             "source": {

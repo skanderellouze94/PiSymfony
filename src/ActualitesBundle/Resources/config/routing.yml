@@ -50,4 +50,6 @@ supprimerEvenement:
 
 modifierEvenement:
     path:     /ModifierEvenement/{id}
-    defaults: { _controller: ActualitesBundle:Evenement:ModifierEvenement}
+    defaults: { _controller: ActualitesBundle:Evenement:ModifierEvenement }
+
+
