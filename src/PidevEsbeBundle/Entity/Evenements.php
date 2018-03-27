@@ -22,13 +22,6 @@ class Evenements
     private $idEvent;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     */
-    private $nom;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", nullable=false)
@@ -121,30 +114,6 @@ class Evenements
     public function getIdEvent()
     {
         return $this->idEvent;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Evenements
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
     }
 
     /**

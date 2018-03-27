@@ -1,0 +1,19 @@
+<table border="2px">
+    <h1>La liste de vos reclamations</h1>
+    {%for a in reclamations %}
+
+        <tr>
+
+
+            <td>{{ a.date | date('d/m/y') }}</td>
+            <td>{{ a.objet }}</td>
+            <td>{{ a.idetab }}</td>
+
+            <td>{{ a.message }}</td>
+        </tr>
+
+    {% endfor %}
+
+</table>
+{#
+<td><a href="{{ path('afficherql')}}">mettre a jour</a></td>#}

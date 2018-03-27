@@ -5,12 +5,12 @@ namespace PidevEsbeBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rdv
+ * Rdvdate
  *
- * @ORM\Table(name="rdv", indexes={@ORM\Index(name="fk_rdv_owner", columns={"id_user"}), @ORM\Index(name="fk_rdv_service", columns={"id_service"})})
+ * @ORM\Table(name="rdvdate", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_service", columns={"id_service"})})
  * @ORM\Entity
  */
-class Rdv
+class Rdvdate
 {
     /**
      * @var integer
@@ -24,21 +24,21 @@ class Rdv
     /**
      * @var string
      *
-     * @ORM\Column(name="date", type="string", length=255, nullable=false)
+     * @ORM\Column(name="etat", type="string", length=255, nullable=false)
+     */
+    private $etat = 'Demande';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="etat", type="string", length=60, nullable=false)
-     */
-    private $etat = 'Demandé';
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="time", type="string", length=255, nullable=true)
+     * @ORM\Column(name="time", type="time", nullable=false)
      */
     private $time;
 
@@ -75,35 +75,11 @@ class Rdv
     }
 
     /**
-     * Set date
-     *
-     * @param string $date
-     *
-     * @return Rdv
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
      * Set etat
      *
      * @param string $etat
      *
-     * @return Rdv
+     * @return Rdvdate
      */
     public function setEtat($etat)
     {
@@ -123,11 +99,35 @@ class Rdv
     }
 
     /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Rdvdate
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
      * Set time
      *
-     * @param string $time
+     * @param \DateTime $time
      *
-     * @return Rdv
+     * @return Rdvdate
      */
     public function setTime($time)
     {
@@ -139,7 +139,7 @@ class Rdv
     /**
      * Get time
      *
-     * @return string
+     * @return \DateTime
      */
     public function getTime()
     {
@@ -151,7 +151,7 @@ class Rdv
      *
      * @param \PidevEsbeBundle\Entity\Services $idService
      *
-     * @return Rdv
+     * @return Rdvdate
      */
     public function setIdService(\PidevEsbeBundle\Entity\Services $idService = null)
     {
@@ -175,7 +175,7 @@ class Rdv
      *
      * @param \PidevEsbeBundle\Entity\FosUser $idUser
      *
-     * @return Rdv
+     * @return Rdvdate
      */
     public function setIdUser(\PidevEsbeBundle\Entity\FosUser $idUser = null)
     {

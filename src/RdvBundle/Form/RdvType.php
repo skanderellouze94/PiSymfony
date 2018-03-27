@@ -23,7 +23,6 @@ class RdvType extends AbstractType
             'widget' => 'choice',
             'format' =>'dd/MM/yyyy',
         ))
-
             ->add('time',TimeType::class, array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',))
