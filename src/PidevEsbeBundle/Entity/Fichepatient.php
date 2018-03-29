@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Fichepatient
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_fiche", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idFiche;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="suivie", type="string", length=3000, nullable=false)
@@ -36,130 +27,30 @@ class Fichepatient
     private $suiviehtml;
 
     /**
-     * @var \FosUser
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPatient", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id_fiche", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idpatient;
+    private $idFiche;
 
     /**
-     * @var \Etablissements
+     * @var \PidevEsbeBundle\Entity\Etablissements
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idEtab", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="idEtab", referencedColumnName="id")
      */
     private $idetab;
 
-
-
     /**
-     * Get idFiche
+     * @var \PidevEsbeBundle\Entity\FosUser
      *
-     * @return integer
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
+     * @ORM\JoinColumn(name="idPatient", referencedColumnName="id")
      */
-    public function getIdFiche()
-    {
-        return $this->idFiche;
-    }
+    private $idpatient;
 
-    /**
-     * Set suivie
-     *
-     * @param string $suivie
-     *
-     * @return Fichepatient
-     */
-    public function setSuivie($suivie)
-    {
-        $this->suivie = $suivie;
 
-        return $this;
-    }
-
-    /**
-     * Get suivie
-     *
-     * @return string
-     */
-    public function getSuivie()
-    {
-        return $this->suivie;
-    }
-
-    /**
-     * Set suiviehtml
-     *
-     * @param string $suiviehtml
-     *
-     * @return Fichepatient
-     */
-    public function setSuiviehtml($suiviehtml)
-    {
-        $this->suiviehtml = $suiviehtml;
-
-        return $this;
-    }
-
-    /**
-     * Get suiviehtml
-     *
-     * @return string
-     */
-    public function getSuiviehtml()
-    {
-        return $this->suiviehtml;
-    }
-
-    /**
-     * Set idpatient
-     *
-     * @param \PidevEsbeBundle\Entity\FosUser $idpatient
-     *
-     * @return Fichepatient
-     */
-    public function setIdpatient(\PidevEsbeBundle\Entity\FosUser $idpatient = null)
-    {
-        $this->idpatient = $idpatient;
-
-        return $this;
-    }
-
-    /**
-     * Get idpatient
-     *
-     * @return \PidevEsbeBundle\Entity\FosUser
-     */
-    public function getIdpatient()
-    {
-        return $this->idpatient;
-    }
-
-    /**
-     * Set idetab
-     *
-     * @param \PidevEsbeBundle\Entity\Etablissements $idetab
-     *
-     * @return Fichepatient
-     */
-    public function setIdetab(\PidevEsbeBundle\Entity\Etablissements $idetab = null)
-    {
-        $this->idetab = $idetab;
-
-        return $this;
-    }
-
-    /**
-     * Get idetab
-     *
-     * @return \PidevEsbeBundle\Entity\Etablissements
-     */
-    public function getIdetab()
-    {
-        return $this->idetab;
-    }
 }
+

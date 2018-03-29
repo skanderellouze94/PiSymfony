@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Evenements
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_event", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idEvent;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", nullable=false)
@@ -71,298 +62,32 @@ class Evenements
     private $archive;
 
     /**
-     * @var \FosUser
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idCreator", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id_event", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idcreator;
+    private $idEvent;
 
     /**
-     * @var \Categorie
+     * @var \PidevEsbeBundle\Entity\FosUser
      *
-     * @ORM\ManyToOne(targetEntity="Categorie")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
-     * })
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
+     * @ORM\JoinColumn(name="idCreator", referencedColumnName="id")
+     */
+    private $idCreator;
+
+    /**
+     * @var \PidevEsbeBundle\Entity\Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Categorie")
+     * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
      */
     private $idCategorie;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="FosUser", mappedBy="idEvent")
-     */
-    private $idUser;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
-    /**
-     * Get idEvent
-     *
-     * @return integer
-     */
-    public function getIdEvent()
-    {
-        return $this->idEvent;
-    }
 
-    /**
-     * Set dateDebut
-     *
-     * @param \DateTime $dateDebut
-     *
-     * @return Evenements
-     */
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDebut
-     *
-     * @return \DateTime
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * Set dateFin
-     *
-     * @param \DateTime $dateFin
-     *
-     * @return Evenements
-     */
-    public function setDateFin($dateFin)
-    {
-        $this->dateFin = $dateFin;
-
-        return $this;
-    }
-
-    /**
-     * Get dateFin
-     *
-     * @return \DateTime
-     */
-    public function getDateFin()
-    {
-        return $this->dateFin;
-    }
-
-    /**
-     * Set horaireCom
-     *
-     * @param string $horaireCom
-     *
-     * @return Evenements
-     */
-    public function setHoraireCom($horaireCom)
-    {
-        $this->horaireCom = $horaireCom;
-
-        return $this;
-    }
-
-    /**
-     * Get horaireCom
-     *
-     * @return string
-     */
-    public function getHoraireCom()
-    {
-        return $this->horaireCom;
-    }
-
-    /**
-     * Set horaireFin
-     *
-     * @param string $horaireFin
-     *
-     * @return Evenements
-     */
-    public function setHoraireFin($horaireFin)
-    {
-        $this->horaireFin = $horaireFin;
-
-        return $this;
-    }
-
-    /**
-     * Get horaireFin
-     *
-     * @return string
-     */
-    public function getHoraireFin()
-    {
-        return $this->horaireFin;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Evenements
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Evenements
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set archive
-     *
-     * @param boolean $archive
-     *
-     * @return Evenements
-     */
-    public function setArchive($archive)
-    {
-        $this->archive = $archive;
-
-        return $this;
-    }
-
-    /**
-     * Get archive
-     *
-     * @return boolean
-     */
-    public function getArchive()
-    {
-        return $this->archive;
-    }
-
-    /**
-     * Set idcreator
-     *
-     * @param \PidevEsbeBundle\Entity\FosUser $idcreator
-     *
-     * @return Evenements
-     */
-    public function setIdcreator(\PidevEsbeBundle\Entity\FosUser $idcreator = null)
-    {
-        $this->idcreator = $idcreator;
-
-        return $this;
-    }
-
-    /**
-     * Get idcreator
-     *
-     * @return \PidevEsbeBundle\Entity\FosUser
-     */
-    public function getIdcreator()
-    {
-        return $this->idcreator;
-    }
-
-    /**
-     * Set idCategorie
-     *
-     * @param \PidevEsbeBundle\Entity\Categorie $idCategorie
-     *
-     * @return Evenements
-     */
-    public function setIdCategorie(\PidevEsbeBundle\Entity\Categorie $idCategorie = null)
-    {
-        $this->idCategorie = $idCategorie;
-
-        return $this;
-    }
-
-    /**
-     * Get idCategorie
-     *
-     * @return \PidevEsbeBundle\Entity\Categorie
-     */
-    public function getIdCategorie()
-    {
-        return $this->idCategorie;
-    }
-
-    /**
-     * Add idUser
-     *
-     * @param \PidevEsbeBundle\Entity\FosUser $idUser
-     *
-     * @return Evenements
-     */
-    public function addIdUser(\PidevEsbeBundle\Entity\FosUser $idUser)
-    {
-        $this->idUser[] = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Remove idUser
-     *
-     * @param \PidevEsbeBundle\Entity\FosUser $idUser
-     */
-    public function removeIdUser(\PidevEsbeBundle\Entity\FosUser $idUser)
-    {
-        $this->idUser->removeElement($idUser);
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }
+
