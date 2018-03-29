@@ -52,7 +52,6 @@
     {% endblock %}
     {% block javascript %}
         <!-- external javascripts -->
-
         <script src="{{ asset('assets/front/js/jquery-2.2.4.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/jquery-ui.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/bootstrap.min.js')}}"></script>
@@ -805,9 +804,11 @@
                                         <p>{{ a.adresse }}</p>
                                         <p>{{ a.pageFacebook }}</p>
                                         <p>{{ a.siteWeb }}</p>
-                                        <a href="#" class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10">Reserver <i class="fa fa-angle-double-right"></i></a>
+                                        {% set e=a.nom  %}
+                                        <a href="#promoModal1" data-lightbox="inline" class="btn btn-default">Reserver <i class="fa fa-angle-double-right"></i></a>
                                     </div>
                                 </div>
+
                                 <div class="col-sm-4">
                                     <div class="event-count p-15 mt-15">
                                         <ul>
@@ -819,8 +820,21 @@
                             </div>
                     </div>
                     </div>
+                    <div id="promoModal1" class="modal-promo-box mfp-hide" data-bg-img="{{ asset('assets/front/images/magazine/lg2.jpg')}}">
+                        <h3 class="mt-0">{{e}}</h3>
+                        <h5>{{ etab.adresse }}</h5>
+                        <p style="color: black">Ouvre le {{ etab.dateOuverture }} jusqu'a {{ etab.dateFermeture }}</p>
+                        <p style="color: black">de {{ etab.heureOuverture }} a {{ etab.heureFermeture }}</p>
+                        <ul style="color: black">
+                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-phone mr-5" style="color: black" ></i>{{ etab.numero }}</a></li>
+                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-globe mr-5" style="color: black"></i>{{ etab.siteWeb }}</a></li>
+                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-facebook mr-5" style="color: black"></i>{{ etab.pageFacebook }}</a></li>
+                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-wechat mr-5" style="color: black"></i>{{ etab.email }}</a></li>
+                        </ul>
+                    </div>
 
                 {% endfor %}
+
                 <div class="row">
                     <div class="col-sm-8">
                         <nav>

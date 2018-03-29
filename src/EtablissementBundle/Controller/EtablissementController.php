@@ -29,7 +29,7 @@ class EtablissementController extends Controller
         $em    = $this->getDoctrine()->getManager();
         $filterForm = $this->createForm('EtablissementBundle\Form\Filtre\EtablissementFiltre', $etablissement);
         $filterForm->handleRequest($request);
-
+        $etab = new Etablissements();
         $filtredFields = $request->query->get('etablissementbundle_etab_filter');
         $dql   = "SELECT m FROM EtablissementBundle:Etablissements m ORDER BY m.id DESC";
         $query = $em->createQuery($dql);
@@ -50,7 +50,7 @@ class EtablissementController extends Controller
         );
 
         return $this->render('EtablissementBundle:EtablissementView:index.html.twig',
-            array('etablissements'=>$etablissement,
+            array('etablissements'=>$etablissement,'etab'=>$etab,
                 'form' => $filterForm->createView())
         );
     }
@@ -123,6 +123,17 @@ class EtablissementController extends Controller
         return $this->render($view, array(
             'form' => $form->createView()));
 
+    }
+
+    public function showAction(Request $request , $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+
+        $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
+            ->find("$id");
+
+        return $this->render('EtablissementBundle:EtablissementView:index.html.twig', array('e'=>$etab
+        ));
     }
 
 

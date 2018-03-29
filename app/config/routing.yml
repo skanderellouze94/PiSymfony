@@ -1,13 +1,19 @@
 
+annonce:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /Annonce
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
 
+
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
+
 
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"
@@ -26,3 +32,7 @@ app:
     type: annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /rec

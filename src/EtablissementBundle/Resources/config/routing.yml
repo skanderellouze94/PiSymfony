@@ -30,6 +30,9 @@ indexSalle:
 insert:
     path:     /insert
     defaults: { _controller: EtablissementBundle:Etablissement:insert}
+show:
+    path:     /show/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:show}
 
 insertCabinet:
     path:     /insertCabinet

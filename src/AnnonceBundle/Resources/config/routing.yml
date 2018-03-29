@@ -1,0 +1,31 @@
+annonce_homepage:
+    path:     /
+    defaults: { _controller: AnnonceBundle:Default:index }
+
+ajouter_annonce:
+    path:     /AjouterAnnonce
+    defaults: { _controller: AnnonceBundle:Annonce:AjouterAnnonce }
+
+afficher_annonce:
+    path:     /AfficherAnnonce
+    defaults: { _controller: AnnonceBundle:Annonce:AfficherAnnonce }
+
+supprimer:
+    path:     /SupprimerAnnonce/{id}
+    defaults: { _controller: AnnonceBundle:Annonce:SupprimerAnnonce }
+
+modifier:
+    path:     /ModifierAnnonce/{id}
+    defaults: { _controller: AnnonceBundle:Annonce:ModifierAnnonce }
+
+ajouter_candidature:
+    path:     /AjouterCandidature
+    defaults: { _controller: AnnonceBundle:Candidature:AjouterCandidature }
+
+recherche:
+    path:     /rechercher
+    defaults: { _controller: AnnonceBundle:Annonce:chercher }
+
+rechercherAnnonce:
+    path:     /RechercherParDomaine
+    defaults: { _controller: AnnonceBundle:Annonce:Rechercher }

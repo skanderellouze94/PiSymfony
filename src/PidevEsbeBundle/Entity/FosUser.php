@@ -801,4 +801,9 @@ class FosUser
     {
         return $this->idEvent;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 }
