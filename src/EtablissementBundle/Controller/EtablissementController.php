@@ -19,6 +19,7 @@ use EtablissementBundle\Entity\Parapharmacie;
 use EtablissementBundle\Entity\Pharmacie;
 use EtablissementBundle\Entity\SalleDeSport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class EtablissementController extends Controller
@@ -46,7 +47,7 @@ class EtablissementController extends Controller
         $etablissement = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            2/*limit per page*/
+            3/*limit per page*/
         );
 
         return $this->render('EtablissementBundle:EtablissementView:index.html.twig',
@@ -57,13 +58,54 @@ class EtablissementController extends Controller
 
     public function insertAction(Request $request)
     {
-        $etablissement = new Etablissements();
-        $form = $this->createForm('EtablissementBundle\Form\EtablissementsType', $etablissement);
+        $em = $this->getDoctrine()->getManager();
+
+        $establishment = new Etablissements();
+        $form = $this->createForm('EtablissementBundle\Form\EtablissementsType', $establishment);
         $form->handleRequest($request);
         if ($form->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($etablissement);
+            /**
+             *@var UploadedFile $file
+             */
+            $file=$establishment->getImage();
+
+                $fileName=md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('image_directory'),$fileName
+                );
+                $establishment->setImage($fileName);
+                if($form["type"]->getData()=='cabinet medical')
+                {$subEstab_data = $request->request->get('etablissementbundle_cabinetmedical');}
+                if($form["type"]->getData()=='centre beaute')
+                {$subEstab_data = $request->request->get('etablissementbundle_centredebeaute');}
+                if($form["type"]->getData()=='herboriseterie')
+                {$subEstab_data = $request->request->get('etablissementbundle_herboriseterie');}
+                if($form["type"]->getData()=='hopital')
+                {$subEstab_data = $request->request->get('etablissementbundle_hopitaux');}
+                if($form["type"]->getData()=='laboratoire')
+                {$subEstab_data = $request->request->get('etablissementbundle_laboratoire');}
+                if($form["type"]->getData()=='parapharmacie')
+                {$subEstab_data = $request->request->get('etablissementbundle_parapharmacie');}
+                if($form["type"]->getData()=='pharmacie')
+                {$subEstab_data = $request->request->get('etablissementbundle_pharmacie');}
+                if($form["type"]->getData()=='salle de sport')
+                {$subEstab_data = $request->request->get('etablissementbundle_salledesport');}
+
+            $establishment = $form->getData();
+
+            $subEstab = $this->getSubEstabEntity($establishment->getType(),$subEstab_data);
+            if(!$subEstab){
+                throw new \Exception('moma');
+            }
+            $subEstab->setIdEtab($establishment);
+             /*   $establishment->setHeureOuverture(date_format($establishment->getHeureOuverture(),'H:i'));
+                $establishment->setHeureFermeture(date_format(getHeureFermeture(),'H:i'));*/
+
+
+
+            $em->persist($establishment);
+            $em->persist($subEstab);
             $em->flush();
 
         }
@@ -132,9 +174,63 @@ class EtablissementController extends Controller
         $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
             ->find("$id");
 
-        return $this->render('EtablissementBundle:EtablissementView:index.html.twig', array('e'=>$etab
+        return $this->render('EtablissementBundle:EtablissementView:show.html.twig', array('e'=>$etab
         ));
     }
 
+    /**
+     * @param $type
+     * @param $data
+     * @return CabinetMedical|CentreBeaute|Herboriseterie|Hopitaux|Laboratoire|Parapharmacie|Pharmacie
+     */
+    private function getSubEstabEntity($type,$data){
+
+        switch ($type)
+        {
+            case 'cabinet medical':
+                $subEstablishmentObj = new CabinetMedical();
+                if(isset($data['cnam'])) $subEstablishmentObj->setCnam($data['cnam']);
+                break;
+
+            case 'centre beaute':
+                $subEstablishmentObj = new CentreBeaute();
+                if(isset($data['nb_employee'])) $subEstablishmentObj->setNbEmployee($data['nb_employee']);
+                break;
+            case 'herboriseterie':
+                $subEstablishmentObj = new Herboriseterie();
+                if(isset($data['type'])) $subEstablishmentObj->setType($data['type']);
+                break;
+            case 'hopital':
+                $subEstablishmentObj = new Hopitaux();
+                if(isset($data['type'])) $subEstablishmentObj->setType($data['type']);
+                if(isset($data['urgence'])) $subEstablishmentObj->setUrgence($data['urgence']);
+                if(isset($data['cnam'])) $subEstablishmentObj->setCnam($data['cnam']);
+                break;
+            case 'laboratoire':
+                $subEstablishmentObj = new Laboratoire();
+                if(isset($data['nbEquipe'])) $subEstablishmentObj->setNbEquipe($data['nbEquipe']);
+                if(isset($data['cnam'])) $subEstablishmentObj->setCnam($data['cnam']);
+                if(isset($data['type'])) $subEstablishmentObj->setType($data['type']);
+                break;
+            case 'parapharmacie':
+                $subEstablishmentObj = new Parapharmacie();
+                if(isset($data['livraison'])) $subEstablishmentObj->setLivraison($data['livraison']);
+                break;
+            case 'pharmacie':
+                $subEstablishmentObj = new Pharmacie();
+                if(isset($data['type'])) $subEstablishmentObj->setType($data['type']);
+                break;
+            case 'salle de sport':
+                $subEstablishmentObj = new SalleDeSport();
+            if(isset($data['nbEntraineur'])) $subEstablishmentObj->setNbEntraineur($data['nbEntraineur']);
+                break;
+            default:
+                $subEstablishmentObj = null;
+                break;
+
+        }
+
+        return $subEstablishmentObj;
+    }
 
 }

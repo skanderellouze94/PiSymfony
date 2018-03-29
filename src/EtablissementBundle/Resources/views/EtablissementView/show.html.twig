@@ -149,6 +149,7 @@
                                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">contact@yourdomain.com</a> </li>
                                 <li class="sm-display-block mt-sm-10 mb-sm-10">
                                     <!-- Modal: Appointment Starts -->
+                                    <a class="bg-light p-5 text-theme-colored font-11 ajaxload-popup" href="ajax-load/form-appointment.html">Make an Appointment</a>
                                     <!-- Modal: Appointment End -->
                                 </li>
                             </ul>
@@ -744,103 +745,86 @@
                 <div class="section-content">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h2 class="title" style="color: white">La liste des établissements</h2>
+                            <h2 class="title" style="color: white">{{ e.nom }}</h2>
 
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <section>
             <div class="container">
-                <div>
-                    <div class="col-md-3">
-                        <div class="sidebar sidebar-right mt-sm-30">
-                            <div class="widget">
-                                <h5 class="widget-title line-bottom">Search box</h5>
-                                <div class="search-form">
-                                    <form>
-                                        <div class="input-group" style="display: inline">
-                                            {#{{form(form, {'method': 'GET'}) }}#}
-                                            {{ form_start(form) }}
-                                            {{  form_row(form.nom, {'attr': {'class': 'form-control search-input', 'placeholder' : 'Vous cherchez un etablissement ?'}}) }}
-                                            {#<input type="text" placeholder="Click to Search" class="form-control search-input">#}
-                                            <span class="input-group-btn">
-                      <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-
-                      </span>
-
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <h5 class="widget-title line-bottom">Categories</h5>
-                                <div class="categories">
-                                    <ul class="list list-border angle-double-right">
-                                        <li><a href={{ path('indexCabinet') }}>Cabinet medical<span></span></a></li>
-                                        <li><a href={{ path('indexCentre') }}>Centre de beauté<span></span></a></li>
-                                        <li><a href={{ path('indexHerbo') }}>Herbosriseterie<span></span></a></li>
-                                        <li><a href={{ path('indexHopital') }}>Hoptaux<span></span></a></li>
-                                        <li><a href={{ path('indexLabo') }}>Laboratoires<span></span></a></li>
-                                        <li><a href={{ path('indexPara') }}>Parapharmacie<span></span></a></li>
-                                        <li><a href={{ path('indexPharma') }}>Pharmacie<span></span></a></li>
-                                        <li><a href={{ path('indexSalle') }}>Salle de sport<span></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {%for a in etablissements %}
-                    <div class="col-md-9">
-                    <div class="upcoming-events bg-white-f3 mb-20">
-                        <div class="row">
-                            <div class="col-sm-4 pr-0 pr-sm-15">
-                                <div class="thumb p-15">
-                                    <img class="img-fullwidth" src="{{asset("uploads/images/"~a.image)}}">
-                                </div>
-                            </div>
-                                <div class="col-sm-4 pl-0 pl-sm-15">
-                                    <div class="event-details p-15 mt-20">
-                                        <h4 class="mt-0 text-uppercase font-weight-500">{{ a.nom }}</h4>
-                                        <p>{{ a.adresse }}</p>
-                                        <p>{{ a.pageFacebook }}</p>
-                                        <p>{{ a.siteWeb }}</p>
-                                        {% set etab=a  %}
-                                        <a href={{ path('show',{'id':a.id}) }} >Voir plus <i class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="event-count p-15 mt-15">
-                                        <ul>
-                                            <li class="mb-10"><a href="#"><i class="fa fa-clock-o mr-5"></i>{{ a.heureOuverture }} - {{ a.heureFermeture }}</a></li>
-                                            <li><a href="#"><i class="fa fa-phone mr-5"></i>{{ a.numero }}</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    </div>
-                {% endfor %}
-
-
-
-
                 <div class="row">
-                    <div class="col-sm-8">
-                        <nav>
-                            <ul class="pagination theme-colored pull-right xs-pull-center mb-xs-40">
-                                {{ knp_pagination_render(etablissements) }}
-                            </ul>
-                        </nav>
+                    <div class="col-md-2">
+                        <ul>
+                            <li>
+                                <h5>Nom:</h5>
+                                <p>{{ e.nom }}</p>
+                            </li>
+                            <li>
+                                <h5>Adresse:</h5>
+                                <p>{{ e.adresse }}</p>
+                            </li>
+                            <li>
+                                <h5>jour d'ouverture:</h5>
+                                <p>{{ e.dateOuverture }}</p>
+                            </li>
+                            <li>
+                                <h5>jour de fermeture:</h5>
+                                <p>{{ e.dateFermeture }}</p>
+                            </li>
+                            <li>
+                                <h5>heure d'ouverture:</h5>
+                                <p>{{ e.heureOuverture }}</p>
+                            </li>
+                            <li>
+                                <h5>heure de fermeture:</h5>
+                                <p>{{ e.heureFermeture }}</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                            <div class="col-md-2">
+                                <ul>
+                            <li>
+                                <h5>Email:</h5>
+                                <p>{{ e.email }}</p>
+                            </li>
+                            <li>
+                                <h5>Site web:</h5>
+                                <p>{{ e.siteWeb }}</p>
+                            </li>
+                            <li>
+                                <h5>Page facebook:</h5>
+                                <p>{{ e.pageFacebook }}</p>
+                            </li>
+                            <li>
+                                <h5>Numéro de telephone:</h5>
+                                <p>{{ e.numero }}</p>
+                            </li>
+                            <li>
+                                <h5>Numéro de fax:</h5>
+                                <p>{{ e.fax }}</p>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="col-md-7" style="margin-left: 60px;">
+                   {# <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&q={{ e.adresse }}" style="height: 400px;">
+                    </iframe>#}
+                     <iframe src=https://www.google.com/maps/embed/v1/directions?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&origin=tunis&destination={{ e.adresse }}&avoid=tolls|highways style="height: 400px;">
+                        </iframe>
                     </div>
                 </div>
+
             </div>
 
-        </section>
-    </div>
+    </section>
+
+
+</div>
 
     <footer id="footer" class="footer pb-0" data-bg-img="images/footer-bg.png" data-bg-color="#25272e">
         <div class="container pt-90 pb-60">
@@ -863,18 +847,21 @@
                         <h5 class="widget-title line-bottom-theme-colored-2">Latest News</h5>
                         <div class="latest-posts">
                             <article class="post media-post clearfix pb-0 mb-10">
+                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
                                 <div class="post-right">
                                     <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
                                     <p class="post-date mb-0 font-12">Mar 08, 2015</p>
                                 </div>
                             </article>
                             <article class="post media-post clearfix pb-0 mb-10">
+                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
                                 <div class="post-right">
                                     <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
                                     <p class="post-date mb-0 font-12">Mar 08, 2015</p>
                                 </div>
                             </article>
                             <article class="post media-post clearfix pb-0 mb-10">
+                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
                                 <div class="post-right">
                                     <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
                                     <p class="post-date mb-0 font-12">Mar 08, 2015</p>
