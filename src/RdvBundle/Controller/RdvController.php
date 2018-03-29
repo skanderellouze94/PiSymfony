@@ -30,6 +30,7 @@ class RdvController extends Controller
             $s=date_format($rdv->getDate(),'dd/MM/yyyy');
             $a=date_format($rdv->getTime(),'H:i:s');
            $rdv->setDate($s);
+
            $rdv->setTime($a);
 
             $em->persist($rdv);
@@ -58,11 +59,13 @@ class RdvController extends Controller
     }
     public function calAction()
     {
-
+        $rdv = $this->getDoctrine()->getManager();
+        $rdvs = $rdv->getRepository(("RdvBundle:Rdv"))->findAll();
         return $this->render('RdvBundle:rdvviews:mycalendar.html.twig', array(
-
+            'rendezvous' => $rdvs
 
         ));
+
     }
     public function editAction($id,Request $request)
     {
@@ -78,6 +81,25 @@ class RdvController extends Controller
 
         return $this->render('RdvBundle:rdvviews:Ajout.html.twig', array(
             'Form' => $form->createView()
+
+        ));
+
+    }
+    public function calphpAction()
+    {
+
+
+        return $this->render('RdvBundle:rdvviews:aa:index.html.twig', array(
+
+
+        ));
+
+    }
+    public function calendrierAction(){
+        $rdv = $this->getDoctrine()->getManager();
+        $rdvs = $rdv->getRepository(("RdvBundle:Rdv"))->findAll();
+        return $this->render('RdvBundle:rdvviews:mycalendar.html.twig', array(
+            'rendezvous' => $rdvs
 
         ));
     }

@@ -1,0 +1,43 @@
+
+<h3>Liste des Annonces (Pour les utilisateurs et l'administrateur)</h3>
+
+{{ form(Form) }}
+<table border="1" width="50%">
+    <tr>
+        <td>Domaine</td>
+        <td>Description</td>
+        <td>Date de création</td>
+        <td>Date d'expiration</td>
+        <td>Informations sur l'annonceur</td>
+        <td>Action</td>
+        <td>Partager</td>
+        <td>Postuler</td>
+    </tr>
+
+    {%  for annonce in a  %}
+
+    <tr>
+        <td>{{ annonce.domaine }}</td>
+        <td>{{ annonce.description }}</td>
+        <td>{{ annonce.dateCreation | date('d/m/y') }}</td>
+        <td>{{ annonce.dateExpiration | date('d/m/y')}}</td>
+        <td>{{ "ena esmi rania wenti chesmek?" }}</td>
+        <td>
+
+            <a href={{ path('supprimer',{'id':annonce.id}) }}> Supprimer </a><br>
+            <a href={{ path('modifier',{'id':annonce.id}) }}> Modifier </a>
+
+        </td>
+        <td>
+            {{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}
+            {#{{ socialButtons( {'googleplus':false, 'linkedin':false} ) }}#}
+        </td>
+        <td>
+
+            <a href=""> Postuler </a><br>
+            {% endfor %}
+
+        </td>
+    </tr>
+</table>
+

@@ -22,13 +22,6 @@ class Evenements
     private $idEvent;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     */
-    private $nom;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", nullable=false)

@@ -13,18 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Hopitaux
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     * @ORM\Column(name="type", type="string", nullable=false)
      */
     private $type;
 
@@ -43,120 +34,22 @@ class Hopitaux
     private $cnam;
 
     /**
-     * @var \Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \PidevEsbeBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;
 
 
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Hopitaux
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set urgence
-     *
-     * @param boolean $urgence
-     *
-     * @return Hopitaux
-     */
-    public function setUrgence($urgence)
-    {
-        $this->urgence = $urgence;
-
-        return $this;
-    }
-
-    /**
-     * Get urgence
-     *
-     * @return boolean
-     */
-    public function getUrgence()
-    {
-        return $this->urgence;
-    }
-
-    /**
-     * Set cnam
-     *
-     * @param boolean $cnam
-     *
-     * @return Hopitaux
-     */
-    public function setCnam($cnam)
-    {
-        $this->cnam = $cnam;
-
-        return $this;
-    }
-
-    /**
-     * Get cnam
-     *
-     * @return boolean
-     */
-    public function getCnam()
-    {
-        return $this->cnam;
-    }
-
-    /**
-     * Set idEtab
-     *
-     * @param \PidevEsbeBundle\Entity\Etablissements $idEtab
-     *
-     * @return Hopitaux
-     */
-    public function setIdEtab(\PidevEsbeBundle\Entity\Etablissements $idEtab = null)
-    {
-        $this->idEtab = $idEtab;
-
-        return $this;
-    }
-
-    /**
-     * Get idEtab
-     *
-     * @return \PidevEsbeBundle\Entity\Etablissements
-     */
-    public function getIdEtab()
-    {
-        return $this->idEtab;
-    }
 }
+
