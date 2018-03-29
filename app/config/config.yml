@@ -6,11 +6,9 @@ imports:
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
 
-<<<<<<< HEAD
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-=======
+
     - { resource: "@RdvBundle/Resources/config/services.yml" }
->>>>>>> 2ee530c824a32aadb7f33e1dd99062867b569f4b
 
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }

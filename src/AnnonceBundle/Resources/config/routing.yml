@@ -19,7 +19,7 @@ modifier:
     defaults: { _controller: AnnonceBundle:Annonce:ModifierAnnonce }
 
 ajouter_candidature:
-    path:     /AjouterCandidature
+    path:     /AjouterCandidature/{id}
     defaults: { _controller: AnnonceBundle:Candidature:AjouterCandidature }
 
 recherche:
