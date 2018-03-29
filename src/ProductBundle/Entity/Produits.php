@@ -1,6 +1,6 @@
 <?php
 
-namespace PidevEsbeBundle\Entity;
+namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,15 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Produits
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_produit", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idProduit;
-
     /**
      * @var string
      *
@@ -50,66 +41,23 @@ class Produits
     private $prix;
 
     /**
-     * @var \Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
+     * @ORM\Column(name="id_produit", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProduit;
+
+    /**
+     * @var \PidevEsbeBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
      *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
-     * })
      */
     private $idEtab;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idProduit")
-     * @ORM\JoinTable(name="detail_commande",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
-     *   }
-     * )
-     */
-    private $idCommande;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-    /**
-     * Get idProduit
-     *
-     * @return integer
-     */
-    public function getIdProduit()
-    {
-        return $this->idProduit;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Produits
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
      * @return string
      */
     public function getNom()
@@ -118,22 +66,14 @@ class Produits
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Produits
+     * @param string $nom
      */
-    public function setDescription($description)
+    public function setNom($nom)
     {
-        $this->description = $description;
-
-        return $this;
+        $this->nom = $nom;
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
@@ -142,22 +82,14 @@ class Produits
     }
 
     /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Produits
+     * @param string $description
      */
-    public function setImage($image)
+    public function setDescription($description)
     {
-        $this->image = $image;
-
-        return $this;
+        $this->description = $description;
     }
 
     /**
-     * Get image
-     *
      * @return string
      */
     public function getImage()
@@ -166,22 +98,14 @@ class Produits
     }
 
     /**
-     * Set prix
-     *
-     * @param float $prix
-     *
-     * @return Produits
+     * @param string $image
      */
-    public function setPrix($prix)
+    public function setImage($image)
     {
-        $this->prix = $prix;
-
-        return $this;
+        $this->image = $image;
     }
 
     /**
-     * Get prix
-     *
      * @return float
      */
     public function getPrix()
@@ -190,22 +114,30 @@ class Produits
     }
 
     /**
-     * Set idEtab
-     *
-     * @param \PidevEsbeBundle\Entity\Etablissements $idEtab
-     *
-     * @return Produits
+     * @param float $prix
      */
-    public function setIdEtab(\PidevEsbeBundle\Entity\Etablissements $idEtab = null)
+    public function setPrix($prix)
     {
-        $this->idEtab = $idEtab;
-
-        return $this;
+        $this->prix = $prix;
     }
 
     /**
-     * Get idEtab
-     *
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param int $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+    /**
      * @return \PidevEsbeBundle\Entity\Etablissements
      */
     public function getIdEtab()
@@ -214,36 +146,15 @@ class Produits
     }
 
     /**
-     * Add idCommande
-     *
-     * @param \PidevEsbeBundle\Entity\Commande $idCommande
-     *
-     * @return Produits
+     * @param \PidevEsbeBundle\Entity\Etablissements $idEtab
      */
-    public function addIdCommande(\PidevEsbeBundle\Entity\Commande $idCommande)
+    public function setIdEtab($idEtab)
     {
-        $this->idCommande[] = $idCommande;
-
-        return $this;
+        $this->idEtab = $idEtab;
     }
 
-    /**
-     * Remove idCommande
-     *
-     * @param \PidevEsbeBundle\Entity\Commande $idCommande
-     */
-    public function removeIdCommande(\PidevEsbeBundle\Entity\Commande $idCommande)
-    {
-        $this->idCommande->removeElement($idCommande);
-    }
 
-    /**
-     * Get idCommande
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdCommande()
-    {
-        return $this->idCommande;
-    }
+
+
 }
+

@@ -1,0 +1,12 @@
+produitsalledesport_index:
+    path:     /
+    defaults: { _controller: "ProductBundle:ProduitSalledesport:index" }
+    methods:  GET
+
+produitsalledesport_show:
+    path:     /{idProduit}/show
+    defaults: { _controller: "ProductBundle:ProduitSalledesport:show" }
+    methods:  GET
+
+
+

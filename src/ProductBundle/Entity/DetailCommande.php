@@ -1,6 +1,6 @@
 <?php
 
-namespace PidevEsbeBundle\Entity;
+namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,7 +22,7 @@ class DetailCommande
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Produits")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Produits")
      * @ORM\JoinColumn(name="id_produit",referencedColumnName="id_produit")
      * @ORM\Id
      */
@@ -30,83 +30,12 @@ class DetailCommande
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Commande")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Commande")
      * @ORM\JoinColumn(name="id_commande",referencedColumnName="id_commande")
      * @ORM\Id
      */
     private $commande;
 
 
-
-    /**
-     * Set quantite
-     *
-     * @param integer $quantite
-     *
-     * @return DetailCommande
-     */
-    public function setQuantite($quantite)
-    {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    /**
-     * Get quantite
-     *
-     * @return integer
-     */
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
-
-    /**
-     * Set produit
-     *
-     * @param \PidevEsbeBundle\Entity\Produits $produit
-     *
-     * @return DetailCommande
-     */
-    public function setProduit(\PidevEsbeBundle\Entity\Produits $produit)
-    {
-        $this->produit = $produit;
-
-        return $this;
-    }
-
-    /**
-     * Get produit
-     *
-     * @return \PidevEsbeBundle\Entity\Produits
-     */
-    public function getProduit()
-    {
-        return $this->produit;
-    }
-
-    /**
-     * Set commande
-     *
-     * @param \PidevEsbeBundle\Entity\Commande $commande
-     *
-     * @return DetailCommande
-     */
-    public function setCommande(\PidevEsbeBundle\Entity\Commande $commande)
-    {
-        $this->commande = $commande;
-
-        return $this;
-    }
-
-    /**
-     * Get commande
-     *
-     * @return \PidevEsbeBundle\Entity\Commande
-     */
-    public function getCommande()
-    {
-        return $this->commande;
-    }
 }
+
