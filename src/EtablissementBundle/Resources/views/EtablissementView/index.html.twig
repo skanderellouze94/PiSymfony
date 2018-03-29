@@ -754,16 +754,51 @@
         </section>
         <section>
             <div class="container">
-                {%for a in etablissements %}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="upcoming-events bg-white-f3 mb-20">
-                            <div class="row">
-                                <div class="col-sm-4 pr-0 pr-sm-15">
-                                    <div class="thumb p-15">
-                                        <img class="img-fullwidth" src="" alt=".d..">
-                                    </div>
+                <div>
+                    <div class="col-md-3">
+                        <div class="sidebar sidebar-right mt-sm-30">
+                            <div class="widget">
+                                <h5 class="widget-title line-bottom">Search box</h5>
+                                <div class="search-form">
+                                    <form>
+                                        <div class="input-group">
+                                            {#{{form(form, {'method': 'GET'}) }}#}
+
+                                            <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                            <span class="input-group-btn">
+                      <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                      </span>
+                                        </div>
+                                    </form>
                                 </div>
+                            </div>
+                            <div class="widget">
+                                <h5 class="widget-title line-bottom">Categories</h5>
+                                <div class="categories">
+                                    <ul class="list list-border angle-double-right">
+                                        <li><a href={{ path('indexCabinet') }}>Cabinet medical<span></span></a></li>
+                                        <li><a href={{ path('indexCentre') }}>Centre de beauté<span></span></a></li>
+                                        <li><a href={{ path('indexHerbo') }}>Herbosriseterie<span></span></a></li>
+                                        <li><a href={{ path('indexHopital') }}>Hoptaux<span></span></a></li>
+                                        <li><a href={{ path('indexLabo') }}>Laboratoires<span></span></a></li>
+                                        <li><a href={{ path('indexPara') }}>Parapharmacie<span></span></a></li>
+                                        <li><a href={{ path('indexPharma') }}>Pharmacie<span></span></a></li>
+                                        <li><a href={{ path('indexSalle') }}>Salle de sport<span></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%for a in etablissements %}
+                    <div class="col-md-9">
+                    <div class="upcoming-events bg-white-f3 mb-20">
+                        <div class="row">
+                            <div class="col-sm-4 pr-0 pr-sm-15">
+                                <div class="thumb p-15">
+                                    <img class="img-fullwidth" src="../../../../../../../placehold.it/265x195.png" alt="...">
+                                </div>
+                            </div>
                                 <div class="col-sm-4 pl-0 pl-sm-15">
                                     <div class="event-details p-15 mt-20">
                                         <h4 class="mt-0 text-uppercase font-weight-500">{{ a.nom }}</h4>
@@ -782,11 +817,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
+                    </div>
+
+                {% endfor %}
+                <div class="row">
+                    <div class="col-sm-8">
+                        <nav>
+                            <ul class="pagination theme-colored pull-right xs-pull-center mb-xs-40">
+                                {{ knp_pagination_render(etablissements) }}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+
         </section>
     </div>
 

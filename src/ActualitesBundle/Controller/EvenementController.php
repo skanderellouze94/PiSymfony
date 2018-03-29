@@ -8,12 +8,13 @@
 
 namespace ActualitesBundle\Controller;
 
+use ActualitesBundle\Entity\Action;
 use ActualitesBundle\Entity\Evenements;
 use ActualitesBundle\Form\EvenementsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
-
+use ActualitesBundle\Entity\CommentaireEvent;
 
 class EvenementController extends Controller
 {
@@ -62,6 +63,15 @@ class EvenementController extends Controller
         ));
     }
 
+    public function AfficherEvenements3Action()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository(Evenements::class)->AfficherEvenements3DQL();
+
+        return $this->render('ActualitesBundle:EvenementViews:AfficherEvenements3.html.twig', array("m"=>$evenements));
+
+    }
 
     public function SupprimerEvenementAction($id)
     {
@@ -118,6 +128,120 @@ class EvenementController extends Controller
         return $this->render('ActualitesBundle:EvenementViews:ModifierEvenement.html.twig', array(
             'Form'=>$Form->createView()
         ));
+    }
+
+    public function indexEvenementAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository("ActualitesBundle:Evenements")->findAll();
+        return $this->render('ActualitesBundle:EvenementViews:IndexEvenement.html.twig', array("m" => $evenements
+        ));
+    }
+
+
+    public function chercherEvenementAction($id,Request $request)
+    {
+
+
+
+        $comEvent = new CommentaireEvent();
+        $em=$this->getDoctrine()->getManager();
+        $evenements = $em->getRepository("ActualitesBundle:Evenements")->find($id);
+        $commentaires = $em->getRepository("ActualitesBundle:CommentaireEvent")->findBy(array('idEvent'=>$evenements));
+
+        $user = $em->getRepository("PidevEsbeBundle:FosUser")->find(1);
+
+        $form = $this->createForm('ActualitesBundle\Form\CommentaireEventType', $comEvent);
+        $form->handleRequest($request);
+
+
+        $action = new Action();
+        $formAction = $this->createForm('ActualitesBundle\Form\ActionType', $action);
+        $formAction->handleRequest($request);
+        if ($formAction->isValid()) {
+
+    $valeur = $request->get('part');
+            if($valeur=='1')
+            {
+                $action->setType('Participe');}
+               else{$action->setType('Interesse');}
+
+
+
+            $em = $this->getDoctrine()->getManager();
+            $action->setIdEvent($evenements);
+            $action->setIdUser($user);
+
+
+
+
+            /*          $categorie->setIdUser($user = $this->getUser()->getId());*/
+            /*   $categorie->setIdUser(0);*/
+            $em->persist($action);
+            $em->flush();
+
+            $commentaires = $em->getRepository("ActualitesBundle:CommentaireEvent")->findBy(array('idEvent'=>$evenements));
+            return $this->render('ActualitesBundle:EvenementViews:DetailEvenement.html.twig', array('f'=>$formAction->createView(),'commentaires'=>$commentaires,'evenement' => $evenements, 'Form' => $form->createView()));
+            /*            return $this->redirectToRoute('afficherCategorie');*/
+        }
+
+
+
+
+
+        if ($form->isValid()) {
+
+
+
+
+            $em = $this->getDoctrine()->getManager();
+            $comEvent->setIdEvent($evenements);
+
+            /*          $categorie->setIdUser($user = $this->getUser()->getId());*/
+            /*   $categorie->setIdUser(0);*/
+            $em->persist($comEvent);
+            $em->flush();
+
+            $commentaires = $em->getRepository("ActualitesBundle:CommentaireEvent")->findBy(array('idEvent'=>$evenements));
+        return $this->render('ActualitesBundle:EvenementViews:DetailEvenement.html.twig', array('f'=>$formAction->createView(),'commentaires'=>$commentaires,'evenement' => $evenements, 'Form' => $form->createView()));
+            /*            return $this->redirectToRoute('afficherCategorie');*/
+        }
+
+        return $this->render('ActualitesBundle:EvenementViews:DetailEvenement.html.twig', array('f'=>$formAction->createView(),'commentaires'=>$commentaires,'evenement' => $evenements,'Form' => $form->createView()));
+    }
+
+    public function RechercheCurrentDateAction()
+    {
+ /*       $evenements = new Evenements();
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository('ActualitesBundle:Evenements')->findCurrentDateDQL();
+
+        $EM = $this->getDoctrine()->getManager();
+        $evenements = $EM->getRepository(("ActualitesBundle:Evenements"))->findAll();
+        return $this->render('ActualitesBundle:EvenementViews:Afficherr.html.twig', array("m"=>$evenements
+        ));*/
+
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository(Evenements::class)->findCurrentDateDQL();
+
+        return $this->render('ActualitesBundle:EvenementViews:Afficherr.html.twig', array("evenements"=>$evenements));
+    }
+
+
+    public function RechercheDateDemainAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository(Evenements::class)->findDateDemainDQL();
+
+        return $this->render('ActualitesBundle:EvenementViews:AfficherDemain.html.twig', array("evenements"=>$evenements));
+    }
+
+    public function RechercheDateSemaineAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository(Evenements::class)->findDateSemaineDQL();
+
+        return $this->render('ActualitesBundle:EvenementViews:AfficherSemaine.html.twig', array("evenements"=>$evenements));
     }
 
 

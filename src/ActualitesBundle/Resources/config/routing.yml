@@ -52,4 +52,34 @@ modifierEvenement:
     path:     /ModifierEvenement/{id}
     defaults: { _controller: ActualitesBundle:Evenement:ModifierEvenement }
 
+indexConseil:
+    path:     /indexConseil
+    defaults: { _controller: ActualitesBundle:Conseil:indexConseil}
 
+indexEvenement:
+    path:     /indexEvenement
+    defaults: { _controller: ActualitesBundle:Evenement:indexEvenement}
+
+detailEvenement:
+    path:     /detailEvenement{id}
+    defaults: { _controller: ActualitesBundle:Evenement:chercherEvenement}
+
+ajouterComEvent:
+    path:     /ajouterComEvent
+    defaults: { _controller: ActualitesBundle:CommentaireEvent:AjouterComEvent }
+
+RechercheCurrentDateEvent:
+    path:     /RechercheCurrentDateEvent
+    defaults: { _controller: ActualitesBundle:Evenement:RechercheCurrentDate }
+
+RechercheDateDemainEvent:
+    path:     /RechercheDateDemain
+    defaults: { _controller: ActualitesBundle:Evenement:RechercheDateDemain }
+
+RechercheDateSemaineEvent:
+    path:     /RechercheDateSemaine
+    defaults: { _controller: ActualitesBundle:Evenement:RechercheDateSemaine }
+
+AfficherEvenements3Event:
+    path:     /AfficherEvenements3
+    defaults: { _controller: ActualitesBundle:Evenement:AfficherEvenements3 }

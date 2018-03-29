@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new RdvBundle\RdvBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ActualitesBundle\ActualitesBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

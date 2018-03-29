@@ -23,6 +23,7 @@ class EvenementsType extends AbstractType
                 'widget' => 'choice',
                 'format' =>'dd/MM/yyyy',
             ))
+
             ->add('dateFin',DateType::class, array(
                 'input' => 'datetime',
                 'widget' => 'choice',

@@ -1,9 +1,31 @@
-etablissement_homepage:
-    path:     /
-    defaults: { _controller: EtablissementBundle:Default:index }
+
 index:
-    path:     /index
+    path:     /
     defaults: { _controller: EtablissementBundle:Etablissement:index}
+indexCabinet:
+    path:     /indexCabinet
+    defaults: { _controller: EtablissementBundle:CabinetMedical:index}
+indexCentre:
+    path:     /indexCentre
+    defaults: { _controller: EtablissementBundle:CentreBeaute:index}
+indexHerbo:
+    path:     /indexHerbo
+    defaults: { _controller: EtablissementBundle:Herboriseterie:index}
+indexHopital:
+    path:     /indexHopitaux
+    defaults: { _controller: EtablissementBundle:Hopitaux:index}
+indexLabo:
+    path:     /indexLabo
+    defaults: { _controller: EtablissementBundle:Laboratoire:index}
+indexPara:
+    path:     /indexPara
+    defaults: { _controller: EtablissementBundle:Parapharmacie:index}
+indexPharma:
+    path:     /indexPharma
+    defaults: { _controller: EtablissementBundle:Pharmacie:index}
+indexSalle:
+    path:     /indexSalle
+    defaults: { _controller: EtablissementBundle:SalleDeSport:index}
 
 insert:
     path:     /insert
