@@ -1,56 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<!-- Mirrored from kodesolution.com/demo/wxyz/z/medikal/v4.0/demo/index-mp-layout1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Mar 2018 17:09:09 GMT -->
 <head>
     {% block head %}
-        <meta charset="utf-8">
+        <!-- Meta Tags -->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Medikal - Health & Medical HTML Template" />
+        <meta name="keywords" content=" clinic, dental, doctor, health, hospital, medical, medical theme, medicine, therapy" />
+        <meta name="author" content="ThemeMascot" />
+
+        <!-- Page Title -->
         <title>{% block title %} ESBE {% endblock %}</title>
     {% block stylesheet %}
 
         <!-- Favicon and Touch Icons -->
-    <link href="{{ asset('assets/front/images/favicon.png') }}" rel="shortcut icon" type="image/png">
-    <link href="{{ asset('assets/front/images/apple-touch-icon.png') }}" rel="icon">
-    <link href="{{ asset('assets/front/images/apple-touch-icon-72x72.png') }}" rel="icon" sizes="72x72">
-    <link href="{{ asset('assets/front/images/apple-touch-icon-114x114.png') }}" rel="icon" sizes="114x114">
-    <link href="{{ asset('assets/front/images/apple-touch-icon-144x144.png') }}" rel="icon" sizes="144x144">
+    <link href="{{ asset('assets/front/images/favicon.png')}}" rel="shortcut icon">
+    <link href="{{ asset('assets/front/images/apple-touch-icon.png')}}" rel="icon">
+    <link href="{{ asset('assets/front/images/apple-touch-icon-72x72.png')}}" rel="icon" sizes="72x72">
+    <link href="{{ asset('assets/front/images/apple-touch-icon-114x114.png')}}" rel="icon" sizes="114x114">
+    <link href="{{ asset('assets/front/images/apple-touch-icon-144x144.png')}}" rel="icon" sizes="144x144">
 
         <!-- Stylesheet -->
-    <link href="{{ asset('assets/front/css/bootstrap.min.css')}}" type="text/css">
-    <link href="{{ asset('assets/front/css/jquery-ui.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/front/css/animate.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/front/css/css-plugin-collections.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/front/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/animate.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/css-plugin-collections.css')}}" rel="stylesheet"/>
         <!-- CSS | menuzord megamenu skins -->
-    <link id="menuzord-menu-skins" href="{{ asset('assets/front/css/menuzord-skins/menuzord-boxed.css') }}" rel="stylesheet"/>
+    <link id="menuzord-menu-skins" href="{{ asset('assets/front/css/menuzord-skins/menuzord-boxed.css')}}" rel="stylesheet"/>
         <!-- CSS | Main style file -->
-    <link href="{{ asset('assets/front/css/style-main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/style-main.css')}}" rel="stylesheet" type="text/css">
         <!-- CSS | Preloader Styles -->
-    <link href="{{ asset('assets/front/css/preloader.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/preloader.css')}}" rel="stylesheet" type="text/css">
         <!-- CSS | Custom Margin Padding Collection -->
-    <link href="{{ asset('assets/front/css/custom-bootstrap-margin-padding.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
         <!-- CSS | Responsive media queries -->
-    <link href="{{ asset('assets/front/css/responsive.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/front/css/responsive.css')}}" rel="stylesheet" type="text/css">
         <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
-        <!-- <link href="{{ asset('assets/front/css/style.css') }}" rel="stylesheet" type="text/css"> -->
+        <!-- <link href="{{ asset('assets/front/css/style.css')}}" rel="stylesheet" type="text/css"> -->
 
         <!-- Revolution Slider 5.x CSS settings -->
-    <link  href="{{ asset('assets/front/js/revolution-slider/css/settings.css') }}" rel="stylesheet" type="text/css"/>
-    <link  href="{{ asset('assets/front/js/revolution-slider/css/layers.css') }}" rel="stylesheet" type="text/css"/>
-    <link  href="{{ asset('assets/front/js/revolution-slider/css/navigation.css') }}" rel="stylesheet" type="text/css"/>
+    <link  href="{{ asset('assets/front/js/revolution-slider/css/settings.css')}}" rel="stylesheet" type="text/css"/>
+    <link  href="{{ asset('assets/front/js/revolution-slider/css/layers.css')}}" rel="stylesheet" type="text/css"/>
+    <link  href="{{ asset('assets/front/js/revolution-slider/css/navigation.css')}}" rel="stylesheet" type="text/css"/>
 
         <!-- CSS | Theme Color -->
     <link href="{{ asset('assets/front/css/colors/theme-skin-blue.css')}}" rel="stylesheet" type="text/css">
 
-        <!-- external javascripts -->
-
-
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
     {% endblock %}
     {% block javascript %}
+        <!-- external javascripts -->
+
         <script src="{{ asset('assets/front/js/jquery-2.2.4.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/jquery-ui.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/bootstrap.min.js')}}"></script>
@@ -60,16 +62,23 @@
         <!-- Revolution Slider 5.x SCRIPTS -->
         <script src="{{ asset('assets/front/js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
     {% endblock %}
     {% endblock %}
 
 </head>
-<body class="boxed-layout pt-40 pb-40 pt-sm-0 has-side-panel side-panel-right fullwidth-page side-push-panel" data-bg-img="images/pattern/p2.png">
+<body class="has-side-panel side-panel-right fullwidth-page side-push-panel">
 <div class="body-overlay"></div>
-<div id="side-panel" class="dark" data-bg-img="images/bg/bg8.jpg">
+<div id="side-panel" class="dark" data-bg-img="{{ asset('assets/front/images/bg/bg9.jpg')}}">
     <div class="side-panel-wrap">
         <div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="pe-7s-close font-36"></i></a></div>
-        <a href="javascript:void(0)"><img alt="logo" src="images/logo-wide.png"></a>
+        <a href="javascript:void(0)"><img alt="logo" src="{{ asset('assets/front/images/logo-wide.png')}}"></a>
         <div class="side-panel-nav mt-30">
             <div class="widget no-border">
                 <nav>
@@ -112,7 +121,7 @@
     <!-- preloader -->
     <div id="preloader">
         <div id="spinner">
-            <img src="images/preloaders/1.gif" alt="">
+            <img src="{{ asset('assets/front/images/preloaders/1.gif')}}" alt="">
         </div>
         <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
     </div>
@@ -154,7 +163,7 @@
                 <div class="container">
                     <nav id="menuzord-right" class="menuzord blue bg-lightest">
                         <a class="menuzord-brand pull-left flip" href="javascript:void(0)">
-                            <img src="images/logo-wide.png" alt="">
+                            <img src="{{ asset('assets/front/images/logo-wide.png')}}" alt="">
                         </a>
                         <div id="side-panel-trigger" class="side-panel-trigger"><a href="#"><i class="fa fa-bars font-24 text-gray"></i></a></div>
                         <ul class="menuzord-menu">
@@ -725,21 +734,19 @@
             </div>
         </div>
     </header>
+
+    <!-- Start main-content -->
     <div class="main-content">
 
         <!-- Section: inner-header -->
-        <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}">
+        <section class="inner-header divider parallax layer-overlay overlay-black-8" data-bg-img="{{ asset('assets/front/images/bg/bg31.jpg')}}">
             <div class="container pt-60 pb-60">
                 <!-- Section Content -->
                 <div class="section-content">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h2 class="title">Appointment Form</h2>
-                            <ol class="breadcrumb text-center text-black mt-10">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Pages</a></li>
-                                <li class="active text-theme-colored">Page Title</li>
-                            </ol>
+                            <h2 class="title" style="color: white">{{ e.nom }}</h2>
+
                         </div>
                     </div>
                 </div>
@@ -749,35 +756,81 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="border-1px p-25">
-                            <h4 class="text-theme-colored text-uppercase m-0">{% block titreRow %}{% endblock %}</h4>
+                    <div class="col-md-2">
+                        <ul>
+                            <li>
+                                <h5>Nom:</h5>
+                                <p>{{ e.nom }}</p>
+                            </li>
+                            <li>
+                                <h5>Adresse:</h5>
+                                <p>{{ e.adresse }}</p>
+                            </li>
+                            <li>
+                                <h5>jour d'ouverture:</h5>
+                                <p>{{ e.dateOuverture }}</p>
+                            </li>
+                            <li>
+                                <h5>jour de fermeture:</h5>
+                                <p>{{ e.dateFermeture }}</p>
+                            </li>
+                            <li>
+                                <h5>heure d'ouverture:</h5>
+                                <p>{{ e.heureOuverture }}</p>
+                            </li>
+                            <li>
+                                <h5>heure de fermeture:</h5>
+                                <p>{{ e.heureFermeture }}</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                            <div class="col-md-2">
+                                <ul>
+                            <li>
+                                <h5>Email:</h5>
+                                <p>{{ e.email }}</p>
+                            </li>
+                            <li>
+                                <h5>Site web:</h5>
+                                <p>{{ e.siteWeb }}</p>
+                            </li>
+                            <li>
+                                <h5>Page facebook:</h5>
+                                <p>{{ e.pageFacebook }}</p>
+                            </li>
+                            <li>
+                                <h5>Numéro de telephone:</h5>
+                                <p>{{ e.numero }}</p>
+                            </li>
+                            <li>
+                                <h5>Numéro de fax:</h5>
+                                <p>{{ e.fax }}</p>
+                            </li>
 
 
-                            {% block content %}
-
-                            {% endblock %}
-
-                        </div>
+                        </ul>
+                    </div>
+                    <div class="col-md-7" style="margin-left: 60px;">
+                   {# <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&q={{ e.adresse }}" style="height: 400px;">
+                    </iframe>#}
+                     <iframe src=https://www.google.com/maps/embed/v1/directions?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&origin=tunis&destination={{ e.adresse }}&avoid=tolls|highways style="height: 400px;">
+                        </iframe>
                     </div>
                 </div>
+
             </div>
-        </section>
-    </div>
 
-    <!-- Divider: Appoinment Form -->
+    </section>
 
-
-    <!-- Section: blog -->
 
 </div>
 
-    <!-- Footer -->
     <footer id="footer" class="footer pb-0" data-bg-img="images/footer-bg.png" data-bg-color="#25272e">
         <div class="container pt-90 pb-60">
             <div class="row">
                 <div class="col-sm-6 col-md-3">
-                    <div class="widget dark"> <img alt="" src="images/logo-wide-white.png">
+                    <div class="widget dark"> <img alt="" src="{{ asset('assets/front/images/logo-wide-white.png')}}">
                         <p class="font-12 mt-10 mb-10">Medikal is a library of health and medical templates with predefined web elements which helps you to build your medical templates best site</p>
                         <a class="btn btn-default btn-transparent btn-xs btn-flat mt-5" href="#">Read more</a>
                         <ul class="styled-icons icon-dark icon-theme-colored icon-circled icon-sm mt-20">
@@ -931,15 +984,15 @@
 
 <!-- Footer Scripts -->
 <!-- JS | Custom script for all pages -->
-<script src="{{ asset('assets/front/js//custom.js')}}"></script>
+<script src="{{ asset('assets/front/js/custom.js')}}"></script>
 
 <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
       (Load Extensions only on Local File Systems !
        The following part can be removed on Server for On Demand Loading) -->
-<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.actions.min.js')}}" ></script>
-<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js')}}" ></script>
-<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js')}}" ></script>
-<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js') }} " ></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.actions.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.migration.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.navigation.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('assets/front/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js')}}"></script>
@@ -949,5 +1002,5 @@
 
 </body>
 
-<!-- Mirrored from kodesolution.com/demo/wxyz/z/medikal/v4.0/demo/index-boxed-mp-layout1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Mar 2018 17:10:17 GMT -->
+<!-- Mirrored from kodesolution.com/demo/wxyz/z/medikal/v4.0/demo/index-mp-layout1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Mar 2018 17:09:18 GMT -->
 </html>

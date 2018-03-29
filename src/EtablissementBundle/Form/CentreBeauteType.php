@@ -14,9 +14,7 @@ class CentreBeauteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nbEmployee')
-            ->add('ajouter',SubmitType::class)
-            ->setMethod('post');
+        $builder->add('nbEmployee');
     }/**
      * {@inheritdoc}
      */
