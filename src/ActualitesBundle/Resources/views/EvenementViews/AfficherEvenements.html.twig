@@ -1,41 +1,47 @@
 {#
-
-<h3>Liste des Conseils</h3>
+<h3>Liste des Evenements</h3>
 
 
 <table border="1" width="50%">
     <tr>
-        <td>Image</td><td>Categorie</td><td>Description</td><td>Action</td>
+        <td>Nom</td><td>Image</td><td>Description</td><td>Date début</td><td>Date fin</td><td>Horaire Début</td><td>Horaire fin</td><td>Categorie</td><td>Action</td>
     </tr>
 
     {%  for mm in m  %}
 
     <tr>
+        <td>{{ mm.nom  }}</td>
         <td> <img style="width: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/></td>
-        <td>{{ mm.categorie }}</td>
-        <td>{{ mm.description }}</td>
+        <td>{{ mm.description  }}</td>
+        <td>{{ mm.dateDebut | date('d/m/y')  }}</td>
+        <td>{{ mm.dateFin | date('d/m/y')  }}</td>
+        <td>{{ mm.horaireCom }}</td>
+        <td>{{ mm.horaireFin }}</td>
+        <td>{{ mm.idCategorie }}</td>
+
         <td>
 
-            <a href={{ path('supprimerConseil',{'id':mm.idConseil})}}> Delete </a><br>
-            <a href={{ path('modifierConseil',{'id':mm.idConseil})}}> Modifier </a>
+            <a href="{{ path('supprimerEvenement',{'id':mm.idEvent})}}"> Delete </a><br>
+            <a href="{{ path('modifierEvenement',{'id':mm.idEvent})}}"> Modifier </a>
             {% endfor %}
         </td>
     </tr>
 </table>
 <a href> Rechercher </a><br>
-
 #}
+
+
 
 
 {% extends '::/AdminBase.html.twig' %}
         {% block title %}
-            Liste des Conseils
+            Liste des Evenements
         {% endblock title %}
  {% block body %}
      <div class="row">
          <div class="col-md-6 col-sm-6 col-xs-6">
              <div class="btn-group">
-                 <a class="btn btn-info" href={{ path('ajouterConseil') }}>
+                 <a class="btn btn-info" href={{ path('ajouterEvenement') }}>
                      Ajouter Nouveau <i class="fa fa-plus"></i>
                  </a>
              </div>
@@ -74,13 +80,14 @@
          </form>
      </div>
 
+
      <div class="row">
          <div class="col-md-12">
              <div class="row">
                  <div class="col-md-12">
                      <div class="card card-topline-purple">
                          <div class="card-head">
-                             <header>Liste des Conseils</header>
+                             <header>Liste des Evenements</header>
                              <div class="tools">
                                  <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                                  <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -92,24 +99,35 @@
                                  <table class="table table-striped custom-table table-hover">
                                      <thead>
                                      <tr>
-                                         <th> Image</th>
-                                         <th>Categorie</th>
+                                         <th> Nom</th>
+                                         <th>Image</th>
                                          <th>Description</th>
+                                         <th> Date début</th>
+                                         <th>Date fin</th>
+                                         <th>Horaire Début</th>
+                                         <th>Date fin</th>
+                                         <th>Categorie</th>
                                          <th>Action</th>
+
                                      </tr>
                                      </thead>
                                      <tbody>
                                      {%  for mm in m  %}
 
                                      <tr>
-                                         <td> <img style="width: 161px;height: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/></td>
-                                         <td>{{ mm.categorie }}</td>
-                                         <td>{{ mm.description }}</td>
+                                         <td>{{ mm.nom  }}</td>
+                                         <td> <img style="width: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/></td>
+                                         <td>{{ mm.description  }}</td>
+                                         <td>{{ mm.dateDebut | date('d/m/y')  }}</td>
+                                         <td>{{ mm.dateFin | date('d/m/y')  }}</td>
+                                         <td>{{ mm.horaireCom }}</td>
+                                         <td>{{ mm.horaireFin }}</td>
+                                         <td>{{ mm.idCategorie }}</td>
                                          <td >
 
-                                             <a button class="btn btn-primary btn-xs" href={{ path('modifierConseil',{'id':mm.idConseil})}}> <i class="fa fa-pencil "></i> </a><br>
+                                             <a button class="btn btn-primary btn-xs" href="{{ path('modifierEvenement',{'id':mm.idEvent})}}"><i class="fa fa-pencil "></i> </a><br>
                                              </button>
-                                             <a button class="btn btn-danger btn-xs" href={{ path('supprimerConseil',{'id':mm.idConseil})}}> <i class="fa fa-trash-o "></i> </a><br>
+                                             <a button class="btn btn-danger btn-xs" href="{{ path('supprimerEvenement',{'id':mm.idEvent})}}">  <i class="fa fa-trash-o "></i> </a><br>
 
                                              </button>
                                              {% endfor %}
@@ -126,3 +144,4 @@
          </div>
      </div>
  {% endblock body %}
+

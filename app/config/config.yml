@@ -11,6 +11,8 @@ imports:
     - { resource: "@RdvBundle/Resources/config/services.yml" }
 
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
 
 

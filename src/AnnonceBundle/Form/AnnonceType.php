@@ -1,12 +1,13 @@
 <?php
 
 namespace AnnonceBundle\Form;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class AnnonceType extends AbstractType
 {
@@ -26,7 +27,7 @@ class AnnonceType extends AbstractType
             //->add('domaine')
             ->add('description')
             // ->add('dateCreation')
-            ->add('dateExpiration')
+            ->add('dateExpiration', DateType::class, array('input' => 'datetime', 'widget' => 'single_text'))
             ->add('idPartenaire')
 
             ->add('Ajouter',submitType::class)

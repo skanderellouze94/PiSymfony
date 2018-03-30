@@ -8,8 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Evenements
  *
  * @ORM\Table(name="evenements", indexes={@ORM\Index(name="fk_event_cat", columns={"id_categorie"}), @ORM\Index(name="idCreator", columns={"idCreator"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ActualitesBundle\Repository\EvenementRepository")
  */
+
 class Evenements
 {
     /**
@@ -80,12 +81,15 @@ class Evenements
     /**
      * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idCreator", referencedColumnName="id")
      * })
      */
     private $idcreator;
+
+
+
 
     /**
      * @var \Categorie
@@ -97,12 +101,7 @@ class Evenements
      */
     private $idCategorie;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="FosUser", mappedBy="idEvent")
-     */
-    private $idUser;
+
 
     /**
      * Constructor
@@ -334,6 +333,7 @@ class Evenements
      *
      * @return \PidevEsbeBundle\Entity\FosUser
      */
+
     public function getIdcreator()
     {
         return $this->idcreator;
@@ -346,6 +346,7 @@ class Evenements
      *
      * @return Evenements
      */
+
     public function setIdCategorie(\ActualitesBundle\Entity\Categorie $idCategorie = null)
     {
         $this->idCategorie = $idCategorie;
@@ -358,42 +359,12 @@ class Evenements
      *
      * @return \ActualitesBundle\Entity\Categorie
      */
+
     public function getIdCategorie()
     {
         return $this->idCategorie;
     }
 
-    /**
-     * Add idUser
-     *
-     * @param \PidevEsbeBundle\Entity\FosUser $idUser
-     *
-     * @return Evenements
-     */
-    public function addIdUser(\PidevEsbeBundle\Entity\FosUser $idUser)
-    {
-        $this->idUser[] = $idUser;
 
-        return $this;
-    }
 
-    /**
-     * Remove idUser
-     *
-     * @param \PidevEsbeBundle\Entity\FosUser $idUser
-     */
-    public function removeIdUser(\PidevEsbeBundle\Entity\FosUser $idUser)
-    {
-        $this->idUser->removeElement($idUser);
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }

@@ -1,0 +1,31 @@
+
+<h3>Liste des Evenements</h3>
+
+
+
+<table border="1" width="50%">
+    <tr>
+        <td>Nom</td><td>Image</td><td>Description</td><td>Date début</td><td>Date fin</td><td>Horaire Début</td><td>Horaire fin</td><td>Categorie</td><td>Action</td>
+    </tr>
+
+
+
+    <tr>
+        <td>{{ evenement.nom  }}</td>
+        <td> <img style="width: 100px;" src="{{asset("uploads/images/"~evenement.image)}}"/></td>
+        <td>{{ evenement.description  }}</td>
+        <td>{{ evenement.dateDebut | date('d/m/y')  }}</td>
+        <td>{{ evenement.dateFin | date('d/m/y')  }}</td>
+        <td>{{ evenement.horaireCom }}</td>
+        <td>{{ evenement.horaireFin }}</td>
+        <td>{{ evenement.idCategorie }}</td>
+
+
+
+
+
+    </tr>
+</table>
+<a > Rechercher </a><br>
+
+

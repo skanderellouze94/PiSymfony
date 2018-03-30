@@ -22,12 +22,16 @@ class AppKernel extends Kernel
             new FicheBundle\FicheBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
+
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new RdvBundle\RdvBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ReclamationBundle\ReclamationBundle(),
+
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
