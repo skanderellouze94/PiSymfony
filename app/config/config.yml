@@ -6,14 +6,23 @@ imports:
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
 
+<<<<<<< HEAD
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
 
     - { resource: "@RdvBundle/Resources/config/services.yml" }
+=======
+
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+
+>>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
 
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
 
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+    - { resource: "@ProductBundle/Resources/config/services.yml" }
 
 
 

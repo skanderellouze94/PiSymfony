@@ -97,28 +97,30 @@
             <input type="submit" class="btn btn-primary">
             {{form_end(form)}}
 
-        {% endblock content %}
-    {% block script %}
-        <script type="text/javascript" src="{{ asset('assets/back/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/back/jquery.min.js') }}"></script>
 
-        <script>
-            $(document).ready(function () {
-                console.log("aaaaaaaa")
-                $("#etablissementbundle_etablissements_type").on("change",function () {
-                    console.log("bbbbbbbb")
-                    var type=$(this).val()
-                    console.log(type)
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ path('loadSubEstab') }}",
-                        data: {subEstablishment:type},
-                        success: function (html) {
-                            console.log(html)
-                            var x= $(html).find("#subform")
-                            $("#subform").replaceWith(x)
-                        }
-                    });
+            <script>
+                $(document).ready(function () {
+                    console.log("aaaaaaaa")
+                    $("#etablissementbundle_etablissements_type").on("change",function () {
+                        console.log("bbbbbbbb")
+                        var type=$(this).val()
+                        console.log(type)
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ path('loadSubEstab') }}",
+                            data: {subEstablishment:type},
+                            success: function (html) {
+                                console.log(html)
+                                var x= $(html).find("#subform")
+                                $("#subform").replaceWith(x)
+                            }
+                        });
+                    })
                 })
-            })
-        </script>
-    {% endblock script %}
+            </script>
+        {% endblock content %}
+    {#{% block javascript %}#}
+        {#{{   parent() }}#}
+
+    {#{% endblock %}#}

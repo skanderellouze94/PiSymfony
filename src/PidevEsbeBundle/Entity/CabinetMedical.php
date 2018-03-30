@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class CabinetMedical
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="cnam", type="boolean", nullable=false)
@@ -29,72 +20,22 @@ class CabinetMedical
     private $cnam;
 
     /**
-     * @var \Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \PidevEsbeBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;
 
 
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set cnam
-     *
-     * @param boolean $cnam
-     *
-     * @return CabinetMedical
-     */
-    public function setCnam($cnam)
-    {
-        $this->cnam = $cnam;
-
-        return $this;
-    }
-
-    /**
-     * Get cnam
-     *
-     * @return boolean
-     */
-    public function getCnam()
-    {
-        return $this->cnam;
-    }
-
-    /**
-     * Set idEtab
-     *
-     * @param \PidevEsbeBundle\Entity\Etablissements $idEtab
-     *
-     * @return CabinetMedical
-     */
-    public function setIdEtab(\PidevEsbeBundle\Entity\Etablissements $idEtab = null)
-    {
-        $this->idEtab = $idEtab;
-
-        return $this;
-    }
-
-    /**
-     * Get idEtab
-     *
-     * @return \PidevEsbeBundle\Entity\Etablissements
-     */
-    public function getIdEtab()
-    {
-        return $this->idEtab;
-    }
 }
+

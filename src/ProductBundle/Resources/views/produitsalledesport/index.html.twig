@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Produitsalledesports list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produitSalledesport in produitSalledesports %}
+            <tr>
+                <td><a href="{{ path('produitsalledesport_show', { 'idProduit': produitSalledesport.idProduit }) }}">{{ produitSalledesport.type }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('produitsalledesport_show', { 'idProduit': produitSalledesport.idProduit }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

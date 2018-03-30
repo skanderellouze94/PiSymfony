@@ -14,9 +14,7 @@ class HopitauxType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type')->add('urgence')->add('cnam')
-            ->add('ajouter',SubmitType::class)
-            ->setMethod('post');
+        $builder->add('type')->add('urgence')->add('cnam');
     }/**
      * {@inheritdoc}
      */

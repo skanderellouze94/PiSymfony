@@ -13,7 +13,7 @@ class EtablissementFiltre extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom',null,array('label'=>'Titre'));
+        $builder->add('nom',null, array('label' => false));
 
     }
 
