@@ -20,18 +20,22 @@ class RdvController extends Controller
     public function ajouterrAction(Request $request)
     {
         $rdv = new Rdvdate();
-        $form = $this->createForm('RdvBundle\Form\RdvType', $rdv);
+        $form = $this->createForm('RdvBundle\Form\RdvdateType', $rdv);
         $form->handleRequest($request);
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
             /*$rdv->setDate((string)$form->getData(date));*/
 //            $username = $form["date"]->getData();
-            $s=date_format($rdv->getDate(),'dd/MM/yyyy');
-            $a=date_format($rdv->getTime(),'H:i:s');
-           $rdv->setDate($s);
+            $malek= $request->get('datepick').(' ').$request->get('timepick').(':00');
 
-           $rdv->setTime($a);
+            $literalTime    =   \DateTime::createFromFormat("Y-m-d H:i:s",$malek);
+//            $expire_date =  $literalTime-> ("Y-m-d H:i:s");
+            $rdv->setDate($literalTime);
+
+
+
+
 
             $em->persist($rdv);
             $em->flush();

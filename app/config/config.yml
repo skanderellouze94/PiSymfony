@@ -5,11 +5,12 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-
     - { resource: "@RdvBundle/Resources/config/services.yml" }
 
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -42,6 +43,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    profiler:
+        collect: false
 
 # Twig Configuration
 twig:
@@ -102,3 +105,6 @@ fos_user:
         sender_name: "%mailer_user%"
     service:
         mailer: fos_user.mailer.twig_swift
+knp_paginator:
+    template:
+         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig

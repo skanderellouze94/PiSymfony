@@ -159,4 +159,11 @@ class Services
     {
         return $this->idEtab;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
+
 }

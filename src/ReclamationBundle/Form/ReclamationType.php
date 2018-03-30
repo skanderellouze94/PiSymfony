@@ -2,6 +2,7 @@
 
 namespace ReclamationBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,12 +15,15 @@ class ReclamationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('objet')
-            ->add('message')
+        $builder->add('objet',  null,array( 'attr' => array('class' => 'form-control','placeholder'=>'Saisissez l\'objet')))
+            ->add('message', CKEditorType::class, array(
+                'config' => array(
+                    'uiColor' => '#ffffff'
+                )))
 
             ->add('idetab')
             ->add('user')
-        ->add('Ajouter', SubmitType::class)
+        ->add('Ajouter', SubmitType::class  )
         ->setMethod('post');
     }/**
      * {@inheritdoc}

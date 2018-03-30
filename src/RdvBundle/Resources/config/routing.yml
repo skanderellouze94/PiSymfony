@@ -2,7 +2,7 @@ rdv_homepage:
     path:     /
     defaults: { _controller: RdvBundle:Default:index }
 affichage:
-    path:     /affichage
+    path:     /afficher
     defaults: { _controller: RdvBundle:Rdv:afficher}
 
 modifier:
@@ -14,6 +14,9 @@ cal:
 ajout:
     path:     /ajouterr
     defaults: { _controller: RdvBundle:Rdv:ajouterr}
-callphp:
-    path:     /callphp
-    defaults: { _controller: RdvBundle:Rdv:calphp}
+calAjouter:
+    path:     /callin
+    defaults: { _controller: RdvBundle:Calendar:insert}
+calIndex:
+    path:     /callindex
+    defaults: { _controller: RdvBundle:Calendar:call}

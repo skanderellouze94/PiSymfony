@@ -1,9 +1,5 @@
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-rdv:
-    resource: "@RdvBundle/Resources/config/routing.yml"
-    prefix:   /rdv
-
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
@@ -30,3 +26,6 @@ fos_user:
 reclamation:
     resource: "@ReclamationBundle/Resources/config/routing.yml"
     prefix:   /rec
+rdv:
+    resource: "@RdvBundle/Resources/config/routing.yml"
+    prefix:   /rdv

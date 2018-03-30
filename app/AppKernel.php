@@ -20,14 +20,14 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new EtablissementBundle\EtablissementBundle(),
             new FicheBundle\FicheBundle(),
+            new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
-
-            new RdvBundle\RdvBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
