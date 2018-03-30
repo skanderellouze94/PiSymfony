@@ -1,0 +1,54 @@
+{#
+{{ form(Form) }}#}
+
+{% extends '::/AdminBase.html.twig' %}
+{% block title %}
+    Ajouter une annonce
+{% endblock title %}
+        {% block body %}
+            <div class="col-md-6 col-sm-6">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <center><header>Veuillez remplir ce formulaire </header></center>
+                        <button id = "panel-button"
+                                class = "mdl-button mdl-js-button mdl-button--icon pull-right"
+                                data-upgraded = ",MaterialButton">
+                            <i class = "material-icons">more_vert</i>
+                        </button>
+                        <ul class = "mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                            data-mdl-for = "panel-button">
+                            <li class = "mdl-menu__item"><i class="material-icons">assistant_photo</i>Action</li>
+                            <li class = "mdl-menu__item"><i class="material-icons">print</i>Another action</li>
+                            <li class = "mdl-menu__item"><i class="material-icons">favorite</i>Something else here</li>
+                        </ul>
+                    </div>
+                    <div class="card-body " id="bar-parent">
+
+                        {{ form_start(Form) }}
+
+                        <div class="form-group">
+                            <label for="simpleFormPassword">Domaine</label>
+                            {{  form_widget(Form.domaine, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="simpleFormPassword">Partenaire</label>
+                            {{  form_widget(Form.idPartenaire, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="simpleFormEmail">Description</label>
+                            {{  form_widget(Form.description, {'attr': {'class': 'form-control', 'placeholder' : 'Veuillez entrer une description'}}) }}
+                        </div>
+
+                        {{  form_row(Form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}
+
+                        {{ form_end(Form) }}
+
+                    </div>
+                </div>
+            </div>
+
+        {% endblock body %}

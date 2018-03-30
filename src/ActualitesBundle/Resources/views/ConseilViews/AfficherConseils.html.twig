@@ -28,9 +28,9 @@
 
 
 {% extends '::/AdminBase.html.twig' %}
-  {% block title %}
-      Liste des conseils
-  {% endblock title %}
+        {% block title %}
+            Liste des Conseils
+        {% endblock title %}
  {% block body %}
      <div class="row">
          <div class="col-md-6 col-sm-6 col-xs-6">
@@ -40,6 +40,7 @@
                  </a>
              </div>
          </div>
+
          <div class="col-md-6 col-sm-6 col-xs-6">
              <div class="btn-group pull-right">
                  <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
@@ -61,15 +62,18 @@
                  </ul>
              </div>
          </div>
-     </div>
-     <div class="input-group">
-         <input type="text" class="form-control" placeholder="Search..." name="query">
-         <span class="input-group-btn">
+         <form class="search-form-opened" action="#" method="GET">
+             <div class="input-group">
+                 <input type="text" class="form-control" placeholder="Search..." name="query">
+                 <span class="input-group-btn">
                           <a href="javascript:;" class="btn submit">
                              <i class="icon-magnifier"></i>
                            </a>
                         </span>
+             </div>
+         </form>
      </div>
+
      <div class="row">
          <div class="col-md-12">
              <div class="row">
@@ -98,7 +102,7 @@
                                      {%  for mm in m  %}
 
                                      <tr>
-                                         <td> <img style="width: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/></td>
+                                         <td> <img style="width: 161px;height: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/></td>
                                          <td>{{ mm.categorie }}</td>
                                          <td>{{ mm.description }}</td>
                                          <td >

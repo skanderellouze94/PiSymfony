@@ -52,7 +52,6 @@
     {% endblock %}
     {% block javascript %}
         <!-- external javascripts -->
-
         <script src="{{ asset('assets/front/js/jquery-2.2.4.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/jquery-ui.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/bootstrap.min.js')}}"></script>
@@ -149,7 +148,6 @@
                                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">contact@yourdomain.com</a> </li>
                                 <li class="sm-display-block mt-sm-10 mb-sm-10">
                                     <!-- Modal: Appointment Starts -->
-                                    <a class="bg-light p-5 text-theme-colored font-11 ajaxload-popup" href="ajax-load/form-appointment.html">Make an Appointment</a>
                                     <!-- Modal: Appointment End -->
                                 </li>
                             </ul>
@@ -761,13 +759,16 @@
                                 <h5 class="widget-title line-bottom">Search box</h5>
                                 <div class="search-form">
                                     <form>
-                                        <div class="input-group">
+                                        <div class="input-group" style="display: inline">
                                             {#{{form(form, {'method': 'GET'}) }}#}
-
-                                            <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                            {{ form_start(form) }}
+                                            {{  form_row(form.nom, {'attr': {'class': 'form-control search-input', 'placeholder' : 'Vous cherchez un etablissement ?'}}) }}
+                                            {#<input type="text" placeholder="Click to Search" class="form-control search-input">#}
                                             <span class="input-group-btn">
-                      <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                      <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+
                       </span>
+
                                         </div>
                                     </form>
                                 </div>
@@ -796,7 +797,7 @@
                         <div class="row">
                             <div class="col-sm-4 pr-0 pr-sm-15">
                                 <div class="thumb p-15">
-                                    <img class="img-fullwidth" src="../../../../../../../placehold.it/265x195.png" alt="...">
+                                    <img class="img-fullwidth" src="{{asset("uploads/images/"~a.image)}}">
                                 </div>
                             </div>
                                 <div class="col-sm-4 pl-0 pl-sm-15">
@@ -805,8 +806,8 @@
                                         <p>{{ a.adresse }}</p>
                                         <p>{{ a.pageFacebook }}</p>
                                         <p>{{ a.siteWeb }}</p>
-                                        {% set e=a.nom  %}
-                                        <a href="#promoModal1" data-lightbox="inline" class="btn btn-default">Reserver <i class="fa fa-angle-double-right"></i></a>
+                                        {% set etab=a  %}
+                                        <a href={{ path('show',{'id':a.id}) }} >Voir plus <i class="fa fa-angle-double-right"></i></a>
                                     </div>
                                 </div>
 
@@ -821,20 +822,10 @@
                             </div>
                     </div>
                     </div>
-                    <div id="promoModal1" class="modal-promo-box mfp-hide" data-bg-img="{{ asset('assets/front/images/magazine/lg2.jpg')}}">
-                        <h3 class="mt-0">{{e}}</h3>
-                        <h5>{{ etab.adresse }}</h5>
-                        <p style="color: black">Ouvre le {{ etab.dateOuverture }} jusqu'a {{ etab.dateFermeture }}</p>
-                        <p style="color: black">de {{ etab.heureOuverture }} a {{ etab.heureFermeture }}</p>
-                        <ul style="color: black">
-                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-phone mr-5" style="color: black" ></i>{{ etab.numero }}</a></li>
-                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-globe mr-5" style="color: black"></i>{{ etab.siteWeb }}</a></li>
-                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-facebook mr-5" style="color: black"></i>{{ etab.pageFacebook }}</a></li>
-                            <li style="color: black"><a href="#" style="color: black"><i class="fa fa-wechat mr-5" style="color: black"></i>{{ etab.email }}</a></li>
-                        </ul>
-                    </div>
-
                 {% endfor %}
+
+
+
 
                 <div class="row">
                     <div class="col-sm-8">
@@ -871,21 +862,18 @@
                         <h5 class="widget-title line-bottom-theme-colored-2">Latest News</h5>
                         <div class="latest-posts">
                             <article class="post media-post clearfix pb-0 mb-10">
-                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
                                 <div class="post-right">
                                     <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
                                     <p class="post-date mb-0 font-12">Mar 08, 2015</p>
                                 </div>
                             </article>
                             <article class="post media-post clearfix pb-0 mb-10">
-                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
                                 <div class="post-right">
                                     <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
                                     <p class="post-date mb-0 font-12">Mar 08, 2015</p>
                                 </div>
                             </article>
                             <article class="post media-post clearfix pb-0 mb-10">
-                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
                                 <div class="post-right">
                                     <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
                                     <p class="post-date mb-0 font-12">Mar 08, 2015</p>

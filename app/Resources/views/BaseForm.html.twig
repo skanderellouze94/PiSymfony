@@ -31,9 +31,7 @@
     <link id="menuzord-menu-skins" href="{{ asset('assets/front/css/menuzord-skins/menuzord-boxed.css')}}" rel="stylesheet"/>
         <!-- CSS | Main style file -->
     <link href="{{ asset('assets/front/css/style-main.css')}}" rel="stylesheet" type="text/css">
-        <!-- CSS | Preloader Styles -->
-    <link href="{{ asset('assets/front/css/preloader.css')}}" rel="stylesheet" type="text/css">
-        <!-- CSS | Custom Margin Padding Collection -->
+
     <link href="{{ asset('assets/front/css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
         <!-- CSS | Responsive media queries -->
     <link href="{{ asset('assets/front/css/responsive.css')}}" rel="stylesheet" type="text/css">
@@ -50,7 +48,7 @@
 
 
     {% endblock %}
-    {% block javascript %}
+    {% block javascr %}
         <!-- external javascripts -->
 
         <script src="{{ asset('assets/front/js/jquery-2.2.4.min.js')}}"></script>
@@ -119,12 +117,7 @@
 </div>
 <div id="wrapper" class="clearfix">
     <!-- preloader -->
-    <div id="preloader">
-        <div id="spinner">
-            <img src="{{ asset('assets/front/images/preloaders/1.gif')}}" alt="">
-        </div>
-        <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
-    </div>
+
 
     <!-- Header -->
     <header id="header" class="header">
@@ -736,10 +729,11 @@
     </header>
 
     <!-- Start main-content -->
+<<<<<<< HEAD
      <div class="main-content">
 
             <!-- Section: inner-header -->
-            <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}">
+          {#  <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}">
                 <div class="container pt-60 pb-60">
                     <!-- Section Content -->
                     <div class="section-content">
@@ -755,189 +749,227 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>#}
 
-            <section>
+{#            <section>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="border-1px p-25">
-                                <h4 class="text-theme-colored text-uppercase m-0">{% block titreRow %}{% endblock %}</h4>
+                                <h4 class="text-theme-colored text-uppercase m-0">{% block titreRow %}{% endblock %}</h4>#}
+=======
+    <div class="main-content">
 
-
-                                {% block content %}
-
-                                {% endblock %}
-
-                            </div>
+        <!-- Section: inner-header -->
+        <section class="inner-header divider parallax layer-overlay overlay-white-8" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}">
+            <div class="container pt-60 pb-60">
+                <!-- Section Content -->
+                <div class="section-content" data-bg-img="{{ asset('assets/front/images/bg/bg6.jpg')}}>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="title">Appointment Form</h2>
+                            <ol class="breadcrumb text-center text-black mt-10">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li class="active text-theme-colored">Page Title</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="border-1px p-25">
+                            <h4 class="text-theme-colored text-uppercase m-0">{% block titreRow %}{% endblock %}</h4>
+>>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
+
+
+                            {% block content %}
+
+                            {% endblock %}
+
+<<<<<<< HEAD
+  {#                          </div>
+                        </div>
+                    </div>
+                </div>
+            </section>#}
         </div>
-
-        <!-- Divider: Appoinment Form -->
-
-
-        <!-- Section: blog -->
-
+=======
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-    <!-- end main-content -->
+>>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
 
-    <!-- Footer -->
-    <footer id="footer" class="footer pb-0" data-bg-img="images/footer-bg.png" data-bg-color="#25272e">
-        <div class="container pt-90 pb-60">
-            <div class="row">
-                <div class="col-sm-6 col-md-3">
-                    <div class="widget dark"> <img alt="" src="{{ asset('assets/front/images/logo-wide-white.png')}}">
-                        <p class="font-12 mt-10 mb-10">Medikal is a library of health and medical templates with predefined web elements which helps you to build your medical templates best site</p>
-                        <a class="btn btn-default btn-transparent btn-xs btn-flat mt-5" href="#">Read more</a>
-                        <ul class="styled-icons icon-dark icon-theme-colored icon-circled icon-sm mt-20">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="widget dark">
-                        <h5 class="widget-title line-bottom-theme-colored-2">Latest News</h5>
-                        <div class="latest-posts">
-                            <article class="post media-post clearfix pb-0 mb-10">
-                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
-                                <div class="post-right">
-                                    <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
-                                    <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                                </div>
-                            </article>
-                            <article class="post media-post clearfix pb-0 mb-10">
-                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
-                                <div class="post-right">
-                                    <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
-                                    <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                                </div>
-                            </article>
-                            <article class="post media-post clearfix pb-0 mb-10">
-                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
-                                <div class="post-right">
-                                    <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
-                                    <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="widget dark">
-                        <h5 class="widget-title line-bottom-theme-colored-2">Quick Contact</h5>
-                        <form id="footer_quick_contact_form" name="footer_quick_contact_form" class="quick-contact-form" action="http://kodesolution.com/demo/wxyz/z/medikal/v4.0/demo/includes/quickcontact.php" method="post">
-                            <div class="form-group">
-                                <input name="form_email" class="form-control" type="text" required="" placeholder="Enter Email">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="form_message" class="form-control" required="" placeholder="Enter Message" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                                <button type="submit" class="btn btn-default btn-transparent btn-xs btn-flat mt-0" data-loading-text="Please wait...">Send Message</button>
-                            </div>
-                        </form>
+    <!-- Divider: Appoinment Form -->
 
-                        <!-- Quick Contact Form Validation-->
-                        <script type="text/javascript">
-                            $("#footer_quick_contact_form").validate({
-                                submitHandler: function(form) {
-                                    var form_btn = $(form).find('button[type="submit"]');
-                                    var form_result_div = '#form-result';
-                                    $(form_result_div).remove();
-                                    form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                                    var form_btn_old_msg = form_btn.html();
-                                    form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                                    $(form).ajaxSubmit({
-                                        dataType:  'json',
-                                        success: function(data) {
-                                            if( data.status == 'true' ) {
-                                                $(form).find('.form-control').val('');
-                                            }
-                                            form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                            $(form_result_div).html(data.message).fadeIn('slow');
-                                            setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-                                        }
-                                    });
-                                }
-                            });
-                        </script>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="widget dark">
-                        <h5 class="widget-title line-bottom-theme-colored-2">Opening Hours</h5>
-                        <div class="opening-hours">
-                            <ul class="list list-border">
-                                <li class="clearfix"> <span><i class="fa fa-clock-o mr-5"></i> Mond - Tuesday :</span>
-                                    <div class="value pull-right"> 9.00 am - 10.00 pm </div>
-                                </li>
-                                <li class="clearfix"> <span class="text-theme-color-2"><i class="fa fa-clock-o mr-5"></i> Wednes - Thurs </span>
-                                    <div class="value pull-right text-white"> 10.00 am - 8.00 pm </div>
-                                </li>
-                                <li class="clearfix"> <span><i class="fa fa-clock-o mr-5"></i> Sat - Monday :</span>
-                                    <div class="value pull-right"> 9.00 am - 10.00 pm </div>
-                                </li>
-                                <li class="clearfix"> <span><i class="fa fa-clock-o mr-5"></i> Sunday :</span>
-                                    <div class="value pull-right"> <span class="text-highlight bg-theme-colored text-white">Colsed</span>  </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="horizontal-contact-widget mt-30 pt-30 text-center">
-                        <div class="col-sm-12 col-sm-4">
-                            <div class="each-widget"> <i class="pe-7s-phone font-36 mb-10"></i>
-                                <h5 class="text-white">Call Us</h5>
-                                <p>Phone: <a href="#">+262 695 2601</a></p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-sm-4 mt-sm-50">
-                            <div class="each-widget"> <i class="pe-7s-map font-36 mb-10"></i>
-                                <h5 class="text-white">Address</h5>
-                                <p>121 King Street, Australia</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-sm-4 mt-sm-50">
-                            <div class="each-widget"> <i class="pe-7s-mail font-36 mb-10"></i>
-                                <h5 class="text-white">Email</h5>
-                                <p><a href="#">you@yourdomain.com</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="list-inline styled-icons icon-hover-theme-colored icon-gray icon-circled text-center mt-30 mb-10">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a> </li>
+
+    <!-- Section: blog -->
+
+</div>
+<!-- end main-content -->
+
+<!-- Footer -->
+<footer id="footer" class="footer pb-0" data-bg-img="images/footer-bg.png" data-bg-color="#25272e">
+    <div class="container pt-90 pb-60">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="widget dark"> <img alt="" src="{{ asset('assets/front/images/logo-wide-white.png')}}">
+                    <p class="font-12 mt-10 mb-10">Medikal is a library of health and medical templates with predefined web elements which helps you to build your medical templates best site</p>
+                    <a class="btn btn-default btn-transparent btn-xs btn-flat mt-5" href="#">Read more</a>
+                    <ul class="styled-icons icon-dark icon-theme-colored icon-circled icon-sm mt-20">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid bg-theme-colored p-20">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <p class="text-white font-11 m-0">Copyright &copy;2016 ThemeMascot. All Rights Reserved</p>
+            <div class="col-sm-6 col-md-3">
+                <div class="widget dark">
+                    <h5 class="widget-title line-bottom-theme-colored-2">Latest News</h5>
+                    <div class="latest-posts">
+                        <article class="post media-post clearfix pb-0 mb-10">
+                            <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
+                            <div class="post-right">
+                                <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
+                                <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                            </div>
+                        </article>
+                        <article class="post media-post clearfix pb-0 mb-10">
+                            <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
+                            <div class="post-right">
+                                <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
+                                <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                            </div>
+                        </article>
+                        <article class="post media-post clearfix pb-0 mb-10">
+                            <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/80x55.png" alt=""></a>
+                            <div class="post-right">
+                                <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
+                                <p class="post-date mb-0 font-12">Mar 08, 2015</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="widget dark">
+                    <h5 class="widget-title line-bottom-theme-colored-2">Quick Contact</h5>
+                    <form id="footer_quick_contact_form" name="footer_quick_contact_form" class="quick-contact-form" action="http://kodesolution.com/demo/wxyz/z/medikal/v4.0/demo/includes/quickcontact.php" method="post">
+                        <div class="form-group">
+                            <input name="form_email" class="form-control" type="text" required="" placeholder="Enter Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="form_message" class="form-control" required="" placeholder="Enter Message" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                            <button type="submit" class="btn btn-default btn-transparent btn-xs btn-flat mt-0" data-loading-text="Please wait...">Send Message</button>
+                        </div>
+                    </form>
+
+                    <!-- Quick Contact Form Validation-->
+                    <script type="text/javascript">
+                        $("#footer_quick_contact_form").validate({
+                            submitHandler: function(form) {
+                                var form_btn = $(form).find('button[type="submit"]');
+                                var form_result_div = '#form-result';
+                                $(form_result_div).remove();
+                                form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                                var form_btn_old_msg = form_btn.html();
+                                form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                                $(form).ajaxSubmit({
+                                    dataType:  'json',
+                                    success: function(data) {
+                                        if( data.status == 'true' ) {
+                                            $(form).find('.form-control').val('');
+                                        }
+                                        form_btn.prop('disabled', false).html(form_btn_old_msg);
+                                        $(form_result_div).html(data.message).fadeIn('slow');
+                                        setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="widget dark">
+                    <h5 class="widget-title line-bottom-theme-colored-2">Opening Hours</h5>
+                    <div class="opening-hours">
+                        <ul class="list list-border">
+                            <li class="clearfix"> <span><i class="fa fa-clock-o mr-5"></i> Mond - Tuesday :</span>
+                                <div class="value pull-right"> 9.00 am - 10.00 pm </div>
+                            </li>
+                            <li class="clearfix"> <span class="text-theme-color-2"><i class="fa fa-clock-o mr-5"></i> Wednes - Thurs </span>
+                                <div class="value pull-right text-white"> 10.00 am - 8.00 pm </div>
+                            </li>
+                            <li class="clearfix"> <span><i class="fa fa-clock-o mr-5"></i> Sat - Monday :</span>
+                                <div class="value pull-right"> 9.00 am - 10.00 pm </div>
+                            </li>
+                            <li class="clearfix"> <span><i class="fa fa-clock-o mr-5"></i> Sunday :</span>
+                                <div class="value pull-right"> <span class="text-highlight bg-theme-colored text-white">Colsed</span>  </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="horizontal-contact-widget mt-30 pt-30 text-center">
+                    <div class="col-sm-12 col-sm-4">
+                        <div class="each-widget"> <i class="pe-7s-phone font-36 mb-10"></i>
+                            <h5 class="text-white">Call Us</h5>
+                            <p>Phone: <a href="#">+262 695 2601</a></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-sm-4 mt-sm-50">
+                        <div class="each-widget"> <i class="pe-7s-map font-36 mb-10"></i>
+                            <h5 class="text-white">Address</h5>
+                            <p>121 King Street, Australia</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-sm-4 mt-sm-50">
+                        <div class="each-widget"> <i class="pe-7s-mail font-36 mb-10"></i>
+                            <h5 class="text-white">Email</h5>
+                            <p><a href="#">you@yourdomain.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline styled-icons icon-hover-theme-colored icon-gray icon-circled text-center mt-30 mb-10">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a> </li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a> </li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-theme-colored p-20">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <p class="text-white font-11 m-0">Copyright &copy;2016 ThemeMascot. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 </div>
 <!-- end wrapper -->
 

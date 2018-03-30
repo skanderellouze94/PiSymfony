@@ -15,9 +15,7 @@ class CabinetMedicalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cnam')
-            ->add('ajouter',SubmitType::class)
-            ->setMethod('post');
+            ->add('cnam');
     }/**
      * {@inheritdoc}
      */

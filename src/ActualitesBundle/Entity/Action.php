@@ -19,18 +19,27 @@ class Action
 {
 
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
 
     /**
      * @ORM\OneToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
      * @ORM\JoinColumn(name="id_user" ,referencedColumnName="id")
-     * @ORM\Id
+     *
      */
     private $idUser;
 
     /**
      * @ORM\OneToOne(targetEntity="ActualitesBundle\Entity\Evenements")
      * @ORM\JoinColumn(name="id_event" ,referencedColumnName="id_event")
-     * @ORM\Id
+     *
      */
     private $idEvent;
 
@@ -113,4 +122,21 @@ class Action
     {
         return $this->idEvent;
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
 }

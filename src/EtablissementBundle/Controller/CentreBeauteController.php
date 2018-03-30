@@ -9,6 +9,7 @@
 namespace EtablissementBundle\Controller;
 
 
+use EtablissementBundle\Entity\CentreBeaute;
 use EtablissementBundle\Entity\Etablissements;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,5 +46,22 @@ class CentreBeauteController extends Controller
             array('etablissements'=>$etablissement,
                 'form' => $filterForm->createView())
         );
+    }
+
+    public function insertAction(Request $request)
+    {
+
+        $cabinet = new CentreBeaute();
+        $form = $this->createForm('EtablissementBundle\Form\CentreBeauteType', $cabinet);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cabinet);
+            $em->flush();
+        }
+        return $this->render('EtablissementBundle:EtablissementView:insertCentre.html.twig', array(
+            'Form' => $form->createView()
+        ));
     }
 }

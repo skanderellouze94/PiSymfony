@@ -98,4 +98,11 @@ class ConseilController extends Controller
         ));
     }
 
+    public function indexConseilAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $conseil = $em->getRepository("ActualitesBundle:Conseil")->findAll();
+        return $this->render('ActualitesBundle:ConseilViews:IndexConseil.html.twig', array("m" => $conseil
+        ));
+    }
 }
