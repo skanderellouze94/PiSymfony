@@ -38,17 +38,17 @@ class EvenementController extends Controller
                 $evenements->setArchive(0);
 
                 /*          $conseil->setIdUser($user = $this->getUser()->getId());*/
-                $a = date_format($evenements->getHoraireCom(), 'H:i');
-                $b = date_format($evenements->getHoraireFin(), 'H:i');
+                $a = date_format($evenements->getHoraireCom(), 'H:i:s');
+                $b = date_format($evenements->getHoraireFin(), 'H:i:s');
                 $evenements->setHoraireCom($a);
                 $evenements->setHoraireFin($b);
                 $em->persist($evenements);
                 $em->flush();
                 return $this->redirectToRoute('afficherEvenements');
             } else
-                {
+            {
                 return $this->render('ActualitesBundle:ConseilViews:erreur.html.twig');
-                 }
+            }
         }
         return $this->render('ActualitesBundle:EvenementViews:AjouterEvenement.html.twig', array(
             'Form' => $form->createView()
@@ -69,7 +69,7 @@ class EvenementController extends Controller
         $em = $this->getDoctrine()->getManager();
         $evenements = $em->getRepository(Evenements::class)->AfficherEvenements3DQL();
 
-        return $this->render('ActualitesBundle:EvenementViews:AfficherEvenements3.html.twig', array("m"=>$evenements));
+        return $this->render('ActualitesBundle:EvenementViews:IndexEvenement.html.twig', array("m"=>$evenements));
 
     }
 
@@ -130,11 +130,21 @@ class EvenementController extends Controller
         ));
     }
 
-    public function indexEvenementAction()
+    public function indexEvenementAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $evenements = $em->getRepository("ActualitesBundle:Evenements")->findAll();
-        return $this->render('ActualitesBundle:EvenementViews:IndexEvenement.html.twig', array("m" => $evenements
+
+        $categorie=$em->getRepository("ActualitesBundle:Categorie")->RechercheTypeEvenementDQL();
+        $dql="select c from ActualitesBundle:Evenements c ORDER BY c.idEvent DESC ";
+        $query=$em->createQuery($dql);
+        $paginator  = $this->get('knp_paginator');
+        $evenements = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
+        return $this->render('ActualitesBundle:EvenementViews:IndexEvenement.html.twig', array("m" => $evenements,"c"=>$categorie
         ));
     }
 
@@ -224,7 +234,7 @@ class EvenementController extends Controller
         $em = $this->getDoctrine()->getManager();
         $evenements = $em->getRepository(Evenements::class)->findCurrentDateDQL();
 
-        return $this->render('ActualitesBundle:EvenementViews:Afficherr.html.twig', array("evenements"=>$evenements));
+        return $this->render('ActualitesBundle:EvenementViews:Afficherr.html.twig', array("e"=>$evenements));
     }
 
 
@@ -233,7 +243,7 @@ class EvenementController extends Controller
         $em = $this->getDoctrine()->getManager();
         $evenements = $em->getRepository(Evenements::class)->findDateDemainDQL();
 
-        return $this->render('ActualitesBundle:EvenementViews:AfficherDemain.html.twig', array("evenements"=>$evenements));
+        return $this->render('ActualitesBundle:EvenementViews:AfficherDemain.html.twig', array("e"=>$evenements));
     }
 
     public function RechercheDateSemaineAction()
@@ -241,8 +251,20 @@ class EvenementController extends Controller
         $em = $this->getDoctrine()->getManager();
         $evenements = $em->getRepository(Evenements::class)->findDateSemaineDQL();
 
-        return $this->render('ActualitesBundle:EvenementViews:AfficherSemaine.html.twig', array("evenements"=>$evenements));
+        return $this->render('ActualitesBundle:EvenementViews:AfficherSemaine.html.twig', array("e"=>$evenements));
     }
 
+
+    public function AfficherEvenementsCategorieAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+        $query = $em->createQuery("select e from ActualitesBundle:Evenements e where e.idCategorie=".$id);
+        $events =$query->getResult();
+
+        return $this->render('ActualitesBundle:EvenementViews:IndexEvenementCat.html.twig', array("e"=>$events));
+
+    }
 
 }

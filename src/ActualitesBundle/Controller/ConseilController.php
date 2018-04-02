@@ -98,11 +98,21 @@ class ConseilController extends Controller
         ));
     }
 
-    public function indexConseilAction()
+    public function indexConseilAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $conseil = $em->getRepository("ActualitesBundle:Conseil")->findAll();
-        return $this->render('ActualitesBundle:ConseilViews:IndexConseil.html.twig', array("m" => $conseil
+        $categorie=$em->getRepository("ActualitesBundle:Categorie")->RechercheTypeConseilDQL();
+        $dql="select c from ActualitesBundle:Conseil c ORDER BY c.idConseil DESC ";
+        $query=$em->createQuery($dql);
+        $paginator  = $this->get('knp_paginator');
+        $evenements = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
+        return $this->render('ActualitesBundle:ConseilViews:IndexConseil.html.twig', array("m" => $conseil,"c"=>$categorie
         ));
     }
+
 }

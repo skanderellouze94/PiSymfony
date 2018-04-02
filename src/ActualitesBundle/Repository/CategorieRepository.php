@@ -13,13 +13,13 @@ class CategorieRepository extends  \Doctrine\ORM\EntityRepository
 {
     public function RechercheTypeEvenementDQL()
     {
-        $querry = $this->getEntityManager()->createQuery("select c from ActualitesBundle:Categorie c where e.type ='Evenement'");
+        $querry = $this->getEntityManager()->createQuery("select c from ActualitesBundle:Categorie c where c.type ='Evenement'");
         return $querry->getResult();
     }
 
     public function RechercheTypeConseilDQL()
     {
-        $querry = $this->getEntityManager()->createQuery("select c from ActualitesBundle:Categorie c where e.type ='Conseil'");
+        $querry = $this->getEntityManager()->createQuery("select c from ActualitesBundle:Categorie c where c.type ='Conseil'");
         return $querry->getResult();
     }
 }
