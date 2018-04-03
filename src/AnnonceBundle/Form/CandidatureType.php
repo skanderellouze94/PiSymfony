@@ -16,9 +16,9 @@ class CandidatureType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('datePostulation')
+       // ->add('datePostulation')
             //  ->add('etat')
-            ->add('niveauEtude',ChoiceType::class,
+          $builder  ->add('niveauEtude',ChoiceType::class,
                 array(
                     'choices' => array(
                         'Baccalauréat' => 'Baccalauréat',
@@ -30,7 +30,7 @@ class CandidatureType extends AbstractType
                     )))
             ->add('cv', FileType::class, array ('label' => 'Cv', 'data_class'=>null))
             // ->add('idAnnonce')
-            ->add('idUtilisateur')
+           // ->add('idUtilisateur')
 
             ->add('Ajouter',submitType::class)
             ->setMethod('post');

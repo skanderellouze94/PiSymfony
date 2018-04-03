@@ -26,6 +26,7 @@ class AnnonceController extends Controller
             $annonce->setDateCreation(new \DateTime('now'));
             if ($annonce->getDateCreation() < $annonce->getDateExpiration()) {
                 $em = $this->getDoctrine()->getManager();
+                $annonce->setIdPartenaire( $this->container->get('security.token_storage')->getToken()->getUser());
                 $em->persist($annonce);
                 $em->flush();
             }
@@ -61,7 +62,7 @@ class AnnonceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $annonce = $em->getRepository("AnnonceBundle:Annonce")->find($id);
-
+        if ($annonce->getDateExpiration() >= $annonce->getDateExpiration())
         $em->remove($annonce);
         $em->flush();
         return $this->render('AnnonceBundle:AnnonceViews:SupprimerAnnonce.html.twig', array());

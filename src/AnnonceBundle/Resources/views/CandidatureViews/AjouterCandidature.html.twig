@@ -725,8 +725,33 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 bg-lightest-transparent p-30 pt-10">
                         <h3 class="text-center text-theme-colored mb-20">Postuler maintenant</h3>
-                        <form id="job_apply_form" name="job_apply_form" action="http://kodesolution.com/demo/wxyz/z/medikal/v4.0/demo/includes/job.php" method="post" enctype="multipart/form-data">
-                            {{ form(Form, { 'attr': {'class': 'form-group'} }) }}
+
+                        {{form_start(Form)}}
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label">Niveau Étude</label>
+                            <div class="col-sm-10">
+                                {{  form_widget(Form.niveauEtude, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 control-label">C/V Upload</label>
+                            <div class="col-sm-10">
+                                {{  form_widget(Form.cv, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <small>Maximum upload file size: 12 MB</small>
+                        </div>
+
+                        <div id="subform">
+
+                        </div>
+
+                        {{  form_row(Form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}
+
+                        {{form_end(Form)}}
+
+                        {#{{ form(Form, { 'attr': {'class': 'form-group'} }) }}#}
                         </form>
                         <!-- Job Form Validation-->
 

@@ -37,7 +37,9 @@ class CandidatureController extends Controller
                 $candidature->setCv($fileName);
 
                 $candidature->setEtat("En attente");
-                $candidature->setIdAnnonce($id);
+                $candidature->setIdAnnonce($annonce);
+                $candidature->setDatePostulation(new \DateTime('now'));
+                $candidature->setIdUtilisateur( $this->container->get('security.token_storage')->getToken()->getUser());
                 $em->persist($candidature);
                 $em->flush();
             }

@@ -31,12 +31,15 @@
                             {{  form_widget(Form.domaine, {'attr': {'class': 'form-control'}}) }}
                         </div>
 
+                        {#<div class="form-group">#}
+                            {#<label for="simpleFormPassword">Partenaire</label>#}
+                            {#{{  form_widget(Form.idPartenaire, {'attr': {'class': 'form-control'}}) }}#}
+                        {#</div>#}
+
                         <div class="form-group">
-                            <label for="simpleFormPassword">Partenaire</label>
-                            {{  form_widget(Form.idPartenaire, {'attr': {'class': 'form-control'}}) }}
+                            <label for="simpleFormPassword">Date Expiration</label>
+                            {{  form_widget(Form.dateExpiration, {'attr': {'class': 'form-control'}}) }}
                         </div>
-
-
 
                         <div class="form-group">
                             <label for="simpleFormEmail">Description</label>

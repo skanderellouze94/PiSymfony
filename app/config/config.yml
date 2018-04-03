@@ -6,17 +6,14 @@ imports:
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
 
-<<<<<<< HEAD
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-=======
-
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
 
     - { resource: "@RdvBundle/Resources/config/services.yml" }
 
->>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+
 
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
@@ -149,6 +146,6 @@ nomaya_social:
         pinterest:
             url:            null
     links:
-        facebook:           "http://www.facebook.com/yann.chauvel"
+        facebook:           "https://www.facebook.com/ranya.mideni.1"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional

@@ -1,9 +1,11 @@
-<<<<<<< HEAD
+pidev_esbe:
+    resource: "@PidevEsbeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
 
-=======
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
     prefix:   /
@@ -16,25 +18,16 @@ product_produitsalledesport:
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
->>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
-<<<<<<< HEAD
 
-=======
->>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
 
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
-
-
-pidev_esbe:
-    resource: "@PidevEsbeBundle/Resources/config/routing.yml"
-    prefix:   /
 
 fiche:
     resource: "@FicheBundle/Resources/config/routing.yml"

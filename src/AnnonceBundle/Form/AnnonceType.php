@@ -28,7 +28,7 @@ class AnnonceType extends AbstractType
             ->add('description')
             // ->add('dateCreation')
             ->add('dateExpiration', DateType::class, array('input' => 'datetime', 'widget' => 'single_text'))
-            ->add('idPartenaire')
+           // ->add('idPartenaire')
 
             ->add('Ajouter',submitType::class)
             ->setMethod('post');
