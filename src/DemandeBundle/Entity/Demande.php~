@@ -1,0 +1,132 @@
+<?php
+
+namespace DemandeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Demande
+ *
+ * @ORM\Table(name="demande", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_etab", columns={"id_etab"})})
+ * @ORM\Entity
+ */
+class Demande
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_demande", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idDemande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CIN", type="integer", nullable=false)
+     */
+    private $cin;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="date", nullable=false)
+     */
+    private $dateNaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CIN_image_recto", type="string", length=500, nullable=false)
+     */
+    private $cinImageRecto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CIN_image_verso", type="string", length=500, nullable=false)
+     */
+    private $cinImageVerso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diplome", type="string", length=500, nullable=false)
+     */
+    private $diplome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo_etab", type="string", length=500, nullable=false)
+     */
+    private $photoEtab;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_identifiant", type="integer", nullable=false)
+     */
+    private $numIdentifiant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="patente", type="string", length=500, nullable=false)
+     */
+    private $patente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=50, nullable=false)
+     */
+    private $etat;
+
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
+     */
+    private $idUser;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
+     */
+    private $idEtab;
+
+
+
+
+
+
+
+
+
+
+
+}
+

@@ -18,6 +18,10 @@ use ActualitesBundle\Entity\CommentaireEvent;
 
 class EvenementController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function AjouterEvenementAction(Request $request)
     {
         $evenements= new Evenements();
@@ -35,6 +39,8 @@ class EvenementController extends Controller
                 );
                 $evenements->setImage($fileName);
                 $em = $this->getDoctrine()->getManager();
+
+
                 $evenements->setArchive(0);
 
                 /*          $conseil->setIdUser($user = $this->getUser()->getId());*/
@@ -42,6 +48,7 @@ class EvenementController extends Controller
                 $b = date_format($evenements->getHoraireFin(), 'H:i:s');
                 $evenements->setHoraireCom($a);
                 $evenements->setHoraireFin($b);
+                $evenements->setIdcreator($user = $this->getUser());
                 $em->persist($evenements);
                 $em->flush();
                 return $this->redirectToRoute('afficherEvenements');
@@ -152,8 +159,6 @@ class EvenementController extends Controller
     public function chercherEvenementAction($id,Request $request)
     {
 
-
-
         $comEvent = new CommentaireEvent();
         $em=$this->getDoctrine()->getManager();
         $evenements = $em->getRepository("ActualitesBundle:Evenements")->find($id);
@@ -170,7 +175,7 @@ class EvenementController extends Controller
         $formAction->handleRequest($request);
         if ($formAction->isValid()) {
 
-    $valeur = $request->get('part');
+         $valeur = $request->get('part');
             if($valeur=='1')
             {
                 $action->setType('Participe');}
@@ -207,7 +212,8 @@ class EvenementController extends Controller
             $em = $this->getDoctrine()->getManager();
             $comEvent->setIdEvent($evenements);
 
-            /*          $categorie->setIdUser($user = $this->getUser()->getId());*/
+
+            $comEvent->setIdUser($user = $this->getUser());
             /*   $categorie->setIdUser(0);*/
             $em->persist($comEvent);
             $em->flush();

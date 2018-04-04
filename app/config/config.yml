@@ -5,16 +5,17 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-
     - { resource: "@RdvBundle/Resources/config/services.yml" }
-
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
-
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
-
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+    - { resource: "@ProductBundle/Resources/config/services.yml" }
+    - { resource: "@DemandeBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -47,6 +48,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    profiler:
+        collect: false
 
 # Twig Configuration
 twig:
@@ -108,6 +111,11 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
 
+knp_paginator:
+    template:
+         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+
+
 nomaya_social:
     buttons:
         facebook:
@@ -142,6 +150,8 @@ nomaya_social:
     theme:                  'default' # optional
 
 
+
 knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+

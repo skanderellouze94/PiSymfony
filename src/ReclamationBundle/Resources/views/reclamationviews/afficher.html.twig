@@ -1,15 +1,14 @@
 <table border="2px">
     <h1>La liste de vos reclamations</h1>
+    {{form(form, {'method': 'GET'}) }}
     {%for a in reclamations %}
 
         <tr>
-
-
             <td>{{ a.date | date('d/m/y') }}</td>
             <td>{{ a.objet }}</td>
             <td>{{ a.idetab }}</td>
 
-            <td>{{ a.message }}</td>
+            <td>{{ a.message | raw }}</td>
         </tr>
 
     {% endfor %}

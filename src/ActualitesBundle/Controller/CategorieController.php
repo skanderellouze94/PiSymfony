@@ -24,7 +24,7 @@ class CategorieController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            /*          $categorie->setIdUser($user = $this->getUser()->getId());*/
+                     $categorie->setIdUser($user = $this->getUser());
             /*   $categorie->setIdUser(0);*/
             $em->persist($categorie);
             $em->flush();

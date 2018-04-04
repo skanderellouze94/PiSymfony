@@ -1,0 +1,84 @@
+{% extends '::/BaseForm.html.twig' %}
+        {% block titreRow %}
+           <center> Créer demande partenariat</center>
+        {% endblock titreRow %}
+
+
+
+        {% block content %}
+            </br>
+           <center><p>Veuillez remplir le formulaire convenablement</p></center>
+            </br>
+            {{form_start(Form)}}
+
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Nom</label>
+                <div class="col-sm-10">
+                    {{   form_widget(Form.nom, {'attr': {'class': 'form-control', 'placeholder' : 'Votre nom'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Prénom</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.prenom, {'attr': {'class': 'form-control', 'placeholder' : 'Votre prenom'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">CIN</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.cin, {'attr': {'placeholder' : 'Votre cin'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Date Naissance</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.dateNaissance, {'attr': {'class': 'form-control', 'placeholder' : 'dateNaissance'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Image CIN (recto)</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.cinImageRecto, {'attr': {'class': 'form-control', 'placeholder' : 'lundi .. dimanche'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Image CIN (verso)</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.cinImageVerso, {'attr': {'class': 'form-control', 'placeholder' : 'cinImageVerso'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">diplome</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.diplome, {'attr': {'class': 'form-control', 'placeholder' : 'diplome'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">photoEtab</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.photoEtab, {'attr': {'class': 'form-control', 'placeholder' : 'photoEtab'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">numIdentifiant</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.numIdentifiant, {'attr': {'class': 'form-control', 'placeholder' : 'numIdentifiant'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">patente</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.patente, {'attr': {'class': 'form-control', 'placeholder' : 'patente'}}) }}
+                </div>
+            </div>
+
+
+<br><br><br>
+           <center> {{  form_row(Form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}</center>
+
+            {{ form_end(Form) }}
+
+
+
+
+        {% endblock content %}

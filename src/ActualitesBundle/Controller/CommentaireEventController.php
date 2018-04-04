@@ -25,8 +25,12 @@ class CommentaireEventController extends Controller
             dump($comEvent);
             exit();
             $em = $this->getDoctrine()->getManager();
+            $comEvent->setIdUser($user = $this->getUser());
+
+
             /*          $categorie->setIdUser($user = $this->getUser()->getId());*/
             /*   $categorie->setIdUser(0);*/
+
             $em->persist($comEvent);
             $em->flush();
 /*            return $this->redirectToRoute('afficherCategorie');*/

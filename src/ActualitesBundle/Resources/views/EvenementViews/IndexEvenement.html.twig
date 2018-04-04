@@ -10,9 +10,12 @@
 
             <!-- Start main-content -->
             <div class="main-content">
+                {% block titreForm  %}
+Liste des Evénements
+                {% endblock%}
 
                 <!-- Section: inner-header -->
-                <section class="inner-header divider parallax layer-overlay overlay-dark-8" data-bg-img="images/bg/bg1.jpg">
+               {# <section class="inner-header divider parallax layer-overlay overlay-dark-8" data-bg-img="images/bg/bg1.jpg">
                     <div class="container pt-60 pb-60">
                         <!-- Section Content -->
                         <div class="section-content">
@@ -24,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>#}
 
                 <section>
                     <div class="container mt-30 mb-30 pt-30 pb-30">
@@ -136,7 +139,7 @@
                                         <div class="search-form">
                                             <form>
                                                 <div class="input-group">
-                                                    <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                                   <center> <input type="text" placeholder="Click to Search" class="form-control search-input"></center>
                                                     <span class="input-group-btn">
                       <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
                       </span>
@@ -149,7 +152,7 @@
                                         <div class="categories">
                                             <ul class="list list-border angle-double-right">
                                                 {% for a in c %}
-                                                <li><a href="{{ path('indexEvenementCat',{'id':a.idCategorie}) }}">{{ a.nom }}</a></li>
+                                                    <li><a href="{{ path('indexEvenementCat',{'id':a.idCategorie}) }}">{{ a.nom }}</a></li>
                                                 {% endfor %}
 
                                             </ul>
@@ -160,12 +163,12 @@
                                         <div class="latest-posts">
                                             <article class="post media-post clearfix pb-0 mb-10">
                                                 {%  for mm in m  %}
-                                                <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/75x75.png" alt=""></a>
-                                                <div class="post-right">
-                                                   <center> <td><img style="width: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/> </td>
-                                                    <h5 class="post-title mt-0"><a href="#">{{ mm.nom  }}</a></h5>
-                                                    <p>{{ mm.dateDebut | date('d/m/y')  }}</p><br><br></center>
-                                                </div>
+                                                    <a class="post-thumb" href="#"><img src="../../../../../../../placehold.it/75x75.png" alt=""></a>
+                                                    <div class="post-right">
+                                                        <center> <td><img style="width: 100px;" src="{{asset("uploads/images/"~mm.image)}}"/> </td>
+                                                            <h5 class="post-title mt-0"><a href="#">{{ mm.nom  }}</a></h5>
+                                                            <p>{{ mm.dateDebut | date('d/m/y')  }}</p><br><br></center>
+                                                    </div>
                                                 {% endfor %}
                                             </article>
                                         </div>

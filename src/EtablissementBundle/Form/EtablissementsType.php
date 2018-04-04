@@ -19,9 +19,31 @@ class EtablissementsType extends AbstractType
         $builder
             ->add('nom',null, array('label' => false))
             ->add('adresse',null, array('label' => false))
-            ->add('image',FileType::class, array('label' => 'Image','data_class'=>null ,'label' => false))
-            ->add('dateOuverture',null, array('label' => false))
-            ->add('dateFermeture',null, array('label' => false))
+            ->add('image',FileType::class, array('data_class'=>null ,'label' => false))
+            ->add('dateOuverture',ChoiceType::class,
+                array(
+                    'choices' => array(
+                        '' => ' ',
+                        'Lundi' => 'Lundi',
+                        'Mardi' => 'Mardi',
+                        'Mercredi' => 'Mercredi',
+                        'Jeudi' => 'Jeudi',
+                        'Vendredi' => 'Vendredi',
+                        'Samedi' => 'Samedi',
+                        'Dimanche' => 'Dimanche'
+                        ),'label' => false))
+            ->add('dateFermeture',ChoiceType::class,
+                array(
+                    'choices' => array(
+                        '' => ' ',
+                        'Lundi' => 'Lundi',
+                        'Mardi' => 'Mardi',
+                        'Mercredi' => 'Mercredi',
+                        'Jeudi' => 'Jeudi',
+                        'Vendredi' => 'Vendredi',
+                        'Samedi' => 'Samedi',
+                        'Dimanche' => 'Dimanche'
+                    ),'label' => false))
             ->add('email',null, array('label' => false))
             ->add('numero',null, array('label' => false))
             ->add('fax',null, array('label' => false))

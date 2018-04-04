@@ -49,6 +49,14 @@ class AnnonceController extends Controller
         ));
     }
 
+    public function AfficherAnnoncesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $annonce = $em->getRepository("AnnonceBundle:Annonce")->findAll();
+        return $this->render('AnnonceBundle:AnnonceViews:AfficherAnnonceParPartenaire.html.twig', array("a" => $annonce
+        ));
+    }
+
     public function SupprimerAnnonceAction($id)
     {
         $em = $this->getDoctrine()->getManager();

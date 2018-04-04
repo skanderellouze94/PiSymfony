@@ -14,12 +14,12 @@ supprimer:
     path:     /SupprimerAnnonce/{id}
     defaults: { _controller: AnnonceBundle:Annonce:SupprimerAnnonce }
 
-modifier:
+modifier_annonce:
     path:     /ModifierAnnonce/{id}
     defaults: { _controller: AnnonceBundle:Annonce:ModifierAnnonce }
 
 ajouter_candidature:
-    path:     /AjouterCandidature
+    path:     /AjouterCandidature/{id}
     defaults: { _controller: AnnonceBundle:Candidature:AjouterCandidature }
 
 recherche:
@@ -29,3 +29,7 @@ recherche:
 rechercherAnnonce:
     path:     /RechercherParDomaine
     defaults: { _controller: AnnonceBundle:Annonce:Rechercher }
+
+afficher_annonce_part:
+    path:     /AfficherAnnonceParPartenaire
+    defaults: { _controller: AnnonceBundle:Annonce:AfficherAnnonces }

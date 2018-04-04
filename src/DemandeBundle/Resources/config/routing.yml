@@ -1,0 +1,11 @@
+demande_homepage:
+    path:     /
+    defaults: { _controller: DemandeBundle:Default:index }
+
+ajouter_demande:
+    path:     /AjouterDemande
+    defaults: { _controller: DemandeBundle:Demande:AjouterDemande }
+
+afficherDemandes:
+    path:     /AfficherDemandes
+    defaults: { _controller: DemandeBundle:Demande:AfficherDemandes }

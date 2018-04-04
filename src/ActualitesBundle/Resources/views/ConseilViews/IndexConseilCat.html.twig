@@ -1,0 +1,102 @@
+
+{% extends '::/BaseForm.html.twig' %}
+
+
+{% block title %}
+    Afficher Conseil Categories
+{% endblock title %}
+
+
+        {% block content %}
+
+
+            <!-- Start main-content -->
+            {% block titreForm  %}
+                Recherche Par catégorie
+            {% endblock%}
+            <div class="main-content">
+
+                {%  for mm in e  %}
+                    {% if loop.index%2!=0 %}
+                        <section id="cd-timeline" class="cd-container mt-100 mb-100">
+                        <div class="cd-timeline-block">
+                            <div class="cd-timeline-img cd-picture">
+                            </div> <!-- cd-timeline-img -->
+
+                            <div class="cd-timeline-content">
+                                <article class="post clearfix">
+                                    <div class="entry-header">
+                                        <div class="post-thumb"> <center><img style="width: 300px;" src="{{asset("uploads/images/"~mm.image)}}"></center> </div>
+{#
+                                        <h5 class="entry-title"><a href="#">{{ mm.nom  }}</a></h5>
+#}
+                                        <ul class="list-inline font-12 mb-20 mt-10">
+                                            <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
+{#
+                                            <li><span class="text-theme-colored">{{ mm.dateDebut | date('d/m/y')  }}</span></li>
+#}
+                                        </ul>
+                                    </div>
+                                    <div class="entry-content">
+                                        <p class="mb-30">{{ mm.description  }}<a href="#"></a></p>
+                                        <ul class="list-inline like-comment pull-left font-12">
+                                            <li><i class="pe-7s-comment"></i>36</li>
+                                        </ul>
+                                        <a class="pull-right text-gray font-13" href={#"{{ path('detailEvenement',{'id':mm.idEvent}) }}"#}><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                    {% if loop.index%2==0 %}
+                        <div class="cd-timeline-block">
+                            <div class="cd-timeline-img cd-movie">
+                            </div> <!-- cd-timeline-img -->
+
+                            <div class="cd-timeline-content">
+                                <article class="post clearfix">
+                                    <div class="entry-header">
+                                        <div class="post-thumb"> <center><img style="width: 300px;" src="{{asset("uploads/images/"~mm.image)}}"></center> </div>
+{#
+                                        <h5 class="entry-title"><a href="#">{{ mm.nom  }}</a></h5>
+#}
+                                        <ul class="list-inline font-12 mb-20 mt-10">
+                                            <li>posted by <a href="#" class="text-theme-colored">Admin |</a></li>
+{#
+                                            <li><span class="text-theme-colored">{{ mm.dateDebut | date('d/m/y')  }}</span></li>
+#}
+                                        </ul>
+                                    </div>
+                                    <div class="entry-content">
+                                        <p class="mb-30">{{ mm.description  }}<a href="#"></a></p>
+                                        <ul class="list-inline like-comment pull-left font-12">
+                                            <li><i class="pe-7s-comment"></i>36</li>
+                                        </ul>
+                                        <a class="pull-right text-gray font-13" href={#"{{ path('detailEvenement',{'id':mm.idEvent}) }}"#}><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+                                    </div>
+                                </article>
+                            </div> <!-- cd-timeline-content -->
+                        </div> <!-- cd-timeline-block -->
+
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+
+
+
+            </article>
+            </section>
+            </div>
+            </div> <!-- cd-timeline-content -->
+            </div> <!-- cd-timeline-block -->
+
+            </section>
+            </div>
+            <!-- end main-content -->
+
+
+        {% endblock  %}

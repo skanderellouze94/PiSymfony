@@ -16,9 +16,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CandidatureController extends Controller
 {
-    public function AjouterCandidatureAction(Request $request)
+    public function AjouterCandidatureAction(Request $request,$id)
     {
         $candidature = new Candidature();
+        $em = $this->getDoctrine()->getManager();
+        $annonce = $em ->getRepository("AnnonceBundle:Annonce")->find($id);
         $form = $this->createForm('AnnonceBundle\Form\CandidatureType', $candidature);
         $form->handleRequest($request);
         if ($form->isValid()){
@@ -33,8 +35,9 @@ class CandidatureController extends Controller
                     $this->getParameter('image_directory'),$fileName
                 );
                 $candidature->setCv($fileName);
-                $em = $this->getDoctrine()->getManager();
+
                 $candidature->setEtat("En attente");
+                $candidature->setIdAnnonce($id);
                 $em->persist($candidature);
                 $em->flush();
             }
@@ -44,6 +47,7 @@ class CandidatureController extends Controller
             }
         }
         return $this->render('AnnonceBundle:CandidatureViews:AjouterCandidature.html.twig', array(
+            'an'=>$annonce,
             'Form' => $form->createView()
         ));
     }

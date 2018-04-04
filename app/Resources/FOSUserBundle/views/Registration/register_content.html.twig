@@ -2,7 +2,7 @@
 {% block content %}
     <div class="login-box-body">
     <p class="login-box-msg"></p>
-        <form action="{{ path("fos_user_registration_register") }}" method="post">
+        {{ form_start(form) }}
             <div class="form-group has-feedback">
                 <input type="email" id="email" name="fos_user_registration_form[email]"  required="required" style="height: 30px" autocomplete="username" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -71,8 +71,9 @@
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
                 </div>
             </div>
-            <input name="fos_user_registration_form[_token]" hidden value="ce8rref-4CWV4DTxvlOrNPLpg3bZTQgX5_htDz5G5OM">
-        </form>
+
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
     </div>
 
     <script>

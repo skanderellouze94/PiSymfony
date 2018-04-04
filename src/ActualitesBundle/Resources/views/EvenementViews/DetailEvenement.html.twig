@@ -7,20 +7,9 @@
 
             <!-- Start main-content -->
             <div class="main-content">
-
-                <!-- Section: inner-header -->
-                <section class="inner-header divider parallax layer-overlay overlay-dark-8" data-bg-img="images/bg/bg1.jpg">
-                    <div class="container pt-60 pb-60">
-                        <!-- Section Content -->
-                        <div class="section-content">
-                            <div class="row">
-                                <div class="col-md-12 xs-text-center">
-                                   <center> <h3 class="title text-white">Detail de l'événement</h3></center>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {% block titreForm  %}
+                    Detail de l'événement
+                {% endblock%}
 
                 <!-- Section: Blog -->
                 <section>
@@ -120,7 +109,7 @@
                                     <div class="comment-box">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <h5>Leave a Comment</h5>
+                                                <h5>Laisser un commentaire</h5>
                                                 <div class="row">
                                                     <form role="form" id="comment-form">
 

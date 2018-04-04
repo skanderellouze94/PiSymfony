@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="herboriseterie", indexes={@ORM\Index(name="herboriseterie_ibfk_1", columns={"id_etab"})})
  * @ORM\Entity
  */
-class Herboriseterie extends Etablissements
+class Herboriseterie
 {
     /**
      * @var string

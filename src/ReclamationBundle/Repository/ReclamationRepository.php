@@ -10,8 +10,21 @@ namespace ReclamationBundle\Repository;
  */
 class ReclamationRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findbyobjet($obj){
-    $querry = $this->getEntityManager()->createQuery("select r from ReclamationBundle:Reclamation r where r.objet=$obj; ");
-    return $querry->getResult();
-}
+    public function findFiltredFields($filtredFields){
+        unset($filtredFields['_token']);
+
+        $query = $this->createQueryBuilder('m')
+            ->select('m');
+        foreach($filtredFields as $field=>$value){
+
+            if($value !=''){
+                $query
+                    ->andWhere('m.'.$field.' = :value')
+                    ->setParameter('value', $value);
+            }
+
+        }
+        return $query;
+    }
+
 }
