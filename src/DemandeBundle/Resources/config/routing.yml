@@ -9,3 +9,7 @@ ajouter_demande:
 afficherDemandes:
     path:     /AfficherDemandes
     defaults: { _controller: DemandeBundle:Demande:AfficherDemandes }
+
+declinerDemande:
+    path:     /declinerDemande/{id}
+    defaults: { _controller: DemandeBundle:Demande:DeclinerDemande }

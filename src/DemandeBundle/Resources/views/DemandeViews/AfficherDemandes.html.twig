@@ -81,6 +81,12 @@
                                      <tbody>
                                      {%  for mm in m  %}
 
+                                     if(mm.etat=="Refusée")
+                                     {
+
+                                     }
+
+
                                      <tr>
 
                                          <td>{{ mm.nom }}</td>
@@ -105,11 +111,12 @@
                                                      class="btn deepPink btn-outline m-b-10">Accepter
                                              </button>
 
-                                             <button type="button" style="width:95px" class="btn dark btn-outline m-b-10">Refuser</button>
+                                             <button type="button" style="width:95px" class="btn dark btn-outline m-b-10" href={{ path('declinerDemande',{'id':mm.idDemande})}}>Refuser</button>
 
 
-                                             {% endfor %}
+
                                          </td>
+                                         {% endfor %}
                                      </tr>
 
                                      </tbody>

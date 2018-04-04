@@ -107,6 +107,7 @@ class EtablissementController extends Controller
             $em->persist($establishment);
             $em->persist($subEstab);
             $em->flush();
+            return $this->redirectToRoute('ajouter_demande');
 
         }
 

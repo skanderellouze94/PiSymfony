@@ -110,5 +110,36 @@ class DemandeController extends Controller
 
 
 
+    public function DeclinerDemandeAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $demande=$em->getRepository("DemandeBundle:Demande")->find($id);
+        $demande->setEtat("Refusée");
+        $etab =$demande->getIdEtab();
+        $em->remove($etab);
+
+        $em->persist($demande);
+        $em->flush();
+
+        $demande = $em->getRepository("DemandeBundle:Demande")->findAll();
+        return $this->render('DemandeBundle:DemandeViews:AfficherDemandes.html.twig',array("m" => $demande
+        ));
+    }
+
+
+    public function AccepterDemandeAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $demande=$em->getRepository("DemandeBundle:Demande")->find($id);
+        $demande->setEtat("Accéptée");
+
+        $em->persist($demande);
+        $em->flush();
+
+        return $this->render('DemandeBundle:DemandeViews:AfficherDemandes.html.twig',array("m" => $demande
+        ));
+    }
+
+
 
 }
