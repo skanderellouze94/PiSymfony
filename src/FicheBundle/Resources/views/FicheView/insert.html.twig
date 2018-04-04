@@ -4,6 +4,16 @@
         {% endblock title %}
 
         {% block body %}
+<form method="POST">
+            <select name="pat">
+
+                {% for p in patients %}
+                    <option value={{ p.id }}>{{ p.nom }}</option>
+                {% endfor %}
+            </select>
+
             {{ form(form)}}
+</form>
+
         {% endblock body %}
 

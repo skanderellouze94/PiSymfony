@@ -13,11 +13,13 @@ class EtablissementsRepository extends  \Doctrine\ORM\EntityRepository
 
             if($value !=''){
                 $query
-                    ->andWhere('m.'.$field.' LIKE  :value')
+                        ->andWhere('m.'.$field.' LIKE  :value')
                     ->setParameter('value', '%'.$value.'%');
             }
 
         }
         return $query;
     }
+
+
 }

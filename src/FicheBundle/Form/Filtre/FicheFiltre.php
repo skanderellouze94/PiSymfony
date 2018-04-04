@@ -1,6 +1,6 @@
 <?php
 
-namespace FicheBundle\Form;
+namespace FicheBundle\Form\Filtre;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
@@ -9,23 +9,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FichepatientType extends AbstractType
+class FicheFiltre extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('suiviehtml', CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff'
-                )))
-            ->add('ajouter',SubmitType::class)
-            ->setMethod('post');
+        $builder->add('idpatient',null, array('label' => false));
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

@@ -34,6 +34,10 @@ show:
     path:     /show/{id}
     defaults: { _controller: EtablissementBundle:Etablissement:show}
 
+edit:
+    path:     /monetab/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:monEtab}
+
 insertCabinet:
     path:     /insertCabinet
     defaults: { _controller: EtablissementBundle:CabinetMedical:insert}

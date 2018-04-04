@@ -40,7 +40,6 @@ class EtablissementController extends Controller
 
             $filterForm->get('nom')->setData($filtredFields['nom']);
 
-
         }
 
         $paginator  = $this->get('knp_paginator');
@@ -103,11 +102,11 @@ class EtablissementController extends Controller
                 $establishment->setHeureFermeture(date_format(getHeureFermeture(),'H:i'));*/
 
 
+            $establishment->setUser( $this->container->get('security.token_storage')->getToken()->getUser());
 
             $em->persist($establishment);
             $em->persist($subEstab);
             $em->flush();
-            return $this->redirectToRoute('ajouter_demande');
 
         }
 
@@ -232,6 +231,33 @@ class EtablissementController extends Controller
         }
 
         return $subEstablishmentObj;
+    }
+
+    public function monEtabAction(Request $request,$id)
+    {
+        $etab = new Etablissements();
+        $em = $this->getDoctrine()->getManager();
+        $id=$this->container->get('security.token_storage')->getToken()->getUser()->getId();
+        $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
+            ->findOneBy(['user' => $id]);
+        $form = $this->createForm('EtablissementBundle\Form\EtablissementsEditType', $etab);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $etab->getImage();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move(
+                $this->getParameter('image_directory'), $fileName
+            );
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($etab);
+            $em->flush();
+        }
+        return $this->render('EtablissementBundle:EtablissementView:monEtab.html.twig', array(
+            'form' => $form->createView(),
+
+        ));
     }
 
 }
