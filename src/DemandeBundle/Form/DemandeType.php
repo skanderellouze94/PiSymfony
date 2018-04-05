@@ -19,14 +19,7 @@ class DemandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
             ->add('cin')
-            ->add('dateNaissance',DateType::class, array(
-                'input' => 'datetime',
-                'widget' => 'choice',
-                'format' =>'dd/MM/yyyy',
-            ))
             ->add('cinImageRecto',FileType::class, array('data_class' => null,'label'=>false
             ))
             ->add('cinImageVerso',FileType::class, array('data_class' => null,'label'=>false

@@ -155,3 +155,5 @@ knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
 
+eko_google_translate:
+    api_key: key=AIzaSyBgiMhanXDLu8AzEwVeHcdelfxi9Em5fgQ

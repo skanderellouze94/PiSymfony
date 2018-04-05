@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Nomaya\SocialBundle\NomayaSocialBundle(),
             new ProductBundle\ProductBundle(),
             new DemandeBundle\DemandeBundle(),
+            new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

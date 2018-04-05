@@ -95,3 +95,6 @@ RechercheDateSemaineEvent:
 AfficherEvenements3Event:
     path:     /AfficherEvenements3
     defaults: { _controller: ActualitesBundle:Evenement:AfficherEvenements3 }
+trans:
+    path:     /trans/{id}
+    defaults: { _controller: ActualitesBundle:Evenement:trans}

@@ -14,25 +14,26 @@
             <div class="form-group row">
                 <label class="col-sm-2 control-label">Nom</label>
                 <div class="col-sm-10">
-                    {{   form_widget(Form.nom, {'attr': {'class': 'form-control', 'placeholder' : 'Votre nom'}}) }}
+                    <input type="text" name="nom" value="{{ user.nom }} " >
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 control-label">Prénom</label>
                 <div class="col-sm-10">
-                    {{  form_widget(Form.prenom, {'attr': {'class': 'form-control', 'placeholder' : 'Votre prenom'}}) }}
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 control-label">CIN</label>
-                <div class="col-sm-10">
-                    {{  form_widget(Form.cin, {'attr': {'placeholder' : 'Votre cin'}}) }}
+                    <input type="text" name="prenom" value="{{ user.prenom }} " >
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 control-label">Date Naissance</label>
                 <div class="col-sm-10">
-                    {{  form_widget(Form.dateNaissance, {'attr': {'class': 'form-control', 'placeholder' : 'dateNaissance'}}) }}
+                    <input type="date" name="date" value="{{ user.dateNaissance|date('Y-m-d') }}" >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">CIN</label>
+                <div class="col-sm-10">
+                    {{  form_widget(Form.cin) }}
+
                 </div>
             </div>
             <div class="form-group row">
