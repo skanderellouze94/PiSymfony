@@ -762,7 +762,7 @@
                                         <div class="input-group" style="display: inline">
                                             {#{{form(form, {'method': 'GET'}) }}#}
                                             {{ form_start(form) }}
-                                            {{  form_row(form.nom, {'attr': {'class': 'form-control search-input', 'placeholder' : 'Vous cherchez un etablissement ?'}}) }}
+                                            {{  form_row(form.field, {'attr': {'class': 'form-control search-input', 'placeholder' : 'Vous cherchez un etablissement ?'}}) }}
                                             {#<input type="text" placeholder="Click to Search" class="form-control search-input">#}
                                             <span class="input-group-btn">
                       <button type="submit" class="btn"><i class="fa fa-search"></i></button>
@@ -808,6 +808,8 @@
                                         <p>{{ a.siteWeb }}</p>
                                         {% set etab=a  %}
                                         <a href={{ path('show',{'id':a.id}) }}  >Voir plus <i class=" fa fa-angle-double-right"></i></a>
+
+
                                     </div>
                                 </div>
 

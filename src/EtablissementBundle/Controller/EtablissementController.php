@@ -17,6 +17,7 @@ use EtablissementBundle\Entity\Hopitaux;
 use EtablissementBundle\Entity\Laboratoire;
 use EtablissementBundle\Entity\Parapharmacie;
 use EtablissementBundle\Entity\Pharmacie;
+use EtablissementBundle\Entity\Rating;
 use EtablissementBundle\Entity\SalleDeSport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -38,7 +39,7 @@ class EtablissementController extends Controller
         if(sizeof($request->query->get('etablissementbundle_etab_filter')) >0){
             $query =   $em->getRepository('EtablissementBundle:Etablissements')->findFiltredFields($request->query->get('etablissementbundle_etab_filter'));
 
-            $filterForm->get('nom')->setData($filtredFields['nom']);
+            $filterForm->get('field')->setData($filtredFields['field']);
 
         }
 
@@ -98,8 +99,6 @@ class EtablissementController extends Controller
                 throw new \Exception('moma');
             }
             $subEstab->setIdEtab($establishment);
-             /*   $establishment->setHeureOuverture(date_format($establishment->getHeureOuverture(),'H:i'));
-                $establishment->setHeureFermeture(date_format(getHeureFermeture(),'H:i'));*/
 
 
             $establishment->setUser( $this->container->get('security.token_storage')->getToken()->getUser());
@@ -170,13 +169,34 @@ class EtablissementController extends Controller
 
     public function showAction(Request $request , $id)
     {
-        $em=$this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
             ->find("$id");
 
-        return $this->render('EtablissementBundle:EtablissementView:show.html.twig', array('e'=>$etab
-        ));
+        $r = new Rating();
+
+        $ratings = $em->getRepository(("EtablissementBundle:Rating"))->findAll();
+        foreach ($ratings as $rat)
+        {
+            if(($rat->getIdUser()==$this->container->get('security.token_storage')->getToken()->getUser()) and ($rat->getIdEtab()==$etab))
+            {$r = $em->getRepository(("EtablissementBundle:Rating"))->find($rat->getId());}
+        }
+
+        $form = $this->createForm('EtablissementBundle\Form\RatinggType', $r);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $r->setIdEtab($etab);
+            $r->setIdUser($this->container->get('security.token_storage')->getToken()->getUser());
+            $em->persist($r);
+            $em->flush();
+
+        }
+        return $this->render('EtablissementBundle:EtablissementView:show.html.twig', array('e' => $etab,
+            'form' => $form->createView()));
     }
 
     /**

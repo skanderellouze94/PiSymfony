@@ -28,7 +28,8 @@ class FichepatientController extends Controller
             ->findOneBy(['user' => $this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
         $patients = $EM->getRepository(("FicheBundle:Fichepatient"))
-            ->fichePatientNonexistant($this->container->get('security.token_storage')->getToken()->getUser()->getId());
+            ->fichePatientNonexistant($etab);
+
 
 
         if ($form->isValid()) {
@@ -44,6 +45,7 @@ class FichepatientController extends Controller
             $fiche->setIdetab($etab);
             $em->persist($fiche);
             $em->flush();
+            return $this->redirectToRoute('indexx');
 
         }
 
@@ -96,10 +98,12 @@ class FichepatientController extends Controller
             ->find("$id");
         $form = $this->createForm(FichepatientType::class, $fiche);
         $form->handleRequest($request);
-        $fiche->setSuivie(strip_tags($fiche->getSuiviehtml()));
-        $em->persist($fiche);
-        $em->flush();
-
+        if ($form->isValid()) {
+            $fiche->setSuivie(strip_tags($fiche->getSuiviehtml()));
+            $em->persist($fiche);
+            $em->flush();
+            return $this->redirectToRoute('indexx');
+        }
         return $this->render('FicheBundle:FicheView:modif.html.twig', array(
             'form' => $form->createView(),'v'=>$fiche
 

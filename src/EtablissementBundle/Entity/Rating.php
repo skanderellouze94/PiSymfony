@@ -133,4 +133,11 @@ class Rating
     {
         return $this->idUser;
     }
+
+    public function __get($name)
+    {
+        // TODO: Implement __get() method.
+    }
+
+
 }

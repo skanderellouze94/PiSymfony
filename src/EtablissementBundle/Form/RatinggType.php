@@ -2,12 +2,13 @@
 
 namespace EtablissementBundle\Form;
 
+use blackknight467\StarRatingBundle\Form\RatingType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RatingType extends AbstractType
+class RatinggType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,7 +16,7 @@ class RatingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rating', \blackknight467\StarRatingBundle\Form\RatingType::class, ['label' => 'Mon évaluation'])
+            ->add('note', RatingType::class, ['label' => 'Mon évaluation'])
             ->add('Donnez votre avis',SubmitType::class);
     }/**
      * {@inheritdoc}
