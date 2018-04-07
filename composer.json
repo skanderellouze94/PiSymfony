@@ -24,6 +24,8 @@
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.7",
+        "knplabs/knp-snappy-bundle": "^1.4",
+        "nomaya/social-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/monolog-bundle": "^3.1.0",
@@ -31,8 +33,17 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
         "twig/twig": "^1.0||^2.0",
+<<<<<<< HEAD
         "nomaya/social-bundle": "dev-master",
         "ob/highcharts-bundle": "dev-master"
+=======
+<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
+        "nomaya/social-bundle": "dev-master",
+        "eko/googletranslatebundle": "dev-master"
+=======
+        "vich/uploader-bundle": "^1.4"
+>>>>>>> CRUD produit + service
+>>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

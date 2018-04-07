@@ -9,6 +9,7 @@
 namespace DemandeBundle\Controller;
 
 
+use PidevEsbeBundle\Entity\FosUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DemandeBundle\Entity\Demande;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -23,7 +24,9 @@ class DemandeController extends Controller
         $form = $this->createForm('DemandeBundle\Form\DemandeType', $demande);
         $form->handleRequest($request);
         if ($form->isValid() && $form->isSubmitted())
-        {
+        {$demande->setNom($request->get('nom'));
+            $demande->setDateNaissance(new \DateTime($request->getFormat('date')));
+            $demande->setPrenom($request->get('prenom'));
             /**
              * @var UploadedFile $file
              */
@@ -72,20 +75,17 @@ class DemandeController extends Controller
                 $demande->setPhotoEtab($fileName);
 
 
-
-
-
             $em = $this->getDoctrine()->getManager();
             $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
              ->findOneBy(['user'=> $this->container->get('security.token_storage')->getToken()->getUser()]);
-
-
             $demande->setIdUser($user = $this->getUser());
             $demande->setEtat("Pas Encore ");
             $demande->setIdEtab($etab);
 
+
             $em->persist($demande);
             $em->flush();
+
            /* return $this->redirectToRoute('insert');*/}
 
         else
@@ -94,9 +94,11 @@ class DemandeController extends Controller
             }
         }
 
+        $u = $this->container->get('security.token_storage')->getToken()->getUser();
 
         return $this->render('DemandeBundle:DemandeViews:AjouterDemande.html.twig', array(
-            'Form' => $form->createView()
+            'Form' => $form->createView(),
+            'user'=>$u
         ));
     }
 
@@ -132,10 +134,26 @@ class DemandeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $demande=$em->getRepository("DemandeBundle:Demande")->find($id);
         $demande->setEtat("Accéptée");
+        $user = $demande->getIdUser();
 
+        $user->addRole('ROLE_PARTENAIRE');
+
+
+        $message = ($message = \Swift_Message::newInstance())
+            ->setFrom('EspaceSanteRoot@gmail.com')
+            ->setTo($demande->getIdUser()->getEmail())
+            ->setBody('Here is the message itself');
+
+
+        $this->get('mailer')->send($message);
+
+        $em1 = $this->getDoctrine()->getManager();
+        $em1->persist($user);
+        $em1->flush();
         $em->persist($demande);
         $em->flush();
 
+        $demande = $em->getRepository("DemandeBundle:Demande")->findAll();
         return $this->render('DemandeBundle:DemandeViews:AfficherDemandes.html.twig',array("m" => $demande
         ));
     }

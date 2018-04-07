@@ -13,3 +13,7 @@ afficherDemandes:
 declinerDemande:
     path:     /declinerDemande/{id}
     defaults: { _controller: DemandeBundle:Demande:DeclinerDemande }
+
+accepterDemande:
+    path:     /accepterDemande/{id}
+    defaults: { _controller: DemandeBundle:Demande:AccepterDemande }

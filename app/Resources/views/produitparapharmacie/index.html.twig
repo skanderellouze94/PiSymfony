@@ -1,0 +1,77 @@
+{% extends '::/AdminBase.html.twig' %}
+ {% block title %}
+     Mes Produits
+ {% endblock title %}
+ {% block titleP %}
+     Mes Produits
+ {% endblock titleP %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-topline-aqua">
+                <div class="card-head">
+                    <header>Mes Produit</header>
+                </div>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="btn-group">
+                                <a href="{{ path('produitparapharmacie_new') }}">
+                                    <button id="sample_editable_1_new" class="btn btn-info"> Add New
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="example1" class="display" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Marque</th>
+                            <th>Categorie</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in produitParapharmacies %}
+                            <tr>
+                                <td class="patient-img sorting_1" style=" width: 40px;">
+                                    <img src="{{ asset('/uploads/images/products/') }}{{ p.IdProduit.image }}" alt="">
+                                </td>
+                                <td><a href="{{ path('produitparapharmacie_show',{idProduit :p.idProduit.idProduit}) }}">{{ p.IdProduit.nom }}</a></td>
+                                <td>{{ p.IdProduit.description }}</td>
+                                <td>{{ p.marque }}</td>
+                                <td>{{ p.categorie}}</td>
+                                <td >
+                                    <a href="{{ path('produitparapharmacie_edit',{idProduit : p.idProduit.idProduit}) }}" class="btn btn-primary">
+                                        <span><i class="fa fa-pencil"></i></span>
+                                    </a>
+                                    <br>
+                                    <a href="{{ path('produitparapharmacie_delete',{idProduit : p.idProduit.idProduit}) }}" class="btn btn-danger">
+                                        <i class="fa fa-trash-o "></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script  src="{{ asset('assets/back/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/back/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/back/table_data.js') }}"></script>
+    <link href="{{ asset('assets/back/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
+

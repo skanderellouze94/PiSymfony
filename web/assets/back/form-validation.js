@@ -11,7 +11,7 @@ var FormValidation = function () {
         // for more info visit the official plugin documentation: 
             // http://docs.jquery.com/Plugins/Validation
 
-            var form1 = $('#form_sample_1');
+            var form1 = $('#form_AddSalle');
 
             form1.validate({
                 errorElement: 'span', //default input error message container
@@ -25,7 +25,7 @@ var FormValidation = function () {
                     }
                 },
                 rules: {
-                    name: {
+                    nom: {
                         minlength: 2,
                         required: true
                     },
@@ -110,13 +110,13 @@ var FormValidation = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 ignore: "",  // validate all fields including form hidden input
                 rules: {
-                    name: {
+                    nom: {
                         minlength: 2,
                         required: true
                     },
-                    email: {
+                    description: {
                         required: true,
-                        email: true
+                        minlength: 5
                     },
                     email: {
                         required: true,

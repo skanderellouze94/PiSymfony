@@ -273,4 +273,16 @@ class EvenementController extends Controller
 
     }
 
+    public function transAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $evenements = $em->getRepository(Evenements::class)->find($id);
+        $translator = $this->get('eko.google_translate.translator');
+        $value = $translator->translate($evenements->getDescription(), 'en');
+        $evenements->setDescription($value);
+
+        return $this->render('ActualitesBundle:EvenementViews:IndexEvenement.html.twig', array("e"=>$evenements));
+
+    }
+
 }

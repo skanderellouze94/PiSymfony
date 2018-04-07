@@ -1,0 +1,75 @@
+{% extends '::/AdminBase.html.twig' %}
+ {% block title %}
+     Ajouter Produit Para
+ {% endblock title %}
+ {% block titleP %}
+     Ajouter Produit Para
+ {% endblock %}
+{% block script %}
+    <link href="{{ asset('assets/back/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
+
+{% endblock script %}
+{% block body %}
+    <div class="card-body" id="bar-parent">
+        {{ form_start(form, {'attr': {'id': 'form_AddSalle'}}) }}
+        <div class="form-body">
+            <div class="form-group row">
+                <label class="control-label col-md-3">Name
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-5">
+                    <input type="text"  name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Description
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-5">
+                    <input type="text" name="description" data-required="1" placeholder="enter Description"  class="form-control input-height"> </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Marque
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-5">
+                    <input type="text" name="marque" data-required="1" placeholder="enter marque"  class="form-control input-height"> </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Prix
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-5">
+                    <input name="prix" type="text" placeholder="prix"  class="form-control input-height"> </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Type
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <div class="col-md-5">
+                    <input name="type" type="text" placeholder="categorie"  class="form-control input-height"> </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">Produit image
+                </label>
+                <div class="compose-editor">
+
+                    {{ form_row(form.image) }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="offset-md-3 col-md-5">
+                        <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ asset('assets/back/jquery-validation/js/jquery.validate.min.js') }}" ></script>
+    <script src="{{ asset('assets/back/jquery-validation/js/additional-methods.min.js')}}" ></script>
+    <script src="{{ asset('assets/back/form-validation.js')}}"></script>
+{% endblock %}
