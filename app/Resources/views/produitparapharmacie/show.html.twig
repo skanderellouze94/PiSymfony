@@ -1,0 +1,55 @@
+{% extends '::/AdminBase.html.twig' %}
+{% block pagetitle %}
+    {{ produitParapharmacie.IdProduit.nom }}
+{% endblock %}
+{% block titleP %}
+    Produit {{ produitParapharmacie.IdProduit.nom }}
+{% endblock %}
+    {% block script %}
+        <link href="{{ asset('css/seif.css') }}" rel="stylesheet"/>
+    {% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-topline-aqua">
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="product-image-large">
+                                    <img style="max-width: 100%;" src="{{ asset('/uploads/images/products/') }}{{ produitParapharmacie.IdProduit.image }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 product-details">
+                                <h1 style="color: #00C0EF;">{{ produitParapharmacie.IdProduit.nom }}</h1>
+                                <h5>Description :</h5>
+                                <p>
+                                    {{ produitParapharmacie.IdProduit.description }}
+                                </p>
+                                <p><strong>Prix: </strong>{{ produitParapharmacie.IdProduit.prix }}</p>
+                                <p><strong>Marque: </strong>{{ produitParapharmacie.marque }}</p>
+                                <p><strong>Categorie: </strong>{{ produitParapharmacie.categorie }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a href="{{ path('produitparapharmacie_edit',{idProduit : produitParapharmacie.idProduit.idProduit}) }}">
+                                    <button type="button" class="btn btn-primary btn-block">Edit</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="{{ path('produitparapharmacie_delete',{idProduit : produitParapharmacie.idProduit.idProduit}) }}">
+                                    <button type="button" class="btn btn-danger btn-block">Delete</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+{% endblock %}

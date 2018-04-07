@@ -12,63 +12,65 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProduitsController extends Controller
 {
-    /**
-     * Lists all produit entities.
-     *
-     */
-    public function indexAction()
+
+
+    public function indexAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT p FROM ProductBundle:Produits p";
+        $query = $em->createQuery($dql);
 
-        $produits = $em->getRepository('ProductBundle:Produits')->findAll();
-
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render('ProductBundle:produits:index.html.twig', array(
-            'produits' => $produits,
+            'pagination' => $pagination
         ));
     }
 
-    /**
-     * Creates a new produit entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $produit = new Produits();
-        $form = $this->createForm('ProductBundle\Form\ProduitsType', $produit);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($produit);
-            $em->flush();
 
-            return $this->redirectToRoute('produits_show', array('idProduit' => $produit->getIdproduit()));
-        }
-
-        return $this->render('ProductBundle:produits:new.html.twig', array(
-            'produit' => $produit,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a produit entity.
-     *
-     */
     public function showAction(Produits $produit)
     {
-        $deleteForm = $this->createDeleteForm($produit);
 
-        return $this->render('ProductBundle/produits/show.html.twig', array(
-            'produit' => $produit,
-            'delete_form' => $deleteForm->createView(),
-        ));
+
+        $em = $this->getDoctrine()->getManager();
+        if($produit->getType() === "para"){
+            $p = $em->getRepository('ProductBundle:ProduitParapharmacie')->find($produit);
+            return $this->render('ProductBundle:produits:showPara.html.twig', array(
+                'produit' => $p,
+
+            ));
+        }
+        elseif ($produit->getType() == "herbo"){
+            $p = $em->getRepository('ProductBundle:ProduitHerbo')->find($produit);
+            return $this->render('ProductBundle:produits:showHerbo.html.twig', array(
+                'produit' => $p,
+
+            ));
+
+        }
+        elseif ($produit->getType()== "pharma"){
+            $p = $em->getRepository('ProductBundle:ProduitPharmaceutique')->find($produit);
+            return $this->render('ProductBundle:produits:showPharma.html.twig', array(
+                'produit' => $p,
+
+            ));
+        }
+        else{
+            $p = $em->getRepository('ProductBundle:ProduitSalledesport')->find($produit);
+            return $this->render('ProductBundle:produits:showSalle.html.twig', array(
+                'produit' => $p,
+
+            ));
+        }
     }
 
-    /**
-     * Displays a form to edit an existing produit entity.
-     *
-     */
+
     public function editAction(Request $request, Produits $produit)
     {
         $deleteForm = $this->createDeleteForm($produit);

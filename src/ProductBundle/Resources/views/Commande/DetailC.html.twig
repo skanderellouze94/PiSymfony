@@ -1,0 +1,30 @@
+{% extends "::/base.html.twig" %}
+
+{% block title %}ProductBundle:Commande:ShowP{% endblock %}
+
+{% block content %}
+    <div data-example-id="contextual-table" class="bs-example">
+        <h1>Mes Commande</h1>
+        <table class="table" border="1">
+            <thead>
+            <tr class="info">
+                <th>Produit Name</th>
+                <th>Produit type</th>
+                <th>Quantite</th>
+                <th>Etat</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for c in dc %}
+                <tr >
+                <th scope="row">{{ c.produit.nom }}</th>
+                <td>{{ c.produit.type }}</td>
+                <td>{{ c.quantite }}</td>
+                    <td>{{ c.commande.type }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

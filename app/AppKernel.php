@@ -5,6 +5,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+
     public function registerBundles()
     {
         $bundles = [
@@ -30,8 +31,14 @@ class AppKernel extends Kernel
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
             new ProductBundle\ProductBundle(),
+<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
             new DemandeBundle\DemandeBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
+=======
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+>>>>>>> CRUD produit + service
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

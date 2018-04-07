@@ -1,0 +1,10 @@
+_show_u:
+    path:     /ShowU
+    defaults: { _controller: ProductBundle:Commande:ShowU }
+
+_show_p:
+    path:     /ShowP
+    defaults: { _controller: ProductBundle:Commande:ShowP }
+_show_DC:
+    path:     /{idc}/ShowCD
+    defaults: { _controller: ProductBundle:Commande:ShowC }

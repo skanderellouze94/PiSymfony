@@ -1,45 +1,67 @@
-{% extends 'base.html.twig' %}
+{% extends '::/base.html.twig' %}
 
 {% block content %}
-    <h1>Produits list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Prix</th>
-                <th>Idproduit</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for produit in produits %}
-            <tr>
-                <td><a href="{{ path('produits_show', { 'idProduit': produit.idProduit }) }}">{{ produit.nom }}</a></td>
-                <td>{{ produit.description }}</td>
-                <td>{{ produit.image }}</td>
-                <td>{{ produit.prix }}</td>
-                <td>{{ produit.idProduit }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('produits_show', { 'idProduit': produit.idProduit }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('produits_edit', { 'idProduit': produit.idProduit }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('produits_new') }}">Create a new produit</a>
-        </li>
-    </ul>
+                    <div class="col-md-9">
+                        <div class="products">
+                            <div class="row multi-row-clearfix">
+                                {% for s in pagination %}
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <img alt="" style="display: block;
+  max-width:270px;
+  max-height:200px;
+  width: 270px;
+  height: 200px;" src="{{ asset('/uploads/images/products/') }}{{ s.image }}" class="img-responsive img-fullwidth " >
+                                            <div class="overlay"></div>
+                                        </div>
+                                        <div class="product-details text-center">
+                                            <a href="{{ path('produits_show',{idProduit:s.IdProduit}) }}"><h5 class="product-title">{{ s.nom|upper }}</h5></a>
+                                            <div class="" title="Rated 4.50 out of5">{{ s.type }}</div>
+                                            <div class="price"><ins><span class="amount">${{ s.prix }}</span></ins></div>
+                                            <div class="btn-add-to-cart-wrapper">
+                                                <a class="btn btn-default btn-xs btn-add-to-cart" href="{{ path('P_ajouter',{id: s.IdProduit}) }}">Add To Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ knp_pagination_render(pagination) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="sidebar sidebar-right mt-sm-30">
+                            <div class="widget">
+                                <h5 class="widget-title line-bottom">Search box</h5>
+                                <div class="search-form">
+                                    <form>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                            <span class="input-group-btn">
+                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                        </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="widget">
+                                <h5 class="widget-title line-bottom">Categories</h5>
+                                <div class="categories">
+                                    <ul class="list list-border angle-double-right">
+                                        <li><a href="#" >Creative<span>(19)</span></a></li>
+                                        <li><a href="#">Portfolio<span>(21)</span></a></li>
+                                        <li><a href="#">Fitness<span>(15)</span></a></li>
+                                        <li><a href="#">Gym<span>(35)</span></a></li>
+                                        <li><a href="#">Personal<span>(16)</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 {% endblock %}

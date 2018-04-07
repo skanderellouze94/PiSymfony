@@ -9,7 +9,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="description" content="Responsive Admin Template" />
     <meta name="author" content="RedstarHospital" />
-    <title>Redstar Hospital | Bootstrap Responsive Hospital Admin Template</title>
+    <title> {% block titleP %}
+        {% endblock titleP %}</title>
     <!-- google font -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
     <!-- icons -->
@@ -44,7 +45,7 @@
             <div class="page-logo">
                 <a href="index.html">
                     <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
-                    <span class="logo-default" >REDSTAR</span> </a>
+                    <span class="logo-default" >ESBE</span> </a>
             </div>
             <!-- logo end -->
             <ul class="nav navbar-nav navbar-left in">
@@ -69,27 +70,7 @@
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
                     <!-- start language menu -->
-                    <li class="dropdown language-switch">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="{{ asset('assets/back/img/flags/gb.png')}}" class="position-left" alt=""> English <span class="fa fa-angle-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="deutsch"><img src="{{ asset('assets/back/img/flags/de.png')}}" alt=""> Deutsch</a>
-                            </li>
-                            <li>
-                                <a class="ukrainian"><img src="{{ asset('assets/back/img/flags/ua.png')}}" alt=""> Українська</a>
-                            </li>
-                            <li>
-                                <a class="english"><img src="{{ asset('assets/back/img/flags/gb.png')}}" alt=""> English</a>
-                            </li>
-                            <li>
-                                <a class="espana"><img src="{{ asset('assets/back/img/flags/es.png')}}" alt=""> España</a>
-                            </li>
-                            <li>
-                                <a class="russian"><img src="{{ asset('assets/back/img/flags/ru.png')}}" alt=""> Русский</a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <!-- end language menu -->
                     <!-- start notification dropdown -->
                     <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
@@ -317,7 +298,8 @@
                         <a href="#" data-theme="header-cyan"><span class="head"></span><span class="cont"></span></a>
                         <a href="#" data-theme="header-green"><span class="head"></span><span class="cont"></span></a>
                         <a href="#" data-theme="header-red"><span class="head"></span><span class="cont"></span></a>
-                    </div></li>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -345,591 +327,83 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item start active open">
-                            <a href="#" class="nav-link nav-toggle">
-                                <i class="material-icons">dashboard</i>
-                                <span class="title">Dashboard</span>
-                                <span class="selected"></span>
-                                <span class="arrow open"></span>
-                            </a>
+                        <li class="nav-item  ">
+                            <a href="#" class="nav-link nav-toggle"><i class="material-icons">work</i>
+                                <span class="title">Service</span><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li class="nav-item active open  ">
-                                    <a href="index.html" class="nav-link ">
-                                        <span class="title">Dashboard 1</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="dashboard2.html" class="nav-link ">
-                                        <span class="title">Dashboard 2</span>
+                                <li class="nav-item  ">
+                                    <a href="{{ path('services_new') }}" class="nav-link "> <span class="title">Ajouter Produit</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="dashboard3.html" class="nav-link ">
-                                        <span class="title">Dashboard 3</span>
+                                    <a href="{{ path('services_index') }}" class="nav-link "> <span class="title">Mes Produit</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link nav-toggle">
-                                <i class="material-icons">email</i>
-                                <span class="title">Email</span>
-                                <span class="arrow"></span>
-                                <span class="label label-rouded label-menu deepPink-bgcolor">3</span>
-                            </a>
+                        <li class="nav-item  ">
+                            <a href="#" class="nav-link nav-toggle"><i class="material-icons">shop</i>
+                                <span class="title">Produit Herbo</span><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="email_inbox.html" class="nav-link ">
-                                        <span class="title">Inbox</span>
+                                    <a href="{{ path('produitherbo_new') }}" class="nav-link "> <span class="title">Ajouter Produit</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="email_view.html" class="nav-link ">
-                                        <span class="title">View Mail</span>
+                                    <a href="{{ path('produitherbo_index') }}" class="nav-link "> <span class="title">Mes Produit</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="#" class="nav-link nav-toggle"><i class="material-icons">shop</i>
+                                <span class="title">Produit Pharma</span><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{ path('produitpharmaceutique_new') }}" class="nav-link "> <span class="title">Ajouter Produit</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="email_compose.html" class="nav-link ">
-                                        <span class="title">Compose Mail</span>
+                                    <a href="{{ path('produitpharmaceutique_index') }}" class="nav-link "> <span class="title">Mes Produit</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="#" class="nav-link nav-toggle"><i class="material-icons">shop</i>
+                                <span class="title">Produit Salle De Sport</span><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{ path('produitsalledesport_new') }}" class="nav-link "> <span class="title">Ajouter Produit</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="{{ path('produitsalledesport_index') }}" class="nav-link "> <span class="title">Mes Produit</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item  ">
                             <a href="#" class="nav-link nav-toggle"><i class="material-icons">assignment</i>
-                                <span class="title">Appointment</span><span class="arrow"></span></a>
+                                <span class="title">Commande</span><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="schedule.html" class="nav-link "> <span class="title">Doctor Schedule</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="book_appointment.html" class="nav-link "> <span class="title">Book Appointment</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="book_appointment_material.html" class="nav-link "> <span class="title">Book Appointment Material</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="edit_appointment.html" class="nav-link "> <span class="title">Edit Appointment</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="view_appointment.html" class="nav-link "> <span class="title">View All Appointment</span>
+                                    <a href="{{ path('produitparapharmacie_index') }}" class="nav-link "> <span class="title">Mes Produit</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
-                                <span class="title">Doctors</span> <span class="arrow"></span>
-                            </a>
+                            <a href="#" class="nav-link nav-toggle"><i class="material-icons">assignment</i>
+                                <span class="title">Produit Para</span><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="all_doctors.html" class="nav-link "> <span class="title">All Doctor</span>
+                                    <a href="{{ path('produitparapharmacie_new') }}" class="nav-link "> <span class="title">Ajouter Produit</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="add_doctor.html" class="nav-link "> <span class="title">Add Doctor</span>
+                                    <a href="{{ path('produitparapharmacie_index') }}" class="nav-link "> <span class="title">Mes Produit</span>
                                     </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_doctor_material.html" class="nav-link "> <span class="title">Add Doctor Material</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="edit_doctor.html" class="nav-link "> <span class="title">Edit Doctor</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="doctor_profile.html" class="nav-link "> <span class="title">About Doctor</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
-                                <span class="title">Other Staff</span> <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="all_staffs.html" class="nav-link "> <span class="title">All Staff</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_staff.html" class="nav-link "> <span class="title">Add Staff</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_staff_material.html" class="nav-link "> <span class="title">Add Staff Material</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="edit_staff.html" class="nav-link "> <span class="title">Edit Staff</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="staff_profile.html" class="nav-link "> <span class="title">Staff Profile</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">accessible</i>
-                                <span class="title">Patients</span> <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="all_patients.html" class="nav-link "> <span class="title">All Patients</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_patient.html" class="nav-link "> <span class="title">Add Patient</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_patient_material.html" class="nav-link "> <span class="title">Add Patient Material</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="edit_patient.html" class="nav-link "> <span class="title">Edit Patient</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="patient_profile.html" class="nav-link "> <span class="title">Patient Profile</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">hotel</i>
-                                <span class="title">Room Allotment</span> <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="room_allotment.html" class="nav-link "> <span class="title">Alloted Rooms</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_room_allotment.html" class="nav-link "> <span class="title">New Allotment</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_room_allotment_material.html" class="nav-link "> <span class="title">New Allotment Material</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="edit_room_allotment.html" class="nav-link "> <span class="title">Edit Allotment</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">monetization_on</i>
-                                <span class="title">Payments</span> <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="payments.html" class="nav-link "> <span class="title">Payments</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="add_payment.html" class="nav-link "> <span class="title">Add Payments</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="invoice_payment.html" class="nav-link "> <span class="title">Patient Invoice</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="widget.html" class="nav-link nav-toggle"> <i class="material-icons">widgets</i>
-                                <span class="title">Widget</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle">
-                                <i class="material-icons">dvr</i>
-                                <span class="title">UI Elements</span>
-                                <span class="label label-rouded label-menu">10</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="ui_buttons.html" class="nav-link ">
-                                        <span class="title">Buttons</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_tabs_accordions_navs.html" class="nav-link ">
-                                        <span class="title">Tabs &amp; Accordions</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_typography.html" class="nav-link ">
-                                        <span class="title">Typography</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_icons.html" class="nav-link ">
-                                        <span class="title">Icons</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_panels.html" class="nav-link ">
-                                        <span class="title">Panels</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_grid.html" class="nav-link ">
-                                        <span class="title">Grids</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="calendar.html" class="nav-link ">
-                                        <span class="title">Calender</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_tree.html" class="nav-link ">
-                                        <span class="title">Tree View</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="ui_carousel.html" class="nav-link ">
-                                        <span class="title">Carousel</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle">
-                                <i class="material-icons">store</i>
-                                <span class="title">Material Elements</span>
-                                <span class="label label-rouded label-menu deepPink-bgcolor">14</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="material_button.html" class="nav-link ">
-                                        <span class="title">Buttons</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_tab.html" class="nav-link ">
-                                        <span class="title">Tabs</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_chips.html" class="nav-link ">
-                                        <span class="title">Chips</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_grid.html" class="nav-link ">
-                                        <span class="title">Grid</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_icons.html" class="nav-link ">
-                                        <span class="title">Icon</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_form.html" class="nav-link ">
-                                        <span class="title">Form</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_datepicker.html" class="nav-link ">
-                                        <span class="title">DatePicker</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_select.html" class="nav-link ">
-                                        <span class="title">Select Item</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_loading.html" class="nav-link ">
-                                        <span class="title">Loading</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_menu.html" class="nav-link ">
-                                        <span class="title">Menu</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_slider.html" class="nav-link ">
-                                        <span class="title">Slider</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_tables.html" class="nav-link ">
-                                        <span class="title">Tables</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_toggle.html" class="nav-link ">
-                                        <span class="title">Toggle</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="material_badges.html" class="nav-link ">
-                                        <span class="title">Badges</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="material-icons">subtitles</i>
-                                <span class="title">Forms </span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="layouts_form.html" class="nav-link ">
-                                        <span class="title">Form Layout</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="advance_form.html" class="nav-link ">
-                                        <span class="title">Advance Component</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="wizard_form.html" class="nav-link ">
-                                        <span class="title">Form Wizard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="validation_form.html" class="nav-link ">
-                                        <span class="title">Form Validation</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="editable_form.html" class="nav-link ">
-                                        <span class="title">Editor</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="material-icons">list</i>
-                                <span class="title">Data Tables</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="basic_table.html" class="nav-link ">
-                                        <span class="title">Basic Tables</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="advanced_table.html" class="nav-link ">
-                                        <span class="title">Advance Tables</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="group_table.html" class="nav-link ">
-                                        <span class="title">Grouping</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="tableData.html" class="nav-link ">
-                                        <span class="title">Tables With Sourced Data</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">desktop_mac</i>
-                                <span class="title">Layout</span> <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="layout_boxed.html" class="nav-link "> <span class="title">Boxed</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="layout_full_width.html" class="nav-link "> <span class="title">Full Width</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="layout_collapse.html" class="nav-link "> <span class="title">Collapse Menu</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="layout_right_sidebar.html" class="nav-link "> <span class="title">Right Sidebar</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="layout_sidebar_hover_menu.html" class="nav-link "> <span class="title">Hover Sidebar Menu</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="layout_mega_menu.html" class="nav-link "> <span class="title">Mega Menu</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="material-icons">timeline</i>
-                                <span class="title">Charts</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="charts_echarts.html" class="nav-link ">
-                                        <span class="title">eCharts</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="charts_morris.html" class="nav-link ">
-                                        <span class="title">Morris Charts</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="charts_chartjs.html" class="nav-link ">
-                                        <span class="title">Chartjs</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="material-icons">map</i>
-                                <span class="title">Maps</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="google_maps.html" class="nav-link ">
-                                        <span class="title">Google Maps</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="vector_maps.html" class="nav-link ">
-                                        <span class="title">Vector Maps</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle"> <i class="material-icons">description</i>
-                                <span class="title">Extra pages</span>
-                                <span class="label label-rouded label-menu purple-bgcolor">7</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="login.html" class="nav-link "> <span class="title">Login</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  "><a href="user_profile.html" class="nav-link "><span
-                                                class="title">Profile</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="contact.html" class="nav-link "> <span class="title">Contact Us</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="lock_screen.html" class="nav-link "> <span class="title">Lock Screen</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="page-404.html" class="nav-link "> <span class="title">404 Page</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="page-500.html" class="nav-link "> <span class="title">500 Page</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="blank_page.html" class="nav-link "> <span class="title">Blank Page</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="material-icons">slideshow</i>
-                                <span class="title">Multi Level Menu</span>
-                                <span class="arrow "></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                        <i class="fa fa-university"></i> Item 1
-                                        <span class="arrow"></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item">
-                                            <a href="javascript:;" class="nav-link nav-toggle">
-                                                <i class="fa fa-bell-o"></i> Arrow Toggle
-                                                <span class="arrow "></span>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li class="nav-item">
-                                                    <a href="javascript:;" class="nav-link">
-                                                        <i class="fa fa-calculator"></i> Sample Link 1</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link">
-                                                        <i class="fa fa-clone"></i> Sample Link 2</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="#" class="nav-link">
-                                                        <i class="fa fa-cogs"></i> Sample Link 3</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="fa fa-file-pdf-o"></i> Sample Link 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="fa fa-rss"></i> Sample Link 2</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="fa fa-hdd-o"></i> Sample Link 3</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                        <i class="fa fa-gavel"></i> Arrow Toggle
-                                        <span class="arrow"></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="fa fa-paper-plane"></i> Sample Link 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="fa fa-power-off"></i> Sample Link 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="fa fa-recycle"></i> Sample Link 1
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-volume-up"></i> Item 3 </a>
                                 </li>
                             </ul>
                         </li>
@@ -937,376 +411,25 @@
                 </div>
             </div>
         </div>
-        <!-- end sidebar menu -->
-        <!-- start page content -->
         <div class="page-content-wrapper">
             <div class="page-content">
                 <div class="page-bar">
                     <div class="page-title-breadcrumb">
                         <div class=" pull-left">
-                            <div class="page-title">Dashboard</div>
+                            <div class="page-title">{% block pagetitle %}{% endblock %}</div>
                         </div>
-                        <ol class="breadcrumb page-breadcrumb pull-right">
-                            <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
-                            </li>
-                            <li class="active">Dashboard</li>
-                        </ol>
+
                     </div>
                 </div>
-                <!-- start widget -->
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="card  card-box">
-                            <div class="card-head">
-                                <header>
-                                    {% block title %}
-                                    {% endblock title %}
-                                </header>
-                            </div>
-                            <div class="card-body ">
-                                <div class="form-horizontal">
-                                {% block body %}
-                                {% endblock body %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end admited patient list -->
+                {% block body %}
+                {% endblock body %}
             </div>
         </div>
-        <!-- end page content -->
-        <!-- start chat sidebar -->
-        <div class="chat-sidebar-container" data-close-on-body-click="false">
-            <div class="chat-sidebar">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a href="#quick_sidebar_tab_1" class="nav-link active tab-icon"  data-toggle="tab"> <i class="material-icons">chat</i>Chat
-                            <span class="badge badge-danger">4</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#quick_sidebar_tab_3" class="nav-link tab-icon"  data-toggle="tab"> <i class="material-icons">settings</i> Settings
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <!-- Start Doctor Chat -->
-                    <div class="tab-pane active chat-sidebar-chat in active show" role="tabpanel" id="quick_sidebar_tab_1">
-                        <div class="chat-sidebar-list">
-                            <div class="chat-sidebar-chat-users slimscroll-style" data-rail-color="#ddd" data-wrapper-class="chat-sidebar-list">
-                                <div class="chat-header"><h5 class="list-heading">Online</h5></div>
-                                <ul class="media-list list-items">
-                                    <li class="media"><img class="media-object" src="{{ asset('assets/back/img/doc/doc3.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="online dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">John Deo</h5>
-                                            <div class="media-heading-sub">Spine Surgeon</div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-status">
-                                            <span class="badge badge-success">5</span>
-                                        </div> <img class="media-object" src="{{ asset('assets/back/img/doc/doc1.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="busy dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Rajesh</h5>
-                                            <div class="media-heading-sub">Director</div>
-                                        </div>
-                                    </li>
-                                    <li class="media"><img class="media-object" src="{{ asset('assets/back/img/doc/doc5.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="away dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Jacob Ryan</h5>
-                                            <div class="media-heading-sub">Ortho Surgeon</div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-status">
-                                            <span class="badge badge-danger">8</span>
-                                        </div> <img class="media-object" src="{{ asset('assets/back/img/doc/doc4.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="online dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Kehn Anderson</h5>
-                                            <div class="media-heading-sub">CEO</div>
-                                        </div>
-                                    </li>
-                                    <li class="media"><img class="media-object" src="{{ asset('assets/back/img/doc/doc2.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="busy dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Sarah Smith</h5>
-                                            <div class="media-heading-sub">Anaesthetics</div>
-                                        </div>
-                                    </li>
-                                    <li class="media"><img class="media-object" src="{{ asset('assets/back/img/doc/doc7.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="online dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Vlad Cardella</h5>
-                                            <div class="media-heading-sub">Cardiologist</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="chat-header"><h5 class="list-heading">Offline</h5></div>
-                                <ul class="media-list list-items">
-                                    <li class="media">
-                                        <div class="media-status">
-                                            <span class="badge badge-warning">4</span>
-                                        </div> <img class="media-object" src="{{ asset('assets/back/img/doc/doc6.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="offline dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Jennifer Maklen</h5>
-                                            <div class="media-heading-sub">Nurse</div>
-                                            <div class="media-heading-small">Last seen 01:20 AM</div>
-                                        </div>
-                                    </li>
-                                    <li class="media"><img class="media-object" src="{{ asset('assets/back/img/doc/doc8.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="offline dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Lina Smith</h5>
-                                            <div class="media-heading-sub">Ortho Surgeon</div>
-                                            <div class="media-heading-small">Last seen 11:14 PM</div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-status">
-                                            <span class="badge badge-success">9</span>
-                                        </div> <img class="media-object" src="img/doc/doc9.jpg" width="35" height="35" alt="...">
-                                        <i class="offline dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Jeff Adam</h5>
-                                            <div class="media-heading-sub">Compounder</div>
-                                            <div class="media-heading-small">Last seen 3:31 PM</div>
-                                        </div>
-                                    </li>
-                                    <li class="media"><img class="media-object" src="{{ asset('assets/back/img/doc/doc10.jpg')}}" width="35" height="35" alt="...">
-                                        <i class="offline dot"></i>
-                                        <div class="media-body">
-                                            <h5 class="media-heading">Anjelina Cardella</h5>
-                                            <div class="media-heading-sub">Physiotherapist</div>
-                                            <div class="media-heading-small">Last seen 7:45 PM</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="chat-sidebar-item">
-                            <div class="chat-sidebar-chat-user">
-                                <div class="page-quick-sidemenu">
-                                    <a href="javascript:;" class="chat-sidebar-back-to-list">
-                                        <i class="fa fa-angle-double-left"></i>Back
-                                    </a>
-                                </div>
-                                <div class="chat-sidebar-chat-user-messages">
-                                    <div class="post out">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/dp.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Kiran Patel</a> <span class="datetime">9:10</span>
-                                            <span class="body-out"> could you send me menu icons ? </span>
-                                        </div>
-                                    </div>
-                                    <div class="post in">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/doc/doc5.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Jacob Ryan</a> <span class="datetime">9:10</span>
-                                            <span class="body"> please give me 10 minutes. </span>
-                                        </div>
-                                    </div>
-                                    <div class="post out">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/dp.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Kiran Patel</a> <span class="datetime">9:11</span>
-                                            <span class="body-out"> ok fine :) </span>
-                                        </div>
-                                    </div>
-                                    <div class="post in">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/doc/doc5.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Jacob Ryan</a> <span class="datetime">9:22</span>
-                                            <span class="body">Sorry for
-													the delay. i sent mail to you. let me know if it is ok or not.</span>
-                                        </div>
-                                    </div>
-                                    <div class="post out">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/dp.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Kiran Patel</a> <span class="datetime">9:26</span>
-                                            <span class="body-out"> it is perfect! :) </span>
-                                        </div>
-                                    </div>
-                                    <div class="post out">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/dp.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Kiran Patel</a> <span class="datetime">9:26</span>
-                                            <span class="body-out"> Great! Thanks. </span>
-                                        </div>
-                                    </div>
-                                    <div class="post in">
-                                        <img class="avatar" alt="" src="{{ asset('assets/back/img/doc/doc5.jpg')}}" />
-                                        <div class="message">
-                                            <span class="arrow"></span> <a href="javascript:;" class="name">Jacob Ryan</a> <span class="datetime">9:27</span>
-                                            <span class="body"> it is my pleasure :) </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-sidebar-chat-user-form">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Type a message here...">
-                                        <div class="input-group-btn">
-                                            <button type="button" class="btn deepPink-bgcolor">
-                                                <i class="fa fa-arrow-right"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Doctor Chat -->
-                    <!-- Start Setting Panel -->
-                    <div class="tab-pane chat-sidebar-settings" role="tabpanel" id="quick_sidebar_tab_3">
-                        <div class="chat-sidebar-settings-list slimscroll-style">
-                            <div class="chat-header"><h5 class="list-heading">Layout Settings</h5></div>
-                            <div class="chatpane inner-content ">
-                                <div class="settings-list">
-                                    <div class="setting-item">
-                                        <div class="setting-text">Sidebar Position</div>
-                                        <div class="setting-set">
-                                            <select class="sidebar-pos-option form-control input-inline input-sm input-small ">
-                                                <option value="left" selected="selected">Left</option>
-                                                <option value="right">Right</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Header</div>
-                                        <div class="setting-set">
-                                            <select class="page-header-option form-control input-inline input-sm input-small ">
-                                                <option value="fixed" selected="selected">Fixed</option>
-                                                <option value="default">Default</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Sidebar Menu </div>
-                                        <div class="setting-set">
-                                            <select class="sidebar-menu-option form-control input-inline input-sm input-small ">
-                                                <option value="accordion" selected="selected">Accordion</option>
-                                                <option value="hover">Hover</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Footer</div>
-                                        <div class="setting-set">
-                                            <select class="page-footer-option form-control input-inline input-sm input-small ">
-                                                <option value="fixed">Fixed</option>
-                                                <option value="default" selected="selected">Default</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-header"><h5 class="list-heading">Account Settings</h5></div>
-                                <div class="settings-list">
-                                    <div class="setting-item">
-                                        <div class="setting-text">Notifications</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-1">
-                                                    <input type = "checkbox" id = "switch-1"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Show Online</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-7">
-                                                    <input type = "checkbox" id = "switch-7"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Status</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-2">
-                                                    <input type = "checkbox" id = "switch-2"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">2 Steps Verification</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-3">
-                                                    <input type = "checkbox" id = "switch-3"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-header"><h5 class="list-heading">General Settings</h5></div>
-                                <div class="settings-list">
-                                    <div class="setting-item">
-                                        <div class="setting-text">Location</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-4">
-                                                    <input type = "checkbox" id = "switch-4"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Save Histry</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-5">
-                                                    <input type = "checkbox" id = "switch-5"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="setting-item">
-                                        <div class="setting-text">Auto Updates</div>
-                                        <div class="setting-set">
-                                            <div class="switch">
-                                                <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                                       for = "switch-6">
-                                                    <input type = "checkbox" id = "switch-6"
-                                                           class = "mdl-switch__input" checked>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end chat sidebar -->
     </div>
     <!-- end page container -->
     <!-- start footer -->
     <div class="page-footer">
-        <div class="page-footer-inner"> 2017 &copy; RedStar Hospital Theme By
+        <div class="page-footer-inner"> 2018 &copy; RedStar Hospital Theme By
             <a href="mailto:redstartheme@gmail.com" target="_top" class="makerCss">RT Theme maker</a>
         </div>
         <div class="scroll-to-top">
@@ -1332,6 +455,7 @@
 <script src="{{ asset('assets/back/theme-color.js')}}" ></script>
 <!-- material -->
 <script src="{{ asset('assets/back/material/material.min.js')}}"></script>
+<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
 <!-- chart js -->
 <script src="{{ asset('assets/back/chart-js/Chart.bundle.js')}}" ></script>
 <script src="{{ asset('assets/back/chart-js/utils.js')}}" ></script>
@@ -1339,6 +463,12 @@
 <script  src="{{ asset('assets/back/material-datetimepicker/moment-with-locales.min.js')}}"></script>
 <script  src="{{ asset('assets/back/material-datetimepicker/bootstrap-material-datetimepicker.js')}}"></script>
 <script  src="{{ asset('assets/back/material-datetimepicker/datetimepicker.js')}}"></script>
+=======
+
+{%  block javascript %}
+{%  endblock %}
+
+>>>>>>> CRUD produit + service
 <!-- end js include path -->
 </body>
 

@@ -1,0 +1,37 @@
+{% extends "::/base.html.twig" %}
+
+{% block title %}ProductBundle:Commande:ShowP{% endblock %}
+
+{% block content %}
+    <div data-example-id="contextual-table" class="bs-example">
+        <table class="table">
+            <thead>
+            <tr class="info">
+                <th>Commande ref</th>
+                <th>Date</th>
+                <th>Etat</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for c in commands %}
+                {% if c.type == 'demande' %}
+            <tr >
+                {% else %}
+                    <tr class="success" >
+                {% endif %}
+                <th scope="row">{{ c.idCommande }}</th>
+                <td>{{ c.date|date('Y-M-D') }}</td>
+                <td>{{ c.type }}</td>
+                <td>
+                    <div class="font-icon-detail">
+                        <a href="{{ path('_show_DC',{idc : c.idCommande}) }}"><i class="fa fa-eye"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

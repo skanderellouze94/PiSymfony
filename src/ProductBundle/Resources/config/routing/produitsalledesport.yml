@@ -1,12 +1,21 @@
 produitsalledesport_index:
     path:     /
     defaults: { _controller: "ProductBundle:ProduitSalledesport:index" }
-    methods:  GET
-
 produitsalledesport_show:
     path:     /{idProduit}/show
     defaults: { _controller: "ProductBundle:ProduitSalledesport:show" }
-    methods:  GET
+
+produitsalledesport_new:
+    path:     /new
+    defaults: { _controller: "ProductBundle:ProduitSalledesport:new" }
+
+produitsalledesport_edit:
+    path:     /{idProduit}/edit
+    defaults: { _controller: "ProductBundle:ProduitSalledesport:edit" }
+
+produitsalledesport_delete:
+    path:     /{idProduit}/delete
+    defaults: { _controller: "ProductBundle:ProduitSalledesport:delete" }
 
 
 
