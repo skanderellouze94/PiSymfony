@@ -56,13 +56,25 @@ indexConseil:
     path:     /indexConseil
     defaults: { _controller: ActualitesBundle:Conseil:indexConseil}
 
+indexConseilCat:
+    path:     /indexConseilcat/{id}
+    defaults: { _controller: ActualitesBundle:Conseil:AfficherConseilCategorie}
+
 indexEvenement:
     path:     /indexEvenement
     defaults: { _controller: ActualitesBundle:Evenement:indexEvenement}
 
+indexEvenementCat:
+    path:     /indexEvenementcat/{id}
+    defaults: { _controller: ActualitesBundle:Evenement:AfficherEvenementsCategorie}
+
 detailEvenement:
     path:     /detailEvenement{id}
     defaults: { _controller: ActualitesBundle:Evenement:chercherEvenement}
+
+detailConseil:
+    path:     /detailConseil{id}
+    defaults: { _controller: ActualitesBundle:Conseil:chercherConseil}
 
 ajouterComEvent:
     path:     /ajouterComEvent
@@ -83,3 +95,6 @@ RechercheDateSemaineEvent:
 AfficherEvenements3Event:
     path:     /AfficherEvenements3
     defaults: { _controller: ActualitesBundle:Evenement:AfficherEvenements3 }
+trans:
+    path:     /trans/{id}
+    defaults: { _controller: ActualitesBundle:Evenement:trans}

@@ -1,0 +1,151 @@
+{% extends '::/base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="product">
+            <div class="col-md-5">
+                <div class="product-image">
+                    <ul>
+                        <li>
+                            <img src="{{ asset('/uploads/images/products/') }}{{ produit.IdProduit.image }}" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="product-summary">
+                    <h2 class="product-title">{{ produit.IdProduit.nom |upper }}</h2>
+                    <div class="price"><ins><span class="amount">${{ produit.IdProduit.prix }}</span></ins> </div>
+                    <div class="short-description">
+                        <p>{{ produit.IdProduit.description }}</p>
+                    </div>
+                    <div class="tags"><strong>Marque:</strong> {{ produit.marque }}</div>
+                    <div class="category"><strong>Categorie:</strong> {{ produit.categorie }}</div>
+                    {%  if produit.bio == 1 %}
+                    <div class="tags"><strong>Bio:</strong> Yes</div>
+                   {% else %}
+                       <div class="tags"><strong>Bio:</strong> No</div>
+
+                    {% endif %}
+                    <div class="cart-form-wrapper mt-30">
+                        <form action="{{ path('P_ajouter',{id: produit.IdProduit.IdProduit}) }}"  method="post" class="cart">
+                            <table class="table variations no-border">
+                                <tbody>
+                                <tr>
+                                    <td class="name">Amount</td>
+                                    <td class="value">
+                                        <div class="quantity buttons_added">
+                                            <input type="button" class="minus" value="-">
+                                            <input type="number" size="4" class="input-text qty text" value="1" name="qte" min="1" step="1">
+                                            <input type="button" class="plus" value="+">
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <button class="single_add_to_cart_button btn btn-default" type="submit">Add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-30">
+            <h4>Related Products</h4>
+            <div class="products related owl-carousel-4col" data-nav="true">
+                <div class="item">
+                    <div class="product">
+                        <span class="tag-sale">Sale!</span>
+                        <div class="product-thumb"> <img alt="" src="../../../../../../../placehold.it/260x194.png" class="img-responsive img-fullwidth">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="#"><h5 class="product-title">Cordless Combi Drill</h5></a>
+                            <div class="star-rating" title="Rated 4.50 out of 5"><span data-width="90%">3.50</span></div>
+                            <div class="price"><del><span class="amount">$520.00</span></del><ins><span class="amount">$480.00</span></ins></div>
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-default btn-xs btn-add-to-cart" href="#">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product">
+                        <div class="product-thumb"> <img alt="" src="../../../../../../../placehold.it/260x194.png" class="img-responsive img-fullwidth">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="#"><h5 class="product-title">Angle Grinders</h5></a>
+                            <div class="star-rating" title="Rated 5.00 out of 5"><span  data-width="100%">5.00</span></div>
+                            <div class="price"><del><span class="amount">$364.00</span></del><ins><span class="amount">$344.00</span></ins></div>
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-default btn-xs btn-add-to-cart" href="#">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product">
+                        <span class="tag-sale">Hot!</span>
+                        <div class="product-thumb"> <img alt="" src="../../../../../../../placehold.it/260x194.png" class="img-responsive img-fullwidth">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="#"><h5 class="product-title">Planers</h5></a>
+                            <div class="star-rating" title="Rated 5.00 out of 5"><span  data-width="100%">3.90</span></div>
+                            <div class="price"><span class="amount">$245.00</span></div>
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-default btn-xs btn-add-to-cart" href="#">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product">
+                        <div class="product-thumb"> <img alt="" src="../../../../../../../placehold.it/260x194.png" class="img-responsive img-fullwidth">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="#"><h5 class="product-title">Circular Saw</h5></a>
+                            <div class="star-rating" title="Rated 4.90 out of 5"><span  data-width="95%">4.60</span></div>
+                            <div class="price"><del><span class="amount">$490.00</span></del><ins><span class="amount">$475.00</span></ins></div>
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-default btn-xs btn-add-to-cart" href="#">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product">
+                        <div class="product-thumb"> <img alt="" src="../../../../../../../placehold.it/260x194.png" class="img-responsive img-fullwidth">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="#"><h5 class="product-title">Angle Grinders</h5></a>
+                            <div class="star-rating" title="Rated 5.00 out of 5"><span  data-width="100%">5.00</span></div>
+                            <div class="price"><del><span class="amount">$364.00</span></del><ins><span class="amount">$344.00</span></ins></div>
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-default btn-xs btn-add-to-cart" href="#">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="product">
+                        <span class="tag-sale">Hot!</span>
+                        <div class="product-thumb"> <img alt="" src="../../../../../../../placehold.it/260x194.png" class="img-responsive img-fullwidth">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="product-details text-center">
+                            <a href="#"><h5 class="product-title">Planers</h5></a>
+                            <div class="star-rating" title="Rated 5.00 out of 5"><span  data-width="100%">3.90</span></div>
+                            <div class="price"><span class="amount">$245.00</span></div>
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-default btn-xs btn-add-to-cart" href="#">Add To Basket</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

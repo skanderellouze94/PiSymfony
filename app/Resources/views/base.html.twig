@@ -51,8 +51,6 @@
 
     {% endblock %}
     {% block javascript %}
-        <!-- external javascripts -->
-
         <script src="{{ asset('assets/front/js/jquery-2.2.4.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/jquery-ui.min.js')}}"></script>
         <script src="{{ asset('assets/front/js/bootstrap.min.js')}}"></script>
@@ -82,7 +80,6 @@
             <div class="widget no-border">
                 <nav>
                     <ul class="nav nav-list">
-                        <li><a href="#">Home</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a class="tree-toggler nav-header">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="nav nav-list tree">
@@ -118,12 +115,7 @@
 </div>
 <div id="wrapper" class="clearfix">
     <!-- preloader -->
-    <div id="preloader">
-        <div id="spinner">
-            <img src="{{ asset('assets/front/images/preloaders/1.gif')}}" alt="">
-        </div>
-        <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
-    </div>
+
 
     <!-- Header -->
     <header id="header" class="header">
@@ -1030,65 +1022,9 @@
 
             </div>
         </section>
-
-        <!-- Section: home-boxes -->
-        <section class="">
-            <div class="container pt-0 pb-0">
-                <div class="section-content">
-                    <div class="row equal-height-inner home-boxes mt-sm-20" data-margin-top="-80px">
-                        <div class="col-sm-12 col-md-3 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay1">
-                            <div class="sm-height-auto bg-theme-colored">
-                                <div class="text-center pt-30 pb-30">
-                                    <i class="fa fa-stethoscope text-white font-64"></i>
-                                    <h5 class="text-uppercase"><a href="#" class="text-white">Emergency Care</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay2">
-                            <div class="sm-height-auto bg-theme-colored-darker2">
-                                <div class="text-center pt-30 pb-30">
-                                    <i class="fa fa-comments-o text-white font-64"></i>
-                                    <h5 class="text-uppercase"><a href="#" class="text-white">Online Service</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay3">
-                            <div class="sm-height-auto bg-theme-colored-darker3">
-                                <div class="text-center pt-30 pb-30">
-                                    <i class="fa fa-user-md text-white font-64"></i>
-                                    <h5 class="text-uppercase"><a href="#" class="text-white">Qualified Doctors</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-3 pl-0 pl-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay4">
-                            <div class="sm-height-auto bg-theme-colored-darker4">
-                                <div class="text-center pt-30 pb-30">
-                                    <i class="flaticon-medical-ambulance14 text-white font-64"></i>
-                                    <h5 class="text-uppercase"><a href="#" class="text-white">24 Hours Service</a></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: about -->
-
-        <!-- Section: Services -->
-
-
-        <!-- Section: Doctors -->
-
-
-        <!-- Divider: Funfact -->
-
-        <!-- Section: Departments -->
-
-        <!-- Section: Gallery -->
-        <section class="">
+        <section >
             <div class="container">
-                <div class="section-title text-center">
+                <div class="section-content">
                     <div class="row">
                         {% block content %}
                         {% endblock %}

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Produits
  *
  * @ORM\Table(name="produits", indexes={@ORM\Index(name="id_etab", columns={"id_etab"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\ProduitsRepository")
  */
 class Produits
 {
@@ -25,6 +25,13 @@ class Produits
      * @ORM\Column(name="description", type="string", length=3000, nullable=false)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=250, nullable=true)
+     */
+    private $type;
 
     /**
      * @var string
@@ -53,9 +60,31 @@ class Produits
      * @var \EtablissementBundle\Entity\Etablissements
      *
      * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
+<<<<<<< HEAD
      *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+=======
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
      */
     private $idEtab;
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+
 
     /**
      * @return string
@@ -99,10 +128,12 @@ class Produits
 
     /**
      * @param string $image
+     * @return Produits
      */
     public function setImage($image)
     {
         $this->image = $image;
+        return $this;
     }
 
     /**

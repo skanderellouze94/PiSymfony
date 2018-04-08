@@ -1,0 +1,18 @@
+services_index:
+    path:     /
+    defaults: { _controller: "ProductBundle:Services:index" }
+
+services_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProductBundle:Services:show" }
+
+services_new:
+    path:     /new
+    defaults: { _controller: "ProductBundle:Services:new" }
+
+services_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProductBundle:Services:edit" }
+services_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProductBundle:Services:delete" }

@@ -27,6 +27,39 @@ class ProduitSalledesport
      */
     private $idProduit;
 
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param mixed $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+
 
 }
 

@@ -3,12 +3,18 @@
 namespace EtablissementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * Rating
  *
- * @ORM\Table(name="rating", indexes={@ORM\Index(name="id_etab", columns={"id_etab"}), @ORM\Index(name="id_user", columns={"id_user"})})
- * @ORM\Entity
+ * @ORM\Table(name="rating",
+ *    uniqueConstraints={
+ *        @UniqueConstraint(name="video_user_unique",
+ *            columns={"id_etab", "id_user"})
+ *    }
+ * )
+ * @ORM\Entity(repositoryClass="EtablissementBundle\Repository\EtablissementsRepository")
  */
 class Rating
 {
@@ -32,7 +38,7 @@ class Rating
      * @var \EtablissementBundle\Entity\Etablissements
      *
      * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $idEtab;
 
@@ -40,7 +46,7 @@ class Rating
      * @var \PidevEsbeBundle\Entity\FosUser
      *
      * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $idUser;
 
@@ -127,4 +133,11 @@ class Rating
     {
         return $this->idUser;
     }
+
+    public function __get($name)
+    {
+        // TODO: Implement __get() method.
+    }
+
+
 }

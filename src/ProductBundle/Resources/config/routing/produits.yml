@@ -1,16 +1,9 @@
 produits_index:
     path:     /
     defaults: { _controller: "ProductBundle:Produits:index" }
-    methods:  GET
-
 produits_show:
     path:     /{idProduit}/show
     defaults: { _controller: "ProductBundle:Produits:show" }
-    methods:  GET
-
-produits_new:
-    path:     /new
-    defaults: { _controller: "ProductBundle:Produits:new" }
 
 produits_edit:
     path:     /{idProduit}/edit
@@ -20,4 +13,19 @@ produits_edit:
 produits_delete:
     path:     /{idProduit}/delete
     defaults: { _controller: "ProductBundle:Produits:delete" }
-    methods:  DELETE
+
+P_ajouter:
+    path:     /{id}/Ajouter
+    defaults: { _controller: "ProductBundle:Panier:Ajouter" }
+
+P_supprimmer:
+    path:     /{id}/Supprimmer
+    defaults: { _controller: "ProductBundle:Panier:Supprimmer" }
+
+P_pass:
+    path:     /Pass
+    defaults: { _controller: "ProductBundle:Panier:Pass" }
+
+P_basket:
+    path:     /Basket
+    defaults: { _controller: "ProductBundle:Panier:Basket" }

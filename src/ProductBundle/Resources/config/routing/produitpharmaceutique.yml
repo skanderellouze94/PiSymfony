@@ -1,0 +1,21 @@
+produitpharmaceutique_index:
+    path:     /
+    defaults: { _controller: "ProductBundle:ProduitPharmaceutique:index" }
+    methods:  GET
+
+produitpharmaceutique_show:
+    path:     /{idProduit}/show
+    defaults: { _controller: "ProductBundle:ProduitPharmaceutique:show" }
+    methods:  GET
+
+produitpharmaceutique_new:
+    path:     /new
+    defaults: { _controller: "ProductBundle:ProduitPharmaceutique:new" }
+
+produitpharmaceutique_edit:
+    path:     /{idProduit}/edit
+    defaults: { _controller: "ProductBundle:ProduitPharmaceutique:edit" }
+
+produitpharmaceutique_delete:
+    path:     /{idProduit}/delete
+    defaults: { _controller: "ProductBundle:ProduitPharmaceutique:delete" }

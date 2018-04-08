@@ -1,12 +1,17 @@
 <?php
 
+
 namespace PidevEsbeBundle\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+<<<<<<< HEAD
 use Mgilet\NotificationBundle\Annotation\Notifiable;
 use Mgilet\NotificationBundle\NotifiableInterface;
 
+=======
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
 /**
  * FosUser
  *
@@ -16,108 +21,91 @@ use Mgilet\NotificationBundle\NotifiableInterface;
  */
 class FosUser extends  BaseUser implements NotifiableInterface
 {
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
      */
     private $nom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=50, nullable=false)
      */
     private $prenom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=120, nullable=false)
      */
     private $adresse;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_naissance", type="date", nullable=true)
      */
     private $dateNaissance;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="code_postal", type="integer", nullable=false)
      */
     private $codePostal;
-
     /**
      * @var string
      *
      * @ORM\Column(name="sexe", type="string", length=20, nullable=false)
      */
     private $sexe;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="num_tel", type="integer", nullable=false)
      */
     private $numTel;
-
     /**
      * @var string
      *
      * @ORM\Column(name="photo_profil", type="string", length=300, nullable=false)
      */
     private $photoProfil;
-
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=50, nullable=true)
      */
     private $type;
-
     /**
      * @var string
      *
      * @ORM\Column(name="specialite", type="string", length=50, nullable=true)
      */
     private $specialite;
-
     /**
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=50, nullable=false)
      */
     private $pays;
-
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=50, nullable=false)
      */
     private $status;
-
-
     /**
      * Constructor
      */
     public function __construct()
-
     {
         parent::__construct();
     }
-
     /**
      * @return mixed
      */
@@ -125,7 +113,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->id;
     }
-
     /**
      * @param mixed $id
      */
@@ -133,7 +120,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->id = $id;
     }
-
     /**
      * @return string
      */
@@ -141,7 +127,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->nom;
     }
-
     /**
      * @param string $nom
      */
@@ -149,7 +134,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->nom = $nom;
     }
-
     /**
      * @return string
      */
@@ -157,7 +141,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->prenom;
     }
-
     /**
      * @param string $prenom
      */
@@ -165,7 +148,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->prenom = $prenom;
     }
-
     /**
      * @return string
      */
@@ -173,7 +155,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->adresse;
     }
-
     /**
      * @param string $adresse
      */
@@ -181,7 +162,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->adresse = $adresse;
     }
-
     /**
      * @return \DateTime
      */
@@ -189,7 +169,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->dateNaissance;
     }
-
     /**
      * @param \DateTime $dateNaissance
      */
@@ -197,7 +176,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->dateNaissance = $dateNaissance;
     }
-
     /**
      * @return int
      */
@@ -205,7 +183,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->codePostal;
     }
-
     /**
      * @param int $codePostal
      */
@@ -213,7 +190,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->codePostal = $codePostal;
     }
-
     /**
      * @return string
      */
@@ -221,7 +197,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->sexe;
     }
-
     /**
      * @param string $sexe
      */
@@ -229,7 +204,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->sexe = $sexe;
     }
-
     /**
      * @return int
      */
@@ -237,7 +211,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->numTel;
     }
-
     /**
      * @param int $numTel
      */
@@ -245,7 +218,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->numTel = $numTel;
     }
-
     /**
      * @return string
      */
@@ -253,7 +225,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->photoProfil;
     }
-
     /**
      * @param string $photoProfil
      */
@@ -261,7 +232,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->photoProfil = $photoProfil;
     }
-
     /**
      * @return string
      */
@@ -269,7 +239,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->type;
     }
-
     /**
      * @param string $type
      */
@@ -277,7 +246,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->type = $type;
     }
-
     /**
      * @return string
      */
@@ -285,7 +253,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->specialite;
     }
-
     /**
      * @param string $specialite
      */
@@ -293,7 +260,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->specialite = $specialite;
     }
-
     /**
      * @return string
      */
@@ -301,7 +267,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->pays;
     }
-
     /**
      * @param string $pays
      */
@@ -309,7 +274,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->pays = $pays;
     }
-
     /**
      * @return string
      */
@@ -317,7 +281,6 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         return $this->status;
     }
-
     /**
      * @param string $status
      */
@@ -325,7 +288,11 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->status = $status;
     }
+<<<<<<< HEAD
 
 
 
 }
+=======
+}
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023

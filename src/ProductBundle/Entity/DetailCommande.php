@@ -36,6 +36,54 @@ class DetailCommande
      */
     private $commande;
 
+    /**
+     * @return int
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
 
+    /**
+     * @param int $quantite
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
+
+    /**
+     * @param int $produit
+     */
+    public function setProduit($produit)
+    {
+        $this->produit = $produit;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCommande()
+    {
+        return $this->commande;
+    }
+
+    /**
+     * @param int $commande
+     */
+    public function setCommande($commande)
+    {
+        $this->commande = $commande;
+    }
+
+    public static $panier = array();
 }
 

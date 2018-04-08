@@ -21,8 +21,6 @@ class FichepatientType extends AbstractType
                 'config' => array(
                     'uiColor' => '#ffffff'
                 )))
-            ->add('idetab')
-            ->add('idpatient')
             ->add('ajouter',SubmitType::class)
             ->setMethod('post');
     }/**

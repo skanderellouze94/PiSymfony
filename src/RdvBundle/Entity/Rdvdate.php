@@ -4,7 +4,6 @@ namespace RdvBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use PidevEsbeBundle\Entity\FosUser;
 use PidevEsbeBundle\Entity\Services;
 
 
@@ -50,7 +49,7 @@ class Rdvdate
     private $idService;
 
     /**
-     * @var FosUser
+     * @var \PidevEsbeBundle\Entity\FosUser
      *
      * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")

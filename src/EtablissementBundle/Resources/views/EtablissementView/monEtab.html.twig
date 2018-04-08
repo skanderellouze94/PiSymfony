@@ -1,0 +1,87 @@
+{% extends '::/AdminBase.html.twig' %}
+        {% block title %}
+            Mettre a jour mon etablissement
+        {% endblock title %}
+
+        {% block body %}
+            {{form_start(form)}}
+
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Nom</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder' : 'Votre nom'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Adresse</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.adresse, {'attr': {'class': 'form-control', 'placeholder' : 'Votre adresse'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Image</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.image, {'attr': {'placeholder' : 'Votre image'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Jour d'ouverture</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.dateOuverture, {'attr': {'class': 'form-control', 'placeholder' : 'lundi .. dimanche'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Jour de fermeture</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.dateFermeture, {'attr': {'class': 'form-control', 'placeholder' : 'lundi .. dimanche'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'Votre email'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Numéro</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.numero, {'attr': {'class': 'form-control', 'placeholder' : 'Votre numéro de telephone'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Fax</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.fax, {'attr': {'class': 'form-control', 'placeholder' : 'Votre numéro de fax'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Page Facebook</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.pageFacebook, {'attr': {'class': 'form-control', 'placeholder' : 'Votre page facebook'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Site web</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.siteWeb, {'attr': {'class': 'form-control', 'placeholder' : 'Votre site web'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Heure d'ouverture</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.heureOuverture, {'attr': {'class': 'form-control', 'placeholder' : 'Heure d\'ouverture'}}) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label">Heure de fermeture</label>
+                <div class="col-sm-10">
+                    {{  form_row(form.heureFermeture, {'attr': {'class': 'form-control', 'placeholder' : 'Heure de fermeture'}}) }}
+                </div>
+            </div>
+
+
+            <input type="submit" class="btn btn-primary">
+
+            {{form_end(form)}}
+
+        {% endblock body %}

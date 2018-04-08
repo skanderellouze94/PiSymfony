@@ -2,6 +2,7 @@
 
 namespace ActualitesBundle\Controller;
 
+use ActualitesBundle\Entity\CommentaireConseil;
 use ActualitesBundle\Entity\Conseil;
 use ActualitesBundle\Form\ConseilType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,7 +30,7 @@ class ConseilController extends Controller
             );
             $conseil->setImage($fileName);
             $em = $this->getDoctrine()->getManager();
-            /*          $conseil->setIdUser($user = $this->getUser()->getId());*/
+                $conseil->setUser($user = $this->getUser());
 
             $em->persist($conseil);
             $em->flush();
@@ -98,11 +99,59 @@ class ConseilController extends Controller
         ));
     }
 
-    public function indexConseilAction()
+    public function indexConseilAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $conseil = $em->getRepository("ActualitesBundle:Conseil")->findAll();
-        return $this->render('ActualitesBundle:ConseilViews:IndexConseil.html.twig', array("m" => $conseil
+        $categorie=$em->getRepository("ActualitesBundle:Categorie")->RechercheTypeConseilDQL();
+        $dql="select c from ActualitesBundle:Conseil c ORDER BY c.idConseil DESC ";
+        $query=$em->createQuery($dql);
+        $paginator  = $this->get('knp_paginator');
+        $conseil = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
+        return $this->render('ActualitesBundle:ConseilViews:IndexConseil.html.twig', array("m" => $conseil,"c"=>$categorie
         ));
     }
+
+    public function AfficherConseilCategorieAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+        $query = $em->createQuery("select e from ActualitesBundle:Conseil e where e.categorie=".$id);
+        $conseils =$query->getResult();
+
+        return $this->render('ActualitesBundle:ConseilViews:IndexConseilCat.html.twig', array("e"=>$conseils));
+
+    }
+
+    public function chercherConseilAction($id,Request $request)
+    {
+        $comConseil = new CommentaireConseil();
+        $em=$this->getDoctrine()->getManager();
+        $conseils = $em->getRepository("ActualitesBundle:Conseil")->find($id);
+        $commentaires = $em->getRepository("ActualitesBundle:CommentaireConseil")->findBy(array('idConseil'=>$conseils));
+
+        $form = $this->createForm('ActualitesBundle\Form\CommentaireConseilType',$comConseil);
+        $form->handleRequest($request);
+        if ($form->isValid())
+
+        {
+            $commentaires = $em->getRepository("ActualitesBundle:CommentaireConseil")->findBy(array('idConseil'=>$conseils));
+            $em = $this->getDoctrine()->getManager();
+            $comConseil->setIdConseil($conseils);
+            $comConseil->setIdUser($user = $this->getUser());
+
+            $em->persist($comConseil);
+            $em->flush();
+            return $this->render('ActualitesBundle:ConseilViews:DetailConseil.html.twig', array('commentaires'=>$commentaires,'conseil' => $conseils, 'Form' => $form->createView()));
+
+        }
+
+        return $this->render('ActualitesBundle:ConseilViews:DetailConseil.html.twig', array('commentaires'=>$commentaires,'conseil' => $conseils,'Form' => $form->createView()));
+    }
+
 }

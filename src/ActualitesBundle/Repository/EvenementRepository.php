@@ -25,14 +25,23 @@ class EvenementRepository extends  \Doctrine\ORM\EntityRepository
 
     public function findDateSemaineDQL()
     {
-        $querry = $this->getEntityManager()->createQuery("select e from ActualitesBundle:Evenements e where (((e.dateDebut) >= CURRENT_DATE()) and ((e.dateDebut) <= CURRENT_DATE()+7))");
+        $querry = $this->getEntityManager()->createQuery("select e from ActualitesBundle:Evenements e where (((e.dateDebut) <= CURRENT_DATE()+7))");
         return $querry->getResult();
     }
 
 
     public function AfficherEvenements3DQL()
     {
-        $querry = $this->getEntityManager()->createQuery("select e from ActualitesBundle:Evenements e ORDER BY e.idEvent DESC  ");
+        $querry = $this->getEntityManager()->createQuery("select e from ActualitesBundle:Evenements e ORDER BY e.dateDebut DESC  ")->setMaxResults(3);
         return $querry->getResult();
     }
+    public function AfficherEvenementsCat($id)
+    {
+        $querry = $this->getEntityManager()->createQuery("select e from ActualitesBundle:Evenements e where e.idCategorie=id")
+            ->setParameter('id',id);
+        return $querry->getResult();
+    }
+
+
+
 }

@@ -807,6 +807,14 @@
                                 <h5>Numéro de fax:</h5>
                                 <p>{{ e.fax }}</p>
                             </li>
+                            <li>
+                                <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+                                <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+                                <h5>Rating :</h5>
+                                <p>{{ form(form) }}</p>
+                            </li>
+
 
 
                         </ul>
@@ -814,7 +822,7 @@
                     <div class="col-md-7" style="margin-left: 60px;">
                    {# <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&q={{ e.adresse }}" style="height: 400px;">
                     </iframe>#}
-                     <iframe src=https://www.google.com/maps/embed/v1/directions?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&origin=tunis&destination={{ e.adresse }}&avoid=tolls|highways style="height: 400px;">
+                     <iframe src=https://www.google.com/maps/embed/v1/directions?key=AIzaSyBoVSG3FplX2Ckbl672m4HWjnKK4WS5j2w&origin=tunis&destination={{e.adresse}}&avoid=tolls|highways style="height: 400px;">
                         </iframe>
                     </div>
                 </div>
