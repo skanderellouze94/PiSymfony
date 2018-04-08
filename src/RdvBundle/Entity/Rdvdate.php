@@ -2,6 +2,7 @@
 
 namespace RdvBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use PidevEsbeBundle\Entity\FosUser;
 use PidevEsbeBundle\Entity\Services;
@@ -10,8 +11,8 @@ use PidevEsbeBundle\Entity\Services;
 /**
  * Rdvdate
  *
- * @ORM\Table(name="rdvdate", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_service", columns={"id_service"})})
  * @ORM\Entity
+ * @ORM\Table(name="rdvdate")
  */
 class Rdvdate
 {
@@ -38,19 +39,13 @@ class Rdvdate
      */
     private $date;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="datef", type="datetime", nullable=false)
-     */
-    private $datef;
+
 
     /**
      * @var Services
      *
      * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Services")
-     *   @ORM\JoinColumn(name="id_service", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="id_service", referencedColumnName="id")
      */
     private $idService;
 
@@ -58,8 +53,7 @@ class Rdvdate
      * @var FosUser
      *
      * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
     private $idUser;
 
@@ -115,36 +109,14 @@ class Rdvdate
     /**
      * Get date
      *
-     * @return \DateTime|DateTime
+     * @return DateTime
      */
     public function getDate()
     {
         return $this->date;
     }
 
-    /**
-     * Set datef
-     *
-     * @param \DateTime $datef
-     *
-     * @return Rdvdate
-     */
-    public function setDatef($datef)
-    {
-        $this->datef = $datef;
 
-        return $this;
-    }
-
-    /**
-     * Get datef
-     *
-     * @return \DateTime
-     */
-    public function getDatef()
-    {
-        return $this->datef;
-    }
 
     /**
      * Set idService

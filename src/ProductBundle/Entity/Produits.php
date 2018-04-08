@@ -50,9 +50,9 @@ class Produits
     private $idProduit;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
+     * @var \EtablissementBundle\Entity\Etablissements
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
      *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- BEGIN HEAD -->
@@ -117,12 +120,13 @@
                         <ul class="dropdown-menu">
                             <li class="external">
                                 <h3><span class="bold">Notifications</span></h3>
+
                                 <span class="notification-label purple-bgcolor">New 6</span>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list small-slimscroll-style" data-handle-color="#637283">
                                     <li>
-                                        <a href="javascript:;">
+                                        <a href="javascript:">
                                             <span class="time">just now</span>
                                             <span class="details">
                                                 <span class="notification-icon circle deepPink-bgcolor"><i class="fa fa-check"></i></span> Congratulations!. </span>
@@ -976,120 +980,23 @@
                         <div class="card  card-box">
                             <div class="card-head">
                                 <header>
-            Calendrier
+                                 <p>{{ r.idrec.date | date('Y-m-d') }}</p><p> {{ r.idrec.objet }}</p><p>{{ r.idrec.message | raw }}</p>
                                 </header>
                             </div>
-                            <div class="card-body ">
-                                <div class="form-horizontal">
-
-
-                                    <link href="{{ asset('assets/cal/css/bootstrap.min.css')}}" rel="stylesheet">
-
-                                    <!-- FullCalendar -->
-                                    <link href="{{ asset('assets/cal/css/fullcalendar.css')}}" rel='stylesheet' />
-
-
-                                    <!-- Custom CSS -->
-                                    <style>
-                                        body {
-                                            padding-top: 70px;
-                                            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-                                        }
-                                        #calendar {
-                                            max-width: 800px;
-                                        }
-                                        .col-centered{
-                                            float: none;
-                                            margin: 0 auto;
-                                        }
-                                    </style>
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.min.css')}}" rel='stylesheet' />
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.print.min.css')}}" rel='stylesheet' media='print' />
-                                    <script src="{{ asset('assets/Calendrier/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/jquery.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/jquery.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/bootstrap.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/gcal.js')}}"></script>
-
-                                    {#<script type='text/javascript' src='fullcalendar/gcal.js'></script>#}
-
-                                    <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                {{ form(Form) }}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <script type='text/javascript'>
-
-                                        document.write("{% for a in rendezvous %}");
-
-                                        $(document).ready(function() {
-                                            $('#calendar').fullCalendar({
-
-                                                header: {
-                                                    left: 'prev,next today',
-                                                    center: 'title',
-                                                    right: 'month,agendaWeek,agendaDay,listWeek',
-
-
-                                                },
-                                                defaultDate: '2018-03-12',
-                                                navLinks: true, // can click day/week names to navigate views
-                                                editable: true,
-                                                eventLimit: true, // allow "more" link when too many events
-                                                selectable: true,
-                                                select: function() {
-
-                                                    $('#ModalAdd').modal('show');
-                                                },
-
-                                                events: [
-
-                                                    {
-                                                        googleCalendarApiKey: '<AIzaSyD7NYGPynyfAUIsVF9aO6U2nJeO7FE1_ys>',
-                                                        googleCalendarId: '',
-                                                        title: '{{ a.etat }}',
-                                                        start: '{{ a.date|date('Y-m-d') }}',
-
-                                                        url:'https://calendar.google.com/calendar/embed?src=anisalboudali%40gmail.com&ctz=Africa%2FTunis'
-//                                                        className: 'gcal-event'
-
-                                                    }
-                                                ]
-                                            });
-
-                                        });
-                                        console.log('aaaaaa');
-                                        document.write("{% endfor %}");
-                                    </script>
-
-
-                                    <style>
-
-                                        body {
-                                            margin: 40px 10px;
-                                            padding: 0;
-                                            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-                                            font-size: 14px;
-                                        }
-
-                                        #calendar {
-                                            max-width: 900px;
-                                            margin: 0 auto;
-                                        }
-
-                                    </style>
-
-
-                                    <div id='calendar'></div>
+                            <div class="container">
+                                <div data-example-id="simple-table" class="bs-example">
+                                    <table border="2px">
 
 
 
+                                            <tr>
+
+                                                <td>{{ r.message | raw }}</td></tr>
+
+
+
+
+                                    </table>
                                 </div>
                             </div>
                         </div>

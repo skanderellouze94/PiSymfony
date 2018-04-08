@@ -976,117 +976,45 @@
                         <div class="card  card-box">
                             <div class="card-head">
                                 <header>
-            Calendrier
+                                    Liste des Reclamation
                                 </header>
                             </div>
-                            <div class="card-body ">
-                                <div class="form-horizontal">
+                            <div class="container">
+                                <div data-example-id="simple-table" class="bs-example">
+                                    <table class="table">
+                                        <form method="post">
 
 
-                                    <link href="{{ asset('assets/cal/css/bootstrap.min.css')}}" rel="stylesheet">
+                                            <select name="objet">
+                                                {%for a in reclamations %}
+                                                    <option name="objet" value="{{a.objet}}">{{a.objet}}</option>
+                                                {% endfor %}</select>
+                                            <tr><input type="submit" value="chercher" name="chercher"></tr>
+                                        </form>
+                                    <thead>
+                                    <th>Date</th> <th>Objet</th><th>Patient</th> <th>Message</th>
+                                    </thead>
 
-                                    <!-- FullCalendar -->
-                                    <link href="{{ asset('assets/cal/css/fullcalendar.css')}}" rel='stylesheet' />
+                                    {%for a in reclamations %}
 
+                                        <tbody>
+                                        <td>{{ a.date | date('d/m/y') }}</td>
+                                        <td>{{ a.objet }}</td>
+                                        <td>{{   a.user }}</td>
 
-                                    <!-- Custom CSS -->
-                                    <style>
-                                        body {
-                                            padding-top: 70px;
-                                            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-                                        }
-                                        #calendar {
-                                            max-width: 800px;
-                                        }
-                                        .col-centered{
-                                            float: none;
-                                            margin: 0 auto;
-                                        }
-                                    </style>
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.min.css')}}" rel='stylesheet' />
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.print.min.css')}}" rel='stylesheet' media='print' />
-                                    <script src="{{ asset('assets/Calendrier/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/jquery.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/jquery.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/bootstrap.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/gcal.js')}}"></script>
+                                        <td>{{ a.message | raw }}</td>
+                                       <td><a href="{{ path('details',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Détails</button></a></td>
+                                        <td><a href="{{ path('insert',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Répondre</button></a></td>
+                                        </tbody>
 
-                                    {#<script type='text/javascript' src='fullcalendar/gcal.js'></script>#}
+                                    {% endfor %}
 
-                                    <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                {{ form(Form) }}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <script type='text/javascript'>
-
-                                        document.write("{% for a in rendezvous %}");
-
-                                        $(document).ready(function() {
-                                            $('#calendar').fullCalendar({
-
-                                                header: {
-                                                    left: 'prev,next today',
-                                                    center: 'title',
-                                                    right: 'month,agendaWeek,agendaDay,listWeek',
+                                    </table>
 
 
-                                                },
-                                                defaultDate: '2018-03-12',
-                                                navLinks: true, // can click day/week names to navigate views
-                                                editable: true,
-                                                eventLimit: true, // allow "more" link when too many events
-                                                selectable: true,
-                                                select: function() {
-
-                                                    $('#ModalAdd').modal('show');
-                                                },
-
-                                                events: [
-
-                                                    {
-                                                        googleCalendarApiKey: '<AIzaSyD7NYGPynyfAUIsVF9aO6U2nJeO7FE1_ys>',
-                                                        googleCalendarId: '',
-                                                        title: '{{ a.etat }}',
-                                                        start: '{{ a.date|date('Y-m-d') }}',
-
-                                                        url:'https://calendar.google.com/calendar/embed?src=anisalboudali%40gmail.com&ctz=Africa%2FTunis'
-//                                                        className: 'gcal-event'
-
-                                                    }
-                                                ]
-                                            });
-
-                                        });
-                                        console.log('aaaaaa');
-                                        document.write("{% endfor %}");
-                                    </script>
 
 
-                                    <style>
 
-                                        body {
-                                            margin: 40px 10px;
-                                            padding: 0;
-                                            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-                                            font-size: 14px;
-                                        }
-
-                                        #calendar {
-                                            max-width: 900px;
-                                            margin: 0 auto;
-                                        }
-
-                                    </style>
-
-
-                                    <div id='calendar'></div>
 
 
 

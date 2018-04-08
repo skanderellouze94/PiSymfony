@@ -23,31 +23,23 @@ class AppKernel extends Kernel
             new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
-<<<<<<< HEAD
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
+
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-            new ActualitesBundle\ActualitesBundle(),
-            new RdvBundle\RdvBundle(),
+
+
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new ReclamationBundle\ReclamationBundle(),
-<<<<<<< HEAD
 
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
-=======
             new ProductBundle\ProductBundle(),
->>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
->>>>>>> fbaf7f05c916b30d5472dc006eb72d9ff341622f
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

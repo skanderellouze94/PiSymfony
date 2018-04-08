@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Services
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=250, nullable=false)
@@ -43,15 +34,38 @@ class Services
     private $tarif;
 
     /**
-     * @var \Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \PidevEsbeBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;
 
+
+
+    /**
+     * Get idEtab
+     *
+     * @return \PidevEsbeBundle\Entity\Etablissements
+     */
+    public function getIdEtab()
+    {
+        return $this->idEtab;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 
 }
 

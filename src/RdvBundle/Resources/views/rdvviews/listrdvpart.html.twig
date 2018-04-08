@@ -975,118 +975,50 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="card  card-box">
                             <div class="card-head">
-                                <header>
-            Calendrier
-                                </header>
+                                <thead>
+                                Liste des Rendez-Vous
+                                </thead>
                             </div>
-                            <div class="card-body ">
-                                <div class="form-horizontal">
+
+                            <div class="container">
+                                <div data-example-id="simple-table" class="bs-example">
+
+                                    <table class="table">
+                                <th>Date et Heure</th>  <th>Patient</th> <th>Service</th> <th>Etat</th><td></td><td></td>
+                                {%for a in rendezvous %}
+                                    <tbody>
+                                    <td>{{  a.date | date('d/m/Y h:i')  }}</td>
+                                    <td>   <a style="color:blue" href="{{ path('modifier',{'id':a.idUser.id}) }}"> {{ a.idUser }}</a></td>
 
 
-                                    <link href="{{ asset('assets/cal/css/bootstrap.min.css')}}" rel="stylesheet">
-
-                                    <!-- FullCalendar -->
-                                    <link href="{{ asset('assets/cal/css/fullcalendar.css')}}" rel='stylesheet' />
+                                    <td>{{ a.idService }}</td>
 
 
-                                    <!-- Custom CSS -->
-                                    <style>
-                                        body {
-                                            padding-top: 70px;
-                                            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-                                        }
-                                        #calendar {
-                                            max-width: 800px;
-                                        }
-                                        .col-centered{
-                                            float: none;
-                                            margin: 0 auto;
-                                        }
-                                    </style>
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.min.css')}}" rel='stylesheet' />
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.print.min.css')}}" rel='stylesheet' media='print' />
-                                    <script src="{{ asset('assets/Calendrier/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/jquery.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/jquery.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/bootstrap.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/gcal.js')}}"></script>
+                                    <td>{{   a.etat }}</td>
+                                    {% if a.etat=='Demande' %}
+                                        <td><a href="{{ path('accept',{'id':a.idRdv})}}"> <button type="button" class="btn btn-primary btn-sm" >Accepter</button></a></td>
+                                        <td><a href="{{ path('refuser',{'id':a.idRdv})}}"> <button type="button" style="color:#9f191f" class="btn btn-primary btn-sm" >Refuser</button></a></td>
+                                        <td><a href="{{ path('detail',{'id':a.idRdv} )}}"> <button type="button" class="btn btn-primary btn-sm" >Détails</button></a></td>
 
-                                    {#<script type='text/javascript' src='fullcalendar/gcal.js'></script>#}
+                                    {% elseif a.etat=='Accepté'%}
+                                         <td><a style="color:#ff0000" href="{{ path('annuler',{'id':a.idRdv})}}"> <button type="button"  class="btn btn-primary btn-sm" >Annuler</button></a></td>
+                                        <td><a href="{{ path('detail',{'id':a.idRdv} )}}"> <button type="button" class="btn btn-primary btn-sm" >Détails</button></a></td>
 
+                                    {% endif %}
+                                    </tbody>
+                                {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
                                     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
-                                                {{ form(Form) }}
+
                                             </div>
                                         </div>
                                     </div>
 
-                                    <script type='text/javascript'>
-
-                                        document.write("{% for a in rendezvous %}");
-
-                                        $(document).ready(function() {
-                                            $('#calendar').fullCalendar({
-
-                                                header: {
-                                                    left: 'prev,next today',
-                                                    center: 'title',
-                                                    right: 'month,agendaWeek,agendaDay,listWeek',
-
-
-                                                },
-                                                defaultDate: '2018-03-12',
-                                                navLinks: true, // can click day/week names to navigate views
-                                                editable: true,
-                                                eventLimit: true, // allow "more" link when too many events
-                                                selectable: true,
-                                                select: function() {
-
-                                                    $('#ModalAdd').modal('show');
-                                                },
-
-                                                events: [
-
-                                                    {
-                                                        googleCalendarApiKey: '<AIzaSyD7NYGPynyfAUIsVF9aO6U2nJeO7FE1_ys>',
-                                                        googleCalendarId: '',
-                                                        title: '{{ a.etat }}',
-                                                        start: '{{ a.date|date('Y-m-d') }}',
-
-                                                        url:'https://calendar.google.com/calendar/embed?src=anisalboudali%40gmail.com&ctz=Africa%2FTunis'
-//                                                        className: 'gcal-event'
-
-                                                    }
-                                                ]
-                                            });
-
-                                        });
-                                        console.log('aaaaaa');
-                                        document.write("{% endfor %}");
-                                    </script>
-
-
-                                    <style>
-
-                                        body {
-                                            margin: 40px 10px;
-                                            padding: 0;
-                                            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-                                            font-size: 14px;
-                                        }
-
-                                        #calendar {
-                                            max-width: 900px;
-                                            margin: 0 auto;
-                                        }
-
-                                    </style>
-
-
-                                    <div id='calendar'></div>
 
 
 

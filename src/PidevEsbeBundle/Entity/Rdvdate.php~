@@ -63,5 +63,134 @@ class Rdvdate
     private $idUser;
 
 
-}
 
+    /**
+     * Get idRdv
+     *
+     * @return integer
+     */
+    public function getIdRdv()
+    {
+        return $this->idRdv;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Rdvdate
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Rdvdate
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     *
+     * @return Rdvdate
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set idService
+     *
+     * @param \PidevEsbeBundle\Entity\Services $idService
+     *
+     * @return Rdvdate
+     */
+    public function setIdService(\PidevEsbeBundle\Entity\Services $idService = null)
+    {
+        $this->idService = $idService;
+
+        return $this;
+    }
+
+    /**
+     * Get idService
+     *
+     * @return \PidevEsbeBundle\Entity\Services
+     */
+    public function getIdService()
+    {
+        return $this->idService;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \PidevEsbeBundle\Entity\FosUser $idUser
+     *
+     * @return Rdvdate
+     */
+    public function setIdUser(\PidevEsbeBundle\Entity\FosUser $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \PidevEsbeBundle\Entity\FosUser
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+}

@@ -5,33 +5,30 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-=======
 
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
 
->>>>>>> fbaf7f05c916b30d5472dc006eb72d9ff341622f
     - { resource: "@RdvBundle/Resources/config/services.yml" }
 
->>>>>>> 081fd7b3694505db4b88ebb4d58c06268a300364
+
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+
+
 
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
 
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
+
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
-=======
+
     - { resource: "@ProductBundle/Resources/config/services.yml" }
 
->>>>>>> fbaf7f05c916b30d5472dc006eb72d9ff341622f
+
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -129,11 +126,11 @@ fos_user:
         sender_name: "%mailer_user%"
     service:
         mailer: fos_user.mailer.twig_swift
-<<<<<<< HEAD
+
 knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
-=======
+
 
 nomaya_social:
     buttons:
@@ -167,4 +164,12 @@ nomaya_social:
         facebook:           "http://www.facebook.com/yann.chauvel"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
->>>>>>> fbaf7f05c916b30d5472dc006eb72d9ff341622f
+donkey_code_mail:
+    mail_from: null
+    reply_to: null
+    options:
+        header_bg: '#2d7cff'
+        header_txt_color: '#ffffff'
+        bg: '#efefef'
+        txt_color: '#555555'
+        font_family: 'Helvetica Neue'

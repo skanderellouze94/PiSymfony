@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Services
  *
- * @ORM\Table(name="services", indexes={@ORM\Index(name="fk_etab_service", columns={"id_etab"})})
+ * @ORM\Table(name="services")
  * @ORM\Entity
  */
 class Services
@@ -43,19 +43,19 @@ class Services
     private $id;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
+     * @var \EtablissementBundle\Entity\Etablissements
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
      * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;
 
 
-<<<<<<< HEAD
+
     /**
      * Get idEtab
      *
-     * @return \PidevEsbeBundle\Entity\Etablissements
+     * @return \EtablissementBundle\Entity\Etablissements
      */
     public function getIdEtab()
     {
@@ -68,7 +68,99 @@ class Services
     }
 
 
-=======
->>>>>>> fbaf7f05c916b30d5472dc006eb72d9ff341622f
-}
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Services
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
 
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Services
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set tarif
+     *
+     * @param float $tarif
+     *
+     * @return Services
+     */
+    public function setTarif($tarif)
+    {
+        $this->tarif = $tarif;
+
+        return $this;
+    }
+
+    /**
+     * Get tarif
+     *
+     * @return float
+     */
+    public function getTarif()
+    {
+        return $this->tarif;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idEtab
+     *
+     * @param \EtablissementBundle\Entity\Etablissements $idEtab
+     *
+     * @return Services
+     */
+    public function setIdEtab(\EtablissementBundle\Entity\Etablissements $idEtab = null)
+    {
+        $this->idEtab = $idEtab;
+
+        return $this;
+    }
+}

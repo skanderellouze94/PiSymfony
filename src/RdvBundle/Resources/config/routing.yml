@@ -5,14 +5,14 @@ affichage:
     path:     /afficher
     defaults: { _controller: RdvBundle:Rdv:afficher}
 
-modifier:
+modif:
     path:     /modifier/{id}
     defaults: { _controller: RdvBundle:Rdv:edit}
 cal:
     path:     /cal
     defaults: { _controller: RdvBundle:Rdv:calendrier}
 ajout:
-    path:     /ajouterr
+    path:     /ajouterr/{id}
     defaults: { _controller: RdvBundle:Rdv:ajouterr}
 calAjouter:
     path:     /callin
@@ -20,3 +20,21 @@ calAjouter:
 calIndex:
     path:     /callindex
     defaults: { _controller: RdvBundle:Calendar:call}
+lsrdv:
+    path:     /afficherrdvpart
+    defaults: { _controller: RdvBundle:Rdv:listrdvpart}
+detail:
+    path:     /detail/{id}
+    defaults: { _controller: RdvBundle:Rdv:todetail}
+accept:
+    path:     /accept/{id}
+    defaults: { _controller: RdvBundle:Rdv:accepter}
+refuser:
+    path:     /refuser/{id}
+    defaults: { _controller: RdvBundle:Rdv:refuser}
+annuler:
+    path:     /annuler/{id}
+    defaults: { _controller: RdvBundle:Rdv:annuler}
+annulerfr:
+    path:     /annulerfr/{id}
+    defaults: { _controller: RdvBundle:Rdv:annulerfr}
