@@ -15,16 +15,19 @@ class ProduitSalledesport
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=false)
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Produits
+     * @var \Produits
      *
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="PidevEsbeBundle\Entity\Produits")
-     * @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Produits")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * })
      */
     private $idProduit;
 

@@ -51,5 +51,24 @@ class Services
     private $idEtab;
 
 
+<<<<<<< HEAD
+    /**
+     * Get idEtab
+     *
+     * @return \PidevEsbeBundle\Entity\Etablissements
+     */
+    public function getIdEtab()
+    {
+        return $this->idEtab;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
+
+=======
+>>>>>>> fbaf7f05c916b30d5472dc006eb72d9ff341622f
 }
 

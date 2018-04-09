@@ -11,7 +11,8 @@ use PidevEsbeBundle\Entity\FosUser;
  * Reclamation
  *
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="user", columns={"user"}), @ORM\Index(name="idetab", columns={"idetab"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ReclamationBundle\Repository\ReclamationRepository")
+ *
  */
 class Reclamation
 {

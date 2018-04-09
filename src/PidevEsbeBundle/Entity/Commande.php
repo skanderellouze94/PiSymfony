@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Commande
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_commande", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCommande;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date", nullable=false)
@@ -22,27 +31,34 @@ class Commande
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=true)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_commande", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idCommande;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Produits", mappedBy="idCommande")
+     */
+    private $idProduit;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idProduit = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }
 

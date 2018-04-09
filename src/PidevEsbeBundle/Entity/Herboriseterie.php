@@ -13,26 +13,28 @@ use Doctrine\ORM\Mapping as ORM;
 class Herboriseterie
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", nullable=false)
-     */
-    private $type;
-
-    /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 

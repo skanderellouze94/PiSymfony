@@ -1,0 +1,66 @@
+<?php
+
+namespace RdvBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use PidevEsbeBundle\Entity\FosUser;
+use PidevEsbeBundle\Entity\Services;
+use Symfony\Component\Validator\Constraints\DateTime;
+
+/**
+ * Rdvdate
+ *
+ * @ORM\Table(name="rdvdate", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_service", columns={"id_service"})})
+ * @ORM\Entity
+ */
+class Rdvdate
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_rdv", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRdv;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255, nullable=false)
+     */
+    private $etat = 'Demande';
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datef", type="datetime", nullable=false)
+     */
+    private $datef;
+
+    /**
+     * @var Services
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Services")
+     *   @ORM\JoinColumn(name="id_service", referencedColumnName="id")
+     * })
+     */
+    private $idService;
+
+    /**
+     * @var FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
+     */
+    private $idUser;
+
+}

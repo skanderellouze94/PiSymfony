@@ -1,5 +1,58 @@
-{% for annonces in all %}
-    {{ form(Form) }}
-    <h4>{{ annonces.domaine}}</h4>
-{% endfor %}
+{#{% for annonces in all %}#}
+    {#{{ form(Form) }}#}
+    {#<h4>{{ annonces.domaine}}</h4>#}
+{#{% endfor %}#}
 
+
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<h1>Recherche des Annonces</h1>
+{{ form_start(form)}}
+Domaine: {{ form_widget(form.domaine) }}
+    {{ form_end(form) }}
+
+<h2>Liste des Annonces</h2>
+<div id="div"></div>
+
+<script>
+
+    $(function(){
+        $('#recherche_ajax_annonce_type_domaine').keyup(
+            function () {
+                //Récupération
+                var domaine=$('#recherche_ajax_annonce_type_domaine').val();
+                //Construction de la requête à solliciter
+                var Data = 'domaine=' + domaine;
+
+                $.ajax({
+                        //Construction de l'objet XHR avec la méthode POST
+                        type: "POST",
+                        url: "{{ path('rechercherAnnonce') }}",
+                        data: Data,
+                        //Test sur le succèes de réponse
+                        success: function (data) {
+                            console.log(data);
+                            //Affichage des données récupérés dans un div
+                            $("#div").html(
+                                "<table id='res' border='1'>"+
+                                "<td>Description</td>"+
+                                "<td>Date Expiration</td>"+
+                                "<td>Date Création</td></table>");
+
+                            //Parcours
+                            $.each(data, function (k,el) {
+                                $("#affichage").hide();
+                                $("#res").append(
+                                    "<tr>"+
+                                    "<td>"+el.description+"</td>"+
+                                    "<td>"+el.dateExpiration+"</td>"+
+                                    "<td>"+ el.dateCreation+ "</td>"+
+                                    "</tr>"
+                                );
+                            })
+                        }
+                    }
+                );
+            }
+        );
+    });
+</script>

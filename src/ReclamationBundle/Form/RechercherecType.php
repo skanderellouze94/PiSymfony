@@ -17,8 +17,7 @@ class RechercherecType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('objet', TextType::class,
-                array())
+            ->add('idetab')
 
             ->add('chercher',SubmitType::class);
     }/**

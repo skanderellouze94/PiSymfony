@@ -29,16 +29,19 @@ class ProduitHerbo
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", nullable=false)
+     * @ORM\Column(name="categorie", type="string", length=255, nullable=false)
      */
     private $categorie;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Produits
+     * @var \Produits
      *
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="PidevEsbeBundle\Entity\Produits")
-     * @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Produits")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * })
      */
     private $idProduit;
 

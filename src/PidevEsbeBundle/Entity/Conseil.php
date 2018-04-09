@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Conseil
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_conseil", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idConseil;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=900, nullable=false)
@@ -27,29 +36,24 @@ class Conseil
     private $image;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_conseil", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
-    private $idConseil;
+    private $idUser;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Categorie
+     * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Categorie")
-     * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
+     * })
      */
-    private $categorie;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     */
-    private $user;
+    private $idCategorie;
 
 
 }

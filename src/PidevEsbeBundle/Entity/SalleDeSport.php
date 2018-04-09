@@ -15,24 +15,26 @@ class SalleDeSport
     /**
      * @var integer
      *
-     * @ORM\Column(name="nb_entraineur", type="integer", nullable=false)
-     */
-    private $nbEntraineur;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\Column(name="nb_entraineur", type="integer", nullable=false)
+     */
+    private $nbEntraineur;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 

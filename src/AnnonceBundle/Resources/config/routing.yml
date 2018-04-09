@@ -22,14 +22,33 @@ ajouter_candidature:
     path:     /AjouterCandidature/{id}
     defaults: { _controller: AnnonceBundle:Candidature:AjouterCandidature }
 
+accepter_candidature:
+    path:     /AccepterCandidature/{id}
+    defaults: { _controller: AnnonceBundle:Candidature:AccepterCandidature }
+
+refuser_candidature:
+    path:     /DeclinerCandidature/{id}
+    defaults: { _controller: AnnonceBundle:Candidature:DeclinerCandidature }
+
+afficher_candidature_utilisateur:
+    path:     /AfficherCandidatureParUtilisateur
+    defaults: { _controller: AnnonceBundle:Candidature:AfficherCandidatureParUtilisateur }
+
+afficher_candidature:
+    path:     /AfficherCandidatures
+    defaults: { _controller: AnnonceBundle:Candidature:AfficherCandidatures }
+
 recherche:
     path:     /rechercher
     defaults: { _controller: AnnonceBundle:Annonce:chercher }
 
 rechercherAnnonce:
     path:     /RechercherParDomaine
-    defaults: { _controller: AnnonceBundle:Annonce:Rechercher }
+    defaults: { _controller: AnnonceBundle:Annonce:RechercheDomaineDQL }
 
 afficher_annonce_part:
     path:     /AfficherAnnonceParPartenaire
     defaults: { _controller: AnnonceBundle:Annonce:AfficherAnnonces }
+showw:
+    path:     /show/{id}
+    defaults: { _controller: AnnonceBundle:Candidature:showCandidature }

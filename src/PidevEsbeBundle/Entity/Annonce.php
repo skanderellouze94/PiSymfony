@@ -14,10 +14,12 @@ class Annonce
 {
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumn(name="id_partenaire", referencedColumnName="id")
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idPartenaire;
+    private $id;
 
     /**
      * @var string
@@ -29,7 +31,7 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=500, nullable=false)
+     * @ORM\Column(name="description", type="string", length=10000, nullable=false)
      */
     private $description;
 
@@ -48,15 +50,14 @@ class Annonce
     private $dateExpiration;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_partenaire", referencedColumnName="id")
+     * })
      */
-    private $id;
-
-
+    private $idPartenaire;
 
 
 }

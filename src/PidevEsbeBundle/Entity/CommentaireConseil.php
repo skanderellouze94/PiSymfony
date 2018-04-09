@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class CommentaireConseil
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_commentaire", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCommentaire;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="contenu", type="string", length=80, nullable=false)
@@ -20,27 +29,22 @@ class CommentaireConseil
     private $contenu;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_commentaire", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idCommentaire;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Conseil
+     * @var \Conseil
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Conseil")
-     * @ORM\JoinColumn(name="id_conseil", referencedColumnName="id_conseil")
+     * @ORM\ManyToOne(targetEntity="Conseil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_conseil", referencedColumnName="id_conseil")
+     * })
      */
     private $idConseil;
 

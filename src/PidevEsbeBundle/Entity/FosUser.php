@@ -1,10 +1,11 @@
 <?php
 
+
 namespace PidevEsbeBundle\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-
 /**
  * FosUser
  *
@@ -13,108 +14,91 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class FosUser extends  BaseUser
 {
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
      */
     private $nom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=50, nullable=false)
      */
     private $prenom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=120, nullable=false)
      */
     private $adresse;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_naissance", type="date", nullable=true)
      */
     private $dateNaissance;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="code_postal", type="integer", nullable=false)
      */
     private $codePostal;
-
     /**
      * @var string
      *
      * @ORM\Column(name="sexe", type="string", length=20, nullable=false)
      */
     private $sexe;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="num_tel", type="integer", nullable=false)
      */
     private $numTel;
-
     /**
      * @var string
      *
      * @ORM\Column(name="photo_profil", type="string", length=300, nullable=false)
      */
     private $photoProfil;
-
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=50, nullable=true)
      */
     private $type;
-
     /**
      * @var string
      *
      * @ORM\Column(name="specialite", type="string", length=50, nullable=true)
      */
     private $specialite;
-
     /**
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=50, nullable=false)
      */
     private $pays;
-
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=50, nullable=false)
      */
     private $status;
-
-
     /**
      * Constructor
      */
     public function __construct()
-
     {
         parent::__construct();
     }
-
     /**
      * @return mixed
      */
@@ -122,7 +106,6 @@ class FosUser extends  BaseUser
     {
         return $this->id;
     }
-
     /**
      * @param mixed $id
      */
@@ -130,7 +113,6 @@ class FosUser extends  BaseUser
     {
         $this->id = $id;
     }
-
     /**
      * @return string
      */
@@ -138,7 +120,6 @@ class FosUser extends  BaseUser
     {
         return $this->nom;
     }
-
     /**
      * @param string $nom
      */
@@ -146,7 +127,6 @@ class FosUser extends  BaseUser
     {
         $this->nom = $nom;
     }
-
     /**
      * @return string
      */
@@ -154,7 +134,6 @@ class FosUser extends  BaseUser
     {
         return $this->prenom;
     }
-
     /**
      * @param string $prenom
      */
@@ -162,7 +141,6 @@ class FosUser extends  BaseUser
     {
         $this->prenom = $prenom;
     }
-
     /**
      * @return string
      */
@@ -170,7 +148,6 @@ class FosUser extends  BaseUser
     {
         return $this->adresse;
     }
-
     /**
      * @param string $adresse
      */
@@ -178,7 +155,6 @@ class FosUser extends  BaseUser
     {
         $this->adresse = $adresse;
     }
-
     /**
      * @return \DateTime
      */
@@ -186,7 +162,6 @@ class FosUser extends  BaseUser
     {
         return $this->dateNaissance;
     }
-
     /**
      * @param \DateTime $dateNaissance
      */
@@ -194,7 +169,6 @@ class FosUser extends  BaseUser
     {
         $this->dateNaissance = $dateNaissance;
     }
-
     /**
      * @return int
      */
@@ -202,7 +176,6 @@ class FosUser extends  BaseUser
     {
         return $this->codePostal;
     }
-
     /**
      * @param int $codePostal
      */
@@ -210,7 +183,6 @@ class FosUser extends  BaseUser
     {
         $this->codePostal = $codePostal;
     }
-
     /**
      * @return string
      */
@@ -218,7 +190,6 @@ class FosUser extends  BaseUser
     {
         return $this->sexe;
     }
-
     /**
      * @param string $sexe
      */
@@ -226,7 +197,6 @@ class FosUser extends  BaseUser
     {
         $this->sexe = $sexe;
     }
-
     /**
      * @return int
      */
@@ -234,7 +204,6 @@ class FosUser extends  BaseUser
     {
         return $this->numTel;
     }
-
     /**
      * @param int $numTel
      */
@@ -242,7 +211,6 @@ class FosUser extends  BaseUser
     {
         $this->numTel = $numTel;
     }
-
     /**
      * @return string
      */
@@ -250,7 +218,6 @@ class FosUser extends  BaseUser
     {
         return $this->photoProfil;
     }
-
     /**
      * @param string $photoProfil
      */
@@ -258,7 +225,6 @@ class FosUser extends  BaseUser
     {
         $this->photoProfil = $photoProfil;
     }
-
     /**
      * @return string
      */
@@ -266,7 +232,6 @@ class FosUser extends  BaseUser
     {
         return $this->type;
     }
-
     /**
      * @param string $type
      */
@@ -274,7 +239,6 @@ class FosUser extends  BaseUser
     {
         $this->type = $type;
     }
-
     /**
      * @return string
      */
@@ -282,7 +246,6 @@ class FosUser extends  BaseUser
     {
         return $this->specialite;
     }
-
     /**
      * @param string $specialite
      */
@@ -290,7 +253,6 @@ class FosUser extends  BaseUser
     {
         $this->specialite = $specialite;
     }
-
     /**
      * @return string
      */
@@ -298,7 +260,6 @@ class FosUser extends  BaseUser
     {
         return $this->pays;
     }
-
     /**
      * @param string $pays
      */
@@ -306,7 +267,6 @@ class FosUser extends  BaseUser
     {
         $this->pays = $pays;
     }
-
     /**
      * @return string
      */
@@ -314,7 +274,6 @@ class FosUser extends  BaseUser
     {
         return $this->status;
     }
-
     /**
      * @param string $status
      */
@@ -322,8 +281,4 @@ class FosUser extends  BaseUser
     {
         $this->status = $status;
     }
-
-
-
 }
-

@@ -10,6 +10,7 @@ namespace AnnonceBundle\Controller;
 
 
 use AnnonceBundle\Entity\Candidature;
+use EtablissementBundle\Entity\Etablissements;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,15 @@ class CandidatureController extends Controller
     {
         $candidature = new Candidature();
         $em = $this->getDoctrine()->getManager();
+
         $annonce = $em ->getRepository("AnnonceBundle:Annonce")->find($id);
+
+        $etab = new Etablissements();
+
+
+//        $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
+//            ->findOneBy(['user'=>$annonce->getIdPartenaire()]);
+
         $form = $this->createForm('AnnonceBundle\Form\CandidatureType', $candidature);
         $form->handleRequest($request);
         if ($form->isValid()){
@@ -50,6 +59,7 @@ class CandidatureController extends Controller
         }
         return $this->render('AnnonceBundle:CandidatureViews:AjouterCandidature.html.twig', array(
             'an'=>$annonce,
+//            'e'=>$etab,
             'Form' => $form->createView()
         ));
     }
@@ -72,5 +82,85 @@ class CandidatureController extends Controller
 //        return $this->render('AnnonceBundle:AnnonceViews:SupprimerAnnonce.html.twig', array());
 //    }
 
+    public function AccepterCandidatureAction($id){
 
+            $em = $this->getDoctrine()->getManager();
+            $candidature=$em->getRepository("AnnonceBundle:Candidature")->find($id);
+            $id1=$candidature->getIdAnnonce()->getId();
+            $annonce = $em ->getRepository("AnnonceBundle:Annonce")->find($id1);
+            $candidature->setEtat("Acceptée");
+            $em->persist($candidature);
+            //$em->remove($annonce);
+            $em->flush();
+
+//        return $this->render('AnnonceBundle:CandidatureViews:AfficherCandidature.html.twig', array('candidature'=>$candidature,
+//        ));
+
+        return $this->redirectToRoute('afficher_candidature', array('candidature'=>$candidature,
+        ));
+    }
+
+    public function sendEmailAction(){
+
+    }
+
+    public function DeclinerCandidatureAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $candidature=$em->getRepository("AnnonceBundle:Candidature")->find($id);
+        $candidature->setEtat("Refusée");
+        $em->persist($candidature);
+        $em->flush();
+        $annonce = $em->getRepository(("AnnonceBundle:Annonce"))
+            ->findBy(['idPartenaire' => $id]);
+
+        $candidature = $em->getRepository(("AnnonceBundle:Candidature"))
+            ->findBy(['idAnnonce' => $annonce]);
+
+
+        return $this->redirectToRoute('afficher_candidature', array('candidature'=>$candidature,
+        ));
+
+
+//        return $this->render('AnnonceBundle:CandidatureViews:AfficherCandidature.html.twig', array('candidature'=>$candidature,
+//        ));
+    }
+
+    public function AfficherCandidaturesAction(){
+        $id=$this->container->get('security.token_storage')->getToken()->getUser()->getId();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $annonce = $em->getRepository(("AnnonceBundle:Annonce"))
+                ->findBy(['idPartenaire' => $id]);
+
+            $candidature = $em->getRepository(("AnnonceBundle:Candidature"))
+                ->findBy(['idAnnonce' => $annonce]);
+
+
+            return $this->render('AnnonceBundle:CandidatureViews:AfficherCandidature.html.twig', array(
+                'candidature' => $candidature
+
+            ));
+    }
+
+    public function AfficherCandidatureParUtilisateurAction(){
+        $candidature = new Candidature();
+        $em= $this->getDoctrine()->getManager();
+        $candidature=$em->getRepository("AnnonceBundle:Candidature")->findBy(['idUtilisateur' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+
+        return $this->render('AnnonceBundle:CandidatureViews:AfficherCandidatureUtilisateur.html.twig',
+            array('candidature'=>$candidature,
+            )
+        );
+    }
+
+    public function showCandidatureAction($id){
+        $em=$this->getDoctrine()->getManager();
+        $candidature = $em->getRepository(("AnnonceBundle:Candidature"))
+            ->find("$id");
+
+        return $this->render('AnnonceBundle:CandidatureViews:ShowCandidatureUtilisateur.html.twig', array('e'=>$candidature
+        ));
+    }
 }

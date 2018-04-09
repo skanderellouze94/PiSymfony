@@ -20,6 +20,7 @@ annonce:
     prefix:   /Annonce
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
@@ -46,3 +47,6 @@ fos_user:
 reclamation:
     resource: "@ReclamationBundle/Resources/config/routing.yml"
     prefix:   /rec
+rdv:
+    resource: "@RdvBundle/Resources/config/routing.yml"
+    prefix:   /rdv

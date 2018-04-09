@@ -87,6 +87,7 @@
                                          </td>
                                          <td>
                                          {{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}
+                                             <li><a id="" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.getUri }}&t={{ annonce.domaine }}"><i class="fa fa-facebook"  aria-hidden="true" title="partager sur Facebook"></i></a></li>
                                          {#{{ socialButtons( {'googleplus':false, 'linkedin':false} ) }}#}
                                              {% endfor %}
                                          </td>

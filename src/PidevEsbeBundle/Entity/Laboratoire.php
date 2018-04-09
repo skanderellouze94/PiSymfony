@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Laboratoire
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="cnam", type="boolean", nullable=false)
@@ -29,24 +38,17 @@ class Laboratoire
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=false)
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
-     * @var integer
+     * @var \Etablissements
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 

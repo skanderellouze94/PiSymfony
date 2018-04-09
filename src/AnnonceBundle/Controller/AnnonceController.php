@@ -10,10 +10,14 @@ namespace AnnonceBundle\Controller;
 
 
 use AnnonceBundle\Entity\Annonce;
+use AnnonceBundle\Form\RechercheAjaxAnnonceType;
 use AnnonceBundle\Form\RechercheAnnonceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use AnnonceBundle\Repository\AnnonceRepository;
 
 class AnnonceController extends Controller
 {
@@ -52,10 +56,14 @@ class AnnonceController extends Controller
 
     public function AfficherAnnoncesAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $annonce = $em->getRepository("AnnonceBundle:Annonce")->findAll();
-        return $this->render('AnnonceBundle:AnnonceViews:AfficherAnnonceParPartenaire.html.twig', array("a" => $annonce
-        ));
+        $annonce = new Annonce();
+        $em    = $this->getDoctrine()->getManager();
+        $annonce=$em->getRepository("AnnonceBundle:Annonce")->findBy(['idPartenaire' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+
+        return $this->render('AnnonceBundle:AnnonceViews:AfficherAnnonceParPartenaire.html.twig',
+            array('a'=>$annonce,
+            )
+        );
     }
 
     public function SupprimerAnnonceAction($id)
@@ -114,7 +122,6 @@ class AnnonceController extends Controller
     }
 
 
-
 //    public function EffacerAnnonceDateExpirationAction()
 //    {
 //        $em = $this->getDoctrine()->getManager();
@@ -130,4 +137,26 @@ class AnnonceController extends Controller
 //
 //        return $this->redirectToRoute('AnnonceViews_index');
 //    }
+
+
+    public function RechercheDomaineDQLAction(Request $request)
+    {
+        $annonces = new Annonce();
+        $em=$this->getDoctrine()->getManager();
+        $annonce=$em->getRepository('AnnonceBundle:Annonce')->findAll();
+        $form=$this->createForm(RechercheAjaxAnnonceType::class,$annonces);
+        $form->handleRequest($request);
+        if ($request->isXmlHttpRequest())
+        {
+            $serializer = new Serializer(array(new ObjectNormalizer()));
+            $annonce=$em->getRepository('AnnonceBundle:Annonce')
+                ->findSerieDQL($request->get('domaine'));
+            $data=$serializer->normalize($annonce);
+            return new JsonResponse($data);
+        }
+        return $this->render('AnnonceBundle:AnnonceViews:Search.html.twig',array('annonce' => $annonce,'form'=>$form->createView()));
+
+    }
+
+
 }

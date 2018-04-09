@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Categorie
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_categorie", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCategorie;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
@@ -22,24 +31,17 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", nullable=false)
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_categorie", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idCategorie;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 

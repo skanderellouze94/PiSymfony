@@ -15,24 +15,26 @@ class CentreBeaute
     /**
      * @var integer
      *
-     * @ORM\Column(name="nb_employee", type="integer", nullable=false)
-     */
-    private $nbEmployee;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\Column(name="nb_employee", type="integer", nullable=false)
+     */
+    private $nbEmployee;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 

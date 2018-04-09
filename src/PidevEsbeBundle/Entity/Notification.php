@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Notification
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_notif", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idNotif;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=5000, nullable=false)
@@ -24,47 +33,44 @@ class Notification
      *
      * @ORM\Column(name="date", type="datetime", nullable=false)
      */
-    private $date ;
+    private $date;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="view", type="boolean", nullable=false)
      */
-    private $view = false;
+    private $view;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_notif", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idNotif;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Rdv
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Rdv")
-     * @ORM\JoinColumn(name="id_rdv", referencedColumnName="id_rdv")
-     */
-    private $idRdv;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_receiver", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_receiver", referencedColumnName="id")
+     * })
      */
     private $idReceiver;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_sender", referencedColumnName="id")
+     * })
      */
     private $idSender;
+
+    /**
+     * @var \Rdv
+     *
+     * @ORM\ManyToOne(targetEntity="Rdv")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_rdv", referencedColumnName="id_rdv")
+     * })
+     */
+    private $idRdv;
 
 
 }

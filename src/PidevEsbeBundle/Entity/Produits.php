@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Produits
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_produit", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProduit;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=1000, nullable=false)
@@ -41,22 +50,37 @@ class Produits
     private $prix;
 
     /**
-     * @var integer
+     * @var \Etablissements
      *
-     * @ORM\Column(name="id_produit", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idProduit;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idProduit")
+     * @ORM\JoinTable(name="detail_commande",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     *   }
+     * )
+     */
+    private $idCommande;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }
 

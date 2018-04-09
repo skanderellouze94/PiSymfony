@@ -11,11 +11,30 @@ namespace AnnonceBundle\Repository;
 
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findIdDQLP ($idPartenaire)
-    {
-        $querry = $this->getEntityManager()->createQuery("select a from AnnonceBundle:Annonce a where a.idPartenaire=:idPartenaire")
-            ->setParameter('idPartenaire',$idPartenaire);
+//    public function findFiltredFields($filtredFields){
+//        unset($filtredFields['_token']);
+//
+//        $query = $this->createQueryBuilder('m')
+//            ->select('m');
+//        foreach($filtredFields as $field=>$value){
+//
+//            if($value !=''){
+//                $query
+//                    ->andWhere('m.'.$field.' = :value')
+//                    ->setParameter('value', $value);
+//            }
+//
+//        }
+//        return $query;
+//    }
 
-        return $querry->getResult();
+    public function findAnnonceDQL($domaine)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select a from AnnonceBundle:Annonce a WHERE a.domaine LIKE :domaine")
+            ->setParameter('domaine','%'.$domaine.'%');
+        return $query->getResult();
     }
+
 }
+

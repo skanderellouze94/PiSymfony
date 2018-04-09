@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Candidature
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_postulation", type="date", nullable=false)
@@ -41,27 +50,22 @@ class Candidature
     private $cv;
 
     /**
-     * @var integer
+     * @var \Annonce
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Annonce
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Annonce")
-     * @ORM\JoinColumn(name="id_annonce", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Annonce")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_annonce", referencedColumnName="id")
+     * })
      */
     private $idAnnonce;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id")
+     * })
      */
     private $idUtilisateur;
 

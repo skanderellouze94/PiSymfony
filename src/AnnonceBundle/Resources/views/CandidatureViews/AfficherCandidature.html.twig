@@ -1,0 +1,103 @@
+{% extends '::/AdminBase.html.twig' %}
+        {% block title %}
+            Liste des annonces
+        {% endblock title %}
+ {% block body %}
+     <div class="row">
+         <div class="col-md-6 col-sm-6 col-xs-6">
+             <div class="btn-group">
+                 <a class="btn btn-info" href={{ path('ajouter_annonce') }}>
+                     Ajouter Nouveau <i class="fa fa-plus"></i>
+                 </a>
+             </div>
+         </div>
+
+         <div class="col-md-6 col-sm-6 col-xs-6">
+             <div class="btn-group pull-right">
+                 <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                     <i class="fa fa-angle-down"></i>
+                 </a>
+                 <ul class="dropdown-menu pull-right">
+                     <li>
+                         <a href="javascript:;">
+                             <i class="fa fa-print"></i> Print </a>
+                     </li>
+                     <li>
+                         <a href="javascript:;">
+                             <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
+                     </li>
+                     <li>
+                         <a href="javascript:;">
+                             <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+         <form class="search-form-opened" action="#" method="GET">
+             <div class="input-group">
+                 <input type="text" class="form-control" placeholder="Search..." name="query">
+                 <span class="input-group-btn">
+                          <a href="javascript:;" class="btn submit">
+                             <i class="icon-magnifier"></i>
+                           </a>
+                        </span>
+             </div>
+         </form>
+     </div>
+
+     <div class="row">
+         <div class="col-md-12">
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="card card-topline-purple">
+                         <div class="card-head">
+                             <header>Liste des Annonces</header>
+                             <div class="tools">
+                                 <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                 <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                 <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                             </div>
+                         </div>
+                         <div class="card-body ">
+                             <div class="table-responsive">
+                                 <table class="table table-striped custom-table table-hover">
+                                     <thead>
+                                     <tr>
+                                         <th>Annonce</th>
+                                         <th>Date Postulation</th>
+                                         <th>Niveau d'étude</th>
+                                         <th>Cv</th>
+                                         <th>État</th>
+                                         <th>Action</th>
+                                     </tr>
+                                     </thead>
+                                     <tbody>
+                                     {%  for c in candidature %}
+
+                                     <tr>
+                                         <td>{{ c.idAnnonce.domaine }}</td>
+                                         <td>{{ c.datePostulation | date('d/m/y') }}</td>
+                                         <td>{{ c.niveauEtude }}</td>
+                                         <td>{{ c.cv }}</td>
+                                         <td>{{ c.etat }}</td>
+                                         <td>
+                                             <a button class="btn btn-primary btn-xs" href={{ path('accepter_candidature',{'id':c.id})}}> Accepter </a><br>
+                                             </button>
+                                             <a button class="btn btn-danger btn-xs" href={{ path('refuser_candidature',{'id':c.id})}}> Décliner </a><br>
+                                             </button>
+                                             <a button class="btn btn-danger btn-xs" href={{ path('showw',{'id':c.id})}}> afficher </a><br>
+                                             </button>
+
+                                         </td>
+                                     </tr>
+                                     {% endfor %}
+                                     </tbody>
+                                 </table>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ {% endblock body %}

@@ -22,30 +22,33 @@ class ProduitPharmaceutique
     /**
      * @var string
      *
-     * @ORM\Column(name="mode_administration", type="string", nullable=false)
+     * @ORM\Column(name="mode_administration", type="string", length=255, nullable=false)
      */
     private $modeAdministration;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="forme", type="string", nullable=false)
+     * @ORM\Column(name="forme", type="string", length=255, nullable=false)
      */
     private $forme;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PourQui", type="string", nullable=false)
+     * @ORM\Column(name="PourQui", type="string", length=255, nullable=false)
      */
     private $pourqui;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Produits
+     * @var \Produits
      *
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="PidevEsbeBundle\Entity\Produits")
-     * @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Produits")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * })
      */
     private $idProduit;
 

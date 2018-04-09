@@ -49,13 +49,45 @@ class ReclamationController extends Controller
     public function chercherAction()
     {   $a=new Reclamation();
         $EM = $this->getDoctrine()->getManager();
-        $amendes = $EM->getRepository(("ReclamationBundle:Reclamation"))->findPays();
+        $amendes = $EM->getRepository(("ReclamationBundle:Reclamation"))->findbyobjet();
         foreach ($amendes as $a){$a->setPenalite($a->getMontant()+$a->getMontant()*0.3);}
 
-        return $this->render('AmendesBundle:amendeview:afficher.html.twig', array(
-            'amende' => $amendes
+        return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array(
+            'reclamations' => $amendes
 
         ));
+    }
+
+    public function indexAction(Request $request)
+    {
+        $rec = new Reclamation();
+        $em    = $this->getDoctrine()->getManager();
+        $filterForm = $this->createForm('ReclamationBundle\Form\RechercherecType', $rec);
+        $filterForm->handleRequest($request);
+
+        $filtredFields = $request->query->get('reclamationbundle_reclamation');
+        $dql   = "SELECT m FROM ReclamationBundle:Reclamation m ORDER BY m.idRec DESC";
+        $query = $em->createQuery($dql);
+
+        if(sizeof($request->query->get('reclamationbundle_reclamation')) >0){
+            $query =   $em->getRepository('ReclamationBundle:Reclamation')->findFiltredFields($request->query->get('reclamationbundle_reclamation'));
+
+            $filterForm->get('idetab')->setData($filtredFields['idetab']);
+
+
+        }
+
+        $paginator  = $this->get('knp_paginator');
+        $rec = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig',
+            array('reclamations'=>$rec,
+                'form' => $filterForm->createView())
+        );
     }
 
 }

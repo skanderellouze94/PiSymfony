@@ -13,12 +13,14 @@
     <script src="{{ asset('assets/Calendrier/moment.min.js')}}"></script>
     <script src="{{ asset('assets/Calendrier/jquery.min.js')}}"></script>
     <script src="{{ asset('assets/Calendrier/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('assets/cal/js/gcal.js')}}"></script>
     {%for a in rendezvous %}
     <script>
 
         $(document).ready(function() {
 
             $('#calendar').fullCalendar({
+                googleCalendarApiKey: '<AIzaSyD7NYGPynyfAUIsVF9aO6U2nJeO7FE1_ys>',
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -31,6 +33,7 @@
                 events: [
 
                     {
+                        googleCalendarId: 'anisalboudali@gmail.com',
                         title: '{{ a.etat }}',
                         url:'www.google.com',
                         start: '{{ a.date }}'

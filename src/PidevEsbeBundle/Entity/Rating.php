@@ -15,32 +15,36 @@ class Rating
     /**
      * @var integer
      *
-     * @ORM\Column(name="note", type="integer", nullable=false)
-     */
-    private $note;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * @ORM\Column(name="note", type="integer", nullable=false)
+     */
+    private $note;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
      */
     private $idEtab;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 

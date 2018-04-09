@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class CommentaireEvent
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_commentaire", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCommentaire;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="contenu", type="string", length=80, nullable=false)
@@ -20,27 +29,22 @@ class CommentaireEvent
     private $contenu;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_commentaire", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idCommentaire;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 
     /**
-     * @var \PidevEsbeBundle\Entity\Evenements
+     * @var \Evenements
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Evenements")
-     * @ORM\JoinColumn(name="id_event", referencedColumnName="id_event")
+     * @ORM\ManyToOne(targetEntity="Evenements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_event", referencedColumnName="id_event")
+     * })
      */
     private $idEvent;
 

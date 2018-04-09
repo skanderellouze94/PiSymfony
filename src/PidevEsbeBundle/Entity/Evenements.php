@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Evenements
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_event", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEvent;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", nullable=false)
@@ -62,32 +71,39 @@ class Evenements
     private $archive;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_event", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCreator", referencedColumnName="id")
+     * })
      */
-    private $idEvent;
+    private $idcreator;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="idCreator", referencedColumnName="id")
-     */
-    private $idCreator;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Categorie
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Categorie")
-     * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
+     * })
      */
     private $idCategorie;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="FosUser", mappedBy="idEvent")
+     */
+    private $idUser;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }
 

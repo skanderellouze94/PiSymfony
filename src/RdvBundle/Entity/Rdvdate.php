@@ -3,7 +3,9 @@
 namespace RdvBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
+use PidevEsbeBundle\Entity\FosUser;
+use PidevEsbeBundle\Entity\Services;
+
 
 /**
  * Rdvdate
@@ -32,37 +34,34 @@ class Rdvdate
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="time", type="time", nullable=false)
+     * @ORM\Column(name="datef", type="datetime", nullable=false)
      */
-    private $time;
+    private $datef;
 
     /**
-     * @var \Services
+     * @var Services
      *
-     * @ORM\ManyToOne(targetEntity="Services")
-     * @ORM\JoinColumns({
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Services")
      *   @ORM\JoinColumn(name="id_service", referencedColumnName="id")
      * })
      */
     private $idService;
 
     /**
-     * @var \FosUser
+     * @var FosUser
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumns({
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
      */
     private $idUser;
-
 
 
     /**
@@ -116,7 +115,7 @@ class Rdvdate
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return \DateTime|DateTime
      */
     public function getDate()
     {
@@ -124,37 +123,37 @@ class Rdvdate
     }
 
     /**
-     * Set time
+     * Set datef
      *
-     * @param \DateTime $time
+     * @param \DateTime $datef
      *
      * @return Rdvdate
      */
-    public function setTime($time)
+    public function setDatef($datef)
     {
-        $this->time = $time;
+        $this->datef = $datef;
 
         return $this;
     }
 
     /**
-     * Get time
+     * Get datef
      *
      * @return \DateTime
      */
-    public function getTime()
+    public function getDatef()
     {
-        return $this->time;
+        return $this->datef;
     }
 
     /**
      * Set idService
      *
-     * @param \RdvBundle\Entity\Services $idService
+     * @param \PidevEsbeBundle\Entity\Services $idService
      *
      * @return Rdvdate
      */
-    public function setIdService(\RdvBundle\Entity\Services $idService = null)
+    public function setIdService(\PidevEsbeBundle\Entity\Services $idService = null)
     {
         $this->idService = $idService;
 
@@ -164,7 +163,7 @@ class Rdvdate
     /**
      * Get idService
      *
-     * @return \RdvBundle\Entity\Services
+     * @return \PidevEsbeBundle\Entity\Services
      */
     public function getIdService()
     {
@@ -174,11 +173,11 @@ class Rdvdate
     /**
      * Set idUser
      *
-     * @param \RdvBundle\Entity\FosUser $idUser
+     * @param \PidevEsbeBundle\Entity\FosUser $idUser
      *
      * @return Rdvdate
      */
-    public function setIdUser(\RdvBundle\Entity\FosUser $idUser = null)
+    public function setIdUser(\PidevEsbeBundle\Entity\FosUser $idUser = null)
     {
         $this->idUser = $idUser;
 
@@ -188,7 +187,7 @@ class Rdvdate
     /**
      * Get idUser
      *
-     * @return \RdvBundle\Entity\FosUser
+     * @return \PidevEsbeBundle\Entity\FosUser
      */
     public function getIdUser()
     {

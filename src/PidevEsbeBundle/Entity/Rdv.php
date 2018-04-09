@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Rdv
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_rdv", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRdv;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="date", type="string", length=700, nullable=false)
@@ -34,27 +43,22 @@ class Rdv
     private $time;
 
     /**
-     * @var integer
+     * @var \Services
      *
-     * @ORM\Column(name="id_rdv", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idRdv;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Services
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Services")
-     * @ORM\JoinColumn(name="id_service", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Services")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_service", referencedColumnName="id")
+     * })
      */
     private $idService;
 
     /**
-     * @var \PidevEsbeBundle\Entity\FosUser
+     * @var \FosUser
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 

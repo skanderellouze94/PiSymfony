@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Fichepatient
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_fiche", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idFiche;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="suivie", type="string", length=3000, nullable=false)
@@ -27,29 +36,24 @@ class Fichepatient
     private $suiviehtml;
 
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_fiche", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idFiche;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\Etablissements
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
-     * @ORM\JoinColumn(name="idEtab", referencedColumnName="id")
-     */
-    private $idetab;
-
-    /**
-     * @var \PidevEsbeBundle\Entity\FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
-     * @ORM\JoinColumn(name="idPatient", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idPatient", referencedColumnName="id")
+     * })
      */
     private $idpatient;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEtab", referencedColumnName="id")
+     * })
+     */
+    private $idetab;
 
 
 }
