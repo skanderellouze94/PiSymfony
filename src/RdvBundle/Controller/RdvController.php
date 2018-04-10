@@ -34,9 +34,10 @@ class RdvController extends Controller
             $literalTime    =   \DateTime::createFromFormat("Y-m-d H:i:s",$t);
 //            $expire_date =  $literalTime-> ("Y-m-d H:i:s");
             $rdv->setDate($literalTime);
-            $rdv->setIdService($id);
+//            $rdv->setIdService($id);
             $em->persist($rdv);
             $em->flush();
+            $this->sendNotification();
             return $this->redirectToRoute('affichage');
         }
         return $this->render('RdvBundle:rdvviews:Ajout.html.twig', array(
@@ -62,9 +63,10 @@ class RdvController extends Controller
         $service = $rdv->getRepository(("PidevEsbeBundle:Services"))
         ->findOneBy(['idEtab' =>$etab]);
         $rdvs = $rdv->getRepository(("RdvBundle:Rdvdate"))->findBy(['idService' =>$service]);
+        $notifiableNotifications = $rdv->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
 
         return $this->render('RdvBundle:rdvviews:listrdvpart.html.twig', array(
-        'rendezvous' => $rdvs
+        'rendezvous' => $rdvs,'notifiableNotifications'=>$notifiableNotifications
 
         ));
     }
@@ -90,7 +92,7 @@ class RdvController extends Controller
     {
         $rdv = $this->getDoctrine()->getManager();
         $rdvs = $rdv->getRepository(("RdvBundle:Rdv"))->findAll();
-        return $this->render('RdvBundle:rdvviews:mycalendar.html.twig', array(
+        return $this->render('RdvBundle:rdvviews:calendar.html.twig', array(
             'rendezvous' => $rdvs
 
         ));
@@ -98,14 +100,13 @@ class RdvController extends Controller
     }
     /**
      * @Route("/send-notification", name="send_notification")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function sendNotification(Request $request)
+    public function sendNotification()
     {
         $manager = $this->get('mgilet.notification');
-        $notif = $manager->createNotification('Hello world !');
-        $notif->setMessage('This a notification.');
+        $notif = $manager->createNotification('Demande de RendezVous');
+        $notif->setMessage('RendezVous');
         $notif->setLink('http://symfony.com/');
         // or the one-line method :
         // $manager->createNotification('Notification subject','Some random text','http://google.fr');
@@ -131,7 +132,7 @@ class RdvController extends Controller
         $monthrdv=$rdv->getDate()->format("m");
         $yearrdv=$rdv->getDate()->format("Y");
 
-        if($dayrdv-$daynow<2 && $monthrdv-$monthnow==0 && $yearrdv-$yearnow==0) {
+        if($dayrdv-$daynow<2 && $monthrdv-$monthnow==0 && $yearrdv-$yearnow==0 || $rdv->getEtat()=='Annulé') {
 
 //
             throw new \Exception('naaaaaaah bro!');

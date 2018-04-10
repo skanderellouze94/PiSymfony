@@ -32,6 +32,8 @@ class ReclamationController extends Controller
             $rdv->setUser($this->getUser());
             $em->persist($rdv);
             $em->flush();
+            $this->sendNotification();
+            return $this->redirectToRoute('afficher');
         }
         return $this->render('ReclamationBundle:reclamationviews:Ajout.html.twig', array(
             'Form' => $form->createView()
@@ -39,25 +41,30 @@ class ReclamationController extends Controller
         ));
 
     }
-    public function searchVoitureAction(Request $request)
-    {$r=$this->getDoctrine()->getManager();
-        $rec=$r->getRepository('ReclamationBundle:Reclamation')->findAll();
+    public function sendNotification()
+    {
+        $manager = $this->get('mgilet.notification');
+        $notif = $manager->createNotification('Vous avez reçu une réclamation');
+        $notif->setMessage('Réclamation');
+        $notif->setLink('index');
+        // or the one-line method :
+        // $manager->createNotification('Notification subject','Some random text','http://google.fr');
 
-        if($request->getMethod()=="POST") {
-            $rec = $r->getRepository('ReclamationBundle:Reclamation')->findBy(array('objet'=>$request->get('objet')));
+        // you can add a notification to a list of entities
+        // the third parameter ``$flush`` allows you to directly flush the entities
+        $manager->addNotification(array($this->getUser()), $notif, true);
 
-        }
-        return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array('reclam' => $rec
-
-        ));
+        return $this->redirectToRoute('index');
     }
 
     public function todetailAction($id){
 
         $rec = $this->getDoctrine()->getManager();
+        $notifiableNotifications = $rec->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
+
         $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->find($id);
         return $this->render('ReclamationBundle:reclamationviews:details.html.twig', array(
-                'rec'=>$recs
+                'rec'=>$recs,'notifiableNotifications'=>$notifiableNotifications
         ));
     }
     public function torespAction(){
@@ -65,6 +72,7 @@ class ReclamationController extends Controller
 //        $rec = $this->getDoctrine()->getManager();
 
         return $this->render('ReclamationBundle:reclamationviews:reponse.html.twig', array(
+
 
         ));
     }
@@ -77,19 +85,21 @@ $id=$this->container->get('security.token_storage')->getToken()->getUser()->getI
         $rec = $this->getDoctrine()->getManager();
 
         $etab = $rec->getRepository(("EtablissementBundle:Etablissements"))
-            ->findOneBy(['user' => $id]);
+            ->findBy(['user' => $id]);
         if($request->getMethod()=="POST") {
             $recc = $rec->getRepository('ReclamationBundle:Reclamation')->findBy(['objet'=>$request->get('objet'),'user'=>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
-            return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig', array('reclamations' => $recc
+            return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig'
+                , array('reclamations' => $recc
 
             ));
         }
+        $notifiableNotifications = $rec->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
 //        $dql="SELECT m FROM ReclamationBundle:Reclamation m WHERE m.idetab=$id ";
 //        $query = $rec->createQuery($dql);
         $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->findBy(['idetab' =>$etab]);
         return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig', array(
-            'reclamations' => $recs
+            'reclamations' => $recs,'notifiableNotifications'=>$notifiableNotifications
 
         ));
     }
@@ -111,8 +121,10 @@ $id=$this->container->get('security.token_storage')->getToken()->getUser()->getI
 
             ));
         }
+        $notifiableNotifications = $em->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
+
         return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig',
-            array('reclamations'=>$rec,
+            array('reclamations'=>$rec,'notifiableNotifications'=>$notifiableNotifications
                )
 
         );

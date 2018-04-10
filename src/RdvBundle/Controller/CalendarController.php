@@ -11,6 +11,7 @@ namespace RdvBundle\Controller;
 
 use RdvBundle\Entity\Rdvdate;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class CalendarController extends Controller
@@ -33,22 +34,28 @@ class CalendarController extends Controller
         ));
     }
 
+    public function loadCalendarDataAction(){
+        $em = $this->getDoctrine()->getManager();
+        $rdvs = $em->getRepository('RdvBundle:Rdvdate')->findby(['idUser'=>$this->getUser(),'etat'=>'Accepté']);
+        $listRdvsJson = array();
+        foreach ($rdvs as $r){
+            $listRdvsJson[] = array(
+                'title' => $r->getIdService()->getNom(),
+                'start' => "" . ($r->getDate()->format('Y-m-d H:i:s')) . "",
+                'end' => "" . ($r->getDate()->format('Y-m-d H:i:s')) . "",
+                'id' => "" . ($r->getIdRdv(). ""));
+        }
+        return new JsonResponse(array('events' => $listRdvsJson));
+    }
+
     public function callAction(Request $request)
     {
-        $rdv = new Rdvdate();
-        $form = $this->createForm('RdvBundle\Form\RdvdateType', $rdv);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
 
-            $em->persist($rdv);
-            $em->flush();
-        }
         $rdv = $this->getDoctrine()->getManager();
         $rdvs = $rdv->getRepository(("RdvBundle:Rdvdate"))->findAll();
-        return $this->render('RdvBundle:rdvviews:call.html.twig', array(
-            'rendezvous' => $rdvs,'Form' => $form->createView()
+        return $this->render('RdvBundle:rdvviews:calendar.html.twig', array(
+            'rendezvous' => $rdvs
 
         ));
     }

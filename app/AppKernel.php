@@ -24,45 +24,22 @@ class AppKernel extends Kernel
             new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
-<<<<<<< HEAD
             new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
-            new ActualitesBundle\ActualitesBundle(),
-            new ReclamationBundle\ReclamationBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-
-
-
             new AnnonceBundle\AnnonceBundle(),
-            new Nomaya\SocialBundle\NomayaSocialBundle(),
-
-
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-
-
             new ProductBundle\ProductBundle(),
-
-=======
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-            new ProductBundle\ProductBundle(),
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
             new DemandeBundle\DemandeBundle(),
-<<<<<<< HEAD
             new ForumBundle\ForumBundle(),
-=======
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
-=======
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
->>>>>>> CRUD produit + service
->>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+            new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

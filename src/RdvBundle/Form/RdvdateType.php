@@ -18,10 +18,6 @@ class RdvdateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-
-
-            ->add('idUser')
             ->add('Ajouter', SubmitType::class)
             ->setMethod('post');
     }/**

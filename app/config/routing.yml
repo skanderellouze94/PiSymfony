@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"
     prefix:   /
@@ -8,15 +8,12 @@ annonce:
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
     prefix:   /product
-=======
-<<<<<<< HEAD
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /
 
-=======
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
->>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
 demande:
     resource: "@DemandeBundle/Resources/config/routing.yml"
     prefix:   /Demande
@@ -27,13 +24,11 @@ annonce:
 
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
-=======
 product_services:
     resource: "@ProductBundle/Resources/config/routing/services.yml"
     prefix:   /services
 Commande:
     resource: "@ProductBundle/Resources/config/routing/Commande.yml"
->>>>>>> CRUD produit + service
     prefix:   /
 product:
     resource: "@ProductBundle/Resources/config/routing/produits.yml"
@@ -47,44 +42,33 @@ product_produitpharmaceutique:
 product_produitparapharmacie:
     resource: "@ProductBundle/Resources/config/routing/produitparapharmacie.yml"
     prefix:   /ppara
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
 product_produitsalledesport:
     resource: "@ProductBundle/Resources/config/routing/produitsalledesport.yml"
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
     prefix:   /produitsalledesport
-<<<<<<< HEAD
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
-=======
-
-
-=======
     prefix:   /psalledesport
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
->>>>>>> CRUD produit + service
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
 
 
-=======
->>>>>>> CRUD produit + service
+
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"
     prefix:   /
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
 fiche:
     resource: "@FicheBundle/Resources/config/routing.yml"
     prefix:   /fiche
@@ -99,13 +83,11 @@ fos_user:
 reclamation:
     resource: "@ReclamationBundle/Resources/config/routing.yml"
     prefix:   /rec
-<<<<<<< HEAD
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
 mgilet_notifications:
     resource: "@MgiletNotificationBundle/Controller/"
     prefix:   /notifications
-=======
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+
 

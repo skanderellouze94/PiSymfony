@@ -146,15 +146,65 @@
                     </div>
                     <div class="col-md-9">
                         <div class="widget no-border m-0">
+                            <!-- start notification dropdown -->
+                            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                <a href="javascript:;" style="color: #f5f8fd" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="badge headerBadgeColor1"> {{ mgilet_notification_unseen_count(app.user) }} </span>
+                                </a>
+
+                                <ul class="dropdown-menu" href="{{ mgilet_notification_generate_path('notification_mark_all_as_seen',app.user) }}">
+                                    <li class="external">
+                                        <h3><span class="bold">Notifications</span></h3>
+                                        {#<span class="notification-label purple-bgcolor">{{ mgilet_notification_unseen_count(app.user) }}</span>#}
+                                    </li>
+                                    <li>
+                                        <form action="{{ mgilet_notification_generate_path('notification_list', notifiableNotifications|first.notifiableEntity) }}"
+                                              method="post">
+                                            <button class="btn btn-circle btn-info " style="margin-left: 25%" type="submit">Marquer comme vu</button>
+                                        </form>
+                                        <ul class="dropdown-menu-list small-slimscroll-style" data-handle-color="#637283" style="overflow: hidden; width: auto;">
+                                            {% for notifiableNotification in notifiableNotifications %}
+                                                <li class="external">
+
+                                                    {% if notifiableNotification.seen == true %}
+                                                        <span class="details"><a href="{{ path(notifiableNotification.notification.link) }}"> <b>{{ mgilet_notification_render(app.user ,{'seen': false }) }}</b></a></span>
+
+                                                    {% elseif notifiableNotification.seen == false %}
+                                                    <span class="details">  <a href="{{ path(notifiableNotification.notification.link) }}"><b style="color:#00bcd4">{{ mgilet_notification_render(app.user,{'seen': false }) }}</b></a></span>
+                                                    {% endif %}
+
+                                                    {#<div style="display:inline">#}
+
+                                                    {#<form action="{{ mgilet_notification_generate_path('notification_mark_as_seen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"#}
+                                                    {#method="post">#}
+                                                    {#<button class="fa fa-eye" style="width:40px" type="submit"></button>#}
+                                                    {#</form>#}
+                                                    {#<form action="{{ mgilet_notification_generate_path('notification_mark_as_unseen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"#}
+                                                    {#method="post">#}
+                                                    {#<button class="fa fa-eye-slash" style="width:40px" type="submit"></button>#}
+                                                    {#</form>#}
+                                                    {#</div>#}
+
+                                                </li>
+                                            {% endfor %}
+
+                                        </ul>
+
+                                    </li>
+                                </ul>
+                            </li>
                             <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">123-456-789</a> </li>
                                 <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i> Mon-Fri 8:00 to 2:00 </li>
                                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">contact@yourdomain.com</a> </li>
+
                                 <li class="sm-display-block mt-sm-10 mb-sm-10">
                                     <!-- Modal: Appointment Starts -->
                                     <a class="bg-light p-5 text-theme-colored font-11 ajaxload-popup" href="ajax-load/form-appointment.html">Make an Appointment</a>
                                     <!-- Modal: Appointment End -->
                                 </li>
+
                             </ul>
                         </div>
                     </div>
@@ -290,6 +340,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                             <li><a href="#">Features <span class="label label-info">New</span></a>
                                 <ul class="dropdown">
                                     <li><a href="features-preloader.html">Preloaders</a></li>
@@ -342,6 +393,12 @@
                                             <li><a href="features-home-video-bg.html">Video Image Bg</a></li>
                                         </ul>
                                     </li>
+                                    <li>
+                                    <ul class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                            <i class="fa fa-bell-o"></i>
+                                            <span class="badge headerBadgeColor1"> {{ mgilet_notification_unseen_count(app.user) }} </span>
+                                        </a></ul>
                                     <li><a href="#">Form</a>
                                         <ul class="dropdown">
                                             <li><a href="#">Login/Register Form</a>
@@ -450,6 +507,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="#">About</a>
