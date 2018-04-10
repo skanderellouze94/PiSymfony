@@ -32,14 +32,27 @@ class AppKernel extends Kernel
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
+<<<<<<< HEAD
+=======
+            new ProductBundle\ProductBundle(),
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
             new DemandeBundle\DemandeBundle(),
             new ForumBundle\ForumBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+<<<<<<< HEAD
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> CRUD produit + service
+>>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

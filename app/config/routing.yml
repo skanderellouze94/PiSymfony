@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"
     prefix:   /
@@ -8,8 +14,14 @@ annonce:
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
     prefix:   /product
+<<<<<<< HEAD
 ancarebeca_fullcalendar:
     resource: "@FullCalendarBundle/Resources/config/routing.yml"
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /
@@ -18,12 +30,15 @@ demande:
     resource: "@DemandeBundle/Resources/config/routing.yml"
     prefix:   /Demande
 
+<<<<<<< HEAD
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
 
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
+=======
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
 product_services:
     resource: "@ProductBundle/Resources/config/routing/services.yml"
     prefix:   /services
@@ -44,25 +59,41 @@ product_produitparapharmacie:
     prefix:   /ppara
 product_produitsalledesport:
     resource: "@ProductBundle/Resources/config/routing/produitsalledesport.yml"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
     prefix:   /produitsalledesport
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
+<<<<<<< HEAD
+=======
+=======
+
+
+=======
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
     prefix:   /psalledesport
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites

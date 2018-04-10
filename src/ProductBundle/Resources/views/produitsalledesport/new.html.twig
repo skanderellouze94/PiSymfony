@@ -1,9 +1,9 @@
 {% extends '::/AdminBase.html.twig' %}
  {% block title %}
-     Ajouter Produit Para
+     Ajouter Produit Salle De Sport
  {% endblock title %}
  {% block titleP %}
-     Ajouter Produit Para
+     Ajouter Produit Salle De Sport
  {% endblock %}
 {% block script %}
     <link href="{{ asset('assets/back/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
@@ -18,35 +18,50 @@
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
-                    <input type="text"  name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
-            </div>
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="text"  name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
+                    </div>
+                </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Description
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
                     <input type="text" name="description" data-required="1" placeholder="enter Description"  class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Marque
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
                     <input type="text" name="marque" data-required="1" placeholder="enter marque"  class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Prix
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
                     <input name="prix" type="text" placeholder="prix"  class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Type
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
                     <input name="type" type="text" placeholder="categorie"  class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Produit image

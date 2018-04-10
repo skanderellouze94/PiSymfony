@@ -1,67 +1,695 @@
 {% extends '::/base.html.twig' %}
 
 {% block content %}
+    <div class="col-md-3">
+        <div class="sidebar sidebar-right mt-sm-30">
+            <form>
+                 <div class="widget">
+                    <h5 class="widget-title line-bottom">Search box</h5>
+                    <div class="search-form">
+                        <div class="input-group">
+                            <input type="text" id="search" placeholder="Click to Search" class="form-control search-input">
+                            <span class="input-group-btn">
+                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                        </span>
+                        </div>
+                    </div>
+                 </div>
+                <div class="widget">
+                    <h5 class="widget-title line-bottom">Type </h5>
+                    <div class="categories">
+                    <style>
+                        /* The container */
+                        .container2 {
+                            display: block;
+                            position: relative;
+                            padding-left: 35px;
+                            margin-bottom: 12px;
+                            cursor: pointer;
+                            font-size: 22px;
+                            -webkit-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                        }
 
-                    <div class="col-md-9">
-                        <div class="products">
-                            <div class="row multi-row-clearfix">
-                                {% for s in pagination %}
-                                <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
-                                    <div class="product">
-                                        <div class="product-thumb">
-                                            <img alt="" style="display: block;
+                        /* Hide the browser's default checkbox */
+                        .container2 input {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+
+                        /* Create a custom checkbox */
+                        .checkmark {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 25px;
+                            width: 25px;
+                            background-color: #eee;
+                        }
+
+                        /* On mouse-over, add a grey background color */
+                        .container2:hover input ~ .checkmark {
+                            background-color: #ccc;
+                        }
+
+                        /* When the checkbox is checked, add a blue background */
+                        .container2 input:checked ~ .checkmark {
+                            background-color: #2196F3;
+                        }
+
+                        /* Create the checkmark/indicator (hidden when not checked) */
+                        .checkmark:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                        }
+
+                        /* Show the checkmark when checked */
+                        .container2 input:checked ~ .checkmark:after {
+                            display: block;
+                        }
+
+                        /* Style the checkmark/indicator */
+                        .container2 .checkmark:after {
+                            left: 9px;
+                            top: 5px;
+                            width: 5px;
+                            height: 10px;
+                            border: solid white;
+                            border-width: 0 3px 3px 0;
+                            -webkit-transform: rotate(45deg);
+                            -ms-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                        }
+                    </style>
+                    <label class="container2">ALL
+                        <input type="checkbox" onclick="check()" id="all" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container2">Produit Herbo
+                        <input type="checkbox"  onclick="check2()" id="herbo" >
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container2">Produit Para
+                        <input type="checkbox"  onclick="check2()" id="para">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container2">Produit Pharma
+                        <input type="checkbox"  onclick="check2()" id="pharma">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container2">Produit Salle De Sport
+                        <input type="checkbox"  onclick="check2()" id="salle">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function check() {
+            if($('#all').is(':checked')){
+                $('#herbo').prop('checked',false);
+                $('#para').prop('checked',false);
+                $('#pharma').prop('checked',false);
+                $('#salle').prop('checked',false);
+            }
+        }
+        function check2() {
+            if($('#herbo').is(':checked')){
+                $('#all').prop('checked',false);
+
+            }
+            if($('#para').is(':checked')){
+                $('#all').prop('checked',false);
+
+            }
+            if($('#pharma').is(':checked')){
+                $('#all').prop('checked',false);
+
+            }
+            if($('#salle').is(':checked')){
+                $('#all').prop('checked',false);
+
+            }
+
+        }
+    </script>
+    <div class="col-md-9">
+        <div class="products">
+            <div class="row multi-row-clearfix">
+                <div id="allP">
+                    {% for s in pagination %}
+                        <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
+                            <div class="product">
+                                <div class="product-thumb">
+                                    <img alt="" style="display: block;
   max-width:270px;
   max-height:200px;
   width: 270px;
   height: 200px;" src="{{ asset('/uploads/images/products/') }}{{ s.image }}" class="img-responsive img-fullwidth " >
-                                            <div class="overlay"></div>
-                                        </div>
-                                        <div class="product-details text-center">
-                                            <a href="{{ path('produits_show',{idProduit:s.IdProduit}) }}"><h5 class="product-title">{{ s.nom|upper }}</h5></a>
-                                            <div class="" title="Rated 4.50 out of5">{{ s.type }}</div>
-                                            <div class="price"><ins><span class="amount">${{ s.prix }}</span></ins></div>
-                                            <div class="btn-add-to-cart-wrapper">
-                                                <a class="btn btn-default btn-xs btn-add-to-cart" href="{{ path('P_ajouter',{id: s.IdProduit}) }}">Add To Cart</a>
-                                            </div>
-                                        </div>
+                                    <div class="overlay"></div>
+                                </div>
+                                <div class="product-details text-center">
+                                    <a href="{{ path('produits_show',{idProduit:s.IdProduit}) }}"><h5 class="product-title">{{ s.nom|upper }}</h5></a>
+                                    <div >{{ s.type }}</div>
+                                    <div class="price"><ins><span class="amount">${{ s.prix }}</span></ins></div>
+                                    <div class="btn-add-to-cart-wrapper">
+                                        <a class="btn btn-default btn-xs btn-add-to-cart" href="{{ path('P_ajouter',{id: s.IdProduit}) }}">Add To Cart</a>
                                     </div>
                                 </div>
-                                {% endfor %}
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    {{ knp_pagination_render(pagination) }}
-                                </div>
                             </div>
                         </div>
+                    {% endfor %}
                     </div>
-                    <div class="col-md-3">
-                        <div class="sidebar sidebar-right mt-sm-30">
-                            <div class="widget">
-                                <h5 class="widget-title line-bottom">Search box</h5>
-                                <div class="search-form">
-                                    <form>
-                                        <div class="input-group">
-                                            <input type="text" placeholder="Click to Search" class="form-control search-input">
-                                            <span class="input-group-btn">
-                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
-                        </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <h5 class="widget-title line-bottom">Categories</h5>
-                                <div class="categories">
-                                    <ul class="list list-border angle-double-right">
-                                        <li><a href="#" >Creative<span>(19)</span></a></li>
-                                        <li><a href="#">Portfolio<span>(21)</span></a></li>
-                                        <li><a href="#">Fitness<span>(15)</span></a></li>
-                                        <li><a href="#">Gym<span>(35)</span></a></li>
-                                        <li><a href="#">Personal<span>(16)</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                <div id="filtred" >
+
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ knp_pagination_render(pagination) }}
                     </div>
+                </div>
+        </div>
+    </div>
+    <!-- search keyup Ajax search -->
+    <script >
+            $('#search').keyup(
+            function () {
+                var all ;
+                var herbo ;
+                var para ;
+                var pharma ;
+                var salle ;
+                if($('#all').is(':checked')){
+                      all  =  'all';
+                }
+                else {
+                     all  =  '';
+                }
+                if($('#pharma').is(':checked')){
+                     pharma  =  'pharma';
+                }
+                else {
+                     pharma  =  '';
+                }
+                if($('#herbo').is(':checked')){
+                     herbo  =  'herbo';
+                }
+                else {
+                     herbo  =  '';
+                }
+                if($('#para').is(':checked')){
+                    para  =  'para';
+                }
+                else {
+                    para  =  '';
+                }
+                if($('#salle').is(':checked')){
+                    salle  =  'salle';
+                }
+                else {
+                    salle  =  '';
+                }
+                var serie =$('#search').val();
+
+                var DATA  =  {'serie' : serie , 'all': all,'herbo' : herbo,'para' : para,
+                            'pharma':pharma,'salle':salle};
+                console.log(DATA);
+                $.ajax({type:"POST",
+                        url: "{{ path('produits_index')}}"  ,
+                        data: DATA,
+                        success: function (data){
+                            console.log(data);
+                            $("#allP").hide();
+                            $("#filtred2").remove();
+                            $("#filtred").html("<div id='filtred2'></div>")
+                            $.each(data, function (k,el) {
+                                $("#filtred2").append(
+                                    " <div class='col-sm-6 col-md-4 col-lg-4 mb-30'>" +
+                                    " <div class='product'>" +
+                                    "<div class='product-thumb'>"+
+    "<img  style='display: block;" +
+    "  max-width:270px;" +
+    "  max-height:200px;" +
+    "  width: 270px;" +
+     " height: 200px;'"+
+     " src='/uploads/images/products/"+el.image+
+     " 'class='img-responsive img-fullwidth' >" +
+     "<div class='overlay'></div>" +
+                       "</div>"+
+                                        "<div class='product-details text-center'>"
+                                        +"<a href='/produits/"+el.idProduit+"/show'><h5 class='product-title'>"+ el.nom+"</h5></a>"+
+                                        "<div>"+el.type+"</div>"
+                                    +"<div class='price'><ins><span class='amount'>$"+el.prix+"</span></ins></div>"+
+                                        " <div class='btn-add-to-cart-wrapper'>"+
+                                        " <a class='btn btn-default btn-xs btn-add-to-cart' href='/"+el.IdProduit+"/Ajouter'>Add To Cart</a>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                );
+                            })
+
+                        }
+                    }
+                );
+            }
+        );
+
+    </script>
+    <!-- herbo click -->
+    <script >
+        $('#herbo').click(
+            function () {
+                var all ;
+                var herbo ;
+                var para ;
+                var pharma ;
+                var salle ;
+                if($('#all').is(':checked')){
+                    all  =  'all';
+                }
+                else {
+                    all  =  '';
+                }
+                if($('#pharma').is(':checked')){
+                    pharma  =  'pharma';
+                }
+                else {
+                    pharma  =  '';
+                }
+                if($('#herbo').is(':checked')){
+                    herbo  =  'herbo';
+                }
+                else {
+                    herbo  =  '';
+                }
+                if($('#para').is(':checked')){
+                    para  =  'para';
+                }
+                else {
+                    para  =  '';
+                }
+                if($('#salle').is(':checked')){
+                    salle  =  'salle';
+                }
+                else {
+                    salle  =  '';
+                }
+                var serie =$('#search').val();
+
+                var DATA  =  {'serie' : serie , 'all': all,'herbo' : herbo,'para' : para,
+                    'pharma':pharma,'salle':salle};
+                console.log(DATA);
+                $.ajax({type:"POST",
+                        url: "{{ path('produits_index')}}"  ,
+                        data: DATA,
+                        success: function (data){
+                            console.log(data);
+                            $("#allP").hide();
+                            $("#filtred2").remove();
+                            $("#filtred").html("<div id='filtred2'></div>")
+                            $.each(data, function (k,el) {
+                                $("#filtred2").append(
+                                    " <div class='col-sm-6 col-md-4 col-lg-4 mb-30'>" +
+                                    " <div class='product'>" +
+                                    "<div class='product-thumb'>"+
+                                    "<img  style='display: block;" +
+                                    "  max-width:270px;" +
+                                    "  max-height:200px;" +
+                                    "  width: 270px;" +
+                                    " height: 200px;'"+
+                                    " src='/uploads/images/products/"+el.image+
+                                    " 'class='img-responsive img-fullwidth' >" +
+                                    "<div class='overlay'></div>" +
+                                    "</div>"+
+                                    "<div class='product-details text-center'>"
+                                    +"<a href='/produits/"+el.idProduit+"/show'><h5 class='product-title'>"+ el.nom+"</h5></a>"+
+                                    "<div>"+el.type+"</div>"
+                                    +"<div class='price'><ins><span class='amount'>$"+el.prix+"</span></ins></div>"+
+                                    " <div class='btn-add-to-cart-wrapper'>"+
+                                    " <a class='btn btn-default btn-xs btn-add-to-cart' href='/"+el.IdProduit+"/Ajouter'>Add To Cart</a>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                );
+                            })
+
+                        }
+                    }
+                );
+            }
+        );
+
+    </script>
+    <!-- para click -->
+    <script >
+        $('#para').click(
+            function () {
+                var all ;
+                var herbo ;
+                var para ;
+                var pharma ;
+                var salle ;
+                if($('#all').is(':checked')){
+                    all  =  'all';
+                }
+                else {
+                    all  =  '';
+                }
+                if($('#pharma').is(':checked')){
+                    pharma  =  'pharma';
+                }
+                else {
+                    pharma  =  '';
+                }
+                if($('#herbo').is(':checked')){
+                    herbo  =  'herbo';
+                }
+                else {
+                    herbo  =  '';
+                }
+                if($('#para').is(':checked')){
+                    para  =  'para';
+                }
+                else {
+                    para  =  '';
+                }
+                if($('#salle').is(':checked')){
+                    salle  =  'salle';
+                }
+                else {
+                    salle  =  '';
+                }
+                var serie =$('#search').val();
+
+                var DATA  =  {'serie' : serie , 'all': all,'herbo' : herbo,'para' : para,
+                    'pharma':pharma,'salle':salle};
+                console.log(DATA);
+                $.ajax({type:"POST",
+                        url: "{{ path('produits_index')}}"  ,
+                        data: DATA,
+                        success: function (data){
+                            console.log(data);
+                            $("#allP").hide();
+                            $("#filtred2").remove();
+                            $("#filtred").html("<div id='filtred2'></div>")
+                            $.each(data, function (k,el) {
+                                $("#filtred2").append(
+                                    " <div class='col-sm-6 col-md-4 col-lg-4 mb-30'>" +
+                                    " <div class='product'>" +
+                                    "<div class='product-thumb'>"+
+                                    "<img  style='display: block;" +
+                                    "  max-width:270px;" +
+                                    "  max-height:200px;" +
+                                    "  width: 270px;" +
+                                    " height: 200px;'"+
+                                    " src='/uploads/images/products/"+el.image+
+                                    " 'class='img-responsive img-fullwidth' >" +
+                                    "<div class='overlay'></div>" +
+                                    "</div>"+
+                                    "<div class='product-details text-center'>"
+                                    +"<a href='/produits/"+el.idProduit+"/show'><h5 class='product-title'>"+ el.nom+"</h5></a>"+
+                                    "<div>"+el.type+"</div>"
+                                    +"<div class='price'><ins><span class='amount'>$"+el.prix+"</span></ins></div>"+
+                                    " <div class='btn-add-to-cart-wrapper'>"+
+                                    " <a class='btn btn-default btn-xs btn-add-to-cart' href='/"+el.IdProduit+"/Ajouter'>Add To Cart</a>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                );
+                            })
+
+                        }
+                    }
+                );
+            }
+        );
+
+    </script>
+    <!-- pharma click -->
+    <script >
+        $('#pharma').click(
+            function () {
+                var all ;
+                var herbo ;
+                var para ;
+                var pharma ;
+                var salle ;
+                if($('#all').is(':checked')){
+                    all  =  'all';
+                }
+                else {
+                    all  =  '';
+                }
+                if($('#pharma').is(':checked')){
+                    pharma  =  'pharma';
+                }
+                else {
+                    pharma  =  '';
+                }
+                if($('#herbo').is(':checked')){
+                    herbo  =  'herbo';
+                }
+                else {
+                    herbo  =  '';
+                }
+                if($('#para').is(':checked')){
+                    para  =  'para';
+                }
+                else {
+                    para  =  '';
+                }
+                if($('#salle').is(':checked')){
+                    salle  =  'salle';
+                }
+                else {
+                    salle  =  '';
+                }
+                var serie =$('#search').val();
+
+                var DATA  =  {'serie' : serie , 'all': all,'herbo' : herbo,'para' : para,
+                    'pharma':pharma,'salle':salle};
+                console.log(DATA);
+                $.ajax({type:"POST",
+                        url: "{{ path('produits_index')}}"  ,
+                        data: DATA,
+                        success: function (data){
+                            console.log(data);
+                            $("#allP").hide();
+                            $("#filtred2").remove();
+                            $("#filtred").html("<div id='filtred2'></div>")
+                            $.each(data, function (k,el) {
+                                $("#filtred2").append(
+                                    " <div class='col-sm-6 col-md-4 col-lg-4 mb-30'>" +
+                                    " <div class='product'>" +
+                                    "<div class='product-thumb'>"+
+                                    "<img  style='display: block;" +
+                                    "  max-width:270px;" +
+                                    "  max-height:200px;" +
+                                    "  width: 270px;" +
+                                    " height: 200px;'"+
+                                    " src='/uploads/images/products/"+el.image+
+                                    " 'class='img-responsive img-fullwidth' >" +
+                                    "<div class='overlay'></div>" +
+                                    "</div>"+
+                                    "<div class='product-details text-center'>"
+                                    +"<a href='/produits/"+el.idProduit+"/show'><h5 class='product-title'>"+ el.nom+"</h5></a>"+
+                                    "<div>"+el.type+"</div>"
+                                    +"<div class='price'><ins><span class='amount'>$"+el.prix+"</span></ins></div>"+
+                                    " <div class='btn-add-to-cart-wrapper'>"+
+                                    " <a class='btn btn-default btn-xs btn-add-to-cart' href='/"+el.IdProduit+"/Ajouter'>Add To Cart</a>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                );
+                            })
+
+                        }
+                    }
+                );
+            }
+        );
+
+    </script>
+    <!-- salle click -->
+    <script >
+        $('#salle').click(
+            function () {
+                var all ;
+                var herbo ;
+                var para ;
+                var pharma ;
+                var salle ;
+                if($('#all').is(':checked')){
+                    all  =  'all';
+                }
+                else {
+                    all  =  '';
+                }
+                if($('#pharma').is(':checked')){
+                    pharma  =  'pharma';
+                }
+                else {
+                    pharma  =  '';
+                }
+                if($('#herbo').is(':checked')){
+                    herbo  =  'herbo';
+                }
+                else {
+                    herbo  =  '';
+                }
+                if($('#para').is(':checked')){
+                    para  =  'para';
+                }
+                else {
+                    para  =  '';
+                }
+                if($('#salle').is(':checked')){
+                    salle  =  'salle';
+                }
+                else {
+                    salle  =  '';
+                }
+                var serie =$('#search').val();
+
+                var DATA  =  {'serie' : serie , 'all': all,'herbo' : herbo,'para' : para,
+                    'pharma':pharma,'salle':salle};
+                console.log(DATA);
+                $.ajax({type:"POST",
+                        url: "{{ path('produits_index')}}"  ,
+                        data: DATA,
+                        success: function (data){
+                            console.log(data);
+                            $("#allP").hide();
+                            $("#filtred2").remove();
+                            $("#filtred").html("<div id='filtred2'></div>")
+                            $.each(data, function (k,el) {
+                                $("#filtred2").append(
+                                    " <div class='col-sm-6 col-md-4 col-lg-4 mb-30'>" +
+                                    " <div class='product'>" +
+                                    "<div class='product-thumb'>"+
+                                    "<img  style='display: block;" +
+                                    "  max-width:270px;" +
+                                    "  max-height:200px;" +
+                                    "  width: 270px;" +
+                                    " height: 200px;'"+
+                                    " src='/uploads/images/products/"+el.image+
+                                    " 'class='img-responsive img-fullwidth' >" +
+                                    "<div class='overlay'></div>" +
+                                    "</div>"+
+                                    "<div class='product-details text-center'>"
+                                    +"<a href='/produits/"+el.idProduit+"/show'><h5 class='product-title'>"+ el.nom+"</h5></a>"+
+                                    "<div>"+el.type+"</div>"
+                                    +"<div class='price'><ins><span class='amount'>$"+el.prix+"</span></ins></div>"+
+                                    " <div class='btn-add-to-cart-wrapper'>"+
+                                    " <a class='btn btn-default btn-xs btn-add-to-cart' href='/"+el.IdProduit+"/Ajouter'>Add To Cart</a>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                );
+                            })
+
+                        }
+                    }
+                );
+            }
+        );
+
+    </script>
+    <!-- All click -->
+    <script >
+        $('#all').click(
+            function () {
+                var all ;
+                var herbo ;
+                var para ;
+                var pharma ;
+                var salle ;
+                if($('#all').is(':checked')){
+                    all  =  'all';
+                }
+                else {
+                    all  =  '';
+                }
+                if($('#pharma').is(':checked')){
+                    pharma  =  'pharma';
+                }
+                else {
+                    pharma  =  '';
+                }
+                if($('#herbo').is(':checked')){
+                    herbo  =  'herbo';
+                }
+                else {
+                    herbo  =  '';
+                }
+                if($('#para').is(':checked')){
+                    para  =  'para';
+                }
+                else {
+                    para  =  '';
+                }
+                if($('#salle').is(':checked')){
+                    salle  =  'salle';
+                }
+                else {
+                    salle  =  '';
+                }
+                var serie =$('#search').val();
+
+                var DATA  =  {'serie' : serie , 'all': all,'herbo' : herbo,'para' : para,
+                    'pharma':pharma,'salle':salle};
+                console.log(DATA);
+                $.ajax({type:"POST",
+                        url: "{{ path('produits_index')}}"  ,
+                        data: DATA,
+                        success: function (data){
+                            console.log(data);
+                            $("#allP").hide();
+                            $("#filtred2").remove();
+                            $("#filtred").html("<div id='filtred2'></div>")
+                            $.each(data, function (k,el) {
+                                $("#filtred2").append(
+                                    " <div class='col-sm-6 col-md-4 col-lg-4 mb-30'>" +
+                                    " <div class='product'>" +
+                                    "<div class='product-thumb'>"+
+                                    "<img  style='display: block;" +
+                                    "  max-width:270px;" +
+                                    "  max-height:200px;" +
+                                    "  width: 270px;" +
+                                    " height: 200px;'"+
+                                    " src='/uploads/images/products/"+el.image+
+                                    " 'class='img-responsive img-fullwidth' >" +
+                                    "<div class='overlay'></div>" +
+                                    "</div>"+
+                                    "<div class='product-details text-center'>"
+                                    +"<a href='/produits/"+el.idProduit+"/show'><h5 class='product-title'>"+ el.nom+"</h5></a>"+
+                                    "<div>"+el.type+"</div>"
+                                    +"<div class='price'><ins><span class='amount'>$"+el.prix+"</span></ins></div>"+
+                                    " <div class='btn-add-to-cart-wrapper'>"+
+                                    " <a class='btn btn-default btn-xs btn-add-to-cart' href='/"+el.IdProduit+"/Ajouter'>Add To Cart</a>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                    +"</div>"
+                                );
+                            })
+
+                        }
+                    }
+                );
+            }
+        );
+    </script>
 {% endblock %}

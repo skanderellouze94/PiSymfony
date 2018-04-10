@@ -44,7 +44,11 @@ parameters:
     locale: en
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/img/CV'
+<<<<<<< HEAD
 
+=======
+    image_directory: '%Kernel.project_dir%/web/uploads/images'
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
 
 framework:
     #esi: ~
@@ -188,7 +192,10 @@ knp_paginator:
 
 eko_google_translate:
     api_key: key=AIzaSyBgiMhanXDLu8AzEwVeHcdelfxi9Em5fgQ
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
 vich_uploader:
     db_driver: orm
 knp_paginator:
@@ -209,4 +216,12 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> CRUD produit + service
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451

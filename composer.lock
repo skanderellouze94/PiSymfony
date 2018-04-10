@@ -4,7 +4,23 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "7a86978514379a81b33ae72eb1a9fec2",
+=======
+<<<<<<< HEAD
+    "content-hash": "7201699e671a7339c15b383c3bfb93b4",
+=======
+<<<<<<< HEAD
+    "content-hash": "bae277c1780481463fe4a062a0ea4220",
+=======
+<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
+    "content-hash": "39e6f9d562d28223c44c1787abd641b8",
+=======
+    "content-hash": "e39aeaf1ea21ec5230fd39488c3e7c32",
+>>>>>>> CRUD produit + service
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f
+>>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
     "packages": [
         {
             "name": "ancarebeca/full-calendar-bundle",

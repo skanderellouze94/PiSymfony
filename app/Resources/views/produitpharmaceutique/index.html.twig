@@ -47,16 +47,16 @@
                                 <td><a href="{{ path('produitparapharmacie_show',{idProduit :p.idProduit.idProduit}) }}">{{ p.IdProduit.nom }}</a></td>
                                 <td>{{ p.IdProduit.description }}</td>
                                 <td>{{ p.marque }}</td>
-                                <td>{{ p.form}}</td>
+                                <td>{{ p.forme  }}</td>
                                 <td>{{ p.pourqui}}</td>
                                 <td>{{ p.modeAdministration}}</td>
 
                                 <td >
-                                    <a href="{{ path('produitparapharmacie_edit',{idProduit : p.idProduit.idProduit}) }}" class="btn btn-primary">
+                                    <a href="{{ path('produitpharmaceutique_edit',{idProduit : p.idProduit.idProduit}) }}" class="btn btn-primary">
                                         <span><i class="fa fa-pencil"></i></span>
                                     </a>
                                     <br>
-                                    <a href="{{ path('produitparapharmacie_delete',{idProduit : p.idProduit.idProduit}) }}" class="btn btn-danger">
+                                    <a href="{{ path('produitpharmaceutique_delete',{idProduit : p.idProduit.idProduit}) }}" class="btn btn-danger">
                                         <i class="fa fa-trash-o "></i>
                                     </a>
                                 </td>
