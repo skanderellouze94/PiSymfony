@@ -31,18 +31,12 @@ class AppKernel extends Kernel
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
             new ProductBundle\ProductBundle(),
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
             new DemandeBundle\DemandeBundle(),
-<<<<<<< HEAD
             new ForumBundle\ForumBundle(),
-=======
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
-=======
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
->>>>>>> CRUD produit + service
->>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

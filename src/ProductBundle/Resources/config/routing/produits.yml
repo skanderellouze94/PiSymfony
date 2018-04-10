@@ -5,15 +5,6 @@ produits_show:
     path:     /{idProduit}/show
     defaults: { _controller: "ProductBundle:Produits:show" }
 
-produits_edit:
-    path:     /{idProduit}/edit
-    defaults: { _controller: "ProductBundle:Produits:edit" }
-    methods:  [GET, POST]
-
-produits_delete:
-    path:     /{idProduit}/delete
-    defaults: { _controller: "ProductBundle:Produits:delete" }
-
 P_ajouter:
     path:     /{id}/Ajouter
     defaults: { _controller: "ProductBundle:Panier:Ajouter" }

@@ -23,12 +23,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
-=======
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/img/CV'
-
->>>>>>> CRUD produit + service
     image_directory: '%Kernel.project_dir%/web/uploads/images'
 
 framework:
@@ -156,7 +152,6 @@ nomaya_social:
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
 
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
 
 
 knp_paginator:
@@ -165,7 +160,6 @@ knp_paginator:
 
 eko_google_translate:
     api_key: key=AIzaSyBgiMhanXDLu8AzEwVeHcdelfxi9Em5fgQ
-=======
 vich_uploader:
     db_driver: orm
 knp_paginator:
@@ -186,4 +180,3 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
->>>>>>> CRUD produit + service

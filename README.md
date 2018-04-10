@@ -1,4 +1,3 @@
-<<<<<<< 08a728886088dbace1c5d1ed3fc8a0624243caab
 # Pi
 =======
 Symfony Standard Edition
@@ -73,4 +72,4 @@ Enjoy!
 [11]: https://symfony.com/doc/3.3/logging.html
 [13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
 [14]: https://symfony.com/doc/current/setup/built_in_web_server.html
->>>>>>> commit
+

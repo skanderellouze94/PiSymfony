@@ -1,28 +1,16 @@
-<<<<<<< HEAD
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /
 
-=======
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
->>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
 demande:
     resource: "@DemandeBundle/Resources/config/routing.yml"
     prefix:   /Demande
 
-annonce:
-    resource: "@AnnonceBundle/Resources/config/routing.yml"
-    prefix:   /Annonce
-
-product:
-    resource: "@ProductBundle/Resources/config/routing.yml"
-=======
 product_services:
     resource: "@ProductBundle/Resources/config/routing/services.yml"
     prefix:   /services
 Commande:
     resource: "@ProductBundle/Resources/config/routing/Commande.yml"
->>>>>>> CRUD produit + service
     prefix:   /
 product:
     resource: "@ProductBundle/Resources/config/routing/produits.yml"
@@ -38,27 +26,15 @@ product_produitparapharmacie:
     prefix:   /ppara
 product_produitsalledesport:
     resource: "@ProductBundle/Resources/config/routing/produitsalledesport.yml"
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
-    prefix:   /produitsalledesport
-
-
-=======
     prefix:   /psalledesport
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
->>>>>>> CRUD produit + service
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
-
-
-=======
->>>>>>> CRUD produit + service
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
