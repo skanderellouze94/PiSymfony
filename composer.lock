@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< da857b92d29105bb01b1168e76238873f4a2552f
 <<<<<<< HEAD
     "content-hash": "bae277c1780481463fe4a062a0ea4220",
 =======
@@ -13,6 +14,9 @@
     "content-hash": "e39aeaf1ea21ec5230fd39488c3e7c32",
 >>>>>>> CRUD produit + service
 >>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+=======
+    "content-hash": "7201699e671a7339c15b383c3bfb93b4",
+>>>>>>> BE and other changes
     "packages": [
         {
             "name": "blackknight467/star-rating-bundle",
@@ -3472,16 +3476,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.4.7",
+            "version": "v3.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "e4b72beb8961340764367a804f21044e83fc19a8"
+                "reference": "48c669ec1a2b0425d4a82c7ad4bce2f5b947b95e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/e4b72beb8961340764367a804f21044e83fc19a8",
-                "reference": "e4b72beb8961340764367a804f21044e83fc19a8",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/48c669ec1a2b0425d4a82c7ad4bce2f5b947b95e",
+                "reference": "48c669ec1a2b0425d4a82c7ad4bce2f5b947b95e",
                 "shasum": ""
             },
             "require": {
@@ -3534,7 +3538,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-03-20T23:37:33+00:00"
+            "time": "2018-04-04T15:02:59+00:00"
         }
     ],
     "aliases": [],

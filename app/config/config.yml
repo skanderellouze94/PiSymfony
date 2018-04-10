@@ -49,12 +49,8 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
-=======
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/img/CV'
-
->>>>>>> CRUD produit + service
     image_directory: '%Kernel.project_dir%/web/uploads/images'
 
 framework:
@@ -193,7 +189,6 @@ donkey_code_mail:
         font_family: 'Helvetica Neue'
 =======
 
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
 
 
 knp_paginator:
@@ -202,7 +197,6 @@ knp_paginator:
 
 eko_google_translate:
     api_key: key=AIzaSyBgiMhanXDLu8AzEwVeHcdelfxi9Em5fgQ
-=======
 vich_uploader:
     db_driver: orm
 knp_paginator:
@@ -223,5 +217,8 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
+<<<<<<< da857b92d29105bb01b1168e76238873f4a2552f
 >>>>>>> CRUD produit + service
 >>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+=======
+>>>>>>> BE and other changes

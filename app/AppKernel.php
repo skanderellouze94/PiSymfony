@@ -50,19 +50,18 @@ class AppKernel extends Kernel
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
             new ProductBundle\ProductBundle(),
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
             new DemandeBundle\DemandeBundle(),
-<<<<<<< HEAD
             new ForumBundle\ForumBundle(),
-=======
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
-=======
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+<<<<<<< da857b92d29105bb01b1168e76238873f4a2552f
 >>>>>>> CRUD produit + service
 >>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
 >>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+=======
+
+>>>>>>> BE and other changes
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

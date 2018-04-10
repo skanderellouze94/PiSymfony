@@ -18,4 +18,23 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('array', $array);
         return $qb->getQuery()->getResult();
     }
+    public function findProduitByName($name){
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.nom LIKE :nom')
+            ->setParameter('nom','%'.$name.'%')
+            ->getQuery();
+        return $qb;
+    }
+
+    public function filterProduit($nom,$array){
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.nom LIKE :nom')
+            ->andWhere('p.type IN (:array)')
+            ->setParameter('array',$array)
+            ->setParameter('nom','%'.$nom.'%')
+            ->getQuery();
+        return $qb;
+    }
 }

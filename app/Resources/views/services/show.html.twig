@@ -1,40 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends '::/base.html.twig' %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-1">
 
-{% block body %}
-    <h1>Service</h1>
+    </div>
+    {% for s in service %}
+    <div class="col-xs-9 col-sm-6 col-md-4 hvr-float-shadow mb-sm-30 wow fadeInRight animation-delay1" style="visibility: visible;">
+        <div class="pricing-table style1 bg-white border-10px text-center">
+            <div class="pricing-icon">
+                <i class="flaticon-medical-stethoscopes"></i>
+            </div>
+            <div class="p-40">
+                <h3 class="package-type mt-90">{{ s.nom |upper }}</h3>
+                <p>{{ s.description }}</p>
+                <h2 class="price text-theme-colored mb-10">{{ s.tarif }}<span class="font-48">$</span></h2>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Nom</th>
-                <td>{{ service.nom }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ service.description }}</td>
-            </tr>
-            <tr>
-                <th>Tarif</th>
-                <td>{{ service.tarif }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ service.id }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('services_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('services_edit', { 'id': service.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <a class="btn btn-colored btn-theme-colored text-uppercase mt-30" href="#">Prendre un Rendez vous</a><br>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

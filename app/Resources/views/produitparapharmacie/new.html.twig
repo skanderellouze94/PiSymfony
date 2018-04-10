@@ -5,44 +5,100 @@
  {% block titleP %}
      Ajouter Service
  {% endblock %}
+{% block script %}
+    <link href="{{ asset('assets/back/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
+
+{% endblock script %}
 {% block body %}
     <div class="card-body" id="bar-parent">
-    <form method="post">
+        {{ form_start(form,{'attr': {'id': 'form_addPara'}}) }}
         <div class="form-body">
-            <div class="form-group row">
-                <label class="control-label col-md-3">Name
-                    <span class="required" aria-required="true"> * </span>
-                </label>
-                <div class="col-md-5">
-                    <input type="text"  name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-3">Name
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-5">
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <input type="text"  id="nom" name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
             </div>
-            <div class="form-group row">
-                <label class="control-label col-md-3">Description
-                    <span class="required" aria-required="true"> * </span>
-                </label>
-                <div class="col-md-5">
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-3">Description
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-5">
+                <div class="input-icon right">
+                    <i class="fa"></i>
                     <input type="text" name="description" data-required="1" placeholder="enter Description"  class="form-control input-height"> </div>
             </div>
-            <div class="form-group row">
-                <label class="control-label col-md-3">Tarif
-                    <span class="required" aria-required="true"> * </span>
-                </label>
-                <div class="col-md-5">
-                    <input type="text" name="tarif" data-required="1" placeholder="enter marque"  class="form-control input-height"> </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-3">Marque
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-5">
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <input type="text" name="marque" data-required="1" placeholder="enter marque"  class="form-control input-height"> </div>
             </div>
-            <div class="form-actions">
-                <div class="row">
-                    <div class="offset-md-3 col-md-5">
-                        <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
-
-                    </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-3">Prix
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-5">
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                    <input name="prix" type="text" placeholder="prix"  class="form-control input-height"> </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-3">Categorie
+                <span class="required" aria-required="true"> * </span>
+            </label>
+            <div class="col-md-5">
+                <div class="input-icon right">
+                    <i class="fa"></i>
+                <select name="categorie" class="form-control select2 select2-hidden-accessible input-height">
+                    <option value="sante">Sante</option>
+                    <option value="grossesse">Grossesse</option>
+                    <option value="visage">Visage</option>
+                    <option value="hygiene">Hygiene</option>
+                    <option value="minceur">Minceur</option>
+                    <option value="cheuveux">Cheuveux</option>
+                    <option value="sexualite">Sexualite</option>
+                    <option value="materiel">Materiel</option>
+                    <option value="bio_zen">Bio zen</option>
+                    <option value="complements">Complements</option>
+                </select>
                 </div>
             </div>
         </div>
-    </form>
+        <div class="form-group row">
+            <label class="control-label col-md-3">Produit image
+            </label>
+            <div class="compose-editor">
+
+                {{ form_row(form.image) }}
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="offset-md-3 col-md-5">
+
+                    <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
     </div>
 {% endblock %}
-{% block javascrip %}
-    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}" ></script>
-    <script src="{{ asset('datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}" ></script>
+{% block javascript %}
+<script src="{{ asset('assets/back/jquery-validation/js/jquery.validate.min.js') }}" ></script>
+    <script src="{{ asset('assets/back/jquery-validation/js/additional-methods.min.js')}}" ></script>
+    <script src="{{ asset('assets/back/form-validation.js')}}"></script>
 {% endblock %}

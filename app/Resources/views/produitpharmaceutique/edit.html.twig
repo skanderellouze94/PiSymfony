@@ -43,9 +43,10 @@
                         <span class="required" aria-required="true"> * </span>
                     </label>
                     <div class="col-md-5">
-                        <select class="form-control select2 select2-hidden-accessible" name="modeA">
-                            <option>Adulte</option>
-                            <option>Enfant</option>
+                        <select id="mode" class="form-control select2 select2-hidden-accessible" name="modeA">
+                            <option value="voie_orale">voie orale</option>
+                            <option value="voie_parenteral">voie parenteral</option>
+                            <option value="voie_rectale">voie rectale</option>
                         </select>
                     </div>
                 </div>
@@ -54,9 +55,16 @@
                         <span class="required" aria-required="true"> * </span>
                     </label>
                     <div class="col-md-5">
-                        <select class="form-control select2 select2-hidden-accessible input-height" name="forme">
-                            <option>Adulte</option>
-                            <option>Enfant</option>
+                        <select id="forme" class="form-control select2 select2-hidden-accessible input-height" name="forme">
+                            <option value="ampoules">Ampoules</option>
+                            <option value="comprimes">Comprimes</option>
+                            <option value="gelules">Gelules</option>
+                            <option value="globules_dose">Globules dose</option>
+                            <option value="granules">granules</option>
+                            <option value="pates_a_marcher">pates a marcher</option>
+                            <option value="sachets">sachets</option>
+                            <option value="sachets_a_dluer">sachets a Dluer</option>
+                            <option value="sachets_doses">Sachets Doses</option>
                         </select></div>
                 </div>
                 <div class="form-group row">
@@ -64,11 +72,12 @@
                         <span class="required" aria-required="true"> * </span>
                     </label>
                     <div class="col-md-5">
-                        <select class="form-control select2 select2-hidden-accessible input-height" name="PourQui">
-                            <option>Adulte</option>
-                            <option>Enfant</option>
-
+                        <select id="pourqui" class="form-control select2 select2-hidden-accessible input-height" name="PourQui">
+                            <option value="adulte">Adulte</option>
+                            <option value="enfant">Enfant</option>
                         </select>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label class="control-label col-md-3">Product Picture
                     </label>
@@ -83,7 +92,16 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
             {{ form_end(form) }}
     </div>
+
+{% endblock %}
+            {% block javascript %}
+            <script>
+                $("#mode").val("{{ produit.modeAdministration }}");
+                $("#forme").val("{{ produit.forme }}");
+                $("#pourqui").val("{{ produit.pourqui }}");
+
+            </script>
 {% endblock %}
