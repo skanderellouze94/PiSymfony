@@ -5,18 +5,44 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
+<<<<<<< HEAD
+
+=======
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
+<<<<<<< HEAD
+
+
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+
+
+
+=======
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+<<<<<<< HEAD
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+
+    - { resource: "@ProductBundle/Resources/config/services.yml" }
+
+
+=======
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ProductBundle/Resources/config/services.yml" }
     - { resource: "@DemandeBundle/Resources/config/services.yml" }
     - { resource: "@ForumBundle/Resources/config/services.yml" }
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -151,6 +177,17 @@ nomaya_social:
         facebook:           "http://www.facebook.com/yann.chauvel"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
+<<<<<<< HEAD
+donkey_code_mail:
+    mail_from: null
+    reply_to: null
+    options:
+        header_bg: '#2d7cff'
+        header_txt_color: '#ffffff'
+        bg: '#efefef'
+        txt_color: '#555555'
+        font_family: 'Helvetica Neue'
+=======
 
 
 
@@ -180,3 +217,8 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
+<<<<<<< HEAD
+=======
+>>>>>>> CRUD produit + service
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f

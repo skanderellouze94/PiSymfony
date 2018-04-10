@@ -20,8 +20,7 @@ class RdvdateType extends AbstractType
         $builder
 
 
-            ->add('datef')
-            ->add('idService')
+
             ->add('idUser')
             ->add('Ajouter', SubmitType::class)
             ->setMethod('post');

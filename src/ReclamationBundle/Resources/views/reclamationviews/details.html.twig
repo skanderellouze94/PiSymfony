@@ -976,117 +976,34 @@
                         <div class="card  card-box">
                             <div class="card-head">
                                 <header>
-            Calendrier
+                                   Détails Reclamation
                                 </header>
                             </div>
-                            <div class="card-body ">
-                                <div class="form-horizontal">
+                            <div class="container">
+                                <div data-example-id="simple-table" class="bs-example">
 
+                                    <ul>
+                                        <li>
 
-                                    <link href="{{ asset('assets/cal/css/bootstrap.min.css')}}" rel="stylesheet">
+                                            <h3>Date </h3>
+                                            <p >{{  rec.date | date('d/m/y')  }}</p>
 
-                                    <!-- FullCalendar -->
-                                    <link href="{{ asset('assets/cal/css/fullcalendar.css')}}" rel='stylesheet' />
+                                        </li>
+                                        <li>
+                                            <h3>Objet</h3>
+                                            <p>{{  rec.objet }}</p>
+                                        </li>
+                                        <li>
+                                            <h3>Patient</h3>
+                                            <p>{{ rec.user }}</p>
+                                        </li>
+                                        <li>
+                                            <h3>Message</h3>
+                                            <p>{{ rec.message | raw }}</p>
+                                        </li>
+                                    </ul>
+                                        <center> <a href="{{ path('insert',{'id':rec.idRec})}}"> <button type="button" class="btn btn-primary btn-sm"  >Répondre</button></a></center>
 
-
-                                    <!-- Custom CSS -->
-                                    <style>
-                                        body {
-                                            padding-top: 70px;
-                                            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-                                        }
-                                        #calendar {
-                                            max-width: 800px;
-                                        }
-                                        .col-centered{
-                                            float: none;
-                                            margin: 0 auto;
-                                        }
-                                    </style>
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.min.css')}}" rel='stylesheet' />
-                                    <link href="{{ asset('assets/Calendrier/fullcalendar.print.min.css')}}" rel='stylesheet' media='print' />
-                                    <script src="{{ asset('assets/Calendrier/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/jquery.min.js')}}"></script>
-                                    <script src="{{ asset('assets/Calendrier/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/jquery.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/bootstrap.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/moment.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/fullcalendar.min.js')}}"></script>
-                                    <script src="{{ asset('assets/cal/js/gcal.js')}}"></script>
-
-                                    {#<script type='text/javascript' src='fullcalendar/gcal.js'></script>#}
-
-                                    <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                {{ form(Form) }}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <script type='text/javascript'>
-
-                                        document.write("{% for a in rendezvous %}");
-
-                                        $(document).ready(function() {
-                                            $('#calendar').fullCalendar({
-
-                                                header: {
-                                                    left: 'prev,next today',
-                                                    center: 'title',
-                                                    right: 'month,agendaWeek,agendaDay,listWeek',
-
-
-                                                },
-                                                defaultDate: '2018-03-12',
-                                                navLinks: true, // can click day/week names to navigate views
-                                                editable: true,
-                                                eventLimit: true, // allow "more" link when too many events
-                                                selectable: true,
-                                                select: function() {
-
-                                                    $('#ModalAdd').modal('show');
-                                                },
-
-                                                events: [
-
-                                                    {
-                                                        googleCalendarApiKey: '<AIzaSyD7NYGPynyfAUIsVF9aO6U2nJeO7FE1_ys>',
-                                                        googleCalendarId: '',
-                                                        title: '{{ a.etat }}',
-                                                        start: '{{ a.date|date('Y-m-d') }}',
-
-                                                        url:'https://calendar.google.com/calendar/embed?src=anisalboudali%40gmail.com&ctz=Africa%2FTunis'
-//                                                        className: 'gcal-event'
-
-                                                    }
-                                                ]
-                                            });
-
-                                        });
-                                        console.log('aaaaaa');
-                                        document.write("{% endfor %}");
-                                    </script>
-
-
-                                    <style>
-
-                                        body {
-                                            margin: 40px 10px;
-                                            padding: 0;
-                                            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-                                            font-size: 14px;
-                                        }
-
-                                        #calendar {
-                                            max-width: 900px;
-                                            margin: 0 auto;
-                                        }
-
-                                    </style>
-
-
-                                    <div id='calendar'></div>
 
 
 

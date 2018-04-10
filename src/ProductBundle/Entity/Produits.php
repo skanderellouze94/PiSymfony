@@ -60,7 +60,11 @@ class Produits
      * @var \EtablissementBundle\Entity\Etablissements
      *
      * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
+<<<<<<< HEAD
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+=======
      * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
      */
     private $idEtab;
 

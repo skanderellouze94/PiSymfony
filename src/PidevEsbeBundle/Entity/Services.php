@@ -1,26 +1,17 @@
 <?php
 
-namespace RdvBundle\Entity;
+namespace PidevEsbeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Services
  *
- * @ORM\Table(name="services", indexes={@ORM\Index(name="fk_etab_service", columns={"id_etab"})})
+ * @ORM\Table(name="services")
  * @ORM\Entity
  */
 class Services
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
     /**
      * @var string
      *
@@ -43,26 +34,39 @@ class Services
     private $tarif;
 
     /**
-     * @var \Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \EtablissementBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;
 
 
 
     /**
-     * Get id
+     * Get idEtab
      *
-     * @return integer
+     * @return \EtablissementBundle\Entity\Etablissements
      */
-    public function getId()
+    public function getIdEtab()
     {
-        return $this->id;
+        return $this->idEtab;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
 
     /**
      * Set nom
@@ -137,29 +141,26 @@ class Services
     }
 
     /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * Set idEtab
      *
-     * @param \RdvBundle\Entity\Etablissements $idEtab
+     * @param \EtablissementBundle\Entity\Etablissements $idEtab
      *
      * @return Services
      */
-    public function setIdEtab(\RdvBundle\Entity\Etablissements $idEtab = null)
+    public function setIdEtab(\EtablissementBundle\Entity\Etablissements $idEtab = null)
     {
         $this->idEtab = $idEtab;
 
         return $this;
-    }
-
-    /**
-     * Get idEtab
-     *
-     * @return \RdvBundle\Entity\Etablissements
-     */
-    public function getIdEtab()
-    {
-        return $this->idEtab;
-    }
-    public function __toString(){
-        return $this->getNom();
     }
 }

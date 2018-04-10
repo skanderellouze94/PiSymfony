@@ -206,28 +206,4 @@ class Reclamation
         return ($this->getUser()).(" : ").($this->getObjet());
     }
 
-
-    /**
-     * Set verified
-     *
-     * @param integer $verified
-     *
-     * @return Reclamation
-     */
-    public function setVerified($verified)
-    {
-        $this->verified = $verified;
-
-        return $this;
-    }
-
-    /**
-     * Get verified
-     *
-     * @return integer
-     */
-    public function getVerified()
-    {
-        return $this->verified;
-    }
 }

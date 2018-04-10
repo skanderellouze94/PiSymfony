@@ -1,6 +1,3 @@
-
-{#
-<td><a href="{{ path('afficherql')}}">mettre a jour</a></td>#}
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -649,7 +646,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             <li><a href="#">Shortcodes</a>
                                 <div class="megamenu">
                                     <div class="megamenu-row">
@@ -732,7 +728,6 @@
                                     </div>
                                 </div>
                             </li>
-
                         </ul>
                     </nav>
                 </div>
@@ -757,49 +752,22 @@
                 </div>
             </div>
         </section>
-
-
         <section>
-
             <div class="container">
-                <div data-example-id="simple-table" class="bs-example">
-            {#from heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeere#}
-                    <form method="post">
+                <div>
+                    <ul>
+                        <li>
 
+                            <h3>Date </h3>
+                            <p >{{  r.date | date('d/m/y')  }}</p>
 
-                        <select name="objet">
-                            {%for a in reclamations %}
-                               <option name="objet" value="{{a.objet}}">{{a.objet}}</option>
-                            {% endfor %}</select>
-                        <tr><input type="submit" value="chercher" name="chercher"></tr>
-                    </form>
+                        </li>
 
-                    <table class="table">
-                        <h1>Mes reclamations</h1>
+                            <h3>Réponse</h3>
+                            <p>{{ r.message | raw }}</p>
+                        </li>
+                    </ul>
 
-
-
-                        <thead>
-                        <th>Date</th> <th>Objet</th><th>Etablissement</th> <th>Message</th>
-                        </thead>
-
-                        {%for a in reclamations %}
-
-                            <tbody>
-                                <td>{{ a.date | date('d/m/Y') }}</td>
-                                <td>{{ a.objet }}</td>
-                                <td><a style="color: blue" href="{{ path('show',{'id':a.idEtab.id}) }}">{{   a.idEtab }}</a></td>
-
-                                <td>{{ a.message | raw }}</td>
-                               {% if a.verified==1 %}
-                                <td><a href="{{ path('showw',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Afficher les Réponses</button></a></td>
-                               {% endif %}
-                            </tbody>
-
-                        {% endfor %}
-
-                    </table>
-                    {#to heeeeeeeeeeeeeeeeeeeeeeeeeeeeere#}
                 </div>
 
             </div>

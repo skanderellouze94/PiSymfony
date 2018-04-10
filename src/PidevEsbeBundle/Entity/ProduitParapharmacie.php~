@@ -22,19 +22,16 @@ class ProduitParapharmacie
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=255, nullable=false)
+     * @ORM\Column(name="categorie", type="string", nullable=false)
      */
     private $categorie;
 
     /**
-     * @var \Produits
+     * @var \PidevEsbeBundle\Entity\Produits
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Produits")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
-     * })
+     * @ORM\OneToOne(targetEntity="PidevEsbeBundle\Entity\Produits")
+     * @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
      */
     private $idProduit;
 

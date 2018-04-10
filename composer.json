@@ -18,12 +18,17 @@
         "blackknight467/star-rating-bundle": "^2.0",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "donkeycode/mail-bundle": "^1.0",
         "egeloen/ckeditor-bundle": "^4.0",
         "friendsofsymfony/jsrouting-bundle": "^2.2",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.7",
+<<<<<<< HEAD
+        "mgilet/notification-bundle": "^2.0",
+=======
         "knplabs/knp-snappy-bundle": "^1.4",
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
         "nomaya/social-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
@@ -31,9 +36,18 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
+<<<<<<< HEAD
+        "twig/twig": "^1.0||^2.0"
+=======
         "twig/twig": "^1.0||^2.0",
         "eko/googletranslatebundle": "dev-master",
         "vich/uploader-bundle": "^1.4"
+<<<<<<< HEAD
+=======
+>>>>>>> CRUD produit + service
+>>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
+>>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
