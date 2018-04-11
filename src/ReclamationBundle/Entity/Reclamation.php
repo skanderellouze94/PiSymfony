@@ -6,13 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use EtablissementBundle\Entity\Etablissements;
 use PidevEsbeBundle\Entity\FosUser;
 
-
 /**
  * Reclamation
  *
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="user", columns={"user"}), @ORM\Index(name="idetab", columns={"idetab"})})
- * @ORM\Entity(repositoryClass="ReclamationBundle\Repository\ReclamationRepository")
- *
+ * @ORM\Entity
  */
 class Reclamation
 {
@@ -24,7 +22,12 @@ class Reclamation
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idRec;
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="verified", type="integer", length=11, nullable=true)
+     */
+    private $verified;
     /**
      * @var string
      *
@@ -50,6 +53,7 @@ class Reclamation
      * @var Etablissements
      *
      * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
+     * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idetab", referencedColumnName="id")
      * })
      */
@@ -59,6 +63,7 @@ class Reclamation
      * @var FosUser
      *
      * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
+     * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user", referencedColumnName="id")
      * })
      */
@@ -165,7 +170,7 @@ class Reclamation
     /**
      * Get idetab
      *
-     * @return Etablissements
+     * @return \EtablissementBundle\Entity\Etablissements
      */
     public function getIdetab()
     {
@@ -189,10 +194,40 @@ class Reclamation
     /**
      * Get user
      *
-     * @return \RdvBundle\Entity\FosUser
+     * @return \PidevEsbeBundle\Entity\FosUser
      */
     public function getUser()
     {
         return $this->user;
+    }
+
+    public function __toString()
+    {
+        return ($this->getUser()).(" : ").($this->getObjet());
+    }
+
+
+    /**
+     * Set verified
+     *
+     * @param integer $verified
+     *
+     * @return Reclamation
+     */
+    public function setVerified($verified)
+    {
+        $this->verified = $verified;
+
+        return $this;
+    }
+
+    /**
+     * Get verified
+     *
+     * @return integer
+     */
+    public function getVerified()
+    {
+        return $this->verified;
     }
 }

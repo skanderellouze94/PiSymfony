@@ -24,19 +24,21 @@ class AppKernel extends Kernel
             new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new AnnonceBundle\AnnonceBundle(),
+            new ProductBundle\ProductBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-            new ProductBundle\ProductBundle(),
             new DemandeBundle\DemandeBundle(),
             new ForumBundle\ForumBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-
+            new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

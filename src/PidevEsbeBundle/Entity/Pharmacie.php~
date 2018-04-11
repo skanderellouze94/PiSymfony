@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Pharmacie
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=500, nullable=false)
@@ -29,12 +20,19 @@ class Pharmacie
     private $type;
 
     /**
-     * @var \Etablissements
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Etablissements")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \PidevEsbeBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
      */
     private $idEtab;
 

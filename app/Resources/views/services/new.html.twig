@@ -5,35 +5,48 @@
  {% block titleP %}
      Ajouter Service
  {% endblock titleP %}
+{% block script %}
+    <link href="{{ asset('assets/back/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
+{% endblock script %}
 {% block body %}
     <div class=""></div>
     <div class="card-body" id="bar-parent" xmlns="http://www.w3.org/1999/html">
-        <form method="post">
+        <form method="post" id="form_addService">
         <div class="form-body">
             <div class="form-group row">
                 <label class="control-label col-md-3">Name
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
-                    <input type="text"  name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                        <input type="text"  name="nom" data-required="1" placeholder="enter nom" class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Description
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
                     <input type="text" name="description" data-required="1" placeholder="enter Description"  class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label class="control-label col-md-3">Tarif
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <div class="col-md-5">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
                     <input name="tarif" type="text" placeholder="enter tarif"  class="form-control input-height"> </div>
+                </div>
             </div>
             <div class="form-actions">
                 <div class="row">
                     <div class="offset-md-3 col-md-5">
+
                         <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
 
                     </div>
@@ -42,4 +55,9 @@
         </div>
         </form>
     </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ asset('assets/back/jquery-validation/js/jquery.validate.min.js') }}" ></script>
+    <script src="{{ asset('assets/back/jquery-validation/js/additional-methods.min.js')}}" ></script>
+    <script src="{{ asset('assets/back/form-validation.js')}}"></script>
 {% endblock %}

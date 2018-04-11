@@ -41,10 +41,21 @@ class ServicesController extends Controller
         ));
     }
 
-    public function showAction(Services $service)
+    public function showAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT s FROM ProductBundle:Services s";
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            3
+        );
+
         return $this->render('services/show.html.twig', array(
-            'service' => $service,
+            'service' => $pagination,
         ));
     }
 

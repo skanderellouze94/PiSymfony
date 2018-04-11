@@ -45,6 +45,7 @@ class ProduitParapharmacieController extends Controller
             );
             $produit->setDescription($request->get('description'));
             $produit->setImage($fileName);
+            $produit->setType('para');
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
             $em = $this->getDoctrine()->getManager();
@@ -80,23 +81,31 @@ class ProduitParapharmacieController extends Controller
     public function editAction(Request $request, ProduitParapharmacie $produitParapharmacie)
     {
         $em = $this->getDoctrine()->getManager();
+        $em1 = $this->getDoctrine()->getManager();
         $produit = $em->getRepository('ProductBundle:Produits')->find($produitParapharmacie);
-        $pHerbo = $em->getRepository('ProductBundle:ProduitParapharmacie')->find($produitParapharmacie);
+        $image = $produit->getImage();
+        $pHerbo = $em1->getRepository('ProductBundle:ProduitParapharmacie')->find($produitParapharmacie);
         $form = $this->createFormBuilder($produit)
-            ->add('image', FileType::class, array('data_class' => null, 'label' => false))
+            ->add('image', FileType::class, array('data_class' => null,
+                'label' => false,'required'=>false))
             ->getForm();
         $form->handleRequest($request);
         if ($request->isMethod('post')) {
-            /**
-             * @var UploadedFile
-             */
-            $file = $produit->getImage();
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move(
-                $this->getParameter('product_images'), $fileName
-            );
+            if( ! ($image == $produit->getImage() || $produit->getImage() == null)){
+                /**
+                 * @var UploadedFile
+                 */
+                $file=$produit->getImage();
+                $fileName=md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $this->getParameter('product_images'),$fileName
+                );
+                $produit->setImage($fileName);
+            }
+            else{
+                $produit->setImage($image);
+            }
             $produit->setDescription($request->get('description'));
-            $produit->setImage($fileName);
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
             $em = $this->getDoctrine()->getManager();

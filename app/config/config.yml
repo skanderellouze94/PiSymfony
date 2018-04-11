@@ -5,13 +5,32 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
+
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
+
+
+
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+
+
+
+
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+
+    - { resource: "@ProductBundle/Resources/config/services.yml" }
+
+
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ProductBundle/Resources/config/services.yml" }
@@ -23,7 +42,6 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/uploads/images'
 
@@ -151,9 +169,15 @@ nomaya_social:
         facebook:           "http://www.facebook.com/yann.chauvel"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
-
-
-
+donkey_code_mail:
+    mail_from: null
+    reply_to: null
+    options:
+        header_bg: '#2d7cff'
+        header_txt_color: '#ffffff'
+        bg: '#efefef'
+        txt_color: '#555555'
+        font_family: 'Helvetica Neue'
 
 knp_paginator:
     template:

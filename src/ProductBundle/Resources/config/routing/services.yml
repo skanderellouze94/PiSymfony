@@ -3,7 +3,7 @@ services_index:
     defaults: { _controller: "ProductBundle:Services:index" }
 
 services_show:
-    path:     /{id}/show
+    path:     /show
     defaults: { _controller: "ProductBundle:Services:show" }
 
 services_new:

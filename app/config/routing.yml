@@ -1,3 +1,14 @@
+pidev_esbe:
+    resource: "@PidevEsbeBundle/Resources/config/routing.yml"
+    prefix:   /
+annonce:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /Annonce
+product:
+    resource: "@ProductBundle/Resources/config/routing.yml"
+    prefix:   /product
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /forum
@@ -18,7 +29,6 @@ product_services:
     prefix:   /services
 Commande:
     resource: "@ProductBundle/Resources/config/routing/Commande.yml"
-
     prefix:   /
 
 product_produitherbo:
@@ -33,18 +43,24 @@ product_produitparapharmacie:
 product_produitsalledesport:
     resource: "@ProductBundle/Resources/config/routing/produitsalledesport.yml"
     prefix:   /produitsalledesport
-
-
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+actualites:
+    resource: "@ActualitesBundle/Resources/config/routing.yml"
+    prefix:   /Actualites
 
     prefix:   /psalledesport
 
+annonce:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /Annonce
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv
+
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
@@ -62,8 +78,14 @@ app:
     type: annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
 reclamation:
     resource: "@ReclamationBundle/Resources/config/routing.yml"
     prefix:   /rec
+rdv:
+    resource: "@RdvBundle/Resources/config/routing.yml"
+    prefix:   /rdv
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix:   /notifications
+
 

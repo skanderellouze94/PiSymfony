@@ -29,7 +29,8 @@ class ProduitHerboController extends Controller
         $produitHerbo = new Produitherbo();
         $produit = new Produits();
         $form= $this->createFormBuilder($produit)
-            ->add('image',FileType::class,array('data_class'=>null ,'label' => false))
+            ->add('image',FileType::class,array('data_class'=>null ,
+                'label' => false))
 
             ->getForm();
         $form->handleRequest($request);
@@ -44,6 +45,7 @@ class ProduitHerboController extends Controller
             );
             $produit->setDescription($request->get('description'));
             $produit->setImage($fileName);
+            $produit->setType('herbo');
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
             $em = $this->getDoctrine()->getManager();
@@ -83,12 +85,15 @@ class ProduitHerboController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $produit = $em->getRepository('ProductBundle:Produits')->find($produitHerbo);
+        $image = $produit->getImage();
         $pHerbo = $em->getRepository('ProductBundle:ProduitHerbo')->find($produitHerbo);
         $form= $this->createFormBuilder($produit)
-            ->add('image',FileType::class,array('data_class'=>null ,'label' => false))
+            ->add('image',FileType::class,array('data_class'=>null ,
+                'label' => false,'required'=>false))
             ->getForm();
         $form->handleRequest($request);
         if ($request->isMethod('post') ) {
+            if( ! ($image == $produit->getImage() || $produit->getImage() == null)){
             /**
              * @var UploadedFile
              */
@@ -97,8 +102,12 @@ class ProduitHerboController extends Controller
             $file->move(
                 $this->getParameter('product_images'),$fileName
             );
+                $produit->setImage($fileName);
+            }
+            else{
+                $produit->setImage($image);
+            }
             $produit->setDescription($request->get('description'));
-            $produit->setImage($fileName);
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
             $em = $this->getDoctrine()->getManager();
