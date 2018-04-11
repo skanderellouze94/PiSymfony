@@ -1,5 +1,5 @@
 
-index:
+etablissement_index:
     path:     /
     defaults: { _controller: EtablissementBundle:Etablissement:index}
 indexCabinet:
@@ -27,14 +27,14 @@ indexSalle:
     path:     /indexSalle
     defaults: { _controller: EtablissementBundle:SalleDeSport:index}
 
-insert:
+etablissement_insert:
     path:     /insert
     defaults: { _controller: EtablissementBundle:Etablissement:insert}
-show:
+etablissement_show:
     path:     /show/{id}
     defaults: { _controller: EtablissementBundle:Etablissement:show}
 
-edit:
+etablissement_edit:
     path:     /monetab/{id}
     defaults: { _controller: EtablissementBundle:Etablissement:monEtab}
 

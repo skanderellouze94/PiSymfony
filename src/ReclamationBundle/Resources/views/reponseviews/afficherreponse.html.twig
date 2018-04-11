@@ -758,12 +758,14 @@
                     <ul>
                         <li>
 
-                            <h3>Date </h3>
-                            <p >{{  r.date | date('d/m/y')  }}</p>
+                            <h4 style="color: #0f3e68">Votre Reclamation du: {{ rec.date | date('Y-m-d') }}</h4>
+                            <h6>{{ rec.message|raw }}</h6>
 
                         </li>
+                        <h4 style="color: #0f3e68">{{ rec.idetab.nom }} à répondu à votre Réclamation</h4>
+                        <li>
 
-                            <h3>Réponse</h3>
+
                             <p>{{ r.message | raw }}</p>
                         </li>
                     </ul>

@@ -90,7 +90,7 @@ class PanierController extends Controller
         $em3= $this->getDoctrine()->getManager();
         $dc = $em3->getRepository('ProductBundle:DetailCommande')
             ->findby(['commande'=>$commande]);
-        $this->get('knp_snappy.pdf')->generateFromHtml(
+        return $this->get('knp_snappy.pdf')->generateFromHtml(
             $this->renderView(
                 'ProductBundle:Commande:Facture.html.twig',
                 array(

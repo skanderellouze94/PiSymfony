@@ -1,9 +1,9 @@
 {% extends '::/AdminBase.html.twig' %}
 {% block pagetitle %}
-    {{ produitSalledesport.IdProduit.nom }}
+    {{ produitPharmaceutique.IdProduit.nom }}
 {% endblock %}
 {% block titleP %}
-    Produit {{ produitSalledesport.IdProduit.nom }}
+    Produit {{ produitPharmaceutique.IdProduit.nom }}
 {% endblock %}
     {% block script %}
         <link href="{{ asset('css/seif.css') }}" rel="stylesheet"/>
@@ -17,28 +17,31 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="product-image-large">
-                                    <img style="max-width: 100%;" src="{{ asset('/uploads/images/products/') }}{{ produitSalledesport.IdProduit.image }}">
+                                    <img style="max-width: 100%;" src="{{ asset('/uploads/images/products/') }}{{ produitPharmaceutique.IdProduit.image }}">
                                 </div>
                             </div>
                             <div class="col-sm-6 product-details">
-                                <h1 style="color: #00C0EF;">{{ produitSalledesport.IdProduit.nom }}</h1>
+                                <h1 style="color: #00C0EF;">{{ produitPharmaceutique.IdProduit.nom }}</h1>
                                 <h5>Description :</h5>
                                 <p>
-                                    {{ produitSalledesport.IdProduit.description }}
+                                    {{ produitPharmaceutique.IdProduit.description }}
                                 </p>
-                                <p><strong>Prix: </strong>{{ produitSalledesport.IdProduit.prix }}</p>
-                                <p><strong>Marque: </strong>{{ produitSalledesport.type }}</p>
+                                <p><strong>Prix: </strong>{{ produitPharmaceutique.IdProduit.prix }}</p>
+                                <p><strong>Marque: </strong>{{ produitPharmaceutique.marque }}</p>
+                                <p><strong>Forme: </strong>{{ produitPharmaceutique.forme }}</p>
+                                <p><strong>Mode D'Administration: </strong>{{ produitPharmaceutique.pourqui }}</p>
+                                <p><strong>Pour Qui: </strong>{{ produitPharmaceutique.modeAdministration }}</p>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="{{ path('produitsalledesport_edit',{idProduit : produitSalledesport.idProduit.idProduit}) }}">
+                                <a href="{{ path('produitpharmaceutique_edit',{idProduit : produitPharmaceutique.idProduit.idProduit}) }}">
                                     <button type="button" class="btn btn-primary btn-block">Edit</button>
                                 </a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="{{ path('produitsalledesport_delete',{idProduit : produitSalledesport.idProduit.idProduit}) }}">
+                                <a href="{{ path('produitpharmaceutique_delete',{idProduit : produitPharmaceutique.idProduit.idProduit}) }}">
                                     <button type="button" class="btn btn-danger btn-block">Delete</button>
                                 </a>
                             </div>

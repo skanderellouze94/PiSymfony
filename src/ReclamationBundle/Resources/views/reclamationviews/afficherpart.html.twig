@@ -112,64 +112,45 @@
                     <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <i class="fa fa-bell-o"></i>
-                            <span class="badge headerBadgeColor1"> 6 </span>
+                            <span class="badge headerBadgeColor1"> {{ mgilet_notification_unseen_count(app.user) }} </span>
                         </a>
-                        <ul class="dropdown-menu">
+
+                        <ul class="dropdown-menu" href="{{ mgilet_notification_generate_path('notification_mark_all_as_seen',app.user) }}">
                             <li class="external">
                                 <h3><span class="bold">Notifications</span></h3>
-                                <span class="notification-label purple-bgcolor">New 6</span>
+
                             </li>
                             <li>
-                                <ul class="dropdown-menu-list small-slimscroll-style" data-handle-color="#637283">
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="time">just now</span>
-                                            <span class="details">
-                                                <span class="notification-icon circle deepPink-bgcolor"><i class="fa fa-check"></i></span> Congratulations!. </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="time">3 mins</span>
-                                            <span class="details">
-                                                <span class="notification-icon circle purple-bgcolor"><i class="fa fa-user o"></i></span>
-                                                <b>John Micle </b>is now following you. </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="time">7 mins</span>
-                                            <span class="details">
-                                                <span class="notification-icon circle blue-bgcolor"><i class="fa fa-comments-o"></i></span>
-                                                <b>Sneha Jogi </b>sent you a message. </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="time">12 mins</span>
-                                            <span class="details">
-                                                <span class="notification-icon circle pink"><i class="fa fa-heart"></i></span>
-                                                <b>Ravi Patel </b>like your photo. </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="time">15 mins</span>
-                                            <span class="details">
-                                                <span class="notification-icon circle yellow"><i class="fa fa-warning"></i></span> Warning! </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="time">10 hrs</span>
-                                            <span class="details">
-                                                <span class="notification-icon circle red"><i class="fa fa-times"></i></span> Application error. </span>
-                                        </a>
-                                    </li>
+                                <a href="{{ path('index') }}"> <form action="{{ mgilet_notification_generate_path('notification_list', notifiableNotifications|first.notifiableEntity) }}"
+                                      method="post">
+                                     <button class="btn btn-circle btn-info " style="margin-left: 25%" type="submit">Marquer comme vu</button>
+                                </form></a>
+                                <ul class="dropdown-menu-list small-slimscroll-style" data-handle-color="#637283" style="overflow: hidden; width: auto;">
+                                    {% for notifiableNotification in notifiableNotifications %}
+                                        <li>
+                                            {% if notifiableNotification.seen == true %}
+                                                <a href="{{ path(notifiableNotification.notification.link) }}"> <b >{{ mgilet_notification_render(app.user ,{'seen': false }) }}</b></a>
+
+
+                                            {% elseif notifiableNotification.seen == false %}
+                                                <a href="{{ path(notifiableNotification.notification.link) }}">     <b style="color: #0cc745">{{ mgilet_notification_render(app.user ,{'seen': false }) }}</b></a>
+                                            {% endif %}
+
+                                        {#<div style="display:inline">#}
+
+                                            {#<form action="{{ mgilet_notification_generate_path('notification_mark_as_seen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"#}
+                                                  {#method="post">#}
+                                                {#<a href="{{ path('index') }}"><button class="fa fa-eye" style="width:40px" type="submit"></button></a>#}
+                                            {#</form>#}
+                                            {#<form action="{{ mgilet_notification_generate_path('notification_mark_as_unseen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"#}
+                                                  {#method="post">#}
+                                                {#<a href="{{ path('index') }}"><button class="fa fa-eye-slash" style="width:40px" type="submit"></button></a>#}
+                                            {#</form>#}
+                                        {#</div>#}
+                                        </li>
+                                    {% endfor %}
                                 </ul>
-                                <div class="dropdown-menu-footer">
-                                    <a href="javascript:void(0)"> All notifications </a>
-                                </div>
+
                             </li>
                         </ul>
                     </li>
@@ -981,18 +962,19 @@
                             </div>
                             <div class="container">
                                 <div data-example-id="simple-table" class="bs-example">
-                                    <table class="table">
+                                    <table class="table table-striped">
                                         <form method="post">
 
 
                                             <select name="objet">
                                                 {%for a in reclamations %}
                                                     <option name="objet" value="{{a.objet}}">{{a.objet}}</option>
-                                                {% endfor %}</select>
-                                            <tr><input type="submit" value="chercher" name="chercher"></tr>
+                                                {% endfor %}
+                                            </select>
+                                            <tr><button type="submit" name="chercher" class="btn btn-circle btn-default active" ><i class="fa fa-search"></i></button></tr>
                                         </form>
                                     <thead>
-                                    <th>Date</th> <th>Objet</th><th>Patient</th> <th>Message</th>
+                                    <th >Date</th> <th>Objet</th><th>Patient</th> <th>Message</th><th></th><th></th>
                                     </thead>
 
                                     {%for a in reclamations %}
@@ -1004,7 +986,9 @@
 
                                         <td>{{ a.message | raw }}</td>
                                        <td><a href="{{ path('details',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Détails</button></a></td>
+                                      {% if a.Verified==null %}
                                         <td><a href="{{ path('insert',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Répondre</button></a></td>
+                                        {% endif %}
                                         </tbody>
 
                                     {% endfor %}

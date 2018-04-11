@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Services
  *
- * @ORM\Table(name="services", indexes={@ORM\Index(name="fk_etab_service", columns={"id_etab"})})
+ * @ORM\Table(name="services")
  * @ORM\Entity
  */
 class Services
@@ -128,6 +128,11 @@ class Services
     public function setIdEtab($idEtab)
     {
         $this->idEtab = $idEtab;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 
 

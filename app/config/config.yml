@@ -7,6 +7,7 @@ imports:
     - { resource: "@FicheBundle/Resources/config/services.yml" }
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
+<<<<<<< HEAD
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
@@ -24,6 +25,10 @@ imports:
     - { resource: "@ProductBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+=======
+    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
+    - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+>>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
     - { resource: "@ProductBundle/Resources/config/services.yml" }
     - { resource: "@DemandeBundle/Resources/config/services.yml" }
     - { resource: "@ForumBundle/Resources/config/services.yml" }
@@ -33,10 +38,20 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+<<<<<<< HEAD
+=======
+
+>>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/uploads/CV'
 
     image_directory: '%Kernel.project_dir%/web/uploads/images'
+
+
+
+    product_images: '%Kernel.project_dir%/web/uploads/images/products'
+    image_directory: '%Kernel.project_dir%/web/uploads/images'
+
 
 framework:
     #esi: ~
@@ -164,7 +179,10 @@ nomaya_social:
         facebook:           "https://www.facebook.com/ranya.mideni.1"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
+<<<<<<< HEAD
 
+=======
+>>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
 donkey_code_mail:
     mail_from: null
     reply_to: null
@@ -174,15 +192,22 @@ donkey_code_mail:
         bg: '#efefef'
         txt_color: '#555555'
         font_family: 'Helvetica Neue'
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
 knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
 
 eko_google_translate:
     api_key: key=AIzaSyBgiMhanXDLu8AzEwVeHcdelfxi9Em5fgQ
+<<<<<<< HEAD
+=======
+
+>>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
 vich_uploader:
     db_driver: orm
 knp_paginator:

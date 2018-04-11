@@ -28,22 +28,21 @@ class ReponseController extends Controller
         $form = $this->createForm('ReclamationBundle\Form\ReponseType', $rdv);
         $form->handleRequest($request);
         if ($form->isValid()) {
-
-
+//            $user = $em->getRepository(("ReclamationBundle:Reclamation"))
+//                ->findOneBy(['user' => $rec->getUser()]);
             /*$rdv->setDate((string)$form->getData(date));*/
 //            $username = $form["date"]->getData();
             $rdv->setDate(new \DateTime('now'));
             $rdv->setIdrec($rec);
-
             $em->persist($rdv);
             $rec->setVerified(1);
             $em->persist($rec);
             $em->flush();
             $this->sendNotification();
-
+            return $this->redirectToRoute('index');
         }
         return $this->render('ReclamationBundle:reponseviews:reponse.html.twig', array(
-            'Form1' => $form->createView()
+            'Form1' => $form->createView(), 'r'=>$rec
 
         ));
 
@@ -55,9 +54,9 @@ class ReponseController extends Controller
     public function sendNotification()
     {
         $manager = $this->get('mgilet.notification');
-        $notif = $manager->createNotification('Hello world !');
-        $notif->setMessage('This a notification.');
-        $notif->setLink('http://symfony.com/');
+        $notif = $manager->createNotification('Vous avez reçu une réponse à votre reclamation');
+        $notif->setMessage('Réclamation');
+        $notif->setLink('');
         // or the one-line method :
         // $manager->createNotification('Notification subject','Some random text','http://google.fr');
 
@@ -70,15 +69,16 @@ class ReponseController extends Controller
     //front affichage
     public function showAction($id)
     {
-        $rec = new Reponse();
+        $rep = new Reponse();
         $em    = $this->getDoctrine()->getManager();
 
-       $rec = $em->getRepository(("ReclamationBundle:Reponse"))->findOneBy(['idrec'=>$id]);
+       $rep = $em->getRepository(("ReclamationBundle:Reponse"))->findOneBy(['idrec'=>$id]);
+        $rec = $em->getRepository(("ReclamationBundle:Reclamation"))->findOneBy(['idRec'=>$id]);
 
 //        $rec=$em->getRepository("ReclamationBundle:Reclamation")->findBy(['user' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
         return $this->render('ReclamationBundle:reponseviews:afficherreponse.html.twig',
-            array('r'=>$rec,
+            array('r'=>$rep, 'rec'=>$rec
             )
         );
     }

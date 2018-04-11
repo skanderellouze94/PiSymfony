@@ -3,6 +3,7 @@
 namespace RdvBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PidevBundle\Entity\FosUser;
 use PidevEsbeBundle\PidevEsbeBundle;
 
 /**
@@ -44,9 +45,8 @@ class Rdv
     private $time;
 
     /**
-     * @var PidevEsbeBundle/Services
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Services")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Services")
      * @ORM\JoinColumn(name="id_service", referencedColumnName="id")
      */
     private $idService;
@@ -146,11 +146,11 @@ class Rdv
     /**
      * Set idService
      *
-     * @param \RdvBundle\Entity\Services $idService
+     * @param \ProductBundle\Entity\Services $idService
      *
      * @return Rdv
      */
-    public function setIdService(\RdvBundle\Entity\Services $idService = null)
+    public function setIdService(\ProductBundle\Entity\Services $idService = null)
     {
         $this->idService = $idService;
 
@@ -160,7 +160,7 @@ class Rdv
     /**
      * Get idService
      *
-     * @return \RdvBundle\Entity\Services
+     * @return \ProductBundle\Entity\Services
      */
     public function getIdService()
     {
@@ -170,11 +170,11 @@ class Rdv
     /**
      * Set idUser
      *
-     * @param \RdvBundle\Entity\FosUser $idUser
+     * @param FosUser $idUser
      *
      * @return Rdv
      */
-    public function setIdUser(\RdvBundle\Entity\FosUser $idUser = null)
+    public function setIdUser(FosUser $idUser = null)
     {
         $this->idUser = $idUser;
 

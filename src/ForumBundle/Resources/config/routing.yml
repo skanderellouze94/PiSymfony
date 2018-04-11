@@ -1,3 +1,10 @@
-forum_homepage:
+
+insert_forum:
+    path:     /insert
+    defaults: { _controller: ForumBundle:Forum:insert}
+index_forum:
     path:     /
-    defaults: { _controller: ForumBundle:Default:index }
+    defaults: { _controller: ForumBundle:Forum:index}
+show_forum:
+    path:     /show/{id}
+    defaults: { _controller: ForumBundle:Forum:show}
