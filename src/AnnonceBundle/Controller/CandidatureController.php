@@ -11,6 +11,9 @@ namespace AnnonceBundle\Controller;
 
 use AnnonceBundle\Entity\Candidature;
 use EtablissementBundle\Entity\Etablissements;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,45 +24,34 @@ class CandidatureController extends Controller
     {
         $candidature = new Candidature();
         $em = $this->getDoctrine()->getManager();
-
         $annonce = $em ->getRepository("AnnonceBundle:Annonce")->find($id);
-
         $etab = new Etablissements();
-
-
-//        $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
-//            ->findOneBy(['user'=>$annonce->getIdPartenaire()]);
-
+        $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
+            ->findOneBy(['user'=>$annonce->getIdPartenaire()]);
         $form = $this->createForm('AnnonceBundle\Form\CandidatureType', $candidature);
         $form->handleRequest($request);
         if ($form->isValid()){
             /**
-             *@var UploadedFile $file
+             *
+             *@var UploadedFile $pdffile
              */
-            $file=$candidature->getCv();
-            if($file->guessExtension()=='pdf' || $file->guessExtension()=='PDF' )
-            {
-                $fileName=md5(uniqid()).'.'.$file->guessExtension();
-                $file->move(
-                    $this->getParameter('image_directory'),$fileName
+            $pdffile=$candidature->getCv();
+                $fileName = md5(uniqid()) .'.'. $pdffile->guessExtension();
+            $pdffile->move(
+                    $this->getParameter('image_directory'), $fileName
                 );
                 $candidature->setCv($fileName);
-
                 $candidature->setEtat("En attente");
                 $candidature->setIdAnnonce($annonce);
                 $candidature->setDatePostulation(new \DateTime('now'));
                 $candidature->setIdUtilisateur( $this->container->get('security.token_storage')->getToken()->getUser());
                 $em->persist($candidature);
                 $em->flush();
-            }
-            else
-            {
-                return $this->render('AnnonceBundle:CandidatureViews:erreur.html.twig');
-            }
+
         }
         return $this->render('AnnonceBundle:CandidatureViews:AjouterCandidature.html.twig', array(
             'an'=>$annonce,
-//            'e'=>$etab,
+           'e'=>$etab,
             'Form' => $form->createView()
         ));
     }
@@ -83,7 +75,6 @@ class CandidatureController extends Controller
 //    }
 
     public function AccepterCandidatureAction($id){
-
             $em = $this->getDoctrine()->getManager();
             $candidature=$em->getRepository("AnnonceBundle:Candidature")->find($id);
             $id1=$candidature->getIdAnnonce()->getId();
@@ -92,7 +83,15 @@ class CandidatureController extends Controller
             $em->persist($candidature);
             //$em->remove($annonce);
             $em->flush();
+//
 
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Confirmation de candidature')
+            ->setFrom('espacesanteroot@gmail.com')
+            ->setTo($candidature->getIdUtilisateur()->getEmail())
+            ->setBody("Bonjour");
+        $this->get('mailer')->send($message);
+        /*        dump($candidature->getIdUtilisateur()->getEmail());exit;*/
 //        return $this->render('AnnonceBundle:CandidatureViews:AfficherCandidature.html.twig', array('candidature'=>$candidature,
 //        ));
 

@@ -1,0 +1,50 @@
+<?php
+
+namespace EtablissementBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pharmacie
+ *
+ * @ORM\Table(name="pharmacie", indexes={@ORM\Index(name="pharmacie_ibfk_1", columns={"id_etab"})})
+ * @ORM\Entity
+ */
+class Pharmacie
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+<<<<<<< HEAD:src/PidevEsbeBundle/Entity/Pharmacie.php
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=500, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var \Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissements")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+     * })
+=======
+     * @var \EtablissementBundle\Entity\Etablissements
+     *
+     * @ORM\ManyToOne(targetEntity="EtablissementBundle\Entity\Etablissements")
+     * @ORM\JoinColumn(name="id_etab", referencedColumnName="id")
+>>>>>>> f139aee60e6c58f2b36220c9e67bca0120e5914f:src/EtablissementBundle/Entity/Pharmacie.php~
+     */
+    private $idEtab;
+
+
+}
+

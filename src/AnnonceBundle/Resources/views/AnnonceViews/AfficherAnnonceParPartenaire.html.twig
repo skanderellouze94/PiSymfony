@@ -3,65 +3,40 @@
             Liste des annonces
         {% endblock title %}
  {% block body %}
-     <div class="row">
-         <div class="col-md-6 col-sm-6 col-xs-6">
-             <div class="btn-group">
-                 <a class="btn btn-info" href={{ path('ajouter_annonce') }}>
-                     Ajouter Nouveau <i class="fa fa-plus"></i>
-                 </a>
-             </div>
-         </div>
-
-         <div class="col-md-6 col-sm-6 col-xs-6">
-             <div class="btn-group pull-right">
-                 <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                     <i class="fa fa-angle-down"></i>
-                 </a>
-                 <ul class="dropdown-menu pull-right">
-                     <li>
-                         <a href="javascript:;">
-                             <i class="fa fa-print"></i> Print </a>
-                     </li>
-                     <li>
-                         <a href="javascript:;">
-                             <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
-                     </li>
-                     <li>
-                         <a href="javascript:;">
-                             <i class="fa fa-file-excel-o"></i> Export to Excel </a>
-                     </li>
-                 </ul>
-             </div>
-         </div>
-         <form class="search-form-opened" action="#" method="GET">
-             <div class="input-group">
-                 <input type="text" class="form-control" placeholder="Search..." name="query">
-                 <span class="input-group-btn">
-                          <a href="javascript:;" class="btn submit">
-                             <i class="icon-magnifier"></i>
-                           </a>
-                        </span>
-             </div>
-         </form>
-     </div>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+     <script type="text/javascript" charset="utf-8">
+         $(document).ready(function($){
+             $("#fancybox").fancybox({
+                 "type"		: 	"iframe",
+                 "width"		: 	300,
+                 "maxHeight"	: 	100,
+                 "autoResize": 	false
+             });
+         });
+     </script>
 
      <div class="row">
-         <div class="col-md-12">
-             <div class="row">
-                 <div class="col-md-12">
-                     <div class="card card-topline-purple">
-                         <div class="card-head">
-                             <header>Liste des Annonces</header>
-                             <div class="tools">
-                                 <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-                                 <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                                 <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
-                             </div>
-                         </div>
-                         <div class="card-body ">
-                             <div class="table-responsive">
-                                 <table class="table table-striped custom-table table-hover">
-                                     <thead>
+                         <div class="col-md-12">
+                             <div class="card card-topline-aqua">
+                                 <div class="card-head">
+                                     <header>Mes Annonces</header>
+                                 </div>
+                                 <div class="card-body ">
+                                     <div class="row">
+                                         <div class="col-md-12 col-sm-12 col-xs-12">
+                                             <div class="btn-group">
+                                                 <a href="{{ path('ajouter_annonce') }}">
+                                                     <button id="sample_editable_1_new" class="btn btn-info"> Ajouter Nouveau
+                                                         <i class="fa fa-plus"></i>
+                                                     </button>
+                                                 </a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <table id="example1" class="display" style="width:100%;">
+                                         <thead>
                                      <tr>
                                          <th>Domaine</th>
                                          <th>Description</th>
@@ -82,24 +57,60 @@
                                          <td >
                                              <a button class="btn btn-primary btn-xs" href={{ path('modifier_annonce',{'id':annonce.id})}}> <i class="fa fa-pencil "></i> </a><br>
                                              </button>
-                                             <a button class="btn btn-danger btn-xs" href={{ path('supprimer',{'id':annonce.id})}}> <i class="fa fa-trash-o "></i> </a><br>
+
+                                             <a button id = "fancybox"  class="btn btn-danger btn-xs" href={{ path('supprimer',{'id':annonce.id})}}> <i class="fa fa-trash-o "></i> </a><br></a>
                                              </button>
                                          </td>
                                          <td>
                                          {{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}
-                                             <li><a id="" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.getUri }}&t={{ annonce.domaine }}"><i class="fa fa-facebook"  aria-hidden="true" title="partager sur Facebook"></i></a></li>
+                                             {#<iframe src="https://www.facebook.com/plugins/share_button.php?href=http://localhost:8080/PiSymfony/web/app_dev.php/Annonce/AfficherAnnonceParPartenairee&layout=button&size=small&mobile_iframe=true&appId=928415327340119&width=73&height=20" width="73" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>#}
+                                             <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8001%2FAnnonce%2FAfficherAnnonceParPartenairee&layout=button&size=small&mobile_iframe=true&appId=928415327340119&width=73&height=20" width="73" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                                             {#{{ socialButtons() }}#}
+                                             {#{{ socialLink('facebook') }}#}
+                                             {#<li><a id="" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.getUri }}&t={{ annonce.domaine }}"><i class="fa fa-facebook"  aria-hidden="true" title="partager sur Facebook"></i></a></li>#}
                                          {#{{ socialButtons( {'googleplus':false, 'linkedin':false} ) }}#}
-                                             {% endfor %}
                                          </td>
-                                     </tr>
-
+                                             {% endfor %}
                                      </tbody>
-                                 </table>
+                                     </table>
+                                 </div>
                              </div>
                          </div>
                      </div>
-                 </div>
-             </div>
-         </div>
-     </div>
+
  {% endblock body %}
+{% block javascript %}
+
+    <script src="{{ asset('assets/back/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/back/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/back/table_data.js') }}"></script>
+    <link href="{{ asset('assets/back/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+
+
+{#<script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.pack.js"></script>#}
+{#<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />#}
+{#<script type="text/javascript">#}
+
+    {#$(function () {#}
+        {#$("#fancybox").fancybox({#}
+            {#maxWidth    : 800,#}
+            {#maxHeight   : 600,#}
+            {#fitToView   : false,#}
+            {#width       : '80%',#}
+            {#height      : '90%',#}
+            {#autoSize    : false,#}
+            {#closeClick  : false,#}
+            {#type        : 'iframe',#}
+            {#openEffect  : 'none',#}
+            {#closeEffect : 'none',#}
+            {#afterClose: function () {#}
+                {#parent.location.reload(true)},#}
+            {#afterLoad: function(){#}
+                {#setTimeout( function() {$.fancybox.close(); },150000); // 3000 = 3 secs#}
+            {#}#}
+        {#})})#}
+
+    {#$(document).ready(function() {#}
+        {#$(".fancybox").fancybox();#}
+    {#});#}
+{% endblock %}

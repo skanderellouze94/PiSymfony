@@ -22,9 +22,10 @@ class ReclamationType extends AbstractType
                 )))
 
             ->add('idetab')
-            ->add('user')
+
         ->add('Ajouter', SubmitType::class  )
         ->setMethod('post');
+      
     }/**
      * {@inheritdoc}
      */

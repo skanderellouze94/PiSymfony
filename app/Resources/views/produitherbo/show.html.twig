@@ -1,0 +1,60 @@
+{% extends '::/AdminBase.html.twig' %}
+{% block pagetitle %}
+    {{ produitHerbo.IdProduit.nom }}
+{% endblock %}
+{% block titleP %}
+    Produit {{ produitHerbo.IdProduit.nom }}
+{% endblock %}
+    {% block script %}
+        <link href="{{ asset('css/seif.css') }}" rel="stylesheet"/>
+        {% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-topline-aqua">
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="product-image-large">
+                                    <img style="max-width: 100%;" src="{{ asset('/uploads/images/products/') }}{{ produitHerbo.IdProduit.image }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 product-details">
+                                <h1 style="color: #00C0EF;">{{ produitHerbo.IdProduit.nom }}</h1>
+                                <h5>Description :</h5>
+                                <p>
+                                    {{ produitHerbo.IdProduit.description }}
+                                </p>
+                                <p><strong>Prix: </strong>{{ produitHerbo.IdProduit.prix }}</p>
+                                <p><strong>Marque: </strong>{{ produitHerbo.marque }}</p>
+                                <p><strong>Categorie: </strong>{{ produitHerbo.categorie }}</p>
+                                {% if  produitHerbo.bio ==1 %}
+                                    <p><strong>Bio: </strong>YES</p>
+                                {% else %}
+                                    <p><strong>Bio: </strong>YES</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a href="{{ path('produitherbo_edit',{idProduit : produitHerbo.idProduit.idProduit}) }}">
+                                   <button type="button" class="btn btn-primary btn-block">Edit</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="{{ path('produitherbo_delete',{idProduit : produitHerbo.idProduit.idProduit}) }}">
+                                    <button type="button" class="btn btn-danger btn-block">Delete</button>
+                            </a>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+</div>
+
+{% endblock %}

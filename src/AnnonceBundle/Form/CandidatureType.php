@@ -28,7 +28,7 @@ class CandidatureType extends AbstractType
                         'Maîtrise' => 'Maîtrise',
                         'Ingénierie' => 'Ingénierie'
                     )))
-            ->add('cv', FileType::class, array ('label' => 'Cv', 'data_class'=>null))
+            ->add('cv', FileType::class, array ('label' => 'Cv'))
             // ->add('idAnnonce')
            // ->add('idUtilisateur')
 

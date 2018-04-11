@@ -1,0 +1,22 @@
+produitherbo_index:
+    path:     /
+    defaults: { _controller: "ProductBundle:ProduitHerbo:index" }
+    methods:  GET
+
+produitherbo_show:
+    path:     /{idProduit}/show
+    defaults: { _controller: "ProductBundle:ProduitHerbo:show" }
+    methods:  GET
+
+produitherbo_new:
+    path:     /new
+    defaults: { _controller: "ProductBundle:ProduitHerbo:new" }
+    methods:  [GET, POST]
+
+produitherbo_edit:
+    path:     /{idProduit}/edit
+    defaults: { _controller: "ProductBundle:ProduitHerbo:edit" }
+
+produitherbo_delete:
+    path:     /{idProduit}/delete
+    defaults: { _controller: "ProductBundle:ProduitHerbo:delete" }

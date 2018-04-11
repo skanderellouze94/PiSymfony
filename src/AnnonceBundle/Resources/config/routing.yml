@@ -49,6 +49,13 @@ rechercherAnnonce:
 afficher_annonce_part:
     path:     /AfficherAnnonceParPartenaire
     defaults: { _controller: AnnonceBundle:Annonce:AfficherAnnonces }
-showw:
+show_detail_candidature:
     path:     /show/{id}
     defaults: { _controller: AnnonceBundle:Candidature:showCandidature }
+
+AfficherAnnonceParPartenairee:
+    path:     /AfficherAnnonceParPartenairee
+    defaults: { _controller: AnnonceBundle:Annonce:AfficherAnnonces }
+
+
+

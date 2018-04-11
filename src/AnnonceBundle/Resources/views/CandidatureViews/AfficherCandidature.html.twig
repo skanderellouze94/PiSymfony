@@ -81,12 +81,23 @@
                                          <td>{{ c.cv }}</td>
                                          <td>{{ c.etat }}</td>
                                          <td>
-                                             <a button class="btn btn-primary btn-xs" href={{ path('accepter_candidature',{'id':c.id})}}> Accepter </a><br>
+                                             <a button class="btn deepPink btn-outline m-b-10" href={{ path('show_detail_candidature',{'id':c.id})}}> afficher </a><br>
                                              </button>
-                                             <a button class="btn btn-danger btn-xs" href={{ path('refuser_candidature',{'id':c.id})}}> Décliner </a><br>
-                                             </button>
-                                             <a button class="btn btn-danger btn-xs" href={{ path('showw',{'id':c.id})}}> afficher </a><br>
-                                             </button>
+                                             {#<br>#}
+                                             {% if c.etat=='En attente' %}
+                                                 <a button class="btn deepPink btn-outline m-b-10" href={{ path('accepter_candidature',{'id':c.id})}}>Accepter </a>
+                                                 </button>
+<br>
+                                                 <a button style="width:95px" class="btn dark btn-outline m-b-10" href={{ path('refuser_candidature',{'id':c.id})}}>Refuser</a>
+
+                                                 </button>
+                                             {% endif %}
+
+                                             {#<a button class="btn btn-primary btn-xs" href={{ path('accepter_candidature',{'id':c.id})}}> Accepter </a><br>#}
+                                             {#</button>#}
+                                             {#<a button class="btn btn-danger btn-xs" href={{ path('refuser_candidature',{'id':c.id})}}> Décliner </a><br>#}
+                                             {#</button>#}
+
 
                                          </td>
                                      </tr>

@@ -12,12 +12,13 @@ namespace AnnonceBundle\Controller;
 use AnnonceBundle\Entity\Annonce;
 use AnnonceBundle\Form\RechercheAjaxAnnonceType;
 use AnnonceBundle\Form\RechercheAnnonceType;
+//use http\Env\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use AnnonceBundle\Repository\AnnonceRepository;
 
 class AnnonceController extends Controller
 {
@@ -46,8 +47,15 @@ class AnnonceController extends Controller
 
 
 
-    public function AfficherAnnonceAction()
-    {
+    public function AfficherAnnonceAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if($request->isXmlHttpRequest() && $request->isMethod('post')){
+            $annoce = $em->getRepository('AnnonceBundle:Annonce')
+                ->findBy(array('domaine'=>$request->get('serie')));
+            $serializer = new Serializer(array(new ObjectNormalizer()));
+            $data = $serializer->normalize($annoce);
+            return new JsonResponse($data);
+        }
         $em = $this->getDoctrine()->getManager();
         $annonce = $em->getRepository("AnnonceBundle:Annonce")->findAll();
         return $this->render('AnnonceBundle:AnnonceViews:AfficherAnnonce.html.twig', array("a" => $annonce
@@ -61,7 +69,7 @@ class AnnonceController extends Controller
         $annonce=$em->getRepository("AnnonceBundle:Annonce")->findBy(['idPartenaire' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
         return $this->render('AnnonceBundle:AnnonceViews:AfficherAnnonceParPartenaire.html.twig',
-            array('a'=>$annonce,
+            array('a'=>$annonce
             )
         );
     }
@@ -70,10 +78,17 @@ class AnnonceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $annonce = $em->getRepository("AnnonceBundle:Annonce")->find($id);
+        $cand= $em->getRepository("AnnonceBundle:Candidature")->findBy(['idAnnonce'=>$annonce]);
+        if($cand!=null)
+//        { throw new \Exception('m3ebi');}
+//        {return $this->redirectToRoute('afficher_annonce_part', array());}
+{return $this->render('AnnonceBundle:AnnonceViews:erreur.html.twig', array());}
         if ($annonce->getDateExpiration() >= $annonce->getDateExpiration())
         $em->remove($annonce);
         $em->flush();
-        return $this->render('AnnonceBundle:AnnonceViews:SupprimerAnnonce.html.twig', array());
+        return $this->render('afficher_annonce_part', array());
+//        return $this->render('AnnonceBundle:AnnonceViews:SupprimerAnnonce.html.twig', array());
+//        return new Response("Votre Annonce a été supprimée");
     }
 
     public function ModifierAnnonceAction(Request $request, $id)
@@ -122,21 +137,26 @@ class AnnonceController extends Controller
     }
 
 
-//    public function EffacerAnnonceDateExpirationAction()
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $annonce = $em->getRepository('AnnonceBundle:Annonce')->findAll();
-//        $date = (new \DateTime('now'));
-//        foreach ( $annonce as $annonce){
-//            if($annonce->getDateExpiration()<$date){
-//                $em->remove($annonce);
-//                $em->flush();
-//            }
-//        }
-//
-//        return $this->redirectToRoute('AnnonceViews_index');
-//    }
+    public function EffacerAnnonceDateExpirationAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $annonce = $em->getRepository('AnnonceBundle:Annonce')->findAll();
+        $date = (new \DateTime('now'));
+        foreach ( $annonce as $annonce)
+        {
+            if($annonce->getDateExpiration()<$date)
+            {
+                $em->remove($annonce);
+                $em->flush();
+                $annonce=$em->getRepository("AnnonceBundle:Annonce")->findBy(['idPartenaire' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+
+            }
+        }
+        return $this->render('AnnonceBundle:AnnonceViews:AfficherAnnonceParPartenaire.html.twig',
+            array('a'=>$annonce
+            )
+        );
+    }
 
 
     public function RechercheDomaineDQLAction(Request $request)

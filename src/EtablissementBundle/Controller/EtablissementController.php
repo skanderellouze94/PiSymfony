@@ -17,6 +17,7 @@ use EtablissementBundle\Entity\Hopitaux;
 use EtablissementBundle\Entity\Laboratoire;
 use EtablissementBundle\Entity\Parapharmacie;
 use EtablissementBundle\Entity\Pharmacie;
+use EtablissementBundle\Entity\Rating;
 use EtablissementBundle\Entity\SalleDeSport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -40,6 +41,7 @@ class EtablissementController extends Controller
 
             $filterForm->get('nom')->setData($filtredFields['nom']);
 
+            $filterForm->get('field')->setData($filtredFields['field']);
 
         }
 
@@ -99,14 +101,14 @@ class EtablissementController extends Controller
                 throw new \Exception('moma');
             }
             $subEstab->setIdEtab($establishment);
-             /*   $establishment->setHeureOuverture(date_format($establishment->getHeureOuverture(),'H:i'));
-                $establishment->setHeureFermeture(date_format(getHeureFermeture(),'H:i'));*/
 
 
+            $establishment->setUser( $this->container->get('security.token_storage')->getToken()->getUser());
 
             $em->persist($establishment);
             $em->persist($subEstab);
             $em->flush();
+            return $this->redirectToRoute('ajouter_demande');
 
         }
 
@@ -169,13 +171,34 @@ class EtablissementController extends Controller
 
     public function showAction(Request $request , $id)
     {
-        $em=$this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
             ->find("$id");
 
-        return $this->render('EtablissementBundle:EtablissementView:show.html.twig', array('e'=>$etab
-        ));
+        $r = new Rating();
+
+        $ratings = $em->getRepository(("EtablissementBundle:Rating"))->findAll();
+        foreach ($ratings as $rat)
+        {
+            if(($rat->getIdUser()==$this->container->get('security.token_storage')->getToken()->getUser()) and ($rat->getIdEtab()==$etab))
+            {$r = $em->getRepository(("EtablissementBundle:Rating"))->find($rat->getId());}
+        }
+
+        $form = $this->createForm('EtablissementBundle\Form\RatinggType', $r);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $r->setIdEtab($etab);
+            $r->setIdUser($this->container->get('security.token_storage')->getToken()->getUser());
+            $em->persist($r);
+            $em->flush();
+
+        }
+        return $this->render('EtablissementBundle:EtablissementView:show.html.twig', array('e' => $etab,
+            'form' => $form->createView()));
     }
 
     /**
@@ -231,6 +254,33 @@ class EtablissementController extends Controller
         }
 
         return $subEstablishmentObj;
+    }
+
+    public function monEtabAction(Request $request,$id)
+    {
+        $etab = new Etablissements();
+        $em = $this->getDoctrine()->getManager();
+        $id=$this->container->get('security.token_storage')->getToken()->getUser()->getId();
+        $etab = $em->getRepository(("EtablissementBundle:Etablissements"))
+            ->findOneBy(['user' => $id]);
+        $form = $this->createForm('EtablissementBundle\Form\EtablissementsEditType', $etab);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $etab->getImage();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move(
+                $this->getParameter('image_directory'), $fileName
+            );
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($etab);
+            $em->flush();
+        }
+        return $this->render('EtablissementBundle:EtablissementView:monEtab.html.twig', array(
+            'form' => $form->createView(),
+
+        ));
     }
 
 }

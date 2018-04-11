@@ -1,0 +1,137 @@
+{% extends '::/BaseForm.html.twig' %}
+{% block title %}
+    Detail du conseil
+{% endblock title %}
+
+        {% block content %}
+
+            <!-- Start main-content -->
+            <div class="main-content">
+                {% block titreForm  %}
+                    Detail du conseil
+                {% endblock%}
+
+                <!-- Section: Blog -->
+                <section>
+                    <div class="container mt-30 mb-30 pt-30 pb-30">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="blog-posts single-post">
+                                    <article class="post clearfix mb-0">
+                                        <div class="entry-header">
+                                            <div class="post-thumb thumb"><img style="width: 900px;" src="{{asset("uploads/images/"~conseil.image)}}"/></div>
+                                        </div>
+                                        <div class="entry-content">
+                                           {# <div class="entry-meta media no-bg no-border mt-15 pb-20">
+                                                <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                                                    <ul>
+                                                        <li class="font-16 text-white font-weight-600">Date : </li>
+
+                                                        <li class="font-16 text-white font-weight-600">{{ evenement.dateDebut | date('d/m/y')  }}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="media-body pl-15">
+                                                    <div class="event-content pull-left flip">
+                                                        <h4 class="entry-title text-white text-uppercase m-0"><a href="#">{{ evenement.nom  }}</a></h4>
+                                                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
+                                                    </div>
+                                                </div>
+                                            </div>#}
+                                            <blockquote class="theme-colored pt-20 pb-20">
+                                                <p>Description:</p>
+                                                <footer>{{ conseil.description  }}</footer>
+                                            </blockquote>
+                                            <blockquote class="theme-colored pt-20 pb-20">
+                                               {# <p>Date de l'événement  : </p>
+                                                <footer>{{ evenement.dateDebut | date('d/m/y')  }} -  {{ evenement.dateFin | date('d/m/y')  }}</footer> </br>
+                                                <p>Horaire :</p>
+                                                <footer>{{ evenement.horaireCom }} - {{ evenement.horaireFin }}</footer></br>
+#}
+                                                <p> Catégorie du conseil :</p>
+                                                <footer>{{ conseil.categorie }}</footer></br>
+
+                                            </blockquote>
+
+
+
+                                            <div class="mt-30 mb-0">
+                                                <h5 class="pull-left mt-10 mr-20 text-theme-colored">Partager:</h5>
+                                                <ul class="styled-icons icon-circled m-0">
+                                                    <li><a href="#" data-bg-color="#3A5795"><i class="fa fa-facebook text-white"></i></a></li>
+                                                    <li><a href="#" data-bg-color="#55ACEE"><i class="fa fa-twitter text-white"></i></a></li>
+                                                    <li><a href="#" data-bg-color="#A11312"><i class="fa fa-google-plus text-white"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </article>
+
+
+
+                                    </br>
+
+
+                                    <div class="comments-area">
+                                        <h5 class="comments-title">Comments</h5>
+
+
+                                        {% for commentaire in commentaires %}
+                                        <div style="margin-left: 80px;
+    width: 600px;">
+
+
+                                            <a class="media-left pull-left flip" href="#"><img class="img-thumbnail" src="images/blog/comment2.jpg" alt=""></a>
+
+                                            <div class="media comment-author nested-comment"> <a href="#" class="media-left pull-left flip pt-20"><img alt="" src="images/blog/comment3.jpg" class="img-thumbnail"></a>
+                                                <div class="media-body p-20 bg-lighter">
+                                                    <h5 class="media-heading comment-heading">John Doe says:</h5>
+                                                    <p> {{commentaire.contenu }}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    {% endfor %}
+
+
+                                </div>
+
+                                </br>
+                                </br>
+                                </br>
+
+
+
+                                {{ form_start(Form) }}
+                               <center> <div class="comment-box">
+                                    <div class="row">
+                                        <div class="col-sm-12"><br><br><br>
+                                            <h5>Laisser un commentaire</h5><br><br>
+                                            <div class="row">
+                                                <form role="form" id="comment-form">
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            {{  form_widget(Form.contenu, {'attr': {'class': 'form-control', 'placeholder' : 'Veuillez entrer le nom du conseil'}}) }}
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                          {{  form_row(Form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{ form_end(Form) }}
+                                </div>
+                               </center>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+            </div>
+
+        {% endblock  %}

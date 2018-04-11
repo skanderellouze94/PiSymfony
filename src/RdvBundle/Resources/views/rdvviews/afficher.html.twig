@@ -762,19 +762,22 @@
 
                                 <table class="table" >
                                     <thead>
-                                       <th>Patient</th> <th>Pratitien</th> <th>Date et Heure</th>
+                                       <th>Patient</th> <th>Pratitien</th><th>Service</th> <th>Date et Heure</th><th>Etat</th><th></th><th></th>
                                     </thead>
 
                                     {%for a in rendezvous %}
                                     <tbody>
-
                                             <td>{{ a.iduser }}</td>
 
 
-                                            <td>{{   a.idService.idEtab.idUser }}</td>
+                                            <td><a style="color:blue" href="{{ path('show',{'id':a.idService.idEtab.id}) }}">{{   a.idService.idEtab }}</a></td>
+                                            <td>{{ a.idService }}</td>
 
+                                            <td>{{  a.date | date('d/m/Y h:i')  }}</td>
+                                            <td>{{   a.etat}}</td>
+                                            <td><a  href="{{ path('modif',{'id':a.idRdv}) }}"><button style="color:blue">Modifier</button></a></td>
+                                            <td><a  href="{{ path('annulerfr',{'id':a.idRdv}) }}"><button style="color:blue">Annuler</button></a></td>
 
-                                            <td>{{  a.date | date('d/m/y h:i')  }}</td>
 
                                     </tbody>
                                     {% endfor %}

@@ -9,6 +9,7 @@
 namespace ReclamationBundle\Controller;
 
 
+use EtablissementBundle\Entity\Etablissements;
 use ReclamationBundle\Entity\Reclamation;
 use ReclamationBundle\Form\RechercherecType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,6 +19,7 @@ class ReclamationController extends Controller
 {
     public function insertAction(Request $request)
     {
+
         $rdv = new Reclamation();
         $form = $this->createForm('ReclamationBundle\Form\ReclamationType', $rdv);
         $form->handleRequest($request);
@@ -27,8 +29,7 @@ class ReclamationController extends Controller
             /*$rdv->setDate((string)$form->getData(date));*/
 //            $username = $form["date"]->getData();
             $rdv->setDate(new \DateTime('now'));
-
-
+            $rdv->setUser($this->getUser());
             $em->persist($rdv);
             $em->flush();
         }
@@ -36,58 +37,86 @@ class ReclamationController extends Controller
             'Form' => $form->createView()
 
         ));
+
     }
-    public function afficherAction()
-    {
+    public function searchVoitureAction(Request $request)
+    {$r=$this->getDoctrine()->getManager();
+        $rec=$r->getRepository('ReclamationBundle:Reclamation')->findAll();
+
+        if($request->getMethod()=="POST") {
+            $rec = $r->getRepository('ReclamationBundle:Reclamation')->findBy(array('objet'=>$request->get('objet')));
+
+        }
+        return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array('reclam' => $rec
+
+        ));
+    }
+
+    public function todetailAction($id){
+
         $rec = $this->getDoctrine()->getManager();
-        $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->findAll();
-        return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array(
+        $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->find($id);
+        return $this->render('ReclamationBundle:reclamationviews:details.html.twig', array(
+                'rec'=>$recs
+        ));
+    }
+    public function torespAction(){
+
+//        $rec = $this->getDoctrine()->getManager();
+
+        return $this->render('ReclamationBundle:reclamationviews:reponse.html.twig', array(
+
+        ));
+    }
+    //back
+
+    public function afficherAction(Request $request)
+    {
+$id=$this->container->get('security.token_storage')->getToken()->getUser()->getId();
+
+        $rec = $this->getDoctrine()->getManager();
+
+        $etab = $rec->getRepository(("EtablissementBundle:Etablissements"))
+            ->findOneBy(['user' => $id]);
+        if($request->getMethod()=="POST") {
+            $recc = $rec->getRepository('ReclamationBundle:Reclamation')->findBy(['objet'=>$request->get('objet'),'user'=>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+
+            return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig', array('reclamations' => $recc
+
+            ));
+        }
+//        $dql="SELECT m FROM ReclamationBundle:Reclamation m WHERE m.idetab=$id ";
+//        $query = $rec->createQuery($dql);
+        $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->findBy(['idetab' =>$etab]);
+        return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig', array(
             'reclamations' => $recs
 
         ));
     }
-    public function chercherAction()
-    {   $a=new Reclamation();
-        $EM = $this->getDoctrine()->getManager();
-        $amendes = $EM->getRepository(("ReclamationBundle:Reclamation"))->findbyobjet();
-        foreach ($amendes as $a){$a->setPenalite($a->getMontant()+$a->getMontant()*0.3);}
 
-        return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array(
-            'reclamations' => $amendes
-
-        ));
-    }
-
+//front affichage
     public function indexAction(Request $request)
     {
-        $rec = new Reclamation();
+
         $em    = $this->getDoctrine()->getManager();
-        $filterForm = $this->createForm('ReclamationBundle\Form\RechercherecType', $rec);
-        $filterForm->handleRequest($request);
-
-        $filtredFields = $request->query->get('reclamationbundle_reclamation');
-        $dql   = "SELECT m FROM ReclamationBundle:Reclamation m ORDER BY m.idRec DESC";
-        $query = $em->createQuery($dql);
-
-        if(sizeof($request->query->get('reclamationbundle_reclamation')) >0){
-            $query =   $em->getRepository('ReclamationBundle:Reclamation')->findFiltredFields($request->query->get('reclamationbundle_reclamation'));
-
-            $filterForm->get('idetab')->setData($filtredFields['idetab']);
 
 
+        $rec=$em->getRepository("ReclamationBundle:Reclamation")->findBy(['user' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+
+
+        if($request->getMethod()=="POST") {
+            $recc = $em->getRepository('ReclamationBundle:Reclamation')->findBy(['objet'=>$request->get('objet'),'user'=>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+
+            return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array('reclamations' => $recc
+
+            ));
         }
-
-        $paginator  = $this->get('knp_paginator');
-        $rec = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
-        );
-
         return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig',
             array('reclamations'=>$rec,
-                'form' => $filterForm->createView())
+               )
+
         );
     }
+
 
 }

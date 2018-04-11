@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Etablissements
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=false)
@@ -106,21 +97,21 @@ class Etablissements
     private $heureFermeture;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $type;
+    private $id;
 
     /**
-     * @var \FosUser
+     * @var \PidevEsbeBundle\Entity\FosUser
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumns({
+     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\FosUser")
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
      */
-    private $idUser;
+    private $user;
 
 
 }
