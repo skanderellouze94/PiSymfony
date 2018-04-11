@@ -5,45 +5,10 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
-=======
-
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-
-
-
->>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
-    - { resource: "@ProductBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ProductBundle/Resources/config/services.yml" }
     - { resource: "@DemandeBundle/Resources/config/services.yml" }
     - { resource: "@ForumBundle/Resources/config/services.yml" }
@@ -190,10 +155,6 @@ donkey_code_mail:
         bg: '#efefef'
         txt_color: '#555555'
         font_family: 'Helvetica Neue'
-<<<<<<< HEAD
-=======
-
->>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
 knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
@@ -221,7 +182,4 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
-<<<<<<< HEAD
-=======
 
->>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742

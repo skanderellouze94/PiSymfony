@@ -36,6 +36,8 @@ class ProduitHerboController extends Controller
     {
         $produitHerbo = new Produitherbo();
         $produit = new Produits();
+        $em = $this->getDoctrine()->getManager();
+
         $form= $this->createFormBuilder($produit)
             ->add('image',FileType::class,array('data_class'=>null ,
                 'label' => false))
@@ -59,7 +61,6 @@ class ProduitHerboController extends Controller
             $user =$this->container->get('security.token_storage')->getToken()->getUser();
             $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
             $produit->setIdEtab($etab[0]);
-            $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
             $em->flush();
             $em1 = $this->getDoctrine()->getManager();
