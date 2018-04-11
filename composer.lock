@@ -4,19 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< da857b92d29105bb01b1168e76238873f4a2552f
-<<<<<<< HEAD
-    "content-hash": "bae277c1780481463fe4a062a0ea4220",
-=======
-<<<<<<< 29a155a2e7356d115a3b73e42bd0caf06b34e55a
-    "content-hash": "39e6f9d562d28223c44c1787abd641b8",
-=======
-    "content-hash": "e39aeaf1ea21ec5230fd39488c3e7c32",
->>>>>>> CRUD produit + service
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
-=======
-    "content-hash": "7201699e671a7339c15b383c3bfb93b4",
->>>>>>> BE and other changes
+    "content-hash": "8974fdc4ce579d3df1e45692429e2965",
     "packages": [
         {
             "name": "blackknight467/star-rating-bundle",
@@ -1755,25 +1743,6 @@
             "time": "2018-01-30T08:43:41+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "mgilet/notification-bundle",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maximilienGilet/notification-bundle.git",
-                "reference": "7cbc4d5b6b04d978111afc14d867749af965d3e0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maximilienGilet/notification-bundle/zipball/7cbc4d5b6b04d978111afc14d867749af965d3e0",
-                "reference": "7cbc4d5b6b04d978111afc14d867749af965d3e0",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/doctrine-bundle": "*",
-                "symfony/framework-bundle": ">=2.7 <4",
-                "twig/twig": "*"
-=======
             "name": "knplabs/knp-snappy",
             "version": "0.4.3",
             "source": {
@@ -1858,25 +1827,16 @@
                 "symfony/finder": "~2.3|~3.0",
                 "symfony/framework-bundle": "~2.3|~3.0",
                 "symfony/validator": "~2.3|~3.0"
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
-                    "dev-master": "2.0-dev"
-=======
                     "dev-master": "1.2.x-dev"
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
                 }
             },
             "autoload": {
                 "psr-4": {
-<<<<<<< HEAD
-                    "Mgilet\\NotificationBundle\\": ""
-=======
                     "Knp\\Bundle\\SnappyBundle\\": ""
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1885,17 +1845,6 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
-                    "name": "Maximilien Gilet",
-                    "email": "maximilien248@gmail.com"
-                }
-            ],
-            "description": "A simple Symfony 3 bundle for user notifications",
-            "keywords": [
-                "symfony notification bundle simple"
-            ],
-            "time": "2017-11-24T08:47:45+00:00"
-=======
                     "name": "KnpLabs Team",
                     "homepage": "http://knplabs.com"
                 },
@@ -1914,7 +1863,52 @@
                 "snappy"
             ],
             "time": "2015-11-11T17:40:14+00:00"
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+        },
+        {
+            "name": "mgilet/notification-bundle",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximilienGilet/notification-bundle.git",
+                "reference": "7cbc4d5b6b04d978111afc14d867749af965d3e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximilienGilet/notification-bundle/zipball/7cbc4d5b6b04d978111afc14d867749af965d3e0",
+                "reference": "7cbc4d5b6b04d978111afc14d867749af965d3e0",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "*",
+                "symfony/framework-bundle": ">=2.7 <4",
+                "twig/twig": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mgilet\\NotificationBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maximilien Gilet",
+                    "email": "maximilien248@gmail.com"
+                }
+            ],
+            "description": "A simple Symfony 3 bundle for user notifications",
+            "keywords": [
+                "symfony notification bundle simple"
+            ],
+            "time": "2017-11-24T08:47:45+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -5,50 +5,30 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-
-=======
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-
-
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-
-
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-
-
-
-=======
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+    - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
-<<<<<<< HEAD
-
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
-
     - { resource: "@ProductBundle/Resources/config/services.yml" }
-
-
-=======
     - { resource: "@RdvBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ProductBundle/Resources/config/services.yml" }
     - { resource: "@DemandeBundle/Resources/config/services.yml" }
     - { resource: "@ForumBundle/Resources/config/services.yml" }
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/img/CV'
     image_directory: '%Kernel.project_dir%/web/uploads/images'
@@ -177,7 +157,6 @@ nomaya_social:
         facebook:           "http://www.facebook.com/yann.chauvel"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
-<<<<<<< HEAD
 donkey_code_mail:
     mail_from: null
     reply_to: null
@@ -187,10 +166,6 @@ donkey_code_mail:
         bg: '#efefef'
         txt_color: '#555555'
         font_family: 'Helvetica Neue'
-=======
-
-
-
 knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
@@ -217,8 +192,3 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
         options:    []
-<<<<<<< da857b92d29105bb01b1168e76238873f4a2552f
->>>>>>> CRUD produit + service
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
-=======
->>>>>>> BE and other changes

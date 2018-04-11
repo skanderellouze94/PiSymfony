@@ -4,6 +4,7 @@ namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\ProduitHerbo;
 use ProductBundle\Entity\Produits;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,17 +14,24 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ProduitHerboController extends Controller
 {
 
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $user =$this->container->get('security.token_storage')->getToken()->getUser();
+        $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
         $produitHerbos = $em->getRepository('ProductBundle:ProduitHerbo')
-                            ->findAll();
+                            ->findBy(array('idEtab'=>$etab));
 
         return $this->render('produitherbo/index.html.twig', array(
             'produitHerbos' => $produitHerbos,
         ));
     }
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function newAction(Request $request)
     {
         $produitHerbo = new Produitherbo();
@@ -48,6 +56,9 @@ class ProduitHerboController extends Controller
             $produit->setType('herbo');
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
+            $user =$this->container->get('security.token_storage')->getToken()->getUser();
+            $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+            $produit->setIdEtab($etab[0]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
             $em->flush();
@@ -70,7 +81,9 @@ class ProduitHerboController extends Controller
             'form'=>$form->createView()
         ));
     }
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function showAction(ProduitHerbo $produitHerbo)
     {
         $em = $this->getDoctrine()->getManager();
@@ -81,6 +94,9 @@ class ProduitHerboController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function editAction(Request $request, ProduitHerbo $produitHerbo)
     {
         $em = $this->getDoctrine()->getManager();
@@ -132,7 +148,9 @@ class ProduitHerboController extends Controller
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function deleteAction(ProduitHerbo $produitHerbo)
     {
         $em = $this->getDoctrine()->getManager();

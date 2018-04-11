@@ -13,20 +13,27 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class ProduitSalledesportController extends Controller
 {
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function indexAction()
     {
 
         $em = $this->getDoctrine()->getManager();
-
-        $produitSalledesports = $em->getRepository('ProductBundle:ProduitSalledesport')->findAll();
+        $user =$this->container->get('security.token_storage')->getToken()->getUser();
+        $etab = $em->getRepository('EtablissementBundle:Etablissements')
+            ->findBy(array('user'=>$user));
+        $produitSalledesports = $em->getRepository('ProductBundle:ProduitSalledesport')
+            ->findBy(array('idEtab'=>$etab));
 
         return $this->render('ProductBundle:produitsalledesport:index.html.twig', array(
             'produitSalledesports' => $produitSalledesports,
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function showAction(ProduitSalledesport $produitSalledesport)
     {
 
@@ -36,12 +43,13 @@ class ProduitSalledesportController extends Controller
     }
 
     /**
-     * @Security("has_role('ROLE_USER')")
+     * @Security("has_role('ROLE_PARTENAIRE')")
      */
     public function newAction(Request $request)
     {
         $produitSalle = new ProduitSalledesport();
         $produit = new Produits();
+        $em = $this->getDoctrine()->getManager();
         $form= $this->createFormBuilder($produit)
             ->add('image',FileType::class,array('data_class'=>null ,'label' => false))
             ->getForm();
@@ -60,6 +68,9 @@ class ProduitSalledesportController extends Controller
             $produit->setType('salle');
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
+            $user =$this->container->get('security.token_storage')->getToken()->getUser();
+            $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+            $produit->setIdEtab($etab[0]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
             $em->flush();
@@ -78,7 +89,9 @@ class ProduitSalledesportController extends Controller
     }
 
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function editAction(Request $request, ProduitSalledesport $produitSalle)
     {
         $em = $this->getDoctrine()->getManager();
@@ -126,7 +139,7 @@ class ProduitSalledesportController extends Controller
         ));
     }
     /**
-     * @Security("has_role('ROLE_USER')")
+     * @Security("has_role('ROLE_PARTENAIRE')")
      */
     public function deleteAction(ProduitSalledesport $produitSalle)
     {

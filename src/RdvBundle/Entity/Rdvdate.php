@@ -4,7 +4,7 @@ namespace RdvBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use PidevEsbeBundle\Entity\Services;
+use ProductBundle\Entity\Services;
 
 
 /**
@@ -41,9 +41,9 @@ class Rdvdate
 
 
     /**
-     * @var Services
+     * @var \ProductBundle\Entity\Services
      *
-     * @ORM\ManyToOne(targetEntity="PidevEsbeBundle\Entity\Services")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Services")
      * @ORM\JoinColumn(name="id_service", referencedColumnName="id")
      */
     private $idService;
@@ -115,31 +115,24 @@ class Rdvdate
         return $this->date;
     }
 
-
-
     /**
-     * Set idService
-     *
-     * @param \PidevEsbeBundle\Entity\Services $idService
-     *
-     * @return Rdvdate
-     */
-    public function setIdService(\PidevEsbeBundle\Entity\Services $idService = null)
-    {
-        $this->idService = $idService;
-
-        return $this;
-    }
-
-    /**
-     * Get idService
-     *
-     * @return \PidevEsbeBundle\Entity\Services
+     * @return Services
      */
     public function getIdService()
     {
         return $this->idService;
     }
+
+    /**
+     * @param Services $idService
+     */
+    public function setIdService($idService)
+    {
+        $this->idService = $idService;
+    }
+
+
+
 
     /**
      * Set idUser

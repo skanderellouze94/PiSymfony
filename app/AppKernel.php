@@ -24,44 +24,20 @@ class AppKernel extends Kernel
             new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
-<<<<<<< HEAD
             new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-
-
-
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-
-
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-
-
-            new ProductBundle\ProductBundle(),
-
-=======
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new ActualitesBundle\ActualitesBundle(),
-            new ReclamationBundle\ReclamationBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new AnnonceBundle\AnnonceBundle(),
-            new Nomaya\SocialBundle\NomayaSocialBundle(),
             new ProductBundle\ProductBundle(),
             new DemandeBundle\DemandeBundle(),
             new ForumBundle\ForumBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-<<<<<<< da857b92d29105bb01b1168e76238873f4a2552f
->>>>>>> CRUD produit + service
->>>>>>> d225d185d8c713c94340f79ce6a9d6040316c099
->>>>>>> bdc2440475f198a081bbf4b7e976fa57d78aa023
-=======
-
->>>>>>> BE and other changes
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
