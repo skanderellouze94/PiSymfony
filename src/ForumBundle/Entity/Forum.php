@@ -36,6 +36,12 @@ class Forum
      * @ORM\Column(name="contenu", type="string", length=5000, nullable=false)
      */
     private $contenu;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cont", type="string", length=4000, nullable=false)
+     */
+    private $cont;
 
     /**
      * @var string
@@ -225,5 +231,29 @@ class Forum
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set cont
+     *
+     * @param string $cont
+     *
+     * @return Forum
+     */
+    public function setCont($cont)
+    {
+        $this->cont = $cont;
+
+        return $this;
+    }
+
+    /**
+     * Get cont
+     *
+     * @return string
+     */
+    public function getCont()
+    {
+        return $this->cont;
     }
 }

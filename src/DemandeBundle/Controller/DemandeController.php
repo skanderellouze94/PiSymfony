@@ -139,7 +139,7 @@ class DemandeController extends Controller
         $user->addRole('ROLE_PARTENAIRE');
 
 
-        $message = ($message = \Swift_Message::newInstance())
+      /*  $message = ($message = \Swift_Message::newInstance())
             ->setFrom('EspaceSanteRoot@gmail.com')
             ->setTo($demande->getIdUser()->getEmail())
             ->setBody('Here is the message itself');
@@ -151,7 +151,7 @@ class DemandeController extends Controller
         $em1->persist($user);
         $em1->flush();
         $em->persist($demande);
-        $em->flush();
+        $em->flush();*/
 
         $demande = $em->getRepository("DemandeBundle:Demande")->findAll();
         return $this->render('DemandeBundle:DemandeViews:AfficherDemandes.html.twig',array("m" => $demande

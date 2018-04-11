@@ -38,7 +38,15 @@ class EtablissementController extends Controller
 
         if(sizeof($request->query->get('etablissementbundle_etab_filter')) >0){
             $query =   $em->getRepository('EtablissementBundle:Etablissements')->findFiltredFields($request->query->get('etablissementbundle_etab_filter'));
+<<<<<<< HEAD
             $filterForm->get('nom')->setData($filtredFields['nom']);
+=======
+
+            $filterForm->get('nom')->setData($filtredFields['nom']);
+
+
+
+>>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
             $filterForm->get('field')->setData($filtredFields['field']);
 
         }

@@ -118,7 +118,11 @@ class Rdvdate
     /**
      * @return Services
      */
+<<<<<<< HEAD
     public function getIdService()
+=======
+    public function setIdService(\PidevEsbeBundle\Entity\Services $idService)
+>>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
     {
         return $this->idService;
     }
@@ -157,4 +161,5 @@ class Rdvdate
     {
         return $this->idUser;
     }
+
 }

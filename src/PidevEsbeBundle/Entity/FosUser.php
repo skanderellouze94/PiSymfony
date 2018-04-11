@@ -6,9 +6,17 @@ namespace PidevEsbeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+<<<<<<< HEAD
 use Mgilet\NotificationBundle\Annotation\Notifiable;
 use Mgilet\NotificationBundle\NotifiableInterface;
 
+=======
+
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
+
+
+>>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
 /**
  * FosUser
  *
@@ -286,4 +294,12 @@ class FosUser extends  BaseUser implements NotifiableInterface
         $this->status = $status;
     }
 
+<<<<<<< HEAD
 }
+=======
+
+
+}
+
+
+>>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742

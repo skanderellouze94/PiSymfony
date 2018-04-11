@@ -26,18 +26,32 @@ class AppKernel extends Kernel
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+<<<<<<< HEAD
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
             new AnnonceBundle\AnnonceBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ProductBundle\ProductBundle(),
+=======
+            new AnnonceBundle\AnnonceBundle(),
+            new ProductBundle\ProductBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new ActualitesBundle\ActualitesBundle(),
+            new ReclamationBundle\ReclamationBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+>>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
             new DemandeBundle\DemandeBundle(),
             new ForumBundle\ForumBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+<<<<<<< HEAD
+=======
+            new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+>>>>>>> 9f77a506f8f8fc2ae5306b215fb892a091701742
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
