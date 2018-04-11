@@ -42,7 +42,7 @@ class ReponseController extends Controller
             return $this->redirectToRoute('index');
         }
         return $this->render('ReclamationBundle:reponseviews:reponse.html.twig', array(
-            'Form1' => $form->createView()
+            'Form1' => $form->createView(), 'r'=>$rec
 
         ));
 
@@ -69,15 +69,16 @@ class ReponseController extends Controller
     //front affichage
     public function showAction($id)
     {
-        $rec = new Reponse();
+        $rep = new Reponse();
         $em    = $this->getDoctrine()->getManager();
 
-       $rec = $em->getRepository(("ReclamationBundle:Reponse"))->findOneBy(['idrec'=>$id]);
+       $rep = $em->getRepository(("ReclamationBundle:Reponse"))->findOneBy(['idrec'=>$id]);
+        $rec = $em->getRepository(("ReclamationBundle:Reclamation"))->findOneBy(['idRec'=>$id]);
 
 //        $rec=$em->getRepository("ReclamationBundle:Reclamation")->findBy(['user' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
         return $this->render('ReclamationBundle:reponseviews:afficherreponse.html.twig',
-            array('r'=>$rec,
+            array('r'=>$rep, 'rec'=>$rec
             )
         );
     }

@@ -26,21 +26,21 @@ class AppKernel extends Kernel
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
-            new AnnonceBundle\AnnonceBundle(),
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
-            new Nomaya\SocialBundle\NomayaSocialBundle(),
-
+            new AnnonceBundle\AnnonceBundle(),
             new ProductBundle\ProductBundle(),
-
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
             new DemandeBundle\DemandeBundle(),
             new ForumBundle\ForumBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+
+
 
 
         ];

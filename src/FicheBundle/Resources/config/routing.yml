@@ -1,14 +1,12 @@
-fiche_homepage:
-    path:     /
-    defaults: { _controller: FicheBundle:Default:index }
 
-insertt:
+
+fiche_insertt:
     path:     /insert
     defaults: { _controller: FicheBundle:Fichepatient:insert}
 
-indexx:
-    path:     /index
+fiche_indexx:
+    path:     /
     defaults: { _controller: FicheBundle:Fichepatient:index}
-modifier:
+fiche_modifier:
     path:     /modif/{id}
     defaults: { _controller: FicheBundle:Fichepatient:edit}

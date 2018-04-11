@@ -23,7 +23,7 @@ class ReponseType extends AbstractType
         $builder
             ->add('message', CKEditorType::class, array(
                 'config' => array(
-                    'uiColor' => '#ffffff'
+                    'uiColor' => '#3e99a5'
                 )))
         ->add('Envoyer', SubmitType::class  )
         ->setMethod('post');

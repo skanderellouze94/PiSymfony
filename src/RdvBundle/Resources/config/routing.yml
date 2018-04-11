@@ -12,7 +12,7 @@ cal:
     path:     /cal
     defaults: { _controller: RdvBundle:Rdv:calendrier}
 ajout:
-    path:     /ajouterr/{id}
+    path:     /ajouterr
     defaults: { _controller: RdvBundle:Rdv:ajouterr}
 calAjouter:
     path:     /callin

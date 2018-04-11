@@ -977,11 +977,18 @@
                         <div class="card  card-box">
                             <div class="card-head">
                                 <header>
-                                   Répondre
+                                    <h4 style="color: #0f3e68">Reclamation :</h4>
                                 </header>
                             </div>
                             <div class="container">
                                 <div data-example-id="simple-table" class="bs-example">
+                                    <li>
+                                        {{ r.date | date('Y-m-d') }}
+
+                                        <h6>{{ r.message|raw }}</h6>
+
+                                    </li>
+                                    <h3 style="color: #0f3e68">Répondre</h3>
                                {{ form_start(Form1) }}
 
 

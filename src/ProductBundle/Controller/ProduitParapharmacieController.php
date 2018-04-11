@@ -4,6 +4,7 @@ namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\ProduitParapharmacie;
 use ProductBundle\Entity\Produits;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,23 +13,30 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProduitParapharmacieController extends Controller
 {
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $produitParapharmacies = $em->getRepository('ProductBundle:ProduitParapharmacie')->findAll();
+        $user =$this->container->get('security.token_storage')->getToken()->getUser();
+        $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+        $produitParapharmacies = $em->getRepository('ProductBundle:ProduitParapharmacie')
+            ->findBy(array('idEtab'=>$etab));
 
         return $this->render('produitparapharmacie/index.html.twig', array(
             'produitParapharmacies' => $produitParapharmacies,
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function newAction(Request $request)
     {
         $produitParapharmacie = new Produitparapharmacie();
         $produit = new Produits();
+        $em = $this->getDoctrine()->getManager();
         $form= $this->createFormBuilder($produit)
             ->add('image',FileType::class,array('data_class'=>null ,'label' => false))
 
@@ -48,6 +56,9 @@ class ProduitParapharmacieController extends Controller
             $produit->setType('para');
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
+            $user =$this->container->get('security.token_storage')->getToken()->getUser();
+            $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+            $produit->setIdEtab($etab[0]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($produit);
             $em->flush();
@@ -66,7 +77,9 @@ class ProduitParapharmacieController extends Controller
             'form' =>$form->createView()
         ));
     }
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function showAction(ProduitParapharmacie $produitParapharmacie)
     {
         $em = $this->getDoctrine()->getManager();
@@ -77,7 +90,9 @@ class ProduitParapharmacieController extends Controller
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function editAction(Request $request, ProduitParapharmacie $produitParapharmacie)
     {
         $em = $this->getDoctrine()->getManager();
@@ -127,7 +142,9 @@ class ProduitParapharmacieController extends Controller
             ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function deleteAction(ProduitParapharmacie $produitParapharmacie)
     {
         $em = $this->getDoctrine()->getManager();

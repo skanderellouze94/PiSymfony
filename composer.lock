@@ -5,6 +5,10 @@
         "This file is @generated automatically"
     ],
     "content-hash": "7a86978514379a81b33ae72eb1a9fec2",
+
+    "content-hash": "8974fdc4ce579d3df1e45692429e2965",
+    "content-hash": "d7e9de387a3d93ff379a2a3cce84017c",
+
     "packages": [
         {
             "name": "ancarebeca/full-calendar-bundle",
@@ -3587,8 +3591,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "eko/googletranslatebundle": 20,
-        "nomaya/social-bundle": 20
+        "nomaya/social-bundle": 20,
+        "eko/googletranslatebundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

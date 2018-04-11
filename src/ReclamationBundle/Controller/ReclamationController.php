@@ -86,18 +86,18 @@ $id=$this->container->get('security.token_storage')->getToken()->getUser()->getI
 
         $etab = $rec->getRepository(("EtablissementBundle:Etablissements"))
             ->findBy(['user' => $id]);
+        $notifiableNotifications = $rec->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
+
+        $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->findBy(['idetab' =>$etab]);
         if($request->getMethod()=="POST") {
             $recc = $rec->getRepository('ReclamationBundle:Reclamation')->findBy(['objet'=>$request->get('objet'),'user'=>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
             return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig'
-                , array('reclamations' => $recc
+                , array('reclamations' => $recc,'notifiableNotifications'=>$notifiableNotifications
 
             ));
         }
-        $notifiableNotifications = $rec->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
-//        $dql="SELECT m FROM ReclamationBundle:Reclamation m WHERE m.idetab=$id ";
-//        $query = $rec->createQuery($dql);
-        $recs = $rec->getRepository(("ReclamationBundle:Reclamation"))->findBy(['idetab' =>$etab]);
+
         return $this->render('ReclamationBundle:reclamationviews:afficherpart.html.twig', array(
             'reclamations' => $recs,'notifiableNotifications'=>$notifiableNotifications
 
@@ -112,12 +112,14 @@ $id=$this->container->get('security.token_storage')->getToken()->getUser()->getI
 
 
         $rec=$em->getRepository("ReclamationBundle:Reclamation")->findBy(['user' =>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
+        $notifiableNotifications = $em->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
 
 
         if($request->getMethod()=="POST") {
             $recc = $em->getRepository('ReclamationBundle:Reclamation')->findBy(['objet'=>$request->get('objet'),'user'=>$this->container->get('security.token_storage')->getToken()->getUser()->getId()]);
 
-            return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig', array('reclamations' => $recc
+            return $this->render('ReclamationBundle:reclamationviews:afficher.html.twig',
+                array('reclamations' => $recc,'notifiableNotifications'=>$notifiableNotifications
 
             ));
         }

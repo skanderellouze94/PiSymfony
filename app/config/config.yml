@@ -5,34 +5,10 @@ imports:
     - { resource: "@PidevEsbeBundle/Resources/config/services.yml" }
     - { resource: "@EtablissementBundle/Resources/config/services.yml" }
     - { resource: "@FicheBundle/Resources/config/services.yml" }
-
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@RdvBundle/Resources/config/services.yml" }
-
-
-
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-
-
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-
-
-
-
-    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ReclamationBundle/Resources/config/services.yml" }
-
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
-
-    - { resource: "@ProductBundle/Resources/config/services.yml" }
-
-
-    - { resource: "@RdvBundle/Resources/config/services.yml" }
-    - { resource: "@ActualitesBundle/Resources/config/services.yml" }
     - { resource: "@ProductBundle/Resources/config/services.yml" }
     - { resource: "@DemandeBundle/Resources/config/services.yml" }
     - { resource: "@ForumBundle/Resources/config/services.yml" }
@@ -42,9 +18,15 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+
     product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/img/CV'
 
+    image_directory: '%Kernel.project_dir%/web/uploads/images'
+
+
+
+    product_images: '%Kernel.project_dir%/web/uploads/images/products'
     image_directory: '%Kernel.project_dir%/web/uploads/images'
 
 
@@ -181,9 +163,6 @@ donkey_code_mail:
         bg: '#efefef'
         txt_color: '#555555'
         font_family: 'Helvetica Neue'
-
-
-
 knp_paginator:
     template:
          pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig

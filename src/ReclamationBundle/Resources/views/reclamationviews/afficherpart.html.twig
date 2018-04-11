@@ -962,7 +962,7 @@
                             </div>
                             <div class="container">
                                 <div data-example-id="simple-table" class="bs-example">
-                                    <table class="table">
+                                    <table class="table table-striped">
                                         <form method="post">
 
 
@@ -974,7 +974,7 @@
                                             <tr><button type="submit" name="chercher" class="btn btn-circle btn-default active" ><i class="fa fa-search"></i></button></tr>
                                         </form>
                                     <thead>
-                                    <th>Date</th> <th>Objet</th><th>Patient</th> <th>Message</th>
+                                    <th >Date</th> <th>Objet</th><th>Patient</th> <th>Message</th><th></th><th></th>
                                     </thead>
 
                                     {%for a in reclamations %}
@@ -986,7 +986,9 @@
 
                                         <td>{{ a.message | raw }}</td>
                                        <td><a href="{{ path('details',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Détails</button></a></td>
+                                      {% if a.Verified==null %}
                                         <td><a href="{{ path('insert',{'id':a.idRec} )}}"> <button type="button" class="btn btn-primary btn-sm" >Répondre</button></a></td>
+                                        {% endif %}
                                         </tbody>
 
                                     {% endfor %}

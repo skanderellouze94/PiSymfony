@@ -969,7 +969,7 @@
                                 {%for a in rendezvous %}
                                     <tbody>
                                     <td>{{  a.date | date('d/m/Y h:i')  }}</td>
-                                    <td>   <a style="color:blue" href="{{ path('modifier',{'id':a.idUser.id}) }}"> {{ a.idUser }}</a></td>
+                                    <td>   <a style="color:blue" href="{{ path('fiche_modifier',{'id':a.idUser.id}) }}"> {{ a.idUser }}</a></td>
 
 
                                     <td>{{ a.idService }}</td>

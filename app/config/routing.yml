@@ -1,25 +1,34 @@
-
 pidev_esbe:
     resource: "@PidevEsbeBundle/Resources/config/routing.yml"
     prefix:   /
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
-product:
-    resource: "@ProductBundle/Resources/config/routing.yml"
-    prefix:   /product
-
-ancarebeca_fullcalendar:
-    resource: "@FullCalendarBundle/Resources/config/routing.yml"
-
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
     prefix:   /
-
 demande:
     resource: "@DemandeBundle/Resources/config/routing.yml"
     prefix:   /Demande
 
+product:
+    resource: "@ProductBundle/Resources/config/routing.yml"
+    prefix:   /product
+
+
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
+
+
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
+forum:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
+
+demande:
+    resource: "@DemandeBundle/Resources/config/routing.yml"
+    prefix:   /Demande
 
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
@@ -28,15 +37,21 @@ annonce:
 product:
     resource: "@ProductBundle/Resources/config/routing.yml"
 
+
 product_services:
     resource: "@ProductBundle/Resources/config/routing/services.yml"
     prefix:   /services
 Commande:
     resource: "@ProductBundle/Resources/config/routing/Commande.yml"
-    prefix:   /
+
+    prefix:   /C
 product:
     resource: "@ProductBundle/Resources/config/routing/produits.yml"
     prefix:   /produits
+
+    prefix:   /
+
+
 product_produitherbo:
     resource: "@ProductBundle/Resources/config/routing/produitherbo.yml"
     prefix:   /pherbo
@@ -49,17 +64,23 @@ product_produitparapharmacie:
 product_produitsalledesport:
     resource: "@ProductBundle/Resources/config/routing/produitsalledesport.yml"
 
-    prefix:   /produitsalledesport
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 actualites:
     resource: "@ActualitesBundle/Resources/config/routing.yml"
     prefix:   /Actualites
 
+rdv:
+    resource: "@RdvBundle/Resources/config/routing.yml"
+    prefix:   /rdv
+
+
     prefix:   /psalledesport
+
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /Annonce
+
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 rdv:
@@ -86,6 +107,9 @@ fos_user:
 reclamation:
     resource: "@ReclamationBundle/Resources/config/routing.yml"
     prefix:   /rec
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix:   /notifications
 rdv:
     resource: "@RdvBundle/Resources/config/routing.yml"
     prefix:   /rdv

@@ -3,33 +3,41 @@
 namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\Services;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class ServicesController extends Controller
 {
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $services = $em->getRepository('ProductBundle:Services')->findAll();
+        $user =$this->container->get('security.token_storage')->getToken()->getUser();
+        $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+        $services = $em->getRepository('ProductBundle:Services')->findBy(array('idEtab'=>$etab));
 
         return $this->render('services/index.html.twig', array(
             'services' => $services,
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function newAction(Request $request)
     {
         $service = new Services();
-
+        $em = $this->getDoctrine()->getManager();
         if ($request->isMethod('post') && $request->get('submit')) {
             $service->setNom($request->get('nom'));
             $service->setDescription($request->get('description'));
             $service->setTarif($request->get('tarif'));
-            $em = $this->getDoctrine()->getManager();
+            $user =$this->container->get('security.token_storage')->getToken()->getUser();
+            $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+            $service->setIdEtab($etab[0]);
             $em->persist($service);
             $em->flush();
 
@@ -40,6 +48,7 @@ class ServicesController extends Controller
             'service' => $service,
         ));
     }
+
 
     public function showAction(Request $request)
     {
@@ -59,7 +68,9 @@ class ServicesController extends Controller
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function editAction(Request $request, Services $s)
     {
         $em = $this->getDoctrine()->getManager();
@@ -78,7 +89,9 @@ class ServicesController extends Controller
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function deleteAction(Services $service)
     {
         $em = $this->getDoctrine()->getManager();

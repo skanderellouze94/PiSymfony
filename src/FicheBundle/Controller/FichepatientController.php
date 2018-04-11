@@ -41,11 +41,11 @@ class FichepatientController extends Controller
 
             $fiche->setIdpatient($user);
             $em = $this->getDoctrine()->getManager();
-            $fiche->setSuivie(strip_tags($fiche->getSuiviehtml()));
+            $fiche->setSuivie(substr(strip_tags($fiche->getSuiviehtml()),0,20));
             $fiche->setIdetab($etab);
             $em->persist($fiche);
             $em->flush();
-            return $this->redirectToRoute('indexx');
+            return $this->redirectToRoute('fiche_indexx');
 
         }
 
@@ -99,10 +99,10 @@ class FichepatientController extends Controller
         $form = $this->createForm(FichepatientType::class, $fiche);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $fiche->setSuivie(strip_tags($fiche->getSuiviehtml()));
+            $fiche->setSuivie(substr(strip_tags($fiche->getSuiviehtml()),0,20));
             $em->persist($fiche);
             $em->flush();
-            return $this->redirectToRoute('indexx');
+            return $this->redirectToRoute('fiche_indexx');
         }
         return $this->render('FicheBundle:FicheView:modif.html.twig', array(
             'form' => $form->createView(),'v'=>$fiche

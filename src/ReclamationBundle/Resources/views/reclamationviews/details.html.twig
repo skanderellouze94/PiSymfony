@@ -966,17 +966,17 @@
                                     <ul>
                                         <li>
 
-                                            <h3>Date </h3>
-                                            <p >{{  rec.date | date('d/m/y')  }}</p>
+                                            <h4 class="post-mtitle">Date:  {{  rec.date | date('Y/m/d')  }} </h4>
+
 
                                         </li>
                                         <li>
-                                            <h3>Objet</h3>
-                                            <p>{{  rec.objet }}</p>
+                                            <h4>Objet: {{  rec.objet }}</h4>
+
                                         </li>
                                         <li>
-                                            <h3>Patient</h3>
-                                            <p>{{ rec.user }}</p>
+                                            <h4>Patient:    {{ rec.user.nom }} {{ rec.user.prenom }}</h4>
+
                                         </li>
                                         <li>
                                             <h3>Message</h3>

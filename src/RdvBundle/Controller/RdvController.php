@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RdvController extends Controller
 {
-    public function ajouterrAction($id,Request $request)
+    public function ajouterrAction(Request $request)
     {
         $rdv = new Rdvdate();
         $form = $this->createForm('RdvBundle\Form\RdvdateType', $rdv);
@@ -60,7 +60,7 @@ class RdvController extends Controller
 
         $etab = $rdv->getRepository(("EtablissementBundle:Etablissements"))
         ->findOneBy(['user' => $id]);
-        $service = $rdv->getRepository(("PidevEsbeBundle:Services"))
+        $service = $rdv->getRepository(("ProductBundle:Services"))
         ->findOneBy(['idEtab' =>$etab]);
         $rdvs = $rdv->getRepository(("RdvBundle:Rdvdate"))->findBy(['idService' =>$service]);
         $notifiableNotifications = $rdv->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();

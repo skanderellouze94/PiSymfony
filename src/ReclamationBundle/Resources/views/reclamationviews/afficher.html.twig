@@ -821,24 +821,24 @@
 
             <div class="container">
                 <div data-example-id="simple-table" class="bs-example">
-            {#from heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeere#}
-                    <form method="post">
 
+                    <center> <form method="post">
 
+                        Recherche: Selectionnez l'objet de la reclamation<br>
                         <select name="objet">
                             {%for a in reclamations %}
                                <option name="objet" value="{{a.objet}}">{{a.objet}}</option>
                             {% endfor %}</select>
                         <tr><input type="submit" value="chercher" name="chercher"></tr>
                     </form>
-
-                    <table class="table">
-                        <h1>Mes reclamations</h1>
+                    </center>
+                    <table class="table table-striped">
+                        <h1 style="color: #0f3e68">Mes reclamations</h1>
 
 
 
                         <thead>
-                        <th>Date</th> <th>Objet</th><th>Etablissement</th> <th>Message</th>
+                        <th>Date</th> <th>Objet</th><th>Etablissement</th> <th>Message</th><th></th><th></th>
                         </thead>
 
                         {%for a in reclamations %}
@@ -846,7 +846,7 @@
                             <tbody>
                                 <td>{{ a.date | date('d/m/Y') }}</td>
                                 <td>{{ a.objet }}</td>
-                                <td><a style="color: blue" href="{{ path('show',{'id':a.idEtab.id}) }}">{{   a.idEtab }}</a></td>
+                                <td><a style="color: blue" href="{{ path('etablissement_show',{'id':a.idEtab.id}) }}">{{   a.idEtab }}</a></td>
 
                                 <td>{{ a.message | raw }}</td>
                                {% if a.verified==1 %}

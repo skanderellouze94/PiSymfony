@@ -4,6 +4,7 @@ namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\ProduitPharmaceutique;
 use ProductBundle\Entity\Produits;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -11,23 +12,30 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProduitPharmaceutiqueController extends Controller
 {
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $produitPharmaceutiques = $em->getRepository('ProductBundle:ProduitPharmaceutique')->findAll();
+        $user =$this->container->get('security.token_storage')->getToken()->getUser();
+        $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+        $produitPharmaceutiques = $em->getRepository('ProductBundle:ProduitPharmaceutique')
+            ->findBy(array('idEtab'=>$etab));
 
         return $this->render('produitpharmaceutique/index.html.twig', array(
             'produitPharmaceutiques' => $produitPharmaceutiques,
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function newAction(Request $request)
     {
         $produitPharmaceutique = new Produitpharmaceutique();
         $produit = new Produits();
+        $em = $this->getDoctrine()->getManager();
         $form= $this->createFormBuilder($produit)
             ->add('image',FileType::class,array('data_class'=>null ,
                 'label' => false))
@@ -47,7 +55,10 @@ class ProduitPharmaceutiqueController extends Controller
             $produit->setType('pharma');
             $produit->setNom($request->get('nom'));
             $produit->setPrix($request->get('prix'));
-            $em = $this->getDoctrine()->getManager();
+            $user =$this->container->get('security.token_storage')->getToken()->getUser();
+            $etab = $em->getRepository('EtablissementBundle:Etablissements')->findBy(array('user'=>$user));
+            $produit->setIdEtab($etab[0]);
+
             $em->persist($produit);
             $em->flush();
             $em1 = $this->getDoctrine()->getManager();
@@ -67,7 +78,9 @@ class ProduitPharmaceutiqueController extends Controller
             'form' => $form->createView(),
         ));
     }
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function showAction(ProduitPharmaceutique $produitPharmaceutique)
     {
 
@@ -76,7 +89,9 @@ class ProduitPharmaceutiqueController extends Controller
         ));
     }
 
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function editAction(Request $request, ProduitPharmaceutique $produitPharmaceutique)
     {
         $this->getDoctrine()->getManager()->flush();
@@ -126,7 +141,9 @@ class ProduitPharmaceutiqueController extends Controller
             'form' => $form->createView(),
         ));
     }
-
+    /**
+     * @Security("has_role('ROLE_PARTENAIRE')")
+     */
     public function deleteAction(ProduitPharmaceutique $produitPharmaceutique)
     {
         $em1 = $this->getDoctrine()->getManager();

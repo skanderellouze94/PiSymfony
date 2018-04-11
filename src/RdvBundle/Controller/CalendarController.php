@@ -43,6 +43,7 @@ class CalendarController extends Controller
                 'title' => $r->getIdService()->getNom(),
                 'start' => "" . ($r->getDate()->format('Y-m-d H:i:s')) . "",
                 'end' => "" . ($r->getDate()->format('Y-m-d H:i:s')) . "",
+                'url'=>"http://localhost/PiSymfony/web/app_dev.php/rdv/detail/".($r->getidRdv())."",
                 'id' => "" . ($r->getIdRdv(). ""));
         }
         return new JsonResponse(array('events' => $listRdvsJson));
@@ -54,8 +55,10 @@ class CalendarController extends Controller
 
         $rdv = $this->getDoctrine()->getManager();
         $rdvs = $rdv->getRepository(("RdvBundle:Rdvdate"))->findAll();
+        $notifiableNotifications = $rdv->getRepository("MgiletNotificationBundle:NotifiableNotification")->findAll();
+
         return $this->render('RdvBundle:rdvviews:calendar.html.twig', array(
-            'rendezvous' => $rdvs
+            'rendezvous' => $rdvs, 'notifiableNotifications'=>$notifiableNotifications
 
         ));
     }
