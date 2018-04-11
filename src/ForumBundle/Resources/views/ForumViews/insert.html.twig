@@ -1,0 +1,22 @@
+{% extends '::/BaseForm.html.twig' %}
+        {% block titreRow %}
+            Créer un sujet
+        {% endblock titreRow %}
+
+        {% block content %}
+            </br>
+            <p>Veuillez remplir le formulaire convenablement</p>
+            </br>
+            {{ form_start(form) }}
+            {{  form_row(form.titre, {'attr': {'class': 'form-control', 'placeholder' : 'titre de votre sujet'}}) }}
+            {{  form_row(form.contenu) }}
+            {{  form_row(form.categorie, {'attr': {'class': 'form-control', 'placeholder' : 'titre de votre sujet'}}) }}
+
+
+            {{ form_end(form) }}
+
+        {% endblock content %}
+    {#{% block javascript %}#}
+        {#{{   parent() }}#}
+
+    {#{% endblock %}#}
