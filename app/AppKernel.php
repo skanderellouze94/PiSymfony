@@ -24,37 +24,23 @@ class AppKernel extends Kernel
             new RdvBundle\RdvBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
-<<<<<<< HEAD
-=======
-            new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
+//            new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new ActualitesBundle\ActualitesBundle(),
             new ReclamationBundle\ReclamationBundle(),
             new AnnonceBundle\AnnonceBundle(),
             new ProductBundle\ProductBundle(),
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Nomaya\SocialBundle\NomayaSocialBundle(),
-<<<<<<< HEAD
-            new ProductBundle\ProductBundle(),
             new DonkeyCode\MailBundle\DonkeyCodeMailBundle(),
-            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
-=======
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
+//            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new DemandeBundle\DemandeBundle(),
             new ForumBundle\ForumBundle(),
             new Eko\GoogleTranslateBundle\EkoGoogleTranslateBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-<<<<<<< HEAD
             new Uran1980\FancyBoxBundle\Uran1980FancyBoxBundle(),
-=======
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
-
-
-
-
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

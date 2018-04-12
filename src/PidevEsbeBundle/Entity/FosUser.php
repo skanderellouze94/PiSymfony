@@ -9,11 +9,6 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Mgilet\NotificationBundle\Annotation\Notifiable;
 use Mgilet\NotificationBundle\NotifiableInterface;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
 /**
  * FosUser
  *
@@ -290,13 +285,9 @@ class FosUser extends  BaseUser implements NotifiableInterface
     {
         $this->status = $status;
     }
-<<<<<<< HEAD
-}
-=======
 
 }
 
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
 
 
 

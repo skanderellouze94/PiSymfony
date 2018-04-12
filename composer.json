@@ -25,13 +25,8 @@
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.7",
-<<<<<<< HEAD
-
-=======
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
         "mgilet/notification-bundle": "^2.0",
         "knplabs/knp-snappy-bundle": "^1.4",
-
         "nomaya/social-bundle": "dev-master",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
@@ -40,20 +35,9 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
         "twig/twig": "^1.0||^2.0",
-
-<<<<<<< HEAD
         "uran1980/fancybox-bundle": "*",
         "eko/googletranslatebundle": "dev-master",
-
         "vich/uploader-bundle": "^1.4"
-
-=======
-
-
-        "vich/uploader-bundle": "^1.4",
-
-        "eko/googletranslatebundle": "dev-master"
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

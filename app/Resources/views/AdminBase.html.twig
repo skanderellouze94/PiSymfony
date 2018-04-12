@@ -73,51 +73,7 @@
 
                     <!-- end language menu -->
                     <!-- start notification dropdown -->
-                    <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="badge headerBadgeColor1"> {{ mgilet_notification_unseen_count(app.user) }} </span>
-                        </a>
 
-                        <ul class="dropdown-menu" href="{{ mgilet_notification_generate_path('notification_mark_all_as_seen',app.user) }}">
-                            <li class="external">
-                                <h3><span class="bold">Notifications</span></h3>
-
-                            </li>
-                            <li>
-                                <a href="{{ path('index') }}"> <form action="{{ mgilet_notification_generate_path('notification_list', notifiableNotifications|first.notifiableEntity) }}"
-                                                                     method="post">
-                                        <button class="btn btn-circle btn-info " style="margin-left: 25%" type="submit">Marquer comme vu</button>
-                                    </form></a>
-                                <ul class="dropdown-menu-list small-slimscroll-style" data-handle-color="#637283" style="overflow: hidden; width: auto;">
-                                    {% for notifiableNotification in notifiableNotifications %}
-                                        <li>
-                                            {% if notifiableNotification.seen == true %}
-                                                <a href="{{ path(notifiableNotification.notification.link) }}"> <b >{{ mgilet_notification_render(app.user ,{'seen': false }) }}</b></a>
-
-
-                                            {% elseif notifiableNotification.seen == false %}
-                                                <a href="{{ path(notifiableNotification.notification.link) }}">     <b style="color: #0cc745">{{ mgilet_notification_render(app.user ,{'seen': false }) }}</b></a>
-                                            {% endif %}
-
-                                            {#<div style="display:inline">#}
-
-                                            {#<form action="{{ mgilet_notification_generate_path('notification_mark_as_seen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"#}
-                                            {#method="post">#}
-                                            {#<a href="{{ path('index') }}"><button class="fa fa-eye" style="width:40px" type="submit"></button></a>#}
-                                            {#</form>#}
-                                            {#<form action="{{ mgilet_notification_generate_path('notification_mark_as_unseen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"#}
-                                            {#method="post">#}
-                                            {#<a href="{{ path('index') }}"><button class="fa fa-eye-slash" style="width:40px" type="submit"></button></a>#}
-                                            {#</form>#}
-                                            {#</div>#}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
                     <!-- end notification dropdown -->
                     <!-- start message dropdown -->
                     <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
@@ -446,13 +402,7 @@
 
 {%  block javascript %}
 {%  endblock %}
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
-=======
->>>>>>> 7c503dd3d434c1127c5bb360a5c86e67832e5451
->>>>>>> d641a5c9c4b1638dce2bc50436cf22e17e6ba141
 <!-- end js include path -->
 </body>
 
